@@ -27,12 +27,6 @@
     .subtitle {
       font-size: 18px;
       margin-bottom: 35px;
-      font-weight: normal;
-    }
-
-    h2 {
-      margin-top: 0;
-      color: #2c3e50;
     }
 
     .retour {
@@ -48,21 +42,21 @@
       padding: 8px 14px;
       border-radius: 8px;
       font-size: 14px;
-      transition: background-color 0.3s ease;
     }
 
-    .retour a:hover {
-      background-color: #1a242f;
-    }
-
-    .form-block {
+    .form-block,
+    .scale-card {
       background: #ffffff;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 25px 30px;
       margin: 30px auto;
       max-width: 950px;
       text-align: left;
+    }
+
+    .scale-card {
+      text-align: center;
     }
 
     .id-block {
@@ -74,12 +68,12 @@
       font-weight: bold;
     }
 
-    .id-block input {
+    .id-block input[type="text"] {
       width: 100%;
       max-width: 320px;
       padding: 9px;
       margin-top: 8px;
-      border: 1px solid #aaaaaa;
+      border: 1px solid #aaa;
       border-radius: 6px;
       font-size: 15px;
     }
@@ -95,8 +89,8 @@
     }
 
     .section-title h2 {
-      color: white;
       margin: 0;
+      color: white;
     }
 
     .section-title p {
@@ -122,7 +116,6 @@
       font-size: 15px;
       padding: 8px 10px;
       border-radius: 7px;
-      transition: background-color 0.15s ease;
     }
 
     .options label:hover {
@@ -144,7 +137,6 @@
       cursor: pointer;
       font-size: 17px;
       margin: 35px 0 50px;
-      transition: background-color 0.3s ease;
     }
 
     button:hover {
@@ -152,27 +144,8 @@
     }
 
     /* =========================================================
-       ECHELLES VISUELLES
+       ECHELLES
        ========================================================= */
-
-    .scale-card {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
-      padding: 30px 35px 35px;
-      margin: 30px auto;
-      max-width: 950px;
-      text-align: center;
-    }
-
-    .scale-instruction {
-      line-height: 1.5;
-      margin-bottom: 35px;
-    }
-
-    .scale-instruction strong {
-      text-decoration: underline;
-    }
 
     .scale-wrapper {
       width: 92%;
@@ -197,28 +170,26 @@
     }
 
     .pain-range {
-      background:
-        linear-gradient(
-          to right,
-          #15a54a 0%,
-          #8fc640 20%,
-          #f6d41f 40%,
-          #ff9819 60%,
-          #f44b23 80%,
-          #e51b24 100%
-        );
+      background: linear-gradient(
+        to right,
+        #15a54a 0%,
+        #8fc640 20%,
+        #f6d41f 40%,
+        #ff9819 60%,
+        #f44b23 80%,
+        #e51b24 100%
+      );
     }
 
     .pgi-range {
-      background:
-        linear-gradient(
-          to right,
-          #d71920 0%,
-          #ff6b1a 25%,
-          #f7c515 50%,
-          #82c341 75%,
-          #08752b 100%
-        );
+      background: linear-gradient(
+        to right,
+        #d71920 0%,
+        #ff6b1a 25%,
+        #f7c515 50%,
+        #82c341 75%,
+        #08752b 100%
+      );
     }
 
     .life-range {
@@ -232,9 +203,8 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: #ffffff;
+      background: white;
       border: 4px solid #2c3e50;
-      cursor: grab;
       box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     }
 
@@ -242,10 +212,8 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #ffffff;
+      background: white;
       border: 4px solid #2c3e50;
-      cursor: grab;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     }
 
     input[type="range"].untouched::-webkit-slider-thumb {
@@ -256,46 +224,60 @@
       opacity: 0;
     }
 
-    .ticks {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      margin-top: -6px;
-    }
-
-    .tick {
-      position: relative;
-      width: 1px;
-      height: 15px;
-      background: #2c3e50;
-    }
-
     .tick-labels {
       display: flex;
       justify-content: space-between;
       margin-top: -40px;
       margin-bottom: 28px;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 14px;
+    }
+
+    .ticks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: -6px;
+    }
+
+    .tick {
+      width: 1px;
+      height: 15px;
+      background: #2c3e50;
+    }
+
+    .scale-extremes {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: bold;
     }
 
     .selected-value {
       display: inline-block;
-      min-width: 165px;
+      min-width: 180px;
       background: #e8eef1;
       border-radius: 8px;
       padding: 10px 15px;
       margin-top: 25px;
       font-weight: bold;
-      font-size: 16px;
     }
+
+    .missing-note {
+      font-size: 13px;
+      color: #607080;
+      margin-top: 10px;
+    }
+
+    /* =========================================================
+       VISAGES EVA
+       ========================================================= */
 
     .pain-descriptors {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       margin-top: 20px;
       gap: 5px;
-      align-items: start;
     }
 
     .pain-level {
@@ -303,7 +285,7 @@
       font-weight: bold;
       min-height: 105px;
       padding: 8px 3px;
-      border-right: 1px dotted #aaaaaa;
+      border-right: 1px dotted #aaa;
     }
 
     .pain-level:last-child {
@@ -330,13 +312,8 @@
       border-radius: 50%;
     }
 
-    .face::before {
-      left: 11px;
-    }
-
-    .face::after {
-      right: 11px;
-    }
+    .face::before { left: 11px; }
+    .face::after  { right: 11px; }
 
     .mouth {
       position: absolute;
@@ -370,19 +347,94 @@
     .pain-4 { color: #ef3b2c; }
     .pain-5 { color: #d71920; }
 
-    .scale-extremes {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      font-size: 13px;
-      font-weight: bold;
+    /* =========================================================
+       GUIDE PGI 1-7
+       AFFICHAGE UNIQUEMENT
+       ========================================================= */
+
+    .pgi-guide {
+      margin-top: 25px;
     }
+
+    .pgi-guide-row {
+      display: grid;
+      grid-template-columns: 65px 90px 220px 1fr;
+      align-items: center;
+      border: 1px solid;
+      border-radius: 10px;
+      margin: 7px 0;
+      overflow: hidden;
+      min-height: 58px;
+    }
+
+    .pgi-guide-number {
+      font-size: 25px;
+      font-weight: bold;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .pgi-guide-face {
+      font-size: 34px;
+      text-align: center;
+    }
+
+    .pgi-guide-label {
+      font-weight: bold;
+      text-align: left;
+      padding: 10px;
+    }
+
+    .pgi-guide-description {
+      text-align: left;
+      padding: 10px 16px;
+      border-left: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .pgi1 { border-color:#08752b; }
+    .pgi1 .pgi-guide-number { background:#08752b; }
+    .pgi1 .pgi-guide-face,
+    .pgi1 .pgi-guide-label { color:#08752b; }
+
+    .pgi2 { border-color:#57b83c; }
+    .pgi2 .pgi-guide-number { background:#57b83c; }
+    .pgi2 .pgi-guide-face,
+    .pgi2 .pgi-guide-label { color:#57b83c; }
+
+    .pgi3 { border-color:#9ac93c; }
+    .pgi3 .pgi-guide-number { background:#9ac93c; }
+    .pgi3 .pgi-guide-face,
+    .pgi3 .pgi-guide-label { color:#9ac93c; }
+
+    .pgi4 { border-color:#f5b91a; }
+    .pgi4 .pgi-guide-number { background:#f5b91a; }
+    .pgi4 .pgi-guide-face,
+    .pgi4 .pgi-guide-label { color:#f5b91a; }
+
+    .pgi5 { border-color:#ff8b18; }
+    .pgi5 .pgi-guide-number { background:#ff8b18; }
+    .pgi5 .pgi-guide-face,
+    .pgi5 .pgi-guide-label { color:#ff8b18; }
+
+    .pgi6 { border-color:#ff4b15; }
+    .pgi6 .pgi-guide-number { background:#ff4b15; }
+    .pgi6 .pgi-guide-face,
+    .pgi6 .pgi-guide-label { color:#ff4b15; }
+
+    .pgi7 { border-color:#d71920; }
+    .pgi7 .pgi-guide-number { background:#d71920; }
+    .pgi7 .pgi-guide-face,
+    .pgi7 .pgi-guide-label { color:#d71920; }
+
+    /* =========================================================
+       SATISFACTION
+       ========================================================= */
 
     .life-extremes {
       display: flex;
       justify-content: space-between;
       margin-top: 25px;
-      align-items: flex-start;
       font-size: 13px;
       font-weight: bold;
     }
@@ -392,52 +444,9 @@
     }
 
     .life-face {
-      font-size: 40px;
       display: block;
+      font-size: 40px;
       margin-bottom: 5px;
-    }
-
-    .missing-note {
-      font-size: 13px;
-      color: #607080;
-      margin-top: 10px;
-    }
-
-    /* =========================================================
-       PGI 1-7
-       ========================================================= */
-
-    .pgi-choice {
-      display: grid;
-      grid-template-columns: 65px 1fr;
-      align-items: center;
-      border: 1px solid #dddddd;
-      border-radius: 10px;
-      margin: 8px 0;
-      overflow: hidden;
-      cursor: pointer;
-      transition: background-color 0.15s ease;
-    }
-
-    .pgi-choice:hover {
-      background-color: #edf6f7;
-    }
-
-    .pgi-number {
-      font-size: 24px;
-      font-weight: bold;
-      padding: 15px;
-      text-align: center;
-      background: #f0f3f5;
-    }
-
-    .pgi-label {
-      font-weight: bold;
-      padding: 14px 18px;
-    }
-
-    .pgi-radio {
-      margin-right: 10px;
     }
 
     /* =========================================================
@@ -449,21 +458,20 @@
       width: 100%;
       max-width: 500px;
       padding: 9px;
-      border: 1px solid #aaaaaa;
+      border: 1px solid #aaa;
       border-radius: 6px;
       font-size: 15px;
       display: none;
     }
 
     @media (max-width: 750px) {
-
       body {
         padding: 20px 10px;
       }
 
       h1 {
-        font-size: 26px;
         margin-top: 55px;
+        font-size: 26px;
       }
 
       .form-block,
@@ -475,16 +483,16 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .scale-wrapper {
-        width: 100%;
+      .pgi-guide-row {
+        grid-template-columns: 55px 65px 1fr;
+      }
+
+      .pgi-guide-description {
+        grid-column: 1 / -1;
       }
 
       .life-end {
         width: 45%;
-      }
-
-      .pgi-choice {
-        grid-template-columns: 55px 1fr;
       }
     }
   </style>
@@ -499,9 +507,8 @@
   <h1>Autoquestionnaires post-injection</h1>
   <div class="subtitle">Tics et toxines</div>
 
-
   <!-- =======================================================
-       IDENTIFIANT PATIENT
+       IDENTIFIANT
        ======================================================= -->
 
   <div class="form-block id-block">
@@ -509,13 +516,11 @@
     <input
       type="text"
       id="patientId"
-      name="patientId"
       placeholder="Ex : 002STESY"
       autocomplete="off"
       required
     >
   </div>
-
 
   <!-- =======================================================
        EVA DOULEUR
@@ -546,7 +551,6 @@
           max="10"
           step="1"
           value="5"
-          aria-label="Évaluation de la douleur de 0 à 10"
         >
       </div>
 
@@ -602,20 +606,101 @@
     </div>
   </div>
 
+  <!-- =======================================================
+       PGI GUIDE 1-7
+       ======================================================= -->
+
+  <div class="section-title">
+    <h2>2. Score PGI – Impression globale d’amélioration du tic</h2>
+  </div>
+
+  <div class="form-block">
+
+    <p style="text-align:center;">
+      Veuillez indiquer votre impression globale d’amélioration de votre tic
+      <strong>à cet instant présent</strong><br>
+      (au pic de dose de la toxine).
+    </p>
+
+    <div class="pgi-guide">
+
+      <div class="pgi-guide-row pgi1">
+        <div class="pgi-guide-number">1</div>
+        <div class="pgi-guide-face">😃</div>
+        <div class="pgi-guide-label">TRÈS FORTEMENT AMÉLIORÉ</div>
+        <div class="pgi-guide-description">
+          Amélioration très importante et nette du tic.
+        </div>
+      </div>
+
+      <div class="pgi-guide-row pgi2">
+        <div class="pgi-guide-number">2</div>
+        <div class="pgi-guide-face">🙂</div>
+        <div class="pgi-guide-label">FORTEMENT AMÉLIORÉ</div>
+        <div class="pgi-guide-description">
+          Amélioration importante du tic.
+        </div>
+      </div>
+
+      <div class="pgi-guide-row pgi3">
+        <div class="pgi-guide-number">3</div>
+        <div class="pgi-guide-face">🙂</div>
+        <div class="pgi-guide-label">LÉGÈREMENT AMÉLIORÉ</div>
+        <div class="pgi-guide-description">
+          Amélioration légère du tic.
+        </div>
+      </div>
+
+      <div class="pgi-guide-row pgi4">
+        <div class="pgi-guide-number">4</div>
+        <div class="pgi-guide-face">😐</div>
+        <div class="pgi-guide-label">PAS DE CHANGEMENT</div>
+        <div class="pgi-guide-description">
+          Aucun changement notable du tic.
+        </div>
+      </div>
+
+      <div class="pgi-guide-row pgi5">
+        <div class="pgi-guide-number">5</div>
+        <div class="pgi-guide-face">🙁</div>
+        <div class="pgi-guide-label">LÉGÈREMENT AGGRAVÉ</div>
+        <div class="pgi-guide-description">
+          Aggravation légère du tic.
+        </div>
+      </div>
+
+      <div class="pgi-guide-row pgi6">
+        <div class="pgi-guide-number">6</div>
+        <div class="pgi-guide-face">☹️</div>
+        <div class="pgi-guide-label">FORTEMENT AGGRAVÉ</div>
+        <div class="pgi-guide-description">
+          Aggravation importante du tic.
+        </div>
+      </div>
+
+      <div class="pgi-guide-row pgi7">
+        <div class="pgi-guide-number">7</div>
+        <div class="pgi-guide-face">☹️</div>
+        <div class="pgi-guide-label">TRÈS FORTEMENT AGGRAVÉ</div>
+        <div class="pgi-guide-description">
+          Aggravation très importante et nette du tic.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- =======================================================
        PGI 0-100
        ======================================================= -->
 
-  <div class="section-title">
-    <h2>2. Impression globale d’amélioration du tic</h2>
-  </div>
-
   <div class="scale-card">
 
     <div class="scale-instruction">
-      Indiquez le degré d’amélioration globale de votre tic
-      <strong>à cet instant présent</strong>.
+      Sur cette échelle, veuillez indiquer le degré d’amélioration globale de votre tic
+      <strong>à cet instant présent</strong> (au pic de dose de la toxine).<br>
+      Déplacez le curseur sur le pourcentage qui correspond le mieux à votre ressenti.
     </div>
 
     <div class="scale-wrapper">
@@ -631,15 +716,43 @@
           max="100"
           step="1"
           value="50"
-          aria-label="Amélioration globale du tic de 0 à 100 pour cent"
         >
       </div>
 
       <div class="ticks" id="pgiPercentTicks"></div>
 
+      <div class="pain-descriptors">
+
+        <div class="pain-level" style="color:#d71920;">
+          AUCUNE<br>AMÉLIORATION
+          <div class="face sad"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level" style="color:#ff6b1a;">
+          AMÉLIORATION<br>LÉGÈRE
+          <div class="face neutral"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level" style="color:#e5a700;">
+          AMÉLIORATION<br>MODÉRÉE
+          <div class="face happy"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level" style="color:#55a63a;">
+          AMÉLIORATION<br>IMPORTANTE
+          <div class="face happy"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level" style="color:#08752b;">
+          AMÉLIORATION<br>TOTALE
+          <div class="face happy"><div class="mouth"></div></div>
+        </div>
+
+      </div>
+
       <div class="scale-extremes">
-        <span>0 % = aucune amélioration</span>
-        <span>100 % = amélioration maximale</span>
+        <span>0 % = aucune amélioration du tic</span>
+        <span>100 % = disparition complète du tic</span>
       </div>
 
       <div class="selected-value" id="pgiPercentValue">
@@ -653,42 +766,19 @@
     </div>
   </div>
 
-
-  <!-- =======================================================
-       PGI 1-7
-       ======================================================= -->
-
-  <div class="section-title">
-    <h2>3. Score PGI – Impression globale d’amélioration du tic</h2>
-  </div>
-
-  <div class="form-block">
-
-    <p>
-      Veuillez sélectionner la proposition correspondant le mieux
-      à votre impression globale actuelle concernant votre tic.
-    </p>
-
-    <div id="pgiSeven"></div>
-
-  </div>
-
-
   <!-- =======================================================
        EFFETS INDESIRABLES
        ======================================================= -->
 
   <div class="section-title">
-    <h2>4. Effets indésirables</h2>
+    <h2>3. Effets indésirables</h2>
   </div>
 
   <div class="form-block">
 
-    <p>
-      <strong>
-        Avez-vous eu des effets indésirables suite à la séance de toxine botulique ?
-      </strong>
-    </p>
+    <p><strong>
+      Avez-vous eu des effets indésirables suite à la séance de toxine botulique ?
+    </strong></p>
 
     <div class="options">
 
@@ -704,7 +794,7 @@
 
     </div>
 
-    <div id="adverseTypes" style="margin-top:25px;">
+    <div style="margin-top:25px;">
 
       <p><strong>Si oui, de quel(s) type(s) ?</strong></p>
 
@@ -743,55 +833,44 @@
 
   </div>
 
-
   <!-- =======================================================
        PUTS
        ======================================================= -->
 
   <div class="section-title">
-    <h2>5. Premonitory Urge for Tics Scale (PUTS)</h2>
-    <p>
-      Pour chaque affirmation, sélectionnez la réponse qui correspond le mieux
-      à votre expérience.
-    </p>
+    <h2>4. Premonitory Urge for Tics Scale (PUTS)</h2>
   </div>
 
   <div id="putsQuestions"></div>
-
 
   <!-- =======================================================
        TS-QOL
        ======================================================= -->
 
   <div class="section-title">
-    <h2>6. Tourette Syndrome Quality of Life Scale (TS-QOL)</h2>
+    <h2>5. Tourette Syndrome Quality of Life Scale (TS-QOL)</h2>
     <p>
       Les problèmes de santé peuvent affecter la qualité de vie d’une personne
       de différentes manières. Ce questionnaire étudie la manière dont votre
       maladie influe sur votre bien-être.
     </p>
-    <p>
-      Merci de sélectionner la réponse la plus adaptée à votre ressenti durant
-      les quatre dernières semaines.
-    </p>
   </div>
 
   <div id="tsqolQuestions"></div>
 
-
   <!-- =======================================================
-       SATISFACTION DE VIE
+       SATISFACTION
        ======================================================= -->
 
   <div class="section-title">
-    <h2>7. Satisfaction globale de vie</h2>
+    <h2>6. Satisfaction globale de vie</h2>
   </div>
 
   <div class="scale-card">
 
     <div class="scale-instruction">
       Merci d’indiquer à quel point vous vous sentez dans l’ensemble satisfait
-      de votre vie en ce moment, en déplaçant le curseur entre 0 et 100.
+      de votre vie en ce moment.
     </div>
 
     <div class="scale-wrapper">
@@ -807,7 +886,6 @@
           max="100"
           step="1"
           value="50"
-          aria-label="Satisfaction globale de vie de 0 à 100"
         >
       </div>
 
@@ -838,7 +916,6 @@
     </div>
   </div>
 
-
   <!-- =======================================================
        EXPORT
        ======================================================= -->
@@ -847,11 +924,10 @@
     Télécharger en CSV
   </button>
 
-
   <script>
 
     /* =========================================================
-       PUTS
+       DONNEES PUTS
        ========================================================= */
 
     const putsItems = [
@@ -874,9 +950,8 @@
       { label: "Beaucoup", value: 4 }
     ];
 
-
     /* =========================================================
-       TS-QOL
+       DONNEES TS-QOL
        ========================================================= */
 
     const tsqolItems = [
@@ -917,52 +992,31 @@
       { label: "Problème très important", value: 4 }
     ];
 
-
-    /* =========================================================
-       PGI 1-7
-       ========================================================= */
-
-    const pgiSevenItems = [
-      { value: 1, label: "Très fortement amélioré" },
-      { value: 2, label: "Fortement amélioré" },
-      { value: 3, label: "Légèrement amélioré" },
-      { value: 4, label: "Pas de changement" },
-      { value: 5, label: "Légèrement aggravé" },
-      { value: 6, label: "Fortement aggravé" },
-      { value: 7, label: "Très fortement aggravé" }
-    ];
-
-
     /* =========================================================
        CREATION PUTS
        ========================================================= */
 
     const putsContainer = document.getElementById("putsQuestions");
 
-    putsItems.forEach((question, index) => {
+    putsItems.forEach((q, i) => {
 
-      const block = document.createElement("div");
-      block.className = "form-block question";
+      const div = document.createElement("div");
+      div.className = "form-block question";
 
-      block.innerHTML =
-        `<p>${index + 1}. ${question}</p>` +
+      div.innerHTML =
+        `<p>${i + 1}. ${q}</p>` +
         `<div class="options">` +
-        putsAnswers.map(answer =>
+        putsAnswers.map(a =>
           `<label>
-            <input
-              type="radio"
-              name="puts${index + 1}"
-              value="${answer.value}"
-            >
-            ${answer.label}
+            <input type="radio" name="puts${i + 1}" value="${a.value}">
+            ${a.label}
           </label>`
         ).join("") +
         `</div>`;
 
-      putsContainer.appendChild(block);
+      putsContainer.appendChild(div);
 
     });
-
 
     /* =========================================================
        CREATION TS-QOL
@@ -970,104 +1024,49 @@
 
     const tsqolContainer = document.getElementById("tsqolQuestions");
 
-    tsqolItems.forEach((question, index) => {
+    tsqolItems.forEach((q, i) => {
 
-      const block = document.createElement("div");
-      block.className = "form-block question";
+      const div = document.createElement("div");
+      div.className = "form-block question";
 
-      let questionText;
+      const text =
+        [18,19,22].includes(i)
+        ? q
+        : "Durant les quatre dernières semaines, avez-vous " + q;
 
-      if ([18, 19, 22].includes(index)) {
-        questionText = question;
-      } else {
-        questionText =
-          "Durant les quatre dernières semaines, avez-vous " + question;
-      }
-
-      block.innerHTML =
-        `<p>${index + 1}. ${questionText}</p>` +
+      div.innerHTML =
+        `<p>${i + 1}. ${text}</p>` +
         `<div class="options">` +
-        tsqolAnswers.map(answer =>
+        tsqolAnswers.map(a =>
           `<label>
-            <input
-              type="radio"
-              name="tsqol${index + 1}"
-              value="${answer.value}"
-            >
-            ${answer.label}
+            <input type="radio" name="tsqol${i + 1}" value="${a.value}">
+            ${a.label}
           </label>`
         ).join("") +
         `</div>`;
 
-      tsqolContainer.appendChild(block);
+      tsqolContainer.appendChild(div);
 
     });
 
-
     /* =========================================================
-       CREATION PGI 1-7
+       ECHELLES
        ========================================================= */
 
-    const pgiSevenContainer =
-      document.getElementById("pgiSeven");
+    function createScale(labelsId, ticksId, values, suffix = "") {
 
-    pgiSevenItems.forEach(item => {
+      const labels = document.getElementById(labelsId);
+      const ticks = document.getElementById(ticksId);
 
-      const label =
-        document.createElement("label");
+      values.forEach(v => {
 
-      label.className = "pgi-choice";
+        const span = document.createElement("span");
+        span.textContent = v + suffix;
+        labels.appendChild(span);
 
-      label.innerHTML =
-        `<div class="pgi-number">${item.value}</div>
-         <div class="pgi-label">
-           <input
-             class="pgi-radio"
-             type="radio"
-             name="pgiSeven"
-             value="${item.value}"
-           >
-           ${item.label}
-         </div>`;
-
-      pgiSevenContainer.appendChild(label);
-
-    });
-
-
-    /* =========================================================
-       GRADUATIONS
-       ========================================================= */
-
-    function createScale(
-      labelsContainerId,
-      ticksContainerId,
-      values,
-      suffix = ""
-    ) {
-
-      const labelsContainer =
-        document.getElementById(labelsContainerId);
-
-      const ticksContainer =
-        document.getElementById(ticksContainerId);
-
-      values.forEach(value => {
-
-        const label =
-          document.createElement("span");
-
-        label.textContent =
-          value + suffix;
-
-        labelsContainer.appendChild(label);
-
-        const tick =
-          document.createElement("div");
-
+        const tick = document.createElement("div");
         tick.className = "tick";
-
-        ticksContainer.appendChild(tick);
+        ticks.appendChild(tick);
 
       });
 
@@ -1092,49 +1091,32 @@
       [0,10,20,30,40,50,60,70,80,90,100]
     );
 
-
     /* =========================================================
        SLIDERS
-       Aucune valeur enregistrée avant interaction
        ========================================================= */
 
-    function configureSlider(
-      sliderId,
-      valueId,
-      suffix
-    ) {
+    function configureSlider(sliderId, valueId, suffix) {
 
-      const slider =
-        document.getElementById(sliderId);
-
-      const valueBox =
-        document.getElementById(valueId);
+      const slider = document.getElementById(sliderId);
+      const box = document.getElementById(valueId);
 
       let answered = false;
 
       slider.addEventListener("input", () => {
 
         answered = true;
-
         slider.classList.remove("untouched");
 
-        valueBox.textContent =
+        box.textContent =
           "Valeur sélectionnée : " +
           slider.value +
           suffix;
 
       });
 
-      return function() {
-
-        return answered
-          ? slider.value
-          : "Non répondu";
-
-      };
+      return () => answered ? slider.value : "Non répondu";
 
     }
-
 
     const getPain =
       configureSlider(
@@ -1157,7 +1139,6 @@
         " / 100"
       );
 
-
     /* =========================================================
        EFFETS INDESIRABLES
        ========================================================= */
@@ -1168,22 +1149,16 @@
     const adverseOtherText =
       document.getElementById("adverseOtherText");
 
-    adverseOther.addEventListener(
-      "change",
-      function() {
+    adverseOther.addEventListener("change", () => {
 
-        adverseOtherText.style.display =
-          adverseOther.checked
-            ? "block"
-            : "none";
+      adverseOtherText.style.display =
+        adverseOther.checked ? "block" : "none";
 
-        if (!adverseOther.checked) {
-          adverseOtherText.value = "";
-        }
-
+      if (!adverseOther.checked) {
+        adverseOtherText.value = "";
       }
-    );
 
+    });
 
     /* =========================================================
        UTILITAIRES
@@ -1202,18 +1177,13 @@
 
     }
 
-
     function escapeCSV(value) {
-
-      return String(value)
-        .replace(/"/g, '""');
-
+      return String(value).replace(/"/g, '""');
     }
 
-
     /* =========================================================
-       EXPORT CSV
-       Aucun calcul de score.
+       EXPORT
+       Aucun calcul de score
        ========================================================= */
 
     function generateCSV() {
@@ -1231,57 +1201,40 @@
         );
 
         return;
-
       }
-
 
       let csv =
         `Identifiant;${escapeCSV(patientId)}\n\n` +
         `Numéro;Question;Réponse\n`;
 
-      let rowNumber = 1;
-
+      let n = 1;
 
       function addRow(question, response) {
 
         csv +=
-          `"${rowNumber}";` +
+          `"${n}";` +
           `"${escapeCSV(question)}";` +
           `"${escapeCSV(response)}"\n`;
 
-        rowNumber++;
+        n++;
 
       }
 
-
-      /* =========================
-         EVA
-         ========================= */
+      /* EVA */
 
       addRow(
         "EVA douleur en lien avec le tic",
         getPain()
       );
 
-
-      /* =========================
-         PGI
-         ========================= */
+      /* PGI 0-100 uniquement */
 
       addRow(
         "PGI amélioration globale du tic (%)",
         getPGIPercent()
       );
 
-      addRow(
-        "PGI impression globale d'amélioration du tic (1-7)",
-        getRadioValue("pgiSeven")
-      );
-
-
-      /* =========================
-         EFFETS INDESIRABLES
-         ========================= */
+      /* Effets indésirables */
 
       const adverseYN =
         getRadioValue("adverseYesNo");
@@ -1291,24 +1244,10 @@
         adverseYN
       );
 
-
-      let weaknessResponse =
-        "Non répondu";
-
-      let painInjectionResponse =
-        "Non répondu";
-
-      let swallowingResponse =
-        "Non répondu";
-
-      let otherResponse =
-        "Non répondu";
-
-
-      /*
-       * Si NON explicite :
-       * tous les sous-types = 0.
-       */
+      let weaknessResponse = "Non répondu";
+      let painInjectionResponse = "Non répondu";
+      let swallowingResponse = "Non répondu";
+      let otherResponse = "Non répondu";
 
       if (adverseYN === "0") {
 
@@ -1317,56 +1256,24 @@
         swallowingResponse = 0;
         otherResponse = 0;
 
-      }
-
-
-      /*
-       * Si OUI explicite :
-       * 1 = sous-type présent
-       * 0 = sous-type absent
-       */
-
-      else if (adverseYN === "1") {
+      } else if (adverseYN === "1") {
 
         weaknessResponse =
-          document
-            .getElementById("adverseWeakness")
-            .checked
-          ? 1
-          : 0;
+          document.getElementById("adverseWeakness").checked ? 1 : 0;
 
         painInjectionResponse =
-          document
-            .getElementById("adversePain")
-            .checked
-          ? 1
-          : 0;
+          document.getElementById("adversePain").checked ? 1 : 0;
 
         swallowingResponse =
-          document
-            .getElementById("adverseSwallowing")
-            .checked
-          ? 1
-          : 0;
-
+          document.getElementById("adverseSwallowing").checked ? 1 : 0;
 
         if (adverseOther.checked) {
 
-          const text =
-            adverseOtherText
-              .value
-              .trim();
-
-          /*
-           * Autre coché :
-           * texte si précisé,
-           * sinon 1.
-           */
+          const txt =
+            adverseOtherText.value.trim();
 
           otherResponse =
-            text !== ""
-            ? text
-            : 1;
+            txt !== "" ? txt : 1;
 
         } else {
 
@@ -1375,7 +1282,6 @@
         }
 
       }
-
 
       addRow(
         "Effet indésirable - Faiblesse musculaire",
@@ -1397,66 +1303,43 @@
         otherResponse
       );
 
+      /* PUTS */
 
-      /* =========================
-         PUTS
-         ========================= */
+      putsItems.forEach((q, i) => {
 
-      putsItems.forEach(
-        (question, index) => {
+        addRow(
+          `PUTS ${i + 1} - ${q}`,
+          getRadioValue(`puts${i + 1}`)
+        );
 
-          addRow(
-            `PUTS ${index + 1} - ${question}`,
-            getRadioValue(
-              `puts${index + 1}`
-            )
-          );
+      });
 
-        }
-      );
+      /* TS-QOL */
 
+      tsqolItems.forEach((q, i) => {
 
-      /* =========================
-         TS-QOL
-         ========================= */
+        addRow(
+          `TS-QOL ${i + 1} - ${q}`,
+          getRadioValue(`tsqol${i + 1}`)
+        );
 
-      tsqolItems.forEach(
-        (question, index) => {
+      });
 
-          addRow(
-            `TS-QOL ${index + 1} - ${question}`,
-            getRadioValue(
-              `tsqol${index + 1}`
-            )
-          );
-
-        }
-      );
-
-
-      /* =========================
-         SATISFACTION GLOBALE
-         ========================= */
+      /* Satisfaction */
 
       addRow(
         "Satisfaction globale de vie",
         getLife()
       );
 
-
-      /* =========================
-         TELECHARGEMENT
-         ========================= */
+      /* Téléchargement */
 
       const BOM = "\uFEFF";
 
       const blob =
         new Blob(
           [BOM + csv],
-          {
-            type:
-              "text/csv;charset=utf-8;"
-          }
+          { type: "text/csv;charset=utf-8;" }
         );
 
       const link =
@@ -1469,9 +1352,7 @@
         `${patientId}_POST-INJECTION_resultats.csv`;
 
       document.body.appendChild(link);
-
       link.click();
-
       document.body.removeChild(link);
 
       URL.revokeObjectURL(link.href);
