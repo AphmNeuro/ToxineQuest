@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Autoquestionnaires post-injection – Tics et toxines</title>
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -31,10 +29,6 @@
       margin-bottom: 35px;
     }
 
-    /* ======================================================
-       RETOUR
-       ====================================================== */
-
     .retour {
       position: absolute;
       top: 20px;
@@ -53,10 +47,6 @@
     .retour a:hover {
       background-color: #1a242f;
     }
-
-    /* ======================================================
-       BLOCS
-       ====================================================== */
 
     .form-block,
     .scale-card {
@@ -94,10 +84,6 @@
       font-size: 15px;
     }
 
-    /* ======================================================
-       TITRES DE SECTION
-       ====================================================== */
-
     .section-title {
       background: #2c3e50;
       color: white;
@@ -117,10 +103,6 @@
       margin: 8px 0 0;
       line-height: 1.5;
     }
-
-    /* ======================================================
-       QUESTIONS
-       ====================================================== */
 
     .question p {
       font-weight: bold;
@@ -151,10 +133,6 @@
       margin-right: 8px;
       transform: scale(1.15);
     }
-
-    /* ======================================================
-       BOUTON
-       ====================================================== */
 
     button {
       background-color: #3498db;
@@ -189,12 +167,6 @@
       width: 92%;
       margin: 0 auto;
     }
-
-    /*
-      CORRECTION :
-      les chiffres sont maintenant dans le flux normal.
-      Plus de margin-top négatif.
-    */
 
     .tick-labels {
       display: flex;
@@ -241,10 +213,6 @@
       margin-top: 4px;
     }
 
-    /* ======================================================
-       COULEURS DES SLIDERS
-       ====================================================== */
-
     .pain-range {
       background: linear-gradient(
         to right,
@@ -273,39 +241,24 @@
       height: 5px !important;
     }
 
-    /* ======================================================
-       CURSEUR
-       ====================================================== */
-
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-
       width: 24px;
       height: 24px;
-
       border-radius: 50%;
-
       background: white;
       border: 4px solid #2c3e50;
-
       box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     }
 
     input[type="range"]::-moz-range-thumb {
       width: 20px;
       height: 20px;
-
       border-radius: 50%;
-
       background: white;
       border: 4px solid #2c3e50;
     }
-
-    /*
-      Avant interaction :
-      curseur invisible = aucune fausse valeur centrale.
-    */
 
     input[type="range"].untouched::-webkit-slider-thumb {
       opacity: 0;
@@ -315,21 +268,13 @@
       opacity: 0;
     }
 
-    /* ======================================================
-       REPONSE DU SLIDER
-       ====================================================== */
-
     .selected-value {
       display: inline-block;
       min-width: 180px;
-
       background: #e8eef1;
-
       border-radius: 8px;
-
       padding: 10px 15px;
       margin-top: 25px;
-
       font-weight: bold;
     }
 
@@ -342,34 +287,27 @@
     .scale-extremes {
       display: flex;
       justify-content: space-between;
-
       margin-top: 12px;
-
       font-size: 13px;
       font-weight: bold;
     }
 
     /* ======================================================
-       EVA DOULEUR
+       EVA / SMILEYS
        ====================================================== */
 
     .pain-descriptors {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-
       margin-top: 18px;
-
       gap: 5px;
     }
 
     .pain-level {
       font-size: 12px;
       font-weight: bold;
-
       min-height: 105px;
-
       padding: 8px 3px;
-
       border-right: 1px dotted #aaa;
     }
 
@@ -377,32 +315,22 @@
       border-right: none;
     }
 
-    /* ======================================================
-       VISAGES
-       ====================================================== */
-
     .face {
       margin: 12px auto 0;
-
       width: 48px;
       height: 48px;
-
       border: 2px solid currentColor;
       border-radius: 50%;
-
       position: relative;
     }
 
     .face::before,
     .face::after {
       content: "";
-
       position: absolute;
       top: 14px;
-
       width: 5px;
       height: 5px;
-
       background: currentColor;
       border-radius: 50%;
     }
@@ -417,13 +345,10 @@
 
     .mouth {
       position: absolute;
-
       left: 50%;
       transform: translateX(-50%);
-
       width: 20px;
       height: 10px;
-
       bottom: 8px;
     }
 
@@ -451,7 +376,7 @@
     .pain-5 { color: #d71920; }
 
     /* ======================================================
-       PGI 1 → 7 CLIQUABLE
+       PGI 1-7 CLIQUABLE
        ====================================================== */
 
     .pgi-guide {
@@ -460,30 +385,17 @@
 
     .pgi-choice {
       display: grid;
-
-      grid-template-columns:
-        65px
-        75px
-        220px
-        1fr;
-
+      grid-template-columns: 65px 75px 220px 1fr;
       align-items: center;
-
       border: 1px solid;
       border-radius: 10px;
-
       margin: 7px 0;
-
       overflow: hidden;
-
       min-height: 58px;
-
       cursor: pointer;
-
       transition:
         transform 0.15s ease,
-        box-shadow 0.15s ease,
-        background-color 0.15s ease;
+        box-shadow 0.15s ease;
     }
 
     .pgi-choice:hover {
@@ -500,11 +412,8 @@
     .pgi-number {
       font-size: 25px;
       font-weight: bold;
-
       color: white;
-
       padding: 15px;
-
       text-align: center;
     }
 
@@ -515,34 +424,22 @@
 
     .pgi-label {
       font-weight: bold;
-
       text-align: left;
-
       padding: 10px;
     }
 
     .pgi-description {
       text-align: left;
-
       padding: 10px 16px;
-
       border-left: 1px solid rgba(0,0,0,0.08);
     }
-
-    /*
-      Sélection :
-      ajout d'un contour noir interne.
-    */
 
     .pgi-choice.selected {
       box-shadow:
         0 0 0 3px #2c3e50,
         0 4px 12px rgba(0,0,0,0.15);
-
       transform: scale(1.008);
     }
-
-    /* Couleurs PGI */
 
     .pgi1 { border-color:#08752b; }
     .pgi1 .pgi-number { background:#08752b; }
@@ -580,15 +477,13 @@
     .pgi7 .pgi-label { color:#d71920; }
 
     /* ======================================================
-       SATISFACTION DE VIE
+       SATISFACTION
        ====================================================== */
 
     .life-extremes {
       display: flex;
       justify-content: space-between;
-
       margin-top: 22px;
-
       font-size: 13px;
       font-weight: bold;
     }
@@ -599,9 +494,7 @@
 
     .life-face {
       display: block;
-
       font-size: 40px;
-
       margin-bottom: 5px;
     }
 
@@ -611,23 +504,14 @@
 
     .other-text {
       margin-top: 12px;
-
       width: 100%;
       max-width: 500px;
-
       padding: 9px;
-
       border: 1px solid #aaa;
       border-radius: 6px;
-
       font-size: 15px;
-
       display: none;
     }
-
-    /* ======================================================
-       MOBILE
-       ====================================================== */
 
     @media (max-width: 750px) {
 
@@ -654,10 +538,7 @@
       }
 
       .pgi-choice {
-        grid-template-columns:
-          55px
-          60px
-          1fr;
+        grid-template-columns: 55px 60px 1fr;
       }
 
       .pgi-description {
@@ -667,18 +548,16 @@
       .life-end {
         width: 45%;
       }
-
     }
-
   </style>
 </head>
+
 
 <body>
 
   <div class="retour">
     <a href="index.html">← Retour</a>
   </div>
-
 
   <h1>Autoquestionnaires post-injection</h1>
 
@@ -687,9 +566,7 @@
   </div>
 
 
-  <!-- ======================================================
-       IDENTIFIANT
-       ====================================================== -->
+  <!-- IDENTIFIANT -->
 
   <div class="form-block id-block">
 
@@ -710,9 +587,7 @@
   </div>
 
 
-  <!-- ======================================================
-       EVA DOULEUR
-       ====================================================== -->
+  <!-- EVA -->
 
   <div class="section-title">
     <h2>
@@ -720,37 +595,25 @@
     </h2>
   </div>
 
-
   <div class="scale-card">
 
     <div class="scale-instruction">
-
       Sur cette échelle, veuillez indiquer
       l’intensité de votre douleur actuelle
-
-      <strong>
-        en lien avec le tic
-      </strong>.
-
+      <strong>en lien avec le tic</strong>.
       <br>
-
-      Déplacez le curseur sur la valeur
-      correspondant le mieux à votre ressenti.
-
+      Déplacez le curseur sur la valeur correspondant
+      le mieux à votre ressenti.
     </div>
 
-
     <div class="scale-wrapper">
-
 
       <div
         class="tick-labels"
         id="painLabels">
       </div>
 
-
       <div class="range-container">
-
         <input
           type="range"
           id="evaPain"
@@ -760,15 +623,12 @@
           step="1"
           value="5"
         >
-
       </div>
-
 
       <div
         class="ticks"
         id="painTicks">
       </div>
-
 
       <div class="pain-descriptors">
 
@@ -816,308 +676,141 @@
 
       </div>
 
-
       <div class="scale-extremes">
-
-        <span>
-          0 = aucune douleur
-        </span>
-
-        <span>
-          10 = douleur maximale imaginable
-        </span>
-
+        <span>0 = aucune douleur</span>
+        <span>10 = douleur maximale imaginable</span>
       </div>
-
 
       <div
         class="selected-value"
         id="painValue">
-
         Non répondu
-
       </div>
 
-
       <div class="missing-note">
-
-        Le curseur doit être déplacé
-        pour enregistrer une réponse.
-
+        Le curseur doit être déplacé pour enregistrer une réponse.
       </div>
 
     </div>
-
   </div>
 
 
-  <!-- ======================================================
-       PGI 1-7
-       ====================================================== -->
+  <!-- PGI 1-7 -->
 
   <div class="section-title">
-
     <h2>
       2. Score PGI – Impression globale d’amélioration du tic
     </h2>
-
   </div>
-
 
   <div class="form-block">
 
-
     <p style="text-align:center;">
-
       Veuillez indiquer votre impression globale
       d’amélioration de votre tic
-
-      <strong>
-        à cet instant présent
-      </strong>
-
+      <strong>à cet instant présent</strong>
       <br>
-
       (au pic de dose de la toxine).
-
     </p>
 
-
-    <div
-      class="pgi-guide"
-      id="pgiChoices">
-
+    <div class="pgi-guide">
 
       <label class="pgi-choice pgi1">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="1"
-        >
-
-        <div class="pgi-number">
-          1
-        </div>
-
-        <div class="pgi-face">
-          😃
-        </div>
-
-        <div class="pgi-label">
-          TRÈS FORTEMENT AMÉLIORÉ
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="1">
+        <div class="pgi-number">1</div>
+        <div class="pgi-face">😃</div>
+        <div class="pgi-label">TRÈS FORTEMENT AMÉLIORÉ</div>
         <div class="pgi-description">
           Amélioration très importante et nette du tic.
         </div>
-
       </label>
 
-
       <label class="pgi-choice pgi2">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="2"
-        >
-
-        <div class="pgi-number">
-          2
-        </div>
-
-        <div class="pgi-face">
-          🙂
-        </div>
-
-        <div class="pgi-label">
-          FORTEMENT AMÉLIORÉ
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="2">
+        <div class="pgi-number">2</div>
+        <div class="pgi-face">🙂</div>
+        <div class="pgi-label">FORTEMENT AMÉLIORÉ</div>
         <div class="pgi-description">
           Amélioration importante du tic.
         </div>
-
       </label>
 
-
       <label class="pgi-choice pgi3">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="3"
-        >
-
-        <div class="pgi-number">
-          3
-        </div>
-
-        <div class="pgi-face">
-          🙂
-        </div>
-
-        <div class="pgi-label">
-          LÉGÈREMENT AMÉLIORÉ
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="3">
+        <div class="pgi-number">3</div>
+        <div class="pgi-face">🙂</div>
+        <div class="pgi-label">LÉGÈREMENT AMÉLIORÉ</div>
         <div class="pgi-description">
           Amélioration légère du tic.
         </div>
-
       </label>
 
-
       <label class="pgi-choice pgi4">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="4"
-        >
-
-        <div class="pgi-number">
-          4
-        </div>
-
-        <div class="pgi-face">
-          😐
-        </div>
-
-        <div class="pgi-label">
-          PAS DE CHANGEMENT
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="4">
+        <div class="pgi-number">4</div>
+        <div class="pgi-face">😐</div>
+        <div class="pgi-label">PAS DE CHANGEMENT</div>
         <div class="pgi-description">
           Aucun changement notable du tic.
         </div>
-
       </label>
 
-
       <label class="pgi-choice pgi5">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="5"
-        >
-
-        <div class="pgi-number">
-          5
-        </div>
-
-        <div class="pgi-face">
-          🙁
-        </div>
-
-        <div class="pgi-label">
-          LÉGÈREMENT AGGRAVÉ
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="5">
+        <div class="pgi-number">5</div>
+        <div class="pgi-face">🙁</div>
+        <div class="pgi-label">LÉGÈREMENT AGGRAVÉ</div>
         <div class="pgi-description">
           Aggravation légère du tic.
         </div>
-
       </label>
 
-
       <label class="pgi-choice pgi6">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="6"
-        >
-
-        <div class="pgi-number">
-          6
-        </div>
-
-        <div class="pgi-face">
-          ☹️
-        </div>
-
-        <div class="pgi-label">
-          FORTEMENT AGGRAVÉ
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="6">
+        <div class="pgi-number">6</div>
+        <div class="pgi-face">☹️</div>
+        <div class="pgi-label">FORTEMENT AGGRAVÉ</div>
         <div class="pgi-description">
           Aggravation importante du tic.
         </div>
-
       </label>
 
-
       <label class="pgi-choice pgi7">
-
-        <input
-          type="radio"
-          name="pgiGlobal"
-          value="7"
-        >
-
-        <div class="pgi-number">
-          7
-        </div>
-
-        <div class="pgi-face">
-          ☹️
-        </div>
-
-        <div class="pgi-label">
-          TRÈS FORTEMENT AGGRAVÉ
-        </div>
-
+        <input type="radio" name="pgiGlobal" value="7">
+        <div class="pgi-number">7</div>
+        <div class="pgi-face">☹️</div>
+        <div class="pgi-label">TRÈS FORTEMENT AGGRAVÉ</div>
         <div class="pgi-description">
           Aggravation très importante et nette du tic.
         </div>
-
       </label>
 
     </div>
-
   </div>
 
 
-  <!-- ======================================================
-       PGI 0-100
-       ====================================================== -->
+  <!-- PGI 0-100 -->
 
   <div class="scale-card">
 
-
     <div class="scale-instruction">
-
       Sur cette échelle, veuillez indiquer
       le degré d’amélioration globale de votre tic
-
-      <strong>
-        à cet instant présent
-      </strong>
-
+      <strong>à cet instant présent</strong>
       (au pic de dose de la toxine).
-
       <br>
-
       Déplacez le curseur sur le pourcentage
       qui correspond le mieux à votre ressenti.
-
     </div>
 
-
     <div class="scale-wrapper">
-
 
       <div
         class="tick-labels"
         id="pgiPercentLabels">
       </div>
 
-
       <div class="range-container">
-
         <input
           type="range"
           id="pgiPercent"
@@ -1127,146 +820,89 @@
           step="1"
           value="50"
         >
-
       </div>
-
 
       <div
         class="ticks"
         id="pgiPercentTicks">
       </div>
 
-
       <div
         class="pain-descriptors"
         style="grid-template-columns:repeat(5,1fr);">
 
-
-        <div
-          class="pain-level"
-          style="color:#d71920;">
-
+        <div class="pain-level" style="color:#d71920;">
           AUCUNE<br>AMÉLIORATION
-
           <div class="face sad">
             <div class="mouth"></div>
           </div>
-
         </div>
 
-
-        <div
-          class="pain-level"
-          style="color:#ff6b1a;">
-
+        <div class="pain-level" style="color:#ff6b1a;">
           AMÉLIORATION<br>LÉGÈRE
-
           <div class="face neutral">
             <div class="mouth"></div>
           </div>
-
         </div>
 
-
-        <div
-          class="pain-level"
-          style="color:#e5a700;">
-
+        <div class="pain-level" style="color:#e5a700;">
           AMÉLIORATION<br>MODÉRÉE
-
           <div class="face happy">
             <div class="mouth"></div>
           </div>
-
         </div>
 
-
-        <div
-          class="pain-level"
-          style="color:#55a63a;">
-
+        <div class="pain-level" style="color:#55a63a;">
           AMÉLIORATION<br>IMPORTANTE
-
           <div class="face happy">
             <div class="mouth"></div>
           </div>
-
         </div>
 
-
-        <div
-          class="pain-level"
-          style="color:#08752b;">
-
+        <div class="pain-level" style="color:#08752b;">
           AMÉLIORATION<br>TOTALE
-
           <div class="face happy">
             <div class="mouth"></div>
           </div>
-
         </div>
 
       </div>
-
 
       <div class="scale-extremes">
-
-        <span>
-          0 % = aucune amélioration du tic
-        </span>
-
-        <span>
-          100 % = disparition complète du tic
-        </span>
-
+        <span>0 % = aucune amélioration du tic</span>
+        <span>100 % = disparition complète du tic</span>
       </div>
-
 
       <div
         class="selected-value"
         id="pgiPercentValue">
-
         Non répondu
-
       </div>
 
-
       <div class="missing-note">
-
-        Le curseur doit être déplacé
-        pour enregistrer une réponse.
-
+        Le curseur doit être déplacé pour enregistrer une réponse.
       </div>
 
     </div>
-
   </div>
 
 
-  <!-- ======================================================
-       EFFETS INDESIRABLES
-       ====================================================== -->
+  <!-- EFFETS INDESIRABLES -->
 
   <div class="section-title">
-
     <h2>
       3. Effets indésirables
     </h2>
-
   </div>
-
 
   <div class="form-block">
 
     <p>
-
       <strong>
         Avez-vous eu des effets indésirables
         suite à la séance de toxine botulique ?
       </strong>
-
     </p>
-
 
     <div class="options">
 
@@ -1288,7 +924,6 @@
 
     </div>
 
-
     <div style="margin-top:25px;">
 
       <p>
@@ -1296,7 +931,6 @@
           Si oui, de quel(s) type(s) ?
         </strong>
       </p>
-
 
       <div class="options">
 
@@ -1330,7 +964,6 @@
 
       </div>
 
-
       <input
         type="text"
         id="adverseOtherText"
@@ -1339,29 +972,21 @@
       >
 
     </div>
-
   </div>
 
 
-  <!-- ======================================================
-       PUTS
-       ====================================================== -->
+  <!-- PUTS -->
 
   <div class="section-title">
-
     <h2>
       4. Premonitory Urge for Tics Scale (PUTS)
     </h2>
-
   </div>
-
 
   <div id="putsQuestions"></div>
 
 
-  <!-- ======================================================
-       TS-QOL
-       ====================================================== -->
+  <!-- TS-QOL -->
 
   <div class="section-title">
 
@@ -1378,45 +1003,32 @@
 
   </div>
 
-
   <div id="tsqolQuestions"></div>
 
 
-  <!-- ======================================================
-       SATISFACTION
-       ====================================================== -->
+  <!-- SATISFACTION -->
 
   <div class="section-title">
-
     <h2>
       6. Satisfaction globale de vie
     </h2>
-
   </div>
-
 
   <div class="scale-card">
 
-
     <div class="scale-instruction">
-
       Merci d’indiquer à quel point vous vous sentez
       dans l’ensemble satisfait de votre vie en ce moment.
-
     </div>
 
-
     <div class="scale-wrapper">
-
 
       <div
         class="tick-labels"
         id="lifeLabels">
       </div>
 
-
       <div class="range-container">
-
         <input
           type="range"
           id="lifeSatisfaction"
@@ -1426,1042 +1038,790 @@
           step="1"
           value="50"
         >
-
       </div>
-
 
       <div
         class="ticks"
         id="lifeTicks">
       </div>
 
-
       <div class="life-extremes">
 
         <div class="life-end">
-
-          <span class="life-face">
-            ☹
-          </span>
-
+          <span class="life-face">☹</span>
           Extrêmement insatisfait de ma vie
-
         </div>
 
-
         <div class="life-end">
-
-          <span class="life-face">
-            ☺
-          </span>
-
+          <span class="life-face">☺</span>
           Extrêmement satisfait de ma vie
-
         </div>
 
       </div>
-
 
       <div
         class="selected-value"
         id="lifeValue">
-
         Non répondu
-
       </div>
 
-
       <div class="missing-note">
-
-        Le curseur doit être déplacé
-        pour enregistrer une réponse.
-
+        Le curseur doit être déplacé pour enregistrer une réponse.
       </div>
 
     </div>
-
   </div>
 
-
-  <!-- ======================================================
-       EXPORT
-       ====================================================== -->
 
   <button
     type="button"
     onclick="generateCSV()">
-
     Télécharger en CSV
-
   </button>
 
 
-<script>
-
-  /* ========================================================
-     PUTS
-     ======================================================== */
-
-  const putsItems = [
-
-    "Juste avant d’avoir un tic, j'ai l'impression que l’intérieur de mon corps me démange.",
-
-    "Juste avant d’avoir un tic, je ressens une pression dans mon cerveau ou mon corps.",
-
-    "Juste avant d’avoir un tic, je me sens noué ou tendu à l'intérieur.",
-
-    "Juste avant d’avoir un tic, j'ai l'impression que quelque chose n'est pas « comme il faut ».",
-
-    "Juste avant d’avoir un tic, j’ai l’impression que quelque chose n’est pas terminé.",
-
-    "Juste avant d’avoir un tic, j'ai l'impression qu'il y a de l'énergie dans mon corps qui a besoin de sortir.",
-
-    "J'ai ces sensations presque tout le temps avant d’avoir un tic.",
-
-    "Ces sensations surviennent pour chaque tic que j'ai.",
-
-    "Après avoir eu le tic, les démangeaisons, l'énergie, la pression, les sensations de tension ou la sensation que quelque chose n'est pas « comme il faut » ou n’est pas terminé disparaissent, au moins pendant un certain temps.",
-
-    "Je suis capable d'arrêter mes tics même si ce n'est que pour une courte période de temps."
-
-  ];
-
-
-  const putsAnswers = [
-
-    {
-      label: "Pas du tout",
-      value: 1
-    },
-
-    {
-      label: "Un peu",
-      value: 2
-    },
-
-    {
-      label: "Plutôt",
-      value: 3
-    },
-
-    {
-      label: "Beaucoup",
-      value: 4
-    }
-
-  ];
-
-
-  /* ========================================================
-     TS-QOL
-     ======================================================== */
-
-  const tsqolItems = [
-
-    "été incapable de contrôler tous vos mouvements ?",
-
-    "eu des difficultés dans vos activités de la vie quotidienne ou vos loisirs (comme cuisiner, écrire) ?",
-
-    "souffert de douleurs ou de blessures physiques dues à vos tics ?",
-
-    "été gêné(e) par des bruits que vous ne pouvez-vous empêcher de faire ?",
-
-    "redouté de dire des gros mots que vous n’aviez pas l’intention de dire ?",
-
-    "redouté de faire quelque chose d’embarrassant (comme des gestes grossiers) ?",
-
-    "été obligé(e) de répéter des mots encore et encore ?",
-
-    "été obligé(e) de refaire ou de répéter des choses que d’autres personnes font ou disent (comme copier, imiter des gens) ?",
-
-    "été obligé(e) de faire des choses d’une manière répétée et d’une certaine façon (par exemple vérifier plusieurs fois) ?",
-
-    "eu des pensées ou des images déplaisantes vous passant par la tête ?",
-
-    "eu des difficultés de concentration ?",
-
-    "eu des problèmes de mémoire ?",
-
-    "perdu ou égaré des objets importants (comme un portefeuille, des clefs, un téléphone mobile) ?",
-
-    "eu des difficultés à finir ce que vous avez commencé ?",
-
-    "eu l’impression dans l’ensemble d’être en mauvaise santé ?",
-
-    "été triste ou déprimé ?",
-
-    "ressenti des changements d’humeur rapides ?",
-
-    "ressenti un manque de confiance en soi ?",
-
-    "Vous êtes-vous senti(e) angoissé(e) ?",
-
-    "Vous êtes-vous senti(e) énervé(e) ?",
-
-    "eu des difficultés à garder votre calme ?",
-
-    "eu l’impression de ne pas contrôler votre vie ?",
-
-    "Vous êtes-vous senti(e) frustré(e) (contrarié(e)) ?",
-
-    "ressenti le besoin de plus d’aide ou de soutien des autres ?",
-
-    "eu des difficultés à voir vos amis ?",
-
-    "eu des difficultés à prendre part à des activités sociales (comme aller manger à l’extérieur) ?",
-
-    "eu le sentiment d’être seul(e) ou isolé(e) ?"
-
-  ];
-
-
-  const tsqolAnswers = [
-
-    {
-      label: "Aucun problème",
-      value: 0
-    },
-
-    {
-      label: "Problème léger",
-      value: 1
-    },
-
-    {
-      label: "Problème modéré",
-      value: 2
-    },
-
-    {
-      label: "Problème important",
-      value: 3
-    },
-
-    {
-      label: "Problème très important",
-      value: 4
-    }
-
-  ];
-
-
-  /* ========================================================
-     CREATION PUTS
-     ======================================================== */
-
-  const putsContainer =
-    document.getElementById("putsQuestions");
-
-
-  putsItems.forEach((q, i) => {
-
-    const div =
-      document.createElement("div");
-
-    div.className =
-      "form-block question";
-
-
-    div.innerHTML =
-
-      `<p>${i + 1}. ${q}</p>`
-
-      +
-
-      `<div class="options">`
-
-      +
-
-      putsAnswers.map(a =>
-
-        `<label>
-
-          <input
-            type="radio"
-            name="puts${i + 1}"
-            value="${a.value}">
-
-          ${a.label}
-
-        </label>`
-
-      ).join("")
-
-      +
-
-      `</div>`;
-
-
-    putsContainer.appendChild(div);
-
-  });
-
-
-  /* ========================================================
-     CREATION TS-QOL
-     ======================================================== */
-
-  const tsqolContainer =
-    document.getElementById("tsqolQuestions");
-
-
-  tsqolItems.forEach((q, i) => {
-
-    const div =
-      document.createElement("div");
-
-
-    div.className =
-      "form-block question";
-
-
-    const text =
-
-      [18,19,22].includes(i)
-
-      ?
-
-      q
-
-      :
-
-      "Durant les quatre dernières semaines, avez-vous " + q;
-
-
-    div.innerHTML =
-
-      `<p>${i + 1}. ${text}</p>`
-
-      +
-
-      `<div class="options">`
-
-      +
-
-      tsqolAnswers.map(a =>
-
-        `<label>
-
-          <input
-            type="radio"
-            name="tsqol${i + 1}"
-            value="${a.value}">
-
-          ${a.label}
-
-        </label>`
-
-      ).join("")
-
-      +
-
-      `</div>`;
-
-
-    tsqolContainer.appendChild(div);
-
-  });
-
-
-  /* ========================================================
-     GRADUATIONS
-     ======================================================== */
-
-  function createScale(
-    labelsId,
-    ticksId,
-    values,
-    suffix = ""
-  ) {
-
-    const labels =
-      document.getElementById(labelsId);
-
-
-    const ticks =
-      document.getElementById(ticksId);
-
-
-    values.forEach(v => {
-
-      const span =
-        document.createElement("span");
-
-
-      span.textContent =
-        v + suffix;
-
-
-      labels.appendChild(span);
-
-
-      const tick =
+  <script>
+
+    /* ========================================================
+       PUTS
+       ======================================================== */
+
+    const putsItems = [
+      "Juste avant d’avoir un tic, j'ai l'impression que l’intérieur de mon corps me démange.",
+      "Juste avant d’avoir un tic, je ressens une pression dans mon cerveau ou mon corps.",
+      "Juste avant d’avoir un tic, je me sens noué ou tendu à l'intérieur.",
+      "Juste avant d’avoir un tic, j'ai l'impression que quelque chose n'est pas « comme il faut ».",
+      "Juste avant d’avoir un tic, j’ai l’impression que quelque chose n’est pas terminé.",
+      "Juste avant d’avoir un tic, j'ai l'impression qu'il y a de l'énergie dans mon corps qui a besoin de sortir.",
+      "J'ai ces sensations presque tout le temps avant d’avoir un tic.",
+      "Ces sensations surviennent pour chaque tic que j'ai.",
+      "Après avoir eu le tic, les démangeaisons, l'énergie, la pression, les sensations de tension ou la sensation que quelque chose n'est pas « comme il faut » ou n’est pas terminé disparaissent, au moins pendant un certain temps.",
+      "Je suis capable d'arrêter mes tics même si ce n'est que pour une courte période de temps."
+    ];
+
+    const putsAnswers = [
+      { label: "Pas du tout", value: 1 },
+      { label: "Un peu", value: 2 },
+      { label: "Plutôt", value: 3 },
+      { label: "Beaucoup", value: 4 }
+    ];
+
+
+    /* ========================================================
+       TS-QOL
+       ======================================================== */
+
+    const tsqolItems = [
+      "été incapable de contrôler tous vos mouvements ?",
+      "eu des difficultés dans vos activités de la vie quotidienne ou vos loisirs (comme cuisiner, écrire) ?",
+      "souffert de douleurs ou de blessures physiques dues à vos tics ?",
+      "été gêné(e) par des bruits que vous ne pouvez-vous empêcher de faire ?",
+      "redouté de dire des gros mots que vous n’aviez pas l’intention de dire ?",
+      "redouté de faire quelque chose d’embarrassant (comme des gestes grossiers) ?",
+      "été obligé(e) de répéter des mots encore et encore ?",
+      "été obligé(e) de refaire ou de répéter des choses que d’autres personnes font ou disent (comme copier, imiter des gens) ?",
+      "été obligé(e) de faire des choses d’une manière répétée et d’une certaine façon (par exemple vérifier plusieurs fois) ?",
+      "eu des pensées ou des images déplaisantes vous passant par la tête ?",
+      "eu des difficultés de concentration ?",
+      "eu des problèmes de mémoire ?",
+      "perdu ou égaré des objets importants (comme un portefeuille, des clefs, un téléphone mobile) ?",
+      "eu des difficultés à finir ce que vous avez commencé ?",
+      "eu l’impression dans l’ensemble d’être en mauvaise santé ?",
+      "été triste ou déprimé ?",
+      "ressenti des changements d’humeur rapides ?",
+      "ressenti un manque de confiance en soi ?",
+      "Vous êtes-vous senti(e) angoissé(e) ?",
+      "Vous êtes-vous senti(e) énervé(e) ?",
+      "eu des difficultés à garder votre calme ?",
+      "eu l’impression de ne pas contrôler votre vie ?",
+      "Vous êtes-vous senti(e) frustré(e) (contrarié(e)) ?",
+      "ressenti le besoin de plus d’aide ou de soutien des autres ?",
+      "eu des difficultés à voir vos amis ?",
+      "eu des difficultés à prendre part à des activités sociales (comme aller manger à l’extérieur) ?",
+      "eu le sentiment d’être seul(e) ou isolé(e) ?"
+    ];
+
+    const tsqolAnswers = [
+      { label: "Aucun problème", value: 0 },
+      { label: "Problème léger", value: 1 },
+      { label: "Problème modéré", value: 2 },
+      { label: "Problème important", value: 3 },
+      { label: "Problème très important", value: 4 }
+    ];
+
+
+    /* ========================================================
+       CREATION PUTS
+       ======================================================== */
+
+    const putsContainer =
+      document.getElementById("putsQuestions");
+
+    putsItems.forEach((q, i) => {
+
+      const div =
         document.createElement("div");
 
+      div.className =
+        "form-block question";
 
-      tick.className =
-        "tick";
+      div.innerHTML =
+        `<p>${i + 1}. ${q}</p>` +
+        `<div class="options">` +
+        putsAnswers.map(a =>
+          `<label>
+            <input
+              type="radio"
+              name="puts${i + 1}"
+              value="${a.value}">
+            ${a.label}
+          </label>`
+        ).join("") +
+        `</div>`;
 
-
-      ticks.appendChild(tick);
+      putsContainer.appendChild(div);
 
     });
 
-  }
+
+    /* ========================================================
+       CREATION TS-QOL
+       ======================================================== */
+
+    const tsqolContainer =
+      document.getElementById("tsqolQuestions");
+
+    tsqolItems.forEach((q, i) => {
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "form-block question";
+
+      const text =
+        [18,19,22].includes(i)
+        ? q
+        : "Durant les quatre dernières semaines, avez-vous " + q;
+
+      div.innerHTML =
+        `<p>${i + 1}. ${text}</p>` +
+        `<div class="options">` +
+        tsqolAnswers.map(a =>
+          `<label>
+            <input
+              type="radio"
+              name="tsqol${i + 1}"
+              value="${a.value}">
+            ${a.label}
+          </label>`
+        ).join("") +
+        `</div>`;
+
+      tsqolContainer.appendChild(div);
+
+    });
 
 
-  createScale(
+    /* ========================================================
+       ECHELLES
+       ======================================================== */
 
-    "painLabels",
+    function createScale(
+      labelsId,
+      ticksId,
+      values,
+      suffix = ""
+    ) {
 
-    "painTicks",
+      const labels =
+        document.getElementById(labelsId);
 
-    [0,1,2,3,4,5,6,7,8,9,10]
+      const ticks =
+        document.getElementById(ticksId);
 
-  );
+      values.forEach(v => {
 
+        const span =
+          document.createElement("span");
 
-  createScale(
+        span.textContent =
+          v + suffix;
 
-    "pgiPercentLabels",
+        labels.appendChild(span);
 
-    "pgiPercentTicks",
+        const tick =
+          document.createElement("div");
 
-    [0,10,20,30,40,50,60,70,80,90,100],
+        tick.className =
+          "tick";
 
-    "%"
+        ticks.appendChild(tick);
 
-  );
+      });
 
+    }
 
-  createScale(
+    createScale(
+      "painLabels",
+      "painTicks",
+      [0,1,2,3,4,5,6,7,8,9,10]
+    );
 
-    "lifeLabels",
+    createScale(
+      "pgiPercentLabels",
+      "pgiPercentTicks",
+      [0,10,20,30,40,50,60,70,80,90,100],
+      "%"
+    );
 
-    "lifeTicks",
-
-    [0,10,20,30,40,50,60,70,80,90,100]
-
-  );
-
-
-  /* ========================================================
-     SLIDERS
-     ======================================================== */
-
-  function configureSlider(
-    sliderId,
-    valueId,
-    suffix
-  ) {
-
-    const slider =
-      document.getElementById(sliderId);
-
-
-    const box =
-      document.getElementById(valueId);
-
-
-    let answered = false;
-
-
-    slider.addEventListener(
-      "input",
-      () => {
-
-        answered = true;
-
-
-        slider.classList.remove(
-          "untouched"
-        );
-
-
-        box.textContent =
-
-          "Valeur sélectionnée : "
-
-          +
-
-          slider.value
-
-          +
-
-          suffix;
-
-      }
+    createScale(
+      "lifeLabels",
+      "lifeTicks",
+      [0,10,20,30,40,50,60,70,80,90,100]
     );
 
 
-    return () =>
+    /* ========================================================
+       SLIDERS
+       ======================================================== */
 
-      answered
+    function configureSlider(
+      sliderId,
+      valueId,
+      suffix
+    ) {
 
-      ?
+      const slider =
+        document.getElementById(sliderId);
 
-      slider.value
+      const box =
+        document.getElementById(valueId);
 
-      :
+      let answered = false;
 
-      "Non répondu";
+      slider.addEventListener(
+        "input",
+        () => {
 
-  }
+          answered = true;
 
+          slider.classList.remove(
+            "untouched"
+          );
 
-  const getPain =
+          box.textContent =
+            "Valeur sélectionnée : " +
+            slider.value +
+            suffix;
 
-    configureSlider(
+        }
+      );
 
-      "evaPain",
+      return () =>
+        answered
+        ? slider.value
+        : "Non répondu";
 
-      "painValue",
+    }
 
-      " / 10"
+    const getPain =
+      configureSlider(
+        "evaPain",
+        "painValue",
+        " / 10"
+      );
 
-    );
+    const getPGIPercent =
+      configureSlider(
+        "pgiPercent",
+        "pgiPercentValue",
+        " %"
+      );
 
-
-  const getPGIPercent =
-
-    configureSlider(
-
-      "pgiPercent",
-
-      "pgiPercentValue",
-
-      " %"
-
-    );
-
-
-  const getLife =
-
-    configureSlider(
-
-      "lifeSatisfaction",
-
-      "lifeValue",
-
-      " / 100"
-
-    );
-
-
-  /* ========================================================
-     SELECTION PGI 1-7
-     ======================================================== */
-
-  const pgiRadios =
-    document.querySelectorAll(
-      'input[name="pgiGlobal"]'
-    );
+    const getLife =
+      configureSlider(
+        "lifeSatisfaction",
+        "lifeValue",
+        " / 100"
+      );
 
 
-  pgiRadios.forEach(radio => {
+    /* ========================================================
+       PGI 1-7 VISUEL
+       ======================================================== */
 
-    radio.addEventListener(
+    const pgiRadios =
+      document.querySelectorAll(
+        'input[name="pgiGlobal"]'
+      );
+
+    pgiRadios.forEach(radio => {
+
+      radio.addEventListener(
+        "change",
+        () => {
+
+          document
+            .querySelectorAll(".pgi-choice")
+            .forEach(choice => {
+              choice.classList.remove("selected");
+            });
+
+          radio
+            .closest(".pgi-choice")
+            .classList.add("selected");
+
+        }
+      );
+
+    });
+
+
+    /* ========================================================
+       EFFETS INDESIRABLES
+       ======================================================== */
+
+    const adverseOther =
+      document.getElementById(
+        "adverseOther"
+      );
+
+    const adverseOtherText =
+      document.getElementById(
+        "adverseOtherText"
+      );
+
+    adverseOther.addEventListener(
       "change",
       () => {
 
-        document
-          .querySelectorAll(".pgi-choice")
-          .forEach(choice => {
+        adverseOtherText.style.display =
+          adverseOther.checked
+          ? "block"
+          : "none";
 
-            choice.classList.remove(
-              "selected"
-            );
-
-          });
-
-
-        radio
-          .closest(".pgi-choice")
-          .classList.add(
-            "selected"
-          );
+        if (!adverseOther.checked) {
+          adverseOtherText.value = "";
+        }
 
       }
     );
 
-  });
 
+    /* ========================================================
+       UTILITAIRES
+       ======================================================== */
 
-  /* ========================================================
-     EFFETS INDESIRABLES
-     ======================================================== */
+    function getRadioValue(name) {
 
-  const adverseOther =
-    document.getElementById(
-      "adverseOther"
-    );
-
-
-  const adverseOtherText =
-    document.getElementById(
-      "adverseOtherText"
-    );
-
-
-  adverseOther.addEventListener(
-    "change",
-    () => {
-
-      adverseOtherText.style.display =
-
-        adverseOther.checked
-
-        ?
-
-        "block"
-
-        :
-
-        "none";
-
-
-      if (!adverseOther.checked) {
-
-        adverseOtherText.value = "";
-
-      }
-
-    }
-  );
-
-
-  /* ========================================================
-     UTILITAIRES
-     ======================================================== */
-
-  function getRadioValue(name) {
-
-    const selected =
-      document.querySelector(
-        `input[name="${name}"]:checked`
-      );
-
-
-    return selected
-
-      ?
-
-      selected.value
-
-      :
-
-      "Non répondu";
-
-  }
-
-
-  function escapeCSV(value) {
-
-    return String(value)
-      .replace(/"/g, '""');
-
-  }
-
-
-  /* ========================================================
-     EXPORT CSV
-     ======================================================== */
-
-  function generateCSV() {
-
-
-    const patientId =
-
-      document
-        .getElementById("patientId")
-        .value
-        .trim();
-
-
-    if (!patientId) {
-
-      alert(
-        "Veuillez renseigner l'identifiant patient avant d’exporter."
-      );
-
-      return;
-
-    }
-
-
-    let csv =
-
-      `Identifiant;${escapeCSV(patientId)}\n\n`
-
-      +
-
-      `Numéro;Question;Réponse\n`;
-
-
-    let n = 1;
-
-
-    function addRow(
-      question,
-      response
-    ) {
-
-      csv +=
-
-        `"${n}";`
-
-        +
-
-        `"${escapeCSV(question)}";`
-
-        +
-
-        `"${escapeCSV(response)}"\n`;
-
-
-      n++;
-
-    }
-
-
-    /* ======================================================
-       EVA
-       ====================================================== */
-
-    addRow(
-
-      "EVA douleur en lien avec le tic",
-
-      getPain()
-
-    );
-
-
-    /* ======================================================
-       PGI 1-7
-       ====================================================== */
-
-    addRow(
-
-      "PGI impression globale d'amélioration du tic (1-7)",
-
-      getRadioValue(
-        "pgiGlobal"
-      )
-
-    );
-
-
-    /* ======================================================
-       PGI 0-100
-       ====================================================== */
-
-    addRow(
-
-      "PGI amélioration globale du tic (%)",
-
-      getPGIPercent()
-
-    );
-
-
-    /* ======================================================
-       EFFETS INDESIRABLES
-       ====================================================== */
-
-    const adverseYN =
-      getRadioValue(
-        "adverseYesNo"
-      );
-
-
-    addRow(
-
-      "Effets indésirables après toxine botulique",
-
-      adverseYN
-
-    );
-
-
-    let weaknessResponse =
-      "Non répondu";
-
-
-    let painInjectionResponse =
-      "Non répondu";
-
-
-    let swallowingResponse =
-      "Non répondu";
-
-
-    let otherResponse =
-      "Non répondu";
-
-
-    /*
-      NON explicite :
-      sous-types = 0
-    */
-
-    if (adverseYN === "0") {
-
-      weaknessResponse = 0;
-
-      painInjectionResponse = 0;
-
-      swallowingResponse = 0;
-
-      otherResponse = 0;
-
-    }
-
-
-    /*
-      OUI explicite :
-      chaque sous-type = 0 ou 1
-    */
-
-    else if (adverseYN === "1") {
-
-
-      weaknessResponse =
-
-        document
-          .getElementById(
-            "adverseWeakness"
-          )
-          .checked
-
-        ?
-
-        1
-
-        :
-
-        0;
-
-
-      painInjectionResponse =
-
-        document
-          .getElementById(
-            "adversePain"
-          )
-          .checked
-
-        ?
-
-        1
-
-        :
-
-        0;
-
-
-      swallowingResponse =
-
-        document
-          .getElementById(
-            "adverseSwallowing"
-          )
-          .checked
-
-        ?
-
-        1
-
-        :
-
-        0;
-
-
-      if (adverseOther.checked) {
-
-
-        const txt =
-
-          adverseOtherText
-            .value
-            .trim();
-
-
-        otherResponse =
-
-          txt !== ""
-
-          ?
-
-          txt
-
-          :
-
-          1;
-
-      }
-
-      else {
-
-        otherResponse = 0;
-
-      }
-
-    }
-
-
-    addRow(
-
-      "Effet indésirable - Faiblesse musculaire",
-
-      weaknessResponse
-
-    );
-
-
-    addRow(
-
-      "Effet indésirable - Douleur au point d'injection",
-
-      painInjectionResponse
-
-    );
-
-
-    addRow(
-
-      "Effet indésirable - Troubles de la déglutition",
-
-      swallowingResponse
-
-    );
-
-
-    addRow(
-
-      "Effet indésirable - Autre",
-
-      otherResponse
-
-    );
-
-
-    /* ======================================================
-       PUTS
-       ====================================================== */
-
-    putsItems.forEach(
-      (q, i) => {
-
-        addRow(
-
-          `PUTS ${i + 1} - ${q}`,
-
-          getRadioValue(
-            `puts${i + 1}`
-          )
-
+      const selected =
+        document.querySelector(
+          `input[name="${name}"]:checked`
         );
 
-      }
-    );
+      return selected
+        ? selected.value
+        : "Non répondu";
+
+    }
+
+    function escapeCSV(value) {
+
+      return String(value)
+        .replace(/"/g, '""');
+
+    }
 
 
-    /* ======================================================
-       TS-QOL
-       ====================================================== */
+    /* ========================================================
+       EXPORT CSV
+       ======================================================== */
 
-    tsqolItems.forEach(
-      (q, i) => {
+    function generateCSV() {
 
-        addRow(
+      const patientId =
+        document
+          .getElementById("patientId")
+          .value
+          .trim();
 
-          `TS-QOL ${i + 1} - ${q}`,
+      if (!patientId) {
 
-          getRadioValue(
-            `tsqol${i + 1}`
-          )
-
+        alert(
+          "Veuillez renseigner l'identifiant patient avant d’exporter."
         );
 
+        return;
+
       }
-    );
+
+      let csv =
+        `Identifiant;${escapeCSV(patientId)}\n\n` +
+        `Numéro;Question;Réponse\n`;
+
+      let n = 1;
+
+      function addRow(
+        question,
+        response
+      ) {
+
+        csv +=
+          `"${n}";` +
+          `"${escapeCSV(question)}";` +
+          `"${escapeCSV(response)}"\n`;
+
+        n++;
+
+      }
 
 
-    /* ======================================================
-       SATISFACTION
-       ====================================================== */
+      /* ======================================================
+         1 EVA
+         ====================================================== */
 
-    addRow(
-
-      "Satisfaction globale de vie",
-
-      getLife()
-
-    );
+      addRow(
+        "EVA douleur en lien avec le tic",
+        getPain()
+      );
 
 
-    /* ======================================================
-       TELECHARGEMENT
-       ====================================================== */
+      /* ======================================================
+         2 PGI 1-7
+         ====================================================== */
 
-    const BOM =
-      "\uFEFF";
+      addRow(
+        "PGI impression globale d'amélioration du tic (1-7)",
+        getRadioValue("pgiGlobal")
+      );
 
 
-    const blob =
+      /* ======================================================
+         3 PGI 0-100
+         ====================================================== */
 
-      new Blob(
+      addRow(
+        "PGI amélioration globale du tic (%)",
+        getPGIPercent()
+      );
 
-        [BOM + csv],
 
-        {
+      /* ======================================================
+         4-9 EFFETS INDESIRABLES
+         TOUJOURS EXACTEMENT 6 LIGNES
+         ====================================================== */
 
-          type:
-            "text/csv;charset=utf-8;"
+      const adverseYN =
+        getRadioValue(
+          "adverseYesNo"
+        );
+
+      let adverseMain =
+        adverseYN;
+
+      let weaknessResponse =
+        "Non répondu";
+
+      let painInjectionResponse =
+        "Non répondu";
+
+      let swallowingResponse =
+        "Non répondu";
+
+      let otherPresence =
+        "Non répondu";
+
+      let otherTextResponse =
+        "Non répondu";
+
+
+      /*
+         AUCUNE REPONSE A LA QUESTION PRINCIPALE
+         => toutes les variables restent
+         "Non répondu"
+      */
+
+      if (adverseYN === "Non répondu") {
+
+        adverseMain =
+          "Non répondu";
+
+        weaknessResponse =
+          "Non répondu";
+
+        painInjectionResponse =
+          "Non répondu";
+
+        swallowingResponse =
+          "Non répondu";
+
+        otherPresence =
+          "Non répondu";
+
+        otherTextResponse =
+          "Non répondu";
+
+      }
+
+
+      /*
+         NON EXPLICITE
+         => tout à 0
+      */
+
+      else if (adverseYN === "0") {
+
+        adverseMain = 0;
+
+        weaknessResponse = 0;
+
+        painInjectionResponse = 0;
+
+        swallowingResponse = 0;
+
+        otherPresence = 0;
+
+        otherTextResponse = 0;
+
+      }
+
+
+      /*
+         OUI EXPLICITE
+      */
+
+      else if (adverseYN === "1") {
+
+        adverseMain = 1;
+
+
+        weaknessResponse =
+
+          document
+            .getElementById(
+              "adverseWeakness"
+            )
+            .checked
+
+          ? 1
+          : 0;
+
+
+        painInjectionResponse =
+
+          document
+            .getElementById(
+              "adversePain"
+            )
+            .checked
+
+          ? 1
+          : 0;
+
+
+        swallowingResponse =
+
+          document
+            .getElementById(
+              "adverseSwallowing"
+            )
+            .checked
+
+          ? 1
+          : 0;
+
+
+        otherPresence =
+
+          adverseOther.checked
+
+          ? 1
+          : 0;
+
+
+        /*
+           Autre absent
+           => précision = 0
+        */
+
+        if (!adverseOther.checked) {
+
+          otherTextResponse = 0;
 
         }
 
+
+        /*
+           Autre présent
+        */
+
+        else {
+
+          const txt =
+            adverseOtherText
+              .value
+              .trim();
+
+
+          /*
+             Texte renseigné
+          */
+
+          if (txt !== "") {
+
+            otherTextResponse =
+              txt;
+
+          }
+
+
+          /*
+             Autre coché mais pas précisé
+          */
+
+          else {
+
+            otherTextResponse =
+              "Non répondu";
+
+          }
+
+        }
+
+      }
+
+
+      addRow(
+        "Effets indésirables après toxine botulique",
+        adverseMain
       );
 
 
-    const link =
-      document.createElement(
-        "a"
+      addRow(
+        "Effet indésirable - Faiblesse musculaire",
+        weaknessResponse
       );
 
 
-    link.href =
-      URL.createObjectURL(
-        blob
+      addRow(
+        "Effet indésirable - Douleur au point d'injection",
+        painInjectionResponse
       );
 
 
-    link.download =
-
-      `${patientId}_POST-INJECTION_resultats.csv`;
-
-
-    document.body.appendChild(
-      link
-    );
+      addRow(
+        "Effet indésirable - Troubles de la déglutition",
+        swallowingResponse
+      );
 
 
-    link.click();
+      addRow(
+        "Effet indésirable - Autre - Présence",
+        otherPresence
+      );
 
 
-    document.body.removeChild(
-      link
-    );
+      addRow(
+        "Effet indésirable - Autre - Précision",
+        otherTextResponse
+      );
 
 
-    URL.revokeObjectURL(
-      link.href
-    );
+      /* ======================================================
+         PUTS
+         10 lignes
+         ====================================================== */
 
-  }
+      putsItems.forEach(
+        (q, i) => {
 
-</script>
+          addRow(
+            `PUTS ${i + 1} - ${q}`,
+            getRadioValue(
+              `puts${i + 1}`
+            )
+          );
+
+        }
+      );
+
+
+      /* ======================================================
+         TS-QOL
+         27 lignes
+         ====================================================== */
+
+      tsqolItems.forEach(
+        (q, i) => {
+
+          addRow(
+            `TS-QOL ${i + 1} - ${q}`,
+            getRadioValue(
+              `tsqol${i + 1}`
+            )
+          );
+
+        }
+      );
+
+
+      /* ======================================================
+         SATISFACTION
+         ====================================================== */
+
+      addRow(
+        "Satisfaction globale de vie",
+        getLife()
+      );
+
+
+      /* ======================================================
+         TELECHARGEMENT
+         ====================================================== */
+
+      const BOM =
+        "\uFEFF";
+
+      const blob =
+        new Blob(
+          [BOM + csv],
+          {
+            type:
+              "text/csv;charset=utf-8;"
+          }
+        );
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+      link.href =
+        URL.createObjectURL(
+          blob
+        );
+
+      link.download =
+        `${patientId}_POST-INJECTION_resultats.csv`;
+
+      document.body.appendChild(
+        link
+      );
+
+      link.click();
+
+      document.body.removeChild(
+        link
+      );
+
+      URL.revokeObjectURL(
+        link.href
+      );
+
+    }
+
+  </script>
 
 </body>
 </html>
