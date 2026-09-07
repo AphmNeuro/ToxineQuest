@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Questionnaire PAS - Échelle d'Anxiété Parkinson</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .identifiant {
+      background: #e0e0e0;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto 30px;
+    }
+
+    .identifiant label {
+      font-weight: bold;
+    }
+
+    .identifiant input {
+      width: 300px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+
+    .question-block {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 40px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+
+    .question-block p {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .sub-question {
+      margin-bottom: 25px;
+    }
+
+    .sub-question p {
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Questionnaire PAS - Échelle d'Anxiété Parkinson</h1>
+
+  <div class="identifiant">
+    <label for="identifiant">Identifiant Patient :</label>
+    <input type="text" id="identifiant" placeholder="Ex : ABC456">
+  </div>
+
+  <form id="pasForm">
+    <div class="question-block">
+      <h3>A. Anxiété persistante</h3>
+      <p>Au cours des quatre dernières semaines, dans quelle mesure avez-vous ressenti les symptômes suivants ?</p>
+      <div id="groupA"></div>
+    </div>
+
+    <div class="question-block">
+      <h3>B. Anxiété épisodique</h3>
+      <p>Au cours des quatre dernières semaines, avez-vous ressenti par moment les symptômes suivants ?</p>
+      <div id="groupB"></div>
+    </div>
+
+    <div class="question-block">
+      <h3>C. Comportements d'évitement</h3>
+      <p>Au cours des quatre dernières semaines, dans quelle mesure avez-vous redouté ou évité les situations suivantes ?</p>
+      <div id="groupC"></div>
+    </div>
+
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const groupA = [
+      "Vous sentir anxieux ou nerveux",
+      "Vous sentir tendu ou stressé",
+      "Être incapable de vous détendre",
+      "Vous faire trop de soucis pour des petits problèmes de la vie de tous les jours",
+      "Craindre qu’un malheur, ou même le pire, va se produire"
+    ];
+
+    const groupB = [
+      "Être pris de panique ou d'une peur intense",
+      "Avoir de la difficulté à respirer",
+      "Avoir des palpitations ou le cœur qui s'emballe (sans lien avec un effort ou une activité physique)",
+      "Avoir peur de perdre le contrôle"
+    ];
+
+    const groupC = [
+      "Les situations sociales (où on pourrait être observé ou jugé par d'autres, comme prendre la parole en public ou discuter avec des inconnus)",
+      "Les lieux publics (situations dont il peut être difficile ou gênant de s'échapper, telles que les files d’attente, la foule, les ponts ou les transports en commun)",
+      "Des objets ou des situations spécifiques (comme prendre l’avion, être en hauteur, les araignées ou d'autres animaux, les piqûres ou la vue du sang)"
+    ];
+
+    const responsesA = ["Pas du tout ou jamais", "Très peu ou rarement", "Légèrement ou parfois", "Modérément ou souvent", "Fortement ou (presque) toujours"];
+    const responsesB = ["Jamais", "Rarement", "Parfois", "Souvent", "Presque toujours"];
+    const responsesC = ["Jamais", "Rarement", "Parfois", "Souvent", "Presque toujours"];
+
+    function renderGroup(containerId, questions, responses, groupId) {
+      const container = document.getElementById(containerId);
+      questions.forEach((q, idx) => {
+        const div = document.createElement('div');
+        div.classList.add('sub-question');
+        div.innerHTML = `<p>${q}</p>` + responses.map((text, i) =>
+          `<label><input type="radio" name="${groupId}-${idx}" value="${i}"> ${text}</label>`
+        ).join("");
+        container.appendChild(div);
+      });
+    }
+
+    renderGroup("groupA", groupA, responsesA, "A");
+    renderGroup("groupB", groupB, responsesB, "B");
+    renderGroup("groupC", groupC, responsesC, "C");
+
+    function generateCSV() {
+      const id = document.getElementById("identifiant").value.trim();
+      if (!id) {
+        alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
+        return;
+      }
+
+      let csvContent = `Identifiant;${id}\n\nGroupe;Question;Réponse\n`;
+
+      const groups = [
+        { name: "A", questions: groupA },
+        { name: "B", questions: groupB },
+        { name: "C", questions: groupC }
+      ];
+
+      groups.forEach((group, groupIdx) => {
+        group.questions.forEach((q, qIdx) => {
+          const radios = document.getElementsByName(`${group.name}-${qIdx}`);
+          let selected = "Non répondu";
+          radios.forEach(r => { if (r.checked) selected = r.value; });
+          csvContent += `"${group.name}";"${q}";"${selected}"\n`;
+        });
+      });
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${id}_PAS_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Questionnaire TAS-20</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #2c3e50;
+    }
+
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+
+    .identifiant {
+      background: #e0e0e0;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto 30px;
+    }
+
+    .identifiant label {
+      font-weight: bold;
+    }
+
+    .identifiant input {
+      width: 300px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    .instruction {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+
+    .question-block {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 40px auto;
+      max-width: 900px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .question-block:hover {
+      transform: scale(1.01);
+    }
+
+    .question-block h3 {
+      margin-top: 0;
+      color: #34495e;
+    }
+
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Questionnaire TAS-20</h1>
+
+  <div class="identifiant">
+    <label for="identifiant">Identifiant Patient :</label>
+    <input type="text" id="identifiant" placeholder="Ex : ABC456">
+  </div>
+
+  <div class="instruction">
+    <h2>Instructions</h2>
+    <p>Les questions suivantes portent sur votre manière de ressentir des situations dans votre vie en général.</p>
+    <p>Indiquez, en utilisant la grille, à quel point vous êtes en accord ou en désaccord avec chacune des affirmations qui suivent.</p>
+  </div>
+
+  <form id="tasForm">
+    <div id="questions"></div>
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const questions = [
+      "Souvent, je ne vois pas très clair dans mes sentiments.",
+      "J’ai du mal à trouver les mots qui correspondent bien à mes sentiments.",
+      "J’éprouve des sensations physiques que les médecins eux-mêmes ne comprennent pas.",
+      "J’arrive facilement à décrire mes sentiments.",
+      "Je préfère analyser les problèmes plutôt que de me contenter de les décrire.",
+      "Quand je suis bouleversé(e), je ne sais pas si je suis triste, effrayé(e) ou en colère.",
+      "Je suis souvent intrigué(e) par des sensations au niveau de mon corps.",
+      "Je préfère simplement laisser les choses se produire plutôt que de comprendre pourquoi elles ont pris ce tour.",
+      "J’ai des sentiments que je ne suis guère capable d’identifier.",
+      "Être conscient(e) de ses émotions est essentiel.",
+      "Je trouve difficile de décrire mes sentiments sur les gens.",
+      "On me dit de décrire davantage ce que je ressens.",
+      "Je ne sais pas ce qui se passe à l’intérieur de moi.",
+      "Bien souvent, je ne sais pas pourquoi je suis en colère.",
+      "Je préfère parler aux gens de leurs activités quotidiennes plutôt que de leurs sentiments.",
+      "Je préfère regarder des émissions de variétés plutôt que des dramatiques.",
+      "Il m’est difficile de révéler mes sentiments intimes même à mes amis très proches.",
+      "Je peux me sentir proche de quelqu’un pendant les moments de silence.",
+      "Je trouve utile d’analyser mes sentiments pour résoudre mes problèmes personnels.",
+      "Rechercher le sens caché des films ou des pièces de théâtre perturbe le plaisir qu’ils procurent."
+    ];
+
+    const reversedItems = [4, 5, 10, 18, 19];
+
+    const choices = [
+      "Désaccord complet",
+      "Désaccord relatif",
+      "Ni accord ni désaccord",
+      "Accord relatif",
+      "Accord complet"
+    ];
+
+    const container = document.getElementById("questions");
+
+    questions.forEach((q, idx) => {
+      const div = document.createElement("div");
+      div.classList.add("question-block");
+      div.innerHTML = `<h3>${idx + 1}. ${q}</h3>` +
+        choices.map((choice, i) =>
+          `<label><input type="radio" name="q${idx}" value="${i + 1}"> ${choice}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function generateCSV() {
+      const id = document.getElementById("identifiant").value.trim();
+      if (!id) {
+        alert("Veuillez renseigner l'identifiant patient.");
+        return;
+      }
+
+      let csv = `Identifiant;${id}\nNuméro;Question;Réponse\n`;
+
+      questions.forEach((q, idx) => {
+        const radios = document.getElementsByName(`q${idx}`);
+        let selected = "Non répondu";
+        radios.forEach(r => { if (r.checked) selected = r.value; });
+
+        // inversion si question dans la liste
+        if (selected !== "Non répondu" && reversedItems.includes(idx + 1)) {
+          selected = 6 - selected; // inverse échelle 1–5
+        }
+
+        csv += `"${idx + 1}";"${q}";"${selected}"\n`;
+      });
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${id}_TAS20_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

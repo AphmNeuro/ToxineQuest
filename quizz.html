@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire QUIP-RS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background-color: #54A9AE;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+
+        .identifiant {
+            background: #e0e0e0;
+            padding: 15px 25px;
+            border-radius: 12px;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+
+        .identifiant label { font-weight: bold; }
+        .identifiant input {
+            width: 300px;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .instruction {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 25px 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .question-block {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            text-align: left;
+            transition: transform 0.2s ease;
+        }
+
+        .question-block:hover {
+            transform: scale(1.01);
+        }
+
+        .question-block h3 {
+            margin-top: 0;
+            color: #34495e;
+        }
+
+        .sub-question {
+            margin-left: 10px;
+            margin-bottom: 25px;
+        }
+
+        .sub-question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        label {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        input[type="radio"] {
+            margin-right: 6px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .retour {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .retour a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #2c3e50;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .retour a:hover {
+            background-color: #1a242f;
+        }
+    </style>
+</head>
+<body>
+    <div class="retour">
+        <a href="index.html">← Retour</a>
+    </div>
+
+    <h1>Questionnaire QUIP-RS</h1>
+
+    <div class="identifiant">
+        <label for="identifiant">Identifiant Patient :</label>
+        <input type="text" id="identifiant" placeholder="Ex : ABC456">
+    </div>
+
+    <div class="instruction">
+        <h2>Instructions</h2>
+        <p><strong>PÉRIODE D'ÉVALUATION</strong><br>
+        Les quatre dernières semaines.</p>
+
+        <p><strong>DESCRIPTION DES COMPORTEMENTS</strong></p>
+        <ul>
+            <li><strong>A. Jeu</strong> : casinos, jeux en ligne, loteries, billets à gratter, paris, machines à sous ou poker.</li>
+            <li><strong>B. Sexe</strong> : exigences sexuelles envers autrui, promiscuité, prostitution, changement d'orientation sexuelle, masturbation, activités sexuelles par internet ou téléphone, ou pornographie.</li>
+            <li><strong>C. Achats compulsifs</strong> : achat excessif de la même chose ou d'objets inutiles.</li>
+            <li><strong>D. Manger</strong> : consommation de plus grandes quantités ou de types différents de nourriture qu'auparavant, plus rapidement que la normale, à des moments inhabituels (comme manger la nuit), jusqu'à se sentir inconfortablement rassasié, ou lorsque vous n'avez pas faim.</li>
+            <li><strong>E. Passe-temps compulsifs</strong> : activités spécifiques, passe-temps ou autres activités organisées, telles que l'écriture, la peinture, le jardinage, la réparation ou le démontage d'objets, la collection, l'utilisation d'ordinateurs, le travail sur des projets, etc.</li>
+            <li><strong>F. Gestes répétitifs</strong> : répétition de certaines activités motrices simples, telles que le nettoyage, le rangement, la manipulation, l'examen, le tri, l'organisation, la collecte, l'accumulation ou l'agencement d'objets, etc.</li>
+            <li><strong>G. Prise de médicaments contre la MP</strong> : prise systématique de doses excessives de médicaments contre la maladie de Parkinson, ou augmentation autonome, sans avis médical, de la prise globale de médicaments contre la MP.</li>
+        </ul>
+
+       <p><strong>FRÉQUENCE DES COMPORTEMENTS</strong></p>
+    <ul>
+      <li><strong>Jamais (0)</strong> : pas du tout.</li>
+      <li><strong>Rarement (1)</strong> : peu fréquemment ou 1 jour/semaine.</li>
+      <li><strong>Parfois (2)</strong> : par moments ou 2-3 jours/semaine.</li>
+      <li><strong>Souvent (3)</strong> : la plupart du temps ou 4-5 jours/semaine.</li>
+      <li><strong>Très souvent (4)</strong> : presque toujours ou 6-7 jours/semaine.</li>
+    </ul>
+  </div>
+
+    <form id="quipForm">
+        <div id="questions"></div>
+        <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+    </form>
+
+    <script>
+        const domains = [
+            "Jeu",
+            "Sexe",
+            "Achats compulsifs",
+            "Manger",
+            "Exécuter des tâches ou pratiquer des passe-temps",
+            "Répéter des activités simples",
+            "Prendre vos médicaments contre la MP"
+        ];
+
+        const blocks = [
+            "1. À quel point pensez-vous aux comportements suivants ?",
+            "2. Avez-vous des pulsions ou des désirs excessifs ou source de détresse ?",
+            "3. Avez-vous de la difficulté à contrôler ces comportements ?",
+            "4. Vous livrez-vous à des activités pour poursuivre ces comportements ?"
+        ];
+
+        const container = document.getElementById('questions');
+        let globalIndex = 0;
+
+        blocks.forEach((blockTitle) => {
+            const blockDiv = document.createElement('div');
+            blockDiv.classList.add('question-block');
+
+            const blockHeader = document.createElement('h3');
+            blockHeader.textContent = blockTitle;
+            blockDiv.appendChild(blockHeader);
+
+            domains.forEach((domain) => {
+                const questionId = `q${globalIndex}`;
+                const questionText = `${blockTitle.split(" ")[0]} - ${domain}`;
+                const subDiv = document.createElement('div');
+                subDiv.classList.add('sub-question');
+                subDiv.innerHTML = `<p>${questionText}</p>
+                    <label><input type="radio" name="${questionId}" value="0"> Jamais</label>
+                    <label><input type="radio" name="${questionId}" value="1"> Rarement</label>
+                    <label><input type="radio" name="${questionId}" value="2"> Parfois</label>
+                    <label><input type="radio" name="${questionId}" value="3"> Souvent</label>
+                    <label><input type="radio" name="${questionId}" value="4"> Très souvent</label>`;
+                blockDiv.appendChild(subDiv);
+                globalIndex++;
+            });
+
+            container.appendChild(blockDiv);
+        });
+
+        function generateCSV() {
+            const id = document.getElementById("identifiant").value.trim();
+            if (!id) {
+                alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
+                return;
+            }
+
+            let csvContent = `Identifiant;${id}\n\nNuméro;Question;Réponse\n`;
+            let idx = 0;
+
+            blocks.forEach((blockTitle) => {
+                domains.forEach((domain) => {
+                    const questionId = `q${idx}`;
+                    const radios = document.getElementsByName(questionId);
+                    let selected = "Non répondu";
+                    radios.forEach(r => { if (r.checked) selected = r.value; });
+
+                    const questionLabel = `${blockTitle.split(" ")[0]} - ${domain}`;
+                    csvContent += `"${idx + 1}";"${questionLabel}";"${selected}"\n`;
+                    idx++;
+                });
+            });
+
+            const BOM = "\uFEFF";
+            const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `${id}_QUIP-RS_resultats.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
+

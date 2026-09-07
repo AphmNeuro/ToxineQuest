@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Clinique Parkinson</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+
+    .form-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .form-section,
+    .identifier-section {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .form-section:hover { transform: scale(1.01); }
+
+    .identifier-section {
+      background-color: #e0e0e0;
+      transform: none;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-group label {
+      display: inline-block;
+      font-weight: normal;
+      margin-right: 20px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+    }
+
+    button:hover { background-color: #2980b9; }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Formulaire Données Cliniques - Maladie de Parkinson</h1>
+
+  <div class="form-wrapper">
+    <form id="parkinsonForm">
+      <div class="identifier-section">
+        <label for="identifiant">Identifiant Patient :</label>
+        <input type="text" id="identifiant" name="identifiant" placeholder="Ex : ABC456" required>
+      </div>
+
+      <div class="form-section">
+        <label for="age">Âge :</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="sexe">Sexe :</label>
+        <select id="sexe" name="sexe" required>
+          <option value="">-- Sélectionner --</option>
+          <option value="H">Homme</option>
+          <option value="F">Femme</option>
+        </select>
+
+        <label for="niveau_sc">Niveau Socio-Culturel :</label>
+        <input type="text" id="niveau_sc" name="niveau_sc" placeholder="Ex : Études supérieures, Bac, etc.">
+
+        <label for="annee_diag">Année du diagnostic :</label>
+        <input type="number" id="annee_diag" name="annee_diag" required>
+
+        <label for="hemicorps">Côté le plus atteint :</label>
+        <select id="hemicorps" name="hemicorps">
+          <option value="">-- Sélectionner --</option>
+          <option value="D">Droit</option>
+          <option value="G">Gauche</option>
+        </select>
+
+        <label for="forme_tremblante">Forme tremblante :</label>
+        <select id="forme_tremblante" name="forme_tremblante">
+          <option value="">-- Sélectionner --</option>
+          <option value="Oui">Oui</option>
+          <option value="Non">Non</option>
+        </select>
+
+        <label for="score_hy">Score Hoehn & Yahr :</label>
+        <input type="number" id="score_hy" name="score_hy" step="0.1">
+
+        <label for="plainte_timing">Plainte :</label>
+        <select id="plainte_timing" name="plainte_timing">
+          <option value="">-- Avant ou après diagnostic ? --</option>
+          <option value="Avant">Avant diagnostic</option>
+          <option value="Après">Après diagnostic</option>
+        </select>
+        <input type="text" id="plainte_duree" name="plainte_duree" placeholder="Depuis quand ?">
+
+        <label>Traitements dopaminergiques en cours (plusieurs choix possibles) :</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="traitements" value="Aucun"> Aucun</label>
+          <label><input type="checkbox" name="traitements" value="L-Dopa"> L-Dopa</label>
+          <label><input type="checkbox" name="traitements" value="Agoniste"> Agoniste</label>
+          <label><input type="checkbox" name="traitements" value="IMAO"> IMAO</label>
+          <label><input type="checkbox" name="traitements" value="ICOMT"> ICOMT</label>
+          <label><input type="checkbox" name="traitements" value="Pompe APO"> Pompe APO</label>
+          <label><input type="checkbox" name="traitements" value="Pompe Duodopa"> Pompe Duodopa</label>
+          <label><input type="checkbox" name="traitements" value="Pompe Skyova"> Pompe Skyova</label>
+          <label><input type="checkbox" name="traitements" value="Stimulation cérébrale profonde"> Stimulation cérébrale profonde</label>
+        </div>
+
+        <label for="del">Traitement – Calcul DEL :</label>
+        <input type="text" id="del" name="del" placeholder="Indiquer la valeur du calcul DEL">
+
+        <label for="autres_traitements">Autres traitements :</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="autres_traitements" value="Antidépresseur"> Antidépresseur</label>
+          <label><input type="checkbox" name="autres_traitements" value="Anxiolytique"> Anxiolytique</label>
+          <label><input type="checkbox" name="autres_traitements" value="IRSR"> IRSR</label>
+          <label><input type="checkbox" name="autres_traitements" value="IRSRna"> IRSRna</label>
+          <label><input type="checkbox" name="autres_traitements" value="Antagoniste a2"> Antagoniste a2</label>
+          <label><input type="checkbox" name="autres_traitements" value="Modulateur GABA/benzodiazepine"> Modulateur GABA/benzodiazepine</label>
+          <label><input type="checkbox" name="autres_traitements" value="Autre"> Autre : <input type="text" id="autres_traitements_autre" name="autres_traitements_autre"></label>
+        </div>
+
+        <label>Antécédents / Comorbidités psychiatriques personnelles :</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="psy_perso" value="Dépression"> Dépression</label>
+          <label><input type="checkbox" name="psy_perso" value="Anxiété"> Anxiété</label>
+          <label><input type="checkbox" name="psy_perso" value="Bipolarité"> Bipolarité</label>
+          <label><input type="checkbox" name="psy_perso" value="Autre"> Autre : <input type="text" name="psy_perso_autre"></label>
+        </div>
+
+        <label for="moca_score">Moca Score :</label>
+        <input type="number" id="moca_score" name="moca_score" placeholder="Entrez le score du Moca">
+      </div>
+
+      <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+    </form>
+  </div>
+
+  <script>
+    function getCheckboxValue(name) {
+      const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+      return selected.length > 0 ? selected.join(", ") : "Non répondu";
+    }
+
+    function generateCSV() {
+      const form = document.getElementById("parkinsonForm");
+      const identifiant = form.identifiant.value.trim();
+      if (!identifiant) {
+        alert("Veuillez renseigner l'identifiant patient.");
+        return;
+      }
+
+      const data = {
+        Identifiant: identifiant,
+        Age: form.age.value || "Non répondu",
+        Sexe: form.sexe.value || "Non répondu",
+        Niveau_SC: form.niveau_sc.value || "Non répondu",
+        Annee_diagnostic: form.annee_diag.value || "Non répondu",
+        Cote_atteint: form.hemicorps.value || "Non répondu",
+        Forme_tremblante: form.forme_tremblante.value || "Non répondu",
+        Score_HY: form.score_hy.value || "Non répondu",
+        Plainte_timing: form.plainte_timing.value || "Non répondu",
+        Plainte_duree: form.plainte_duree.value || "Non répondu",
+        Traitements: getCheckboxValue("traitements"),
+        Traitement_DEL: form.del.value || "Non répondu",
+        Autres_traitements: getCheckboxValue("autres_traitements"),
+        Autres_traitements_autre: form.autres_traitements_autre.value || "",
+        Psy_perso: getCheckboxValue("psy_perso"),
+        Psy_perso_autre: form.psy_perso_autre.value || "",
+        Moca_Score: form.moca_score.value || "Non répondu"
+      };
+
+      let csv = "Variable;Valeur\n";
+      for (let key in data) {
+        csv += `${key};"${data[key]}"\n`;
+      }
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${identifiant}_Formulaire_Clinique_Parkinson.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

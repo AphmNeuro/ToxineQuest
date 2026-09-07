@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Questionnaire BDI‑II</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+    h1 {
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+    .identifiant {
+      background: #e0e0e0;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto 30px;
+    }
+    .identifiant label { font-weight: bold; }
+    .identifiant input {
+      width: 300px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    .instruction {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+    .question {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+    .question:hover { transform: scale(1.01); }
+    .question p {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    input[type="radio"] { margin-right: 6px; }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover { background-color: #2980b9; }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Questionnaire BDI‑II</h1>
+
+  <div class="identifiant">
+    <label for="identifiant">Identifiant Patient :</label>
+    <input type="text" id="identifiant" placeholder="Ex : ABC456">
+  </div>
+
+  <div class="instruction">
+    <h2>Instructions</h2>
+    <p>Ce questionnaire comporte 21 groupes d’énoncés. Veuillez lire avec soin chacun d’entre eux puis sélectionnez l’énoncé correspondant le mieux à ce que vous avez ressenti au cours des deux dernières semaines, y compris aujourd’hui.<br>
+    Si dans un groupe, plusieurs réponses semblent décrire exactement ce que vous ressentez, choisissez le chiffre le plus élevé.</p>
+  </div>
+
+  <form id="bdiForm">
+    <div id="questions"></div>
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const questions = [
+      ["Tristesse", ["Je ne me sens pas triste.", "Je me sens très souvent triste.", "Je suis tout le temps triste.", "Je suis si triste ou si malheureux(se) que ce n'est pas supportable."]],
+      ["Pessimisme", ["Je ne suis pas découragé(e) face à mon avenir.", "Je me sens plus découragé(e) qu'avant face à mon avenir.", "Je ne m'attends pas à ce que les choses s'arrangent pour moi.", "J'ai le sentiment que mon avenir est sans espoir et qu'il ne peut qu'empirer."]],
+      ["Échecs dans le passé", ["Je n'ai pas le sentiment d'avoir échoué dans la vie, d'être un(e) raté(e).", "J'ai échoué plus souvent que je n'aurais dû.", "Quand je pense à mon passé, je constate un grand nombre d'échecs.", "J'ai le sentiment d'avoir complètement raté ma vie."]],
+      ["Perte de plaisir", ["J'éprouve toujours autant de plaisir qu'avant aux choses qui me plaisent.", "Je n'éprouve pas autant de plaisir aux choses qu'avant.", "J'éprouve très peu de plaisir aux choses qui me plaisaient habituellement.", "Je n'éprouve aucun plaisir aux choses qui me plaisaient habituellement."]],
+      ["Sentiments de culpabilité", ["Je ne me sens pas particulièrement coupable.", "Je me sens coupable pour bien des choses que j'ai faites ou que j'aurais dû faire.", "Je me sens coupable la plupart du temps.", "Je me sens tout le temps coupable."]],
+      ["Sentiment d'être puni(e)", ["Je n'ai pas le sentiment d'être puni(e).", "Je sens que je pourrais être puni(e).", "Je m'attends à être puni(e).", "J'ai le sentiment d'être puni(e)."]],
+      ["Sentiments négatifs envers soi-même", ["Mes sentiments envers moi-même n'ont pas changé.", "J'ai perdu confiance en moi.", "Je suis déçu(e) par moi-même.", "Je ne m'aime pas du tout."]],
+      ["Attitude critique envers soi", ["Je ne me blâme pas ou ne me critique pas plus que d'habitude.", "Je suis plus critique envers moi-même que je ne l'étais.", "Je me reproche tous mes défauts.", "Je me reproche tous les malheurs qui arrivent."]],
+      ["Pensées ou désirs de suicide", ["Je ne pense pas du tout à me suicider.", "Il m'arrive de penser à me suicider, mais je ne le ferai pas.", "J'aimerais me suicider.", "Je me suiciderais si l'occasion se présentait."]],
+      ["Pleurs", ["Je ne pleure pas plus qu'avant.", "Je pleure plus qu'avant.", "Je pleure pour la moindre petite chose.", "Je voudrais pleurer mais je ne suis pas capable."]],
+      ["Agitation", ["Je ne suis pas plus agité(e) ou plus tendu(e) que d'habitude.", "Je me sens plus agité(e) ou tendu(e) que d'habitude.", "Je suis si agité(e) ou tendu(e) que j'ai du mal à rester tranquille.", "Je suis si agité(e) ou tendu(e) que je dois continuellement bouger ou faire quelque chose."]],
+      ["Perte d’intérêt", ["Je n'ai pas perdu d'intérêt pour les gens ou pour les activités.", "Je m'intéresse moins qu'avant aux gens et aux choses.", "Je ne m'intéresse presque plus aux gens et aux choses.", "J'ai du mal à m'intéresser à quoique ce soit."]],
+      ["Indécision", ["Je prends des décisions toujours aussi bien qu'avant.", "Il m'est plus difficile que d'habitude de prendre des décisions.", "J'ai beaucoup plus de mal qu'avant à prendre des décisions.", "J'ai du mal à prendre n'importe quelle décision."]],
+      ["Dévalorisation", ["Je pense être quelqu'un de valable.", "Je ne crois pas avoir autant de valeur ni être aussi utile qu'avant.", "Je me sens moins valable que les autres.", "Je sens que je ne vaux absolument rien."]],
+      ["Perte d’énergie", ["J'ai toujours autant d'énergie qu'avant.", "J'ai moins d'énergie qu'avant.", "Je n'ai pas assez d'énergie pour pouvoir faire grand-chose.", "J'ai trop peu d'énergie pour faire quoi que ce soit."]],
+      ["Modifications du sommeil", ["Mes habitudes de sommeil n'ont pas changé.", "Je dors un peu plus / moins que d'habitude.", "Je dors beaucoup plus / beaucoup moins que d'habitude.", "Je dors presque toute la journée / je me réveille très tôt sans pouvoir me rendormir."]],
+      ["Irritabilité", ["Je ne suis pas plus irritable que d'habitude.", "Je suis plus irritable que d'habitude.", "Je suis beaucoup plus irritable que d'habitude.", "Je suis constamment irritable."]],
+      ["Modifications de l’appétit", ["Mon appétit n'a pas changé.", "Un peu plus ou moins d'appétit que d'habitude.", "Beaucoup plus ou beaucoup moins d'appétit que d'habitude.", "Pas d'appétit du tout / envie constante de manger."]],
+      ["Concentration", ["Je parviens à me concentrer toujours aussi bien qu'avant.", "Je ne parviens pas à me concentrer aussi bien que d'habitude.", "J'ai du mal à me concentrer longtemps sur quoi que ce soit.", "Je me trouve incapable de me concentrer sur quoi que ce soit."]],
+      ["Fatigue", ["Je ne suis pas plus fatigué(e) que d'habitude.", "Je me fatigue plus facilement que d'habitude.", "Je suis trop fatigué(e) pour faire un grand nombre de choses que je faisais avant.", "Je suis trop fatigué(e) pour faire la plupart des choses que je faisais avant."]],
+      ["Perte d’intérêt sexuel", ["Je n'ai pas noté de changement récent dans mon intérêt pour le sexe.", "Le sexe m'intéresse moins qu'avant.", "Le sexe m'intéresse beaucoup moins maintenant.", "J'ai perdu tout intérêt pour le sexe."]]
+    ];
+
+    const container = document.getElementById('questions');
+    questions.forEach(([title, options], i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.innerHTML = `<p>${i + 1}. ${title}</p>` +
+        options.map((opt, j) => `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`).join('');
+      container.appendChild(div);
+    });
+
+    function generateCSV() {
+      const id = document.getElementById("identifiant").value.trim();
+      if (!id) {
+        alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
+        return;
+      }
+      let csv = `Identifiant;${id}\n\nNuméro;Question;Réponse\n`;
+      questions.forEach(([title], i) => {
+        const rads = document.getElementsByName(`q${i}`);
+        let sel = "Non répondu";
+        rads.forEach(r => { if (r.checked) sel = r.value; });
+        csv += `"${i + 1}";"${title}";"${sel}"\n`;
+      });
+
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${id}_BDI-II_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

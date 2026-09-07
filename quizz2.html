@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire PDQ-39</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background-color: #54A9AE;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+
+        .identifiant {
+            background: #e0e0e0;
+            padding: 15px 25px;
+            border-radius: 12px;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+
+        .identifiant label {
+            font-weight: bold;
+        }
+
+        .identifiant input {
+            width: 300px;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .instruction {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 25px 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .question-block {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: left;
+            transition: transform 0.2s ease;
+        }
+
+        .question-block:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        input[type="radio"] {
+            margin-right: 6px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .retour {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .retour a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #2c3e50;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .retour a:hover {
+            background-color: #1a242f;
+        }
+    </style>
+</head>
+<body>
+    <div class="retour">
+        <a href="index.html">← Retour</a>
+    </div>
+
+    <h1>Questionnaire PDQ-39</h1>
+
+    <div class="identifiant">
+        <label for="identifiant">Identifiant Patient :</label>
+        <input type="text" id="identifiant" placeholder="Ex : ABC456">
+    </div>
+
+    <div class="instruction">
+        <h2>Instructions</h2>
+        <p><strong>Les questions suivantes concernent votre qualité de vie. À cause de la maladie de Parkinson, à quelle fréquence avez-vous vécu les situations suivantes au cours du mois précédent ?</strong></p>
+        <p><strong>1. Jamais 2. Rarement 3. Parfois 4. Souvent 5. Toujours (ou ne peut jamais le faire)</strong></p>
+    </div>
+
+    <form id="quizForm">
+        <div id="questions"></div>
+        <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+    </form>
+
+    <script>
+        const questions = [
+            "Avez-vous eu des difficultés dans la pratique de vos loisirs ?",
+            "Avez-vous eu des difficultés à vous occuper de votre maison (ménage, cuisine, bricolage…) ?",
+            "Avez-vous eu des difficultés à porter vos sacs de provision ?",
+            "Avez-vous eu des problèmes pour parcourir 1km à pied ?",
+            "Avez-vous eu des problèmes pour parcourir 100m à pied ?",
+            "Avez-vous eu des difficultés à vous déplacer chez vous aussi aisément que vous le souhaiteriez ?",
+            "Avez-vous eu des difficultés à vous déplacer dans les lieux publics ?",
+            "Avez-vous eu besoin de quelqu’un pour vous accompagner quand vous sortez ?",
+            "Avez-vous eu peur ou avez-vous été inquiet à l’idée de tomber dans un lieu public ?",
+            "Avez-vous été confiné(e) chez vous plus que vous ne l’auriez souhaité ?",
+            "Avez-vous eu des difficultés pour vous laver ?",
+            "Avez-vous eu des difficultés pour vous habiller ?",
+            "Avez-vous eu des difficultés pour boutonner vos vêtements ou lacer vos chaussures ?",
+            "Avez-vous eu des difficultés pour écrire lisiblement ?",
+            "Avez-vous eu des difficultés pour couper la nourriture ?",
+            "Avez-vous eu des difficultés pour tenir un verre sans le renverser ?",
+            "Vous êtes-vous senti(e) déprimé(e) ?",
+            "Vous êtes-vous senti(e) isolé(e) et seul(e) ?",
+            "Vous êtes-vous senti(e) au bord des larmes ou avez-vous pleuré ?",
+            "Avez-vous ressenti de la colère ou de l’amertume ?",
+            "Vous-êtes vous senti(e) anxieux(se) ?",
+            "Vous êtes-vous senti(e) inquiet(e) pour votre avenir ?",
+            "Avez-vous ressenti le besoin de dissimuler aux autres votre maladie de Parkinson ?",
+            "Avez-vous évité des situations où vous deviez manger ou boire en public ?",
+            "Vous êtes-vous senti(e) gêné(e) en public à cause de votre maladie de Parkinson ?",
+            "Vous êtes-vous senti(e) inquiet(e) des réactions des autres à votre égard ?",
+            "Avez-vous eu des problèmes dans vos relations avec vos proches ?",
+            "Avez-vous manqué de soutien dont vous aviez besoin de la part de votre époux(se) ou conjoint(e) ?",
+            "Avez-vous manqué de soutien dont vous aviez besoin de la part de votre famille ou de vos ami(e)s ?",
+            "Vous êtes-vous endormi(e) dans la journée de façon inattendue ?",
+            "Avez-vous eu des problèmes de concentration, par exemple en lisant ou devant la télévision ?",
+            "Avez-vous senti que votre mémoire était mauvaise ?",
+            "Avez-vous fait de mauvais rêves ou eu des hallucinations ?",
+            "Avez-vous des difficultés pour parler ?",
+            "Vous êtes-vous senti(e) incapable de communiquer normalement avec les autres ?",
+            "Vous êtes-vous senti(e) ignoré(e) par les autres ?",
+            "Avez-vous eu des crampes ou spasmes musculaires douloureux ?",
+            "Avez-vous eu mal ou avez-vous eu des douleurs dans les articulations ou dans le corps ?",
+            "Avez-vous eu des sensations désagréables de chaud ou de froid ?"
+        ];
+
+        const container = document.getElementById('questions');
+        questions.forEach((q, i) => {
+            const div = document.createElement('div');
+            div.classList.add('question-block');
+            div.innerHTML = `<p>${i + 1}. ${q}</p>
+                <label><input type="radio" name="q${i}" value="1"> Jamais</label>
+                <label><input type="radio" name="q${i}" value="2"> Rarement</label>
+                <label><input type="radio" name="q${i}" value="3"> Parfois</label>
+                <label><input type="radio" name="q${i}" value="4"> Souvent</label>
+                <label><input type="radio" name="q${i}" value="5"> Toujours (ou ne peut jamais le faire)</label>`;
+            container.appendChild(div);
+        });
+
+        function generateCSV() {
+            const id = document.getElementById("identifiant").value.trim();
+            if (!id) {
+                alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
+                return;
+            }
+
+            let csvContent = `Identifiant;${id}\n\nNuméro;Question;Réponse\n`;
+            questions.forEach((q, i) => {
+                const radios = document.getElementsByName(`q${i}`);
+                let selected = "Non répondu";
+                radios.forEach(r => { if (r.checked) selected = r.value; });
+
+                csvContent += `"${i + 1}";"${q}";"${selected}"\n`;
+            });
+
+            const BOM = "\uFEFF";
+            const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `${id}_PDQ39_resultats.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

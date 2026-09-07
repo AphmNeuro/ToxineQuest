@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Échelle d'Apathie F-DAS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+
+    .form-block {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .form-block:hover {
+      transform: scale(1.01);
+    }
+
+    .form-block.id-block {
+      background: #e0e0e0;
+      box-shadow: none;
+      transition: none;
+    }
+
+    .form-block.id-block:hover {
+      transform: none;
+    }
+
+    .instruction h2 {
+      margin-top: 0;
+    }
+
+    .question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    input[type="radio"], input[type="text"] {
+      margin-right: 6px;
+      font-size: 14px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 300px;
+      padding: 8px;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Échelle d'Apathie F-DAS</h1>
+
+  <div class="form-block id-block">
+    <label for="patientId">Identifiant Patient :</label><br>
+    <input type="text" id="patientId" name="patientId" placeholder="Ex : ABC123" required>
+  </div>
+
+  <div class="form-block instruction">
+    <h2>Instructions</h2>
+    <p>Veuillez lire attentivement chacune des affirmations suivantes. Pour chaque affirmation, sélectionnez la réponse qui correspond le mieux à ce que vous avez ressenti, fait ou pensé durant le dernier mois.</p>
+  </div>
+
+  <form id="fdasForm">
+    <div id="questions"></div>
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const reponses = [
+      "Presque jamais",
+      "Parfois",
+      "Souvent",
+      "Presque toujours"
+    ];
+
+    const items = [
+      "J'ai besoin d’encouragements pour débuter une activité.",
+      "Je suis à l’initiative des contacts avec mes ami(e)s.",
+      "J'exprime mes émotions.",
+      "Je pense à de nouvelles choses à faire pendant ma journée.",
+      "Je me sens concerné(e) par ce que les membres de ma famille ressentent.",
+      "Il m’arrive de regarder dans le vide.",
+      "Avant de commencer quelque chose je réfléchis à ce que les autres pourraient ressentir à propos de cela.",
+      "Je prévois mes activités de la journée par avance.",
+      "Je me sens mal quand je reçois de mauvaises nouvelles.",
+      "Je suis capable de me concentrer sur une tâche jusqu'à ce qu'elle soit terminée.",
+      "Je manque de motivation dans ce que je fais.",
+      "J’ai du mal à comprendre ce que les autres ressentent.",
+      "Je me fixe des objectifs.",
+      "J'essaie de nouvelles choses.",
+      "Ce que mon comportement induit comme émotion chez les autres m’indiffère.",
+      "J’agis en fonction de ce que j’ai pensé durant la journée.",
+      "Quand je suis face à une tâche compliquée, j’ai du mal à organiser ce que j’ai à faire.",
+      "Je sais me trouver des occupations.",
+      "J'éprouve des difficultés lorsque je dois faire plusieurs choses à la fois.",
+      "Je suis facilement ému(e) en regardant quelque chose de joyeux ou triste à la télévision.",
+      "Je trouve difficile de rester concentré(e).",
+      "Je suis plutôt spontané(e).",
+      "Je suis facilement distrait(e).",
+      "Ce qui se passe autour de moi me laisse indifférent(e)."
+    ];
+
+    // Questions inversées (index commençant à 1)
+    const invertedItems = [2, 3, 4, 5, 7, 8, 9, 10, 13, 14, 16, 18, 20, 22];
+
+    const container = document.getElementById("questions");
+    items.forEach((text, index) => {
+      const div = document.createElement("div");
+      div.classList.add("form-block");
+      div.innerHTML = `<p>${index + 1}. ${text}</p>` +
+        `<div class="options">` +
+        reponses.map((rep, val) => `
+          <label><input type="radio" name="q${index}" value="${val}"> ${rep}</label>`
+        ).join("") +
+        `</div>`;
+      container.appendChild(div);
+    });
+
+    function generateCSV() {
+      const patientId = document.getElementById("patientId").value.trim();
+      if (!patientId) {
+        alert("Veuillez renseigner l'identifiant patient avant de télécharger les résultats.");
+        return;
+      }
+
+      let csvContent = `Identifiant;${patientId}\n\nNuméro;Question;Réponse\n`;
+      items.forEach((q, i) => {
+        const radios = document.getElementsByName(`q${i}`);
+        let selected = "Non répondu";
+        radios.forEach(r => { if (r.checked) selected = r.value; });
+
+        // Inversion des scores pour certaines questions
+        if (selected !== "Non répondu" && invertedItems.includes(i + 1)) {
+          selected = 3 - selected;
+        }
+
+        const questionEscaped = q.replace(/"/g, '""');
+        csvContent += `"${i + 1}";"${questionEscaped}";"${selected}"\n`;
+      });
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${patientId}_FDAS_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

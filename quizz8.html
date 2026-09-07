@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Questionnaire RIPoSt-40</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #2c3e50;
+    }
+
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+
+    .identifiant {
+      background: #e0e0e0;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 900px;
+      margin: 70px auto 30px;
+    }
+
+    .identifiant label {
+      font-weight: bold;
+    }
+
+    .identifiant input {
+      width: 300px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    .instruction {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+
+    .question-block {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 40px auto;
+      max-width: 900px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .question-block:hover {
+      transform: scale(1.01);
+    }
+
+    .question-block p {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Questionnaire RIPoSt-40</h1>
+
+  <div class="identifiant">
+    <label for="identifiant">Identifiant Patient :</label>
+    <input type="text" id="identifiant" placeholder="Ex : ABC456">
+  </div>
+
+  <div class="instruction">
+    <h2>Instructions</h2>
+    <p>Les questions suivantes évaluent les réactions émotionnelles de chaque personne face aux évènements de la vie.
+    Veuillez baser chacune de vos réponses sur votre propre réaction personnelle, et non sur celle des autres ou sur celle que vous pensez que les autres devraient avoir.</p>
+  </div>
+
+  <form id="ripostForm">
+    <div id="questions"></div>
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const questions = [
+      "J’ai des réactions émotionnelles rapides, brutales, à la limite impulsives.",
+      "J’ai souvent des réactions émotives pour des événements qui n’en valent pas la peine.",
+      "J’ai tendance à trop vite m’énerver ou à m’emporter lorsque je suis frustré(e).",
+      "Je réagis très vivement aux choses qui me touchent émotionnellement.",
+      "Lorsque je m’énerve, j’ai beaucoup de mal à me calmer après-coup.",
+      "J’ai des moments d’énervement graves au cours desquels je peux perdre mon contrôle.",
+      "Je stresse facilement pour des changements de routine ou des imprévus, même mineurs.",
+      "Je suis très sensible à la critique.",
+      "Je suis facilement blessé ou offensé.",
+      "Quand je m’emporte, je peux faire des bêtises ou dire n’importe quoi.",
+      "Quand je suis heureux(se), je ressens souvent une forte exuberance.",
+      "Quand quelque chose de bien m’arrive, je jubile habituellement plus que les autres.",
+      "Quand je suis en colère, c’est difficile pour moi de rester rationnel et de ne pas réagir trop fort.",
+      "Quand je suis anxieux(se) ou stressé(e), c’est habituellement très fort.",
+      "Quand je suis heureux(se), je déborde d’énergie.",
+      "Quand je suis excité(e) à cause de quelque chose, je veux partager mes sentiments avec tout le monde.",
+      "Quand j’accomplis quelque chose de difficile, je suis ravi(e) ou exalté(e).",
+      "Quand je résous un petit problème personnel, je me sens euphorique.",
+      "J’ai tendance à avoir souvent des émotions tristes, négatives.",
+      "Je me soucie souvent de la possibilité d’échouer.",
+      "Quand les choses vont bien, je me sens comme si j’étais ‘au sommet du monde’.",
+      "Je me sens souvent de bonne humeur, euphorique et plein d’énergie.",
+      "Quand je me sens plein d’énergie, je suis drôle et plein d’esprit.",
+      "Les moments où je me sens vraiment bien sont peu fréquents.",
+      "Quand je me sens bien, je sais que tout fonctionnera bien.",
+      "Mes émotions sont plus proches de l’insatisfaction ou de la frustration que de la joie.",
+      "J’ai tendance à faire des soucis pour une chose ou pour une autre.",
+      "Il m'en faut beaucoup pour que je sois vraiment heureux.",
+      "J'ai des changements brutaux d'humeur et d'énergie.",
+      "Je m’aperçois souvent que mes réactions émotionnelles ne sont pas constantes.",
+      "Je me sens souvent triste pendant quelques jours puis radieux et de bonne humeur.",
+      "Je peux ressentir les choses de façon très vive ou au contraire très terne.",
+      "Je prends grand plaisir à d'autres personnes puis m'en désintéresse totalement.",
+      "J'ai des périodes de pessimisme où j'oublie mes moments d'optimisme et d'enthousiasme.",
+      "Je peux être triste et gai en même temps.",
+      "D'un jour à l'autre, je peux être sociable, 'boute en train' ou isolé, seul dans mon coin.",
+      "J’ai l’impression que mes émotions forment des cycles avec des hauts et des bas.",
+      "Je constate que je démissionne souvent après des moments de forte ambition.",
+      "Je peux dormir avec une bonne humeur et me réveiller avec une humeur triste et sombre.",
+      "Je suis tellement instable que je n’arrive pas à faire des projets sur du long terme."
+    ];
+
+    const labels = [
+      "Jamais",
+      "Presque jamais",
+      "Occasionnellement",
+      "Habituellement",
+      "Presque toujours",
+      "Toujours"
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((text, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question-block");
+      div.innerHTML = `<p>${index + 1}. ${text}</p>` +
+        labels.map((label, val) =>
+          `<label><input type="radio" name="q${index}" value="${val + 1}">${label}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function generateCSV() {
+      const id = document.getElementById("identifiant").value.trim();
+      if (!id) {
+        alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
+        return;
+      }
+
+      let csvContent = `Identifiant;${id}\n\nNuméro;Question;Réponse\n`;
+      questions.forEach((q, i) => {
+        const radios = document.getElementsByName(`q${i}`);
+        let selected = "Non répondu";
+        radios.forEach(r => { if (r.checked) selected = r.value; });
+        csvContent += `"${i + 1}";"${q}";"${selected}"\n`;
+      });
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${id}_RIPoSt-40_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

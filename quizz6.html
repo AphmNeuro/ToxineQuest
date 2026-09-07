@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Échelle ERS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+    .id-block {
+      background: #e0e0e0;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto 30px;
+    }
+    .instruction {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      font-size: 16px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+    .instruction h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .question {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+    .question:hover { transform: scale(1.01); }
+    .question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .choices label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      margin-right: 6px;
+    }
+    input[type="text"] {
+      width: 100%;
+      max-width: 300px;
+      padding: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover { background-color: #2980b9; }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Échelle ERS</h1>
+
+  <div class="id-block">
+    <label for="patientId">Identifiant Patient :</label><br>
+    <input type="text" id="patientId" placeholder="Ex : ABC123" required>
+  </div>
+
+  <div class="instruction">
+    <h2>Instructions</h2>
+    <p>Ce questionnaire s'intéresse à la façon dont vous ressentez régulièrement (par exemple chaque jour) les émotions. Lorsque l'on vous pose des questions sur le fait d'être "ému(e)", ceci renvoie au fait d'être en colère, triste, excité(e) ou à d'autres émotions.</p>
+    <p>Veuillez évaluer les propositions suivantes en sélectionnant la réponse qui vous correspond le mieux :</p>
+  </div>
+
+  <form id="ersForm">
+    <div id="questions"></div>
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const items = [
+      "Quand quelque chose me bouleverse, je ne peux penser qu’à cela pendant un long moment.",
+      "Mes sentiments me font facilement souffrir.",
+      "Quand je ressens des émotions, je les éprouve très fortement/intensément.",
+      "Quand je suis émotionnellement bouleversé(e), je suis également bouleversé(e) physiquement dans tout mon corps.",
+      "J’ai tendance à être très ému(e) très facilement.",
+      "Je vis les émotions très fortement.",
+      "Je me sens souvent extrêmement anxieux(se).",
+      "Quand je me sens ému(e), il m'est difficile de ressentir quoi que ce soit d’autre.",
+      "Même les plus petites choses m’émeuvent.",
+      "Je prends beaucoup de temps pour surmonter les désaccords que j’ai avec les autres.",
+      "Je prends beaucoup plus de temps que la plupart des gens pour me calmer lorsque je suis fâché(e)/contrarié(e).",
+      "Je me fâche très facilement contre les gens.",
+      "Je suis souvent irrité(e) par des choses qui ne font pas réagir d’autres personnes.",
+      "Je suis facilement agité(e).",
+      "Je peux passer d’un état neutre à un état émotionnel extrême en un instant.",
+      "Quand quelque chose de négatif se produit, mon humeur change très rapidement. Les gens me disent que je me mets facilement en rogne.",
+      "Les gens me disent que mes émotions sont souvent trop intenses pour la situation.",
+      "Je suis une personne très sensible.",
+      "Mes sautes d’humeur sont très fortes et puissantes.",
+      "Je suis souvent si bouleversé(e) qu’il m’est difficile de penser de manière claire.",
+      "Les gens disent que je réagis de manière excessive."
+    ];
+
+    const labels = [
+      "Ne me correspond pas du tout",
+      "Me correspond un peu",
+      "Me correspond assez",
+      "Me correspond beaucoup",
+      "Me correspond tout à fait"
+    ];
+
+    const container = document.getElementById("questions");
+    items.forEach((text, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p>${index + 1}. ${text}</p><div class="choices">` +
+        labels.map((label, val) => `
+          <label><input type="radio" name="q${index}" value="${val}"> ${label}</label>`
+        ).join("") + `</div>`;
+      container.appendChild(div);
+    });
+
+    function generateCSV() {
+      const patientId = document.getElementById("patientId").value.trim();
+      if (!patientId) {
+        alert("Veuillez renseigner l'identifiant patient avant de télécharger les résultats.");
+        return;
+      }
+
+      let csvContent = `Identifiant;${patientId}\n\nNuméro;Question;Réponse\n`;
+      items.forEach((q, i) => {
+        const radios = document.getElementsByName(`q${i}`);
+        let selected = "Non répondu";
+        radios.forEach(r => { if (r.checked) selected = r.value; });
+
+        const questionEscaped = q.replace(/"/g, '""');
+        csvContent += `"${i + 1}";"${questionEscaped}";"${selected}"\n`;
+      });
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${patientId}_ERS_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

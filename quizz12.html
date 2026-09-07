@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Échelle Fluctuations Non Motrices ON/OFF</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #54A9AE;
+      text-align: center;
+      color: #2c3e50;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .identifiant {
+      background: #e0e0e0;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto 30px;
+    }
+    .identifiant label { font-weight: bold; }
+    .identifiant input {
+      width: 300px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    .instruction {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+    .question-block {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+    .slider-container span {
+      width: 150px;
+      font-size: 14px;
+    }
+    input[type="range"] {
+      flex: 1;
+      margin: 0 15px;
+    }
+    .ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 0 165px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .retour a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2c3e50;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    .retour a:hover {
+      background-color: #1a242f;
+    }
+  </style>
+</head>
+<body>
+  <div class="retour">
+    <a href="index.html">← Retour</a>
+  </div>
+
+  <h1>Échelle Fluctuations Non Motrices ON/OFF</h1>
+
+  <div class="identifiant">
+    <label for="identifiant">Identifiant Patient :</label>
+    <input type="text" id="identifiant" placeholder="Ex : ABC456">
+  </div>
+
+  <div class="instruction">
+    <h2>Instructions</h2>
+    <p>Nous vous proposons d’utiliser en phase « OFF » et en phase « ON », une échelle numérique destinée à mesurer l’intensité des fluctuations non motrices dans la maladie de Parkinson.</p>
+    <p>Entourez le chiffre de 0 à 10 qui correspond le mieux, selon vous, à l’importance des fluctuations non motrices.</p>
+    <p>La note <strong>0</strong> correspond à « aucun signe de fluctuation », la note <strong>10</strong> correspond à l’intensité maximum du signe.</p>
+    <p>Basez-vous sur les signes que vous présentez au moment précis où vous remplissez le questionnaire.</p>
+  </div>
+
+  <form id="fnmForm">
+    <div id="questions"></div>
+    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
+  </form>
+
+  <script>
+    const questions = [
+      {label: "Anxiété", left: "Je suis détendu(e), serein(e)", right: "Je suis très angoissé(e), inquiet(e)"},
+      {label: "Motivation", left: "J’ai envie de faire des choses", right: "J’ai envie de ne rien faire"},
+      {label: "Douleur", left: "Je n’ai pas mal", right: "J’ai très mal"},
+      {label: "Fatigue", left: "Je ne suis pas fatigué(e)", right: "Je suis épuisé(e)"},
+      {label: "Concentration", left: "Je peux me concentrer facilement", right: "Je suis incapable de me concentrer"},
+      {label: "Tristesse", left: "Je ne ressens aucune tristesse", right: "J’ai une grande tristesse, des idées sombres"},
+      {label: "Respiration", left: "Je n’ai pas de difficulté à bien respirer", right: "J’ai de grosses difficultés à respirer"},
+      {label: "Jambes sans repos", left: "Je ne ressens pas le besoin de bouger les jambes", right: "Je ressens le besoin de bouger les jambes"},
+      {label: "Problèmes urinaires", left: "Je n’ai pas de problème urinaire", right: "J’ai des urgences/rétention urinaires"},
+      {label: "Irritabilité", left: "Je ne me sens pas irritable", right: "Je me sens très irritable"},
+      {label: "Transpiration", left: "Je transpire normalement", right: "J’ai des sueurs abondantes"},
+      {label: "Dans cette liste, au moment présent, indiquez le signe le plus gênant pour vous.", type: "textarea"},
+      {label: "Est-ce que ce symptôme est plus gênant que votre gêne motrice (par exemple, tremblements ou raideur) ?", type: "radio",
+       options: [
+         {label: "Oui", value: "1"},
+         {label: "Non", value: "2"},
+         {label: "Je ne sais pas", value: "3"}
+       ]}
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question-block");
+
+      if (index < 11) {
+        div.innerHTML = `
+          <p>${index + 1}. ${q.label}</p>
+          <div class="slider-container">
+            <span>${q.left}</span>
+            <input type="range" name="q${index}" min="0" max="10" value="5">
+            <span>${q.right}</span>
+          </div>
+          <div class="ticks">${Array.from({length: 11}, (_, i) => `<span>${i}</span>`).join("")}</div>
+        `;
+      } else if (q.type === "textarea") {
+        div.innerHTML = `
+          <p>${index + 1}. ${q.label}</p>
+          <textarea name="q${index}" rows="3" style="width:100%;"></textarea>
+        `;
+      } else if (q.type === "radio") {
+        div.innerHTML = `
+          <p>${index + 1}. ${q.label}</p>
+          ${q.options.map(opt => `
+            <label><input type="radio" name="q${index}" value="${opt.value}"> ${opt.label}</label><br>
+          `).join("")}
+        `;
+      }
+
+      container.appendChild(div);
+    });
+
+    function generateCSV() {
+      const id = document.getElementById("identifiant").value.trim();
+      if (!id) {
+        alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
+        return;
+      }
+
+      let csvContent = `Identifiant;${id}\n\nNuméro;Question;Réponse\n`;
+      questions.forEach((q, i) => {
+        let selected = "Non répondu";
+        if (i < 11) {
+          const slider = document.querySelector(`input[name="q${i}"]`);
+          selected = slider ? slider.value : "Non répondu";
+        } else if (q.type === "textarea") {
+          const txt = document.querySelector(`textarea[name="q${i}"]`).value.trim();
+          selected = txt || "Non répondu";
+        } else if (q.type === "radio") {
+          const radios = document.getElementsByName(`q${i}`);
+          radios.forEach(r => { if (r.checked) selected = r.value; });
+        }
+        csvContent += `"${i + 1}";"${q.label}";"${selected}"\n`;
+      });
+
+      const BOM = "\uFEFF";
+      const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${id}_FNM_resultats.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
