@@ -74,7 +74,8 @@
       font-weight: bold;
     }
 
-    .id-block input {
+    .id-block input,
+    .id-block select {
       width: 100%;
       max-width: 320px;
       padding: 9px;
@@ -82,6 +83,7 @@
       border: 1px solid #aaa;
       border-radius: 6px;
       font-size: 15px;
+      background: white;
     }
 
     .section-title {
@@ -376,7 +378,7 @@
     .pain-5 { color: #d71920; }
 
     /* ======================================================
-       PGI 1-7 CLIQUABLE
+       PGI 1-7
        ====================================================== */
 
     .pgi-guide {
@@ -393,9 +395,7 @@
       overflow: hidden;
       min-height: 58px;
       cursor: pointer;
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .pgi-choice:hover {
@@ -435,9 +435,8 @@
     }
 
     .pgi-choice.selected {
-      box-shadow:
-        0 0 0 3px #2c3e50,
-        0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 0 0 3px #2c3e50,
+                  0 4px 12px rgba(0,0,0,0.15);
       transform: scale(1.008);
     }
 
@@ -552,7 +551,6 @@
   </style>
 </head>
 
-
 <body>
 
   <div class="retour">
@@ -564,7 +562,6 @@
   <div class="subtitle">
     Tics et toxines
   </div>
-
 
   <!-- IDENTIFIANT -->
 
@@ -586,13 +583,36 @@
 
   </div>
 
+  <!-- NUMERO INJECTION -->
+
+  <div class="form-block id-block">
+
+    <label for="injectionNumber">
+      Numéro de l'injection :
+    </label>
+
+    <br>
+
+    <select id="injectionNumber" required>
+      <option value="">Sélectionner le numéro</option>
+      <option value="1">Injection 1</option>
+      <option value="2">Injection 2</option>
+      <option value="3">Injection 3</option>
+      <option value="4">Injection 4</option>
+      <option value="5">Injection 5</option>
+      <option value="6">Injection 6</option>
+      <option value="7">Injection 7</option>
+      <option value="8">Injection 8</option>
+      <option value="9">Injection 9</option>
+      <option value="10">Injection 10</option>
+    </select>
+
+  </div>
 
   <!-- EVA -->
 
   <div class="section-title">
-    <h2>
-      1. Échelle EVA – Évaluation de la douleur
-    </h2>
+    <h2>1. Échelle EVA – Évaluation de la douleur</h2>
   </div>
 
   <div class="scale-card">
@@ -608,10 +628,7 @@
 
     <div class="scale-wrapper">
 
-      <div
-        class="tick-labels"
-        id="painLabels">
-      </div>
+      <div class="tick-labels" id="painLabels"></div>
 
       <div class="range-container">
         <input
@@ -625,53 +642,38 @@
         >
       </div>
 
-      <div
-        class="ticks"
-        id="painTicks">
-      </div>
+      <div class="ticks" id="painTicks"></div>
 
       <div class="pain-descriptors">
 
         <div class="pain-level pain-0">
           AUCUNE<br>DOULEUR
-          <div class="face happy">
-            <div class="mouth"></div>
-          </div>
+          <div class="face happy"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level pain-1">
           DOULEUR<br>TRÈS LÉGÈRE
-          <div class="face happy">
-            <div class="mouth"></div>
-          </div>
+          <div class="face happy"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level pain-2">
           DOULEUR<br>LÉGÈRE
-          <div class="face neutral">
-            <div class="mouth"></div>
-          </div>
+          <div class="face neutral"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level pain-3">
           DOULEUR<br>MODÉRÉE
-          <div class="face sad">
-            <div class="mouth"></div>
-          </div>
+          <div class="face sad"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level pain-4">
           DOULEUR<br>SÉVÈRE
-          <div class="face sad">
-            <div class="mouth"></div>
-          </div>
+          <div class="face sad"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level pain-5">
           DOULEUR<br>TRÈS SÉVÈRE
-          <div class="face sad">
-            <div class="mouth"></div>
-          </div>
+          <div class="face sad"><div class="mouth"></div></div>
         </div>
 
       </div>
@@ -681,9 +683,7 @@
         <span>10 = douleur maximale imaginable</span>
       </div>
 
-      <div
-        class="selected-value"
-        id="painValue">
+      <div class="selected-value" id="painValue">
         Non répondu
       </div>
 
@@ -694,13 +694,10 @@
     </div>
   </div>
 
-
   <!-- PGI 1-7 -->
 
   <div class="section-title">
-    <h2>
-      2. Score PGI – Impression globale d’amélioration du tic
-    </h2>
+    <h2>2. Score PGI – Impression globale d’amélioration du tic</h2>
   </div>
 
   <div class="form-block">
@@ -720,9 +717,7 @@
         <div class="pgi-number">1</div>
         <div class="pgi-face">😃</div>
         <div class="pgi-label">TRÈS FORTEMENT AMÉLIORÉ</div>
-        <div class="pgi-description">
-          Amélioration très importante et nette du tic.
-        </div>
+        <div class="pgi-description">Amélioration très importante et nette du tic.</div>
       </label>
 
       <label class="pgi-choice pgi2">
@@ -730,9 +725,7 @@
         <div class="pgi-number">2</div>
         <div class="pgi-face">🙂</div>
         <div class="pgi-label">FORTEMENT AMÉLIORÉ</div>
-        <div class="pgi-description">
-          Amélioration importante du tic.
-        </div>
+        <div class="pgi-description">Amélioration importante du tic.</div>
       </label>
 
       <label class="pgi-choice pgi3">
@@ -740,9 +733,7 @@
         <div class="pgi-number">3</div>
         <div class="pgi-face">🙂</div>
         <div class="pgi-label">LÉGÈREMENT AMÉLIORÉ</div>
-        <div class="pgi-description">
-          Amélioration légère du tic.
-        </div>
+        <div class="pgi-description">Amélioration légère du tic.</div>
       </label>
 
       <label class="pgi-choice pgi4">
@@ -750,9 +741,7 @@
         <div class="pgi-number">4</div>
         <div class="pgi-face">😐</div>
         <div class="pgi-label">PAS DE CHANGEMENT</div>
-        <div class="pgi-description">
-          Aucun changement notable du tic.
-        </div>
+        <div class="pgi-description">Aucun changement notable du tic.</div>
       </label>
 
       <label class="pgi-choice pgi5">
@@ -760,9 +749,7 @@
         <div class="pgi-number">5</div>
         <div class="pgi-face">🙁</div>
         <div class="pgi-label">LÉGÈREMENT AGGRAVÉ</div>
-        <div class="pgi-description">
-          Aggravation légère du tic.
-        </div>
+        <div class="pgi-description">Aggravation légère du tic.</div>
       </label>
 
       <label class="pgi-choice pgi6">
@@ -770,9 +757,7 @@
         <div class="pgi-number">6</div>
         <div class="pgi-face">☹️</div>
         <div class="pgi-label">FORTEMENT AGGRAVÉ</div>
-        <div class="pgi-description">
-          Aggravation importante du tic.
-        </div>
+        <div class="pgi-description">Aggravation importante du tic.</div>
       </label>
 
       <label class="pgi-choice pgi7">
@@ -780,14 +765,11 @@
         <div class="pgi-number">7</div>
         <div class="pgi-face">☹️</div>
         <div class="pgi-label">TRÈS FORTEMENT AGGRAVÉ</div>
-        <div class="pgi-description">
-          Aggravation très importante et nette du tic.
-        </div>
+        <div class="pgi-description">Aggravation très importante et nette du tic.</div>
       </label>
 
     </div>
   </div>
-
 
   <!-- PGI 0-100 -->
 
@@ -805,10 +787,7 @@
 
     <div class="scale-wrapper">
 
-      <div
-        class="tick-labels"
-        id="pgiPercentLabels">
-      </div>
+      <div class="tick-labels" id="pgiPercentLabels"></div>
 
       <div class="range-container">
         <input
@@ -822,48 +801,33 @@
         >
       </div>
 
-      <div
-        class="ticks"
-        id="pgiPercentTicks">
-      </div>
+      <div class="ticks" id="pgiPercentTicks"></div>
 
-      <div
-        class="pain-descriptors"
-        style="grid-template-columns:repeat(5,1fr);">
+      <div class="pain-descriptors" style="grid-template-columns:repeat(5,1fr);">
 
         <div class="pain-level" style="color:#d71920;">
           AUCUNE<br>AMÉLIORATION
-          <div class="face sad">
-            <div class="mouth"></div>
-          </div>
+          <div class="face sad"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level" style="color:#ff6b1a;">
           AMÉLIORATION<br>LÉGÈRE
-          <div class="face neutral">
-            <div class="mouth"></div>
-          </div>
+          <div class="face neutral"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level" style="color:#e5a700;">
           AMÉLIORATION<br>MODÉRÉE
-          <div class="face happy">
-            <div class="mouth"></div>
-          </div>
+          <div class="face happy"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level" style="color:#55a63a;">
           AMÉLIORATION<br>IMPORTANTE
-          <div class="face happy">
-            <div class="mouth"></div>
-          </div>
+          <div class="face happy"><div class="mouth"></div></div>
         </div>
 
         <div class="pain-level" style="color:#08752b;">
           AMÉLIORATION<br>TOTALE
-          <div class="face happy">
-            <div class="mouth"></div>
-          </div>
+          <div class="face happy"><div class="mouth"></div></div>
         </div>
 
       </div>
@@ -873,9 +837,7 @@
         <span>100 % = disparition complète du tic</span>
       </div>
 
-      <div
-        class="selected-value"
-        id="pgiPercentValue">
+      <div class="selected-value" id="pgiPercentValue">
         Non répondu
       </div>
 
@@ -886,13 +848,10 @@
     </div>
   </div>
 
-
   <!-- EFFETS INDESIRABLES -->
 
   <div class="section-title">
-    <h2>
-      3. Effets indésirables
-    </h2>
+    <h2>3. Effets indésirables</h2>
   </div>
 
   <div class="form-block">
@@ -907,18 +866,12 @@
     <div class="options">
 
       <label>
-        <input
-          type="radio"
-          name="adverseYesNo"
-          value="1">
+        <input type="radio" name="adverseYesNo" value="1">
         Oui
       </label>
 
       <label>
-        <input
-          type="radio"
-          name="adverseYesNo"
-          value="0">
+        <input type="radio" name="adverseYesNo" value="0">
         Non
       </label>
 
@@ -926,39 +879,27 @@
 
     <div style="margin-top:25px;">
 
-      <p>
-        <strong>
-          Si oui, de quel(s) type(s) ?
-        </strong>
-      </p>
+      <p><strong>Si oui, de quel(s) type(s) ?</strong></p>
 
       <div class="options">
 
         <label>
-          <input
-            type="checkbox"
-            id="adverseWeakness">
+          <input type="checkbox" id="adverseWeakness">
           Faiblesse musculaire
         </label>
 
         <label>
-          <input
-            type="checkbox"
-            id="adversePain">
+          <input type="checkbox" id="adversePain">
           Douleur au point d’injection
         </label>
 
         <label>
-          <input
-            type="checkbox"
-            id="adverseSwallowing">
+          <input type="checkbox" id="adverseSwallowing">
           Troubles de la déglutition
         </label>
 
         <label>
-          <input
-            type="checkbox"
-            id="adverseOther">
+          <input type="checkbox" id="adverseOther">
           Autre
         </label>
 
@@ -974,25 +915,19 @@
     </div>
   </div>
 
-
   <!-- PUTS -->
 
   <div class="section-title">
-    <h2>
-      4. Premonitory Urge for Tics Scale (PUTS)
-    </h2>
+    <h2>4. Premonitory Urge for Tics Scale (PUTS)</h2>
   </div>
 
   <div id="putsQuestions"></div>
-
 
   <!-- TS-QOL -->
 
   <div class="section-title">
 
-    <h2>
-      5. Tourette Syndrome Quality of Life Scale (TS-QOL)
-    </h2>
+    <h2>5. Tourette Syndrome Quality of Life Scale (TS-QOL)</h2>
 
     <p>
       Les problèmes de santé peuvent affecter la qualité de vie
@@ -1005,13 +940,10 @@
 
   <div id="tsqolQuestions"></div>
 
-
   <!-- SATISFACTION -->
 
   <div class="section-title">
-    <h2>
-      6. Satisfaction globale de vie
-    </h2>
+    <h2>6. Satisfaction globale de vie</h2>
   </div>
 
   <div class="scale-card">
@@ -1023,10 +955,7 @@
 
     <div class="scale-wrapper">
 
-      <div
-        class="tick-labels"
-        id="lifeLabels">
-      </div>
+      <div class="tick-labels" id="lifeLabels"></div>
 
       <div class="range-container">
         <input
@@ -1040,10 +969,7 @@
         >
       </div>
 
-      <div
-        class="ticks"
-        id="lifeTicks">
-      </div>
+      <div class="ticks" id="lifeTicks"></div>
 
       <div class="life-extremes">
 
@@ -1059,9 +985,7 @@
 
       </div>
 
-      <div
-        class="selected-value"
-        id="lifeValue">
+      <div class="selected-value" id="lifeValue">
         Non répondu
       </div>
 
@@ -1072,13 +996,9 @@
     </div>
   </div>
 
-
-  <button
-    type="button"
-    onclick="generateCSV()">
+  <button type="button" onclick="generateCSV()">
     Télécharger en CSV
   </button>
-
 
   <script>
 
@@ -1105,7 +1025,6 @@
       { label: "Plutôt", value: 3 },
       { label: "Beaucoup", value: 4 }
     ];
-
 
     /* ========================================================
        TS-QOL
@@ -1149,21 +1068,15 @@
       { label: "Problème très important", value: 4 }
     ];
 
+    /* CREATION PUTS */
 
-    /* ========================================================
-       CREATION PUTS
-       ======================================================== */
-
-    const putsContainer =
-      document.getElementById("putsQuestions");
+    const putsContainer = document.getElementById("putsQuestions");
 
     putsItems.forEach((q, i) => {
 
-      const div =
-        document.createElement("div");
+      const div = document.createElement("div");
 
-      div.className =
-        "form-block question";
+      div.className = "form-block question";
 
       div.innerHTML =
         `<p>${i + 1}. ${q}</p>` +
@@ -1183,21 +1096,15 @@
 
     });
 
+    /* CREATION TS-QOL */
 
-    /* ========================================================
-       CREATION TS-QOL
-       ======================================================== */
-
-    const tsqolContainer =
-      document.getElementById("tsqolQuestions");
+    const tsqolContainer = document.getElementById("tsqolQuestions");
 
     tsqolItems.forEach((q, i) => {
 
-      const div =
-        document.createElement("div");
+      const div = document.createElement("div");
 
-      div.className =
-        "form-block question";
+      div.className = "form-block question";
 
       const text =
         [18,19,22].includes(i)
@@ -1222,40 +1129,21 @@
 
     });
 
+    /* ECHELLES */
 
-    /* ========================================================
-       ECHELLES
-       ======================================================== */
+    function createScale(labelsId, ticksId, values, suffix = "") {
 
-    function createScale(
-      labelsId,
-      ticksId,
-      values,
-      suffix = ""
-    ) {
-
-      const labels =
-        document.getElementById(labelsId);
-
-      const ticks =
-        document.getElementById(ticksId);
+      const labels = document.getElementById(labelsId);
+      const ticks = document.getElementById(ticksId);
 
       values.forEach(v => {
 
-        const span =
-          document.createElement("span");
-
-        span.textContent =
-          v + suffix;
-
+        const span = document.createElement("span");
+        span.textContent = v + suffix;
         labels.appendChild(span);
 
-        const tick =
-          document.createElement("div");
-
-        tick.className =
-          "tick";
-
+        const tick = document.createElement("div");
+        tick.className = "tick";
         ticks.appendChild(tick);
 
       });
@@ -1281,42 +1169,27 @@
       [0,10,20,30,40,50,60,70,80,90,100]
     );
 
+    /* SLIDERS */
 
-    /* ========================================================
-       SLIDERS
-       ======================================================== */
+    function configureSlider(sliderId, valueId, suffix) {
 
-    function configureSlider(
-      sliderId,
-      valueId,
-      suffix
-    ) {
-
-      const slider =
-        document.getElementById(sliderId);
-
-      const box =
-        document.getElementById(valueId);
+      const slider = document.getElementById(sliderId);
+      const box = document.getElementById(valueId);
 
       let answered = false;
 
-      slider.addEventListener(
-        "input",
-        () => {
+      slider.addEventListener("input", () => {
 
-          answered = true;
+        answered = true;
 
-          slider.classList.remove(
-            "untouched"
-          );
+        slider.classList.remove("untouched");
 
-          box.textContent =
-            "Valeur sélectionnée : " +
-            slider.value +
-            suffix;
+        box.textContent =
+          "Valeur sélectionnée : " +
+          slider.value +
+          suffix;
 
-        }
-      );
+      });
 
       return () =>
         answered
@@ -1346,72 +1219,51 @@
         " / 100"
       );
 
-
-    /* ========================================================
-       PGI 1-7 VISUEL
-       ======================================================== */
+    /* PGI 1-7 VISUEL */
 
     const pgiRadios =
-      document.querySelectorAll(
-        'input[name="pgiGlobal"]'
-      );
+      document.querySelectorAll('input[name="pgiGlobal"]');
 
     pgiRadios.forEach(radio => {
 
-      radio.addEventListener(
-        "change",
-        () => {
+      radio.addEventListener("change", () => {
 
-          document
-            .querySelectorAll(".pgi-choice")
-            .forEach(choice => {
-              choice.classList.remove("selected");
-            });
+        document
+          .querySelectorAll(".pgi-choice")
+          .forEach(choice => {
+            choice.classList.remove("selected");
+          });
 
-          radio
-            .closest(".pgi-choice")
-            .classList.add("selected");
+        radio
+          .closest(".pgi-choice")
+          .classList.add("selected");
 
-        }
-      );
+      });
 
     });
 
-
-    /* ========================================================
-       EFFETS INDESIRABLES
-       ======================================================== */
+    /* EFFETS INDESIRABLES */
 
     const adverseOther =
-      document.getElementById(
-        "adverseOther"
-      );
+      document.getElementById("adverseOther");
 
     const adverseOtherText =
-      document.getElementById(
-        "adverseOtherText"
-      );
+      document.getElementById("adverseOtherText");
 
-    adverseOther.addEventListener(
-      "change",
-      () => {
+    adverseOther.addEventListener("change", () => {
 
-        adverseOtherText.style.display =
-          adverseOther.checked
-          ? "block"
-          : "none";
+      adverseOtherText.style.display =
+        adverseOther.checked
+        ? "block"
+        : "none";
 
-        if (!adverseOther.checked) {
-          adverseOtherText.value = "";
-        }
-
+      if (!adverseOther.checked) {
+        adverseOtherText.value = "";
       }
-    );
 
+    });
 
-    /* ========================================================
-       UTILITAIRES
-       ======================================================== */
+    /* UTILITAIRES */
 
     function getRadioValue(name) {
 
@@ -1433,7 +1285,6 @@
 
     }
 
-
     /* ========================================================
        EXPORT CSV
        ======================================================== */
@@ -1453,19 +1304,32 @@
         );
 
         return;
+      }
 
+      /* NUMERO INJECTION */
+
+      const injectionNumber =
+        document
+          .getElementById("injectionNumber")
+          .value;
+
+      if (!injectionNumber) {
+
+        alert(
+          "Veuillez sélectionner le numéro de l'injection avant d’exporter."
+        );
+
+        return;
       }
 
       let csv =
-        `Identifiant;${escapeCSV(patientId)}\n\n` +
+        `Identifiant;${escapeCSV(patientId)}\n` +
+        `Injection;${escapeCSV(injectionNumber)}\n\n` +
         `Numéro;Question;Réponse\n`;
 
       let n = 1;
 
-      function addRow(
-        question,
-        response
-      ) {
+      function addRow(question, response) {
 
         csv +=
           `"${n}";` +
@@ -1476,185 +1340,103 @@
 
       }
 
-
-      /* ======================================================
-         1 EVA
-         ====================================================== */
+      /* 1 EVA */
 
       addRow(
         "EVA douleur en lien avec le tic",
         getPain()
       );
 
-
-      /* ======================================================
-         2 PGI 1-7
-         ====================================================== */
+      /* 2 PGI 1-7 */
 
       addRow(
         "PGI impression globale d'amélioration du tic (1-7)",
         getRadioValue("pgiGlobal")
       );
 
-
-      /* ======================================================
-         3 PGI 0-100
-         ====================================================== */
+      /* 3 PGI 0-100 */
 
       addRow(
         "PGI amélioration globale du tic (%)",
         getPGIPercent()
       );
 
-
-      /* ======================================================
-         4-9 EFFETS INDESIRABLES
-         TOUJOURS EXACTEMENT 6 LIGNES
-         ====================================================== */
+      /* 4-9 EFFETS INDESIRABLES */
 
       const adverseYN =
-        getRadioValue(
-          "adverseYesNo"
-        );
+        getRadioValue("adverseYesNo");
 
-      let adverseMain =
-        adverseYN;
+      let adverseMain = adverseYN;
 
-      let weaknessResponse =
-        "Non répondu";
+      let weaknessResponse = "Non répondu";
+      let painInjectionResponse = "Non répondu";
+      let swallowingResponse = "Non répondu";
+      let otherPresence = "Non répondu";
+      let otherTextResponse = "Non répondu";
 
-      let painInjectionResponse =
-        "Non répondu";
-
-      let swallowingResponse =
-        "Non répondu";
-
-      let otherPresence =
-        "Non répondu";
-
-      let otherTextResponse =
-        "Non répondu";
-
-
-      /*
-         AUCUNE REPONSE A LA QUESTION PRINCIPALE
-         => toutes les variables restent
-         "Non répondu"
-      */
+      /* Aucune réponse */
 
       if (adverseYN === "Non répondu") {
 
-        adverseMain =
-          "Non répondu";
-
-        weaknessResponse =
-          "Non répondu";
-
-        painInjectionResponse =
-          "Non répondu";
-
-        swallowingResponse =
-          "Non répondu";
-
-        otherPresence =
-          "Non répondu";
-
-        otherTextResponse =
-          "Non répondu";
+        adverseMain = "Non répondu";
+        weaknessResponse = "Non répondu";
+        painInjectionResponse = "Non répondu";
+        swallowingResponse = "Non répondu";
+        otherPresence = "Non répondu";
+        otherTextResponse = "Non répondu";
 
       }
 
-
-      /*
-         NON EXPLICITE
-         => tout à 0
-      */
+      /* NON explicite */
 
       else if (adverseYN === "0") {
 
         adverseMain = 0;
-
         weaknessResponse = 0;
-
         painInjectionResponse = 0;
-
         swallowingResponse = 0;
-
         otherPresence = 0;
-
         otherTextResponse = 0;
 
       }
 
-
-      /*
-         OUI EXPLICITE
-      */
+      /* OUI explicite */
 
       else if (adverseYN === "1") {
 
         adverseMain = 1;
 
-
         weaknessResponse =
-
           document
-            .getElementById(
-              "adverseWeakness"
-            )
+            .getElementById("adverseWeakness")
             .checked
-
           ? 1
           : 0;
-
 
         painInjectionResponse =
-
           document
-            .getElementById(
-              "adversePain"
-            )
+            .getElementById("adversePain")
             .checked
-
           ? 1
           : 0;
-
 
         swallowingResponse =
-
           document
-            .getElementById(
-              "adverseSwallowing"
-            )
+            .getElementById("adverseSwallowing")
             .checked
-
           ? 1
           : 0;
-
 
         otherPresence =
-
           adverseOther.checked
-
           ? 1
           : 0;
-
-
-        /*
-           Autre absent
-           => précision = 0
-        */
 
         if (!adverseOther.checked) {
 
           otherTextResponse = 0;
 
         }
-
-
-        /*
-           Autre présent
-        */
 
         else {
 
@@ -1663,22 +1445,11 @@
               .value
               .trim();
 
-
-          /*
-             Texte renseigné
-          */
-
           if (txt !== "") {
 
-            otherTextResponse =
-              txt;
+            otherTextResponse = txt;
 
           }
-
-
-          /*
-             Autre coché mais pas précisé
-          */
 
           else {
 
@@ -1691,133 +1462,95 @@
 
       }
 
-
       addRow(
         "Effets indésirables après toxine botulique",
         adverseMain
       );
-
 
       addRow(
         "Effet indésirable - Faiblesse musculaire",
         weaknessResponse
       );
 
-
       addRow(
         "Effet indésirable - Douleur au point d'injection",
         painInjectionResponse
       );
-
 
       addRow(
         "Effet indésirable - Troubles de la déglutition",
         swallowingResponse
       );
 
-
       addRow(
         "Effet indésirable - Autre - Présence",
         otherPresence
       );
-
 
       addRow(
         "Effet indésirable - Autre - Précision",
         otherTextResponse
       );
 
+      /* PUTS : 10 lignes */
 
-      /* ======================================================
-         PUTS
-         10 lignes
-         ====================================================== */
+      putsItems.forEach((q, i) => {
 
-      putsItems.forEach(
-        (q, i) => {
+        addRow(
+          `PUTS ${i + 1} - ${q}`,
+          getRadioValue(`puts${i + 1}`)
+        );
 
-          addRow(
-            `PUTS ${i + 1} - ${q}`,
-            getRadioValue(
-              `puts${i + 1}`
-            )
-          );
+      });
 
-        }
-      );
+      /* TS-QOL : 27 lignes */
 
+      tsqolItems.forEach((q, i) => {
 
-      /* ======================================================
-         TS-QOL
-         27 lignes
-         ====================================================== */
+        addRow(
+          `TS-QOL ${i + 1} - ${q}`,
+          getRadioValue(`tsqol${i + 1}`)
+        );
 
-      tsqolItems.forEach(
-        (q, i) => {
+      });
 
-          addRow(
-            `TS-QOL ${i + 1} - ${q}`,
-            getRadioValue(
-              `tsqol${i + 1}`
-            )
-          );
-
-        }
-      );
-
-
-      /* ======================================================
-         SATISFACTION
-         ====================================================== */
+      /* SATISFACTION */
 
       addRow(
         "Satisfaction globale de vie",
         getLife()
       );
 
+      /* TELECHARGEMENT */
 
-      /* ======================================================
-         TELECHARGEMENT
-         ====================================================== */
-
-      const BOM =
-        "\uFEFF";
+      const BOM = "\uFEFF";
 
       const blob =
         new Blob(
           [BOM + csv],
           {
-            type:
-              "text/csv;charset=utf-8;"
+            type: "text/csv;charset=utf-8;"
           }
         );
 
       const link =
-        document.createElement(
-          "a"
-        );
+        document.createElement("a");
 
       link.href =
-        URL.createObjectURL(
-          blob
-        );
+        URL.createObjectURL(blob);
+
+      /* ID + questionnaire + numéro d'injection */
 
       link.download =
-        `${patientId}_POST-INJECTION_resultats.csv`;
+        `${patientId}_POST-INJECTION_INJ${injectionNumber}_resultats.csv`;
 
-      document.body.appendChild(
-        link
-      );
+      document.body.appendChild(link);
 
       link.click();
 
-      document.body.removeChild(
-        link
-      );
+      document.body.removeChild(link);
 
-      URL.revokeObjectURL(
-        link.href
-      );
+      URL.revokeObjectURL(link.href);
 
     }
 
