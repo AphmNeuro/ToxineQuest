@@ -2,8 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Questionnaire BDI‑II</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bilan pré-chirurgical – Syndrome de Gilles de la Tourette</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -12,15 +19,23 @@
       text-align: center;
       color: #2c3e50;
     }
+
     h1 {
-      margin-bottom: 40px;
+      margin: 20px 0 8px;
       font-size: 32px;
     }
+
+    .subtitle {
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
     .retour {
       position: absolute;
       top: 20px;
       left: 20px;
     }
+
     .retour a {
       text-decoration: none;
       color: #ffffff;
@@ -28,150 +43,2010 @@
       padding: 8px 14px;
       border-radius: 8px;
       font-size: 14px;
-      transition: background-color 0.3s ease;
     }
+
     .retour a:hover {
       background-color: #1a242f;
     }
-    .identifiant {
+
+    .form-block,
+    .scale-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+      padding: 25px 30px;
+      margin: 30px auto;
+      max-width: 950px;
+      text-align: left;
+    }
+
+    .scale-card {
+      text-align: center;
+    }
+
+    .id-block {
       background: #e0e0e0;
-      padding: 15px 25px;
-      border-radius: 12px;
+      box-shadow: none;
+    }
+
+    .id-block label {
+      font-weight: bold;
+    }
+
+    .id-block input {
+      width: 100%;
+      max-width: 320px;
+      padding: 9px;
+      margin-top: 8px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .section-title {
+      background: #2c3e50;
+      color: #ffffff;
+      padding: 18px 25px;
+      border-radius: 14px;
+      max-width: 950px;
+      margin: 55px auto 20px;
       text-align: left;
-      max-width: 900px;
-      margin: 0 auto 30px;
     }
-    .identifiant label { font-weight: bold; }
-    .identifiant input {
-      width: 300px;
-      padding: 8px;
-      margin-top: 5px;
+
+    .section-title h2 {
+      color: white;
+      margin: 0;
+      font-size: 22px;
     }
-    .instruction {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 25px 30px;
-      margin: 30px auto;
-      max-width: 900px;
-      text-align: left;
+
+    .section-title p {
+      margin: 8px 0 0;
+      line-height: 1.5;
     }
-    .question {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 25px 30px;
-      margin: 30px auto;
-      max-width: 900px;
-      text-align: left;
-      transition: transform 0.2s ease;
-    }
-    .question:hover { transform: scale(1.01); }
+
     .question p {
       font-weight: bold;
       font-size: 16px;
-      margin-bottom: 10px;
+      line-height: 1.5;
+      margin-bottom: 15px;
     }
-    label {
-      display: block;
-      margin: 5px 0;
-      font-size: 15px;
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .options label {
       cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 7px;
+      font-size: 15px;
+      line-height: 1.4;
     }
-    input[type="radio"] { margin-right: 6px; }
+
+    .options label:hover {
+      background-color: #edf6f7;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px;
+      transform: scale(1.15);
+    }
+
+    .conditional-block {
+      margin-top: 18px;
+      padding: 15px 18px;
+      background: #f4f7f8;
+      border-left: 4px solid #54A9AE;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .conditional-block p {
+      font-weight: bold;
+    }
+
+    .free-text {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
     button {
       background-color: #3498db;
       color: white;
       border: none;
-      padding: 12px 25px;
+      padding: 14px 30px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 30px;
-      transition: background-color 0.3s ease;
+      font-size: 17px;
+      margin: 40px 0 55px;
     }
-    button:hover { background-color: #2980b9; }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    /* ======================================================
+       ECHELLES VISUELLES
+       ====================================================== */
+
+    .scale-instruction {
+      line-height: 1.5;
+      margin-bottom: 28px;
+      font-size: 16px;
+    }
+
+    .scale-wrapper {
+      width: 92%;
+      margin: 0 auto;
+    }
+
+    .tick-labels {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0 0 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .range-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 8px;
+      margin: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      display: block;
+    }
+
+    .pain-range {
+      background: linear-gradient(
+        to right,
+        #15a54a 0%,
+        #8fc640 20%,
+        #f6d41f 40%,
+        #ff9819 60%,
+        #f44b23 80%,
+        #e51b24 100%
+      );
+    }
+
+    .life-range {
+      background: #4b5964;
+      height: 5px !important;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid #2c3e50;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid #2c3e50;
+    }
+
+    input[type="range"].untouched::-webkit-slider-thumb {
+      opacity: 0;
+    }
+
+    input[type="range"].untouched::-moz-range-thumb {
+      opacity: 0;
+    }
+
+    .ticks {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 22px;
+    }
+
+    .tick {
+      width: 1px;
+      height: 15px;
+      background-color: #2c3e50;
+      margin-top: 4px;
+    }
+
+    .selected-value {
+      display: inline-block;
+      min-width: 180px;
+      background: #e8eef1;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-top: 25px;
+      font-weight: bold;
+    }
+
+    .missing-note {
+      font-size: 13px;
+      color: #607080;
+      margin-top: 10px;
+    }
+
+    .scale-extremes {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .pain-descriptors {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin-top: 18px;
+      gap: 5px;
+    }
+
+    .pain-level {
+      font-size: 12px;
+      font-weight: bold;
+      min-height: 100px;
+      padding: 8px 3px;
+      border-right: 1px dotted #aaa;
+    }
+
+    .pain-level:last-child {
+      border-right: none;
+    }
+
+    .face {
+      margin: 12px auto 0;
+      width: 48px;
+      height: 48px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .face::before,
+    .face::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      width: 5px;
+      height: 5px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+
+    .face::before {
+      left: 11px;
+    }
+
+    .face::after {
+      right: 11px;
+    }
+
+    .mouth {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 10px;
+      bottom: 8px;
+    }
+
+    .happy .mouth {
+      border-bottom: 2px solid currentColor;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .neutral .mouth {
+      border-bottom: 2px solid currentColor;
+      bottom: 13px;
+    }
+
+    .sad .mouth {
+      border-top: 2px solid currentColor;
+      border-radius: 20px 20px 0 0;
+      bottom: 5px;
+    }
+
+    .pain-0 { color:#159447; }
+    .pain-1 { color:#65ad40; }
+    .pain-2 { color:#e5a700; }
+    .pain-3 { color:#f27822; }
+    .pain-4 { color:#ef3b2c; }
+    .pain-5 { color:#d71920; }
+
+    .life-extremes {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 22px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .life-end {
+      width: 230px;
+    }
+
+    .life-face {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 750px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      h1 {
+        margin-top: 55px;
+        font-size: 25px;
+      }
+
+      .form-block,
+      .scale-card {
+        padding: 20px;
+      }
+
+      .scale-wrapper {
+        width: 100%;
+      }
+
+      .pain-descriptors {
+        grid-template-columns: repeat(3,1fr);
+      }
+
+      .life-end {
+        width: 45%;
+      }
+    }
   </style>
 </head>
+
 <body>
+
   <div class="retour">
     <a href="index.html">← Retour</a>
   </div>
 
-  <h1>Questionnaire BDI‑II</h1>
+  <h1>Bilan pré-chirurgical</h1>
+  <div class="subtitle">Syndrome de Gilles de la Tourette – Autoquestionnaires</div>
 
-  <div class="identifiant">
-    <label for="identifiant">Identifiant Patient :</label>
-    <input type="text" id="identifiant" placeholder="Ex : ABC456">
+  <!-- ======================================================
+       IDENTIFIANT
+       ====================================================== -->
+
+  <div class="form-block id-block">
+    <label for="patientId">Identifiant Patient :</label><br>
+    <input
+      type="text"
+      id="patientId"
+      placeholder="Ex : 002STESY"
+      autocomplete="off"
+      required
+    >
   </div>
 
-  <div class="instruction">
-    <h2>Instructions</h2>
-    <p>Ce questionnaire comporte 21 groupes d’énoncés. Veuillez lire avec soin chacun d’entre eux puis sélectionnez l’énoncé correspondant le mieux à ce que vous avez ressenti au cours des deux dernières semaines, y compris aujourd’hui.<br>
-    Si dans un groupe, plusieurs réponses semblent décrire exactement ce que vous ressentez, choisissez le chiffre le plus élevé.</p>
+
+  <!-- ======================================================
+       1 EVA
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>1. Échelle EVA : Évaluation de la douleur</h2>
   </div>
 
-  <form id="bdiForm">
-    <div id="questions"></div>
-    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
-  </form>
+  <div class="scale-card">
 
-  <script>
-    const questions = [
-      ["Tristesse", ["Je ne me sens pas triste.", "Je me sens très souvent triste.", "Je suis tout le temps triste.", "Je suis si triste ou si malheureux(se) que ce n'est pas supportable."]],
-      ["Pessimisme", ["Je ne suis pas découragé(e) face à mon avenir.", "Je me sens plus découragé(e) qu'avant face à mon avenir.", "Je ne m'attends pas à ce que les choses s'arrangent pour moi.", "J'ai le sentiment que mon avenir est sans espoir et qu'il ne peut qu'empirer."]],
-      ["Échecs dans le passé", ["Je n'ai pas le sentiment d'avoir échoué dans la vie, d'être un(e) raté(e).", "J'ai échoué plus souvent que je n'aurais dû.", "Quand je pense à mon passé, je constate un grand nombre d'échecs.", "J'ai le sentiment d'avoir complètement raté ma vie."]],
-      ["Perte de plaisir", ["J'éprouve toujours autant de plaisir qu'avant aux choses qui me plaisent.", "Je n'éprouve pas autant de plaisir aux choses qu'avant.", "J'éprouve très peu de plaisir aux choses qui me plaisaient habituellement.", "Je n'éprouve aucun plaisir aux choses qui me plaisaient habituellement."]],
-      ["Sentiments de culpabilité", ["Je ne me sens pas particulièrement coupable.", "Je me sens coupable pour bien des choses que j'ai faites ou que j'aurais dû faire.", "Je me sens coupable la plupart du temps.", "Je me sens tout le temps coupable."]],
-      ["Sentiment d'être puni(e)", ["Je n'ai pas le sentiment d'être puni(e).", "Je sens que je pourrais être puni(e).", "Je m'attends à être puni(e).", "J'ai le sentiment d'être puni(e)."]],
-      ["Sentiments négatifs envers soi-même", ["Mes sentiments envers moi-même n'ont pas changé.", "J'ai perdu confiance en moi.", "Je suis déçu(e) par moi-même.", "Je ne m'aime pas du tout."]],
-      ["Attitude critique envers soi", ["Je ne me blâme pas ou ne me critique pas plus que d'habitude.", "Je suis plus critique envers moi-même que je ne l'étais.", "Je me reproche tous mes défauts.", "Je me reproche tous les malheurs qui arrivent."]],
-      ["Pensées ou désirs de suicide", ["Je ne pense pas du tout à me suicider.", "Il m'arrive de penser à me suicider, mais je ne le ferai pas.", "J'aimerais me suicider.", "Je me suiciderais si l'occasion se présentait."]],
-      ["Pleurs", ["Je ne pleure pas plus qu'avant.", "Je pleure plus qu'avant.", "Je pleure pour la moindre petite chose.", "Je voudrais pleurer mais je ne suis pas capable."]],
-      ["Agitation", ["Je ne suis pas plus agité(e) ou plus tendu(e) que d'habitude.", "Je me sens plus agité(e) ou tendu(e) que d'habitude.", "Je suis si agité(e) ou tendu(e) que j'ai du mal à rester tranquille.", "Je suis si agité(e) ou tendu(e) que je dois continuellement bouger ou faire quelque chose."]],
-      ["Perte d’intérêt", ["Je n'ai pas perdu d'intérêt pour les gens ou pour les activités.", "Je m'intéresse moins qu'avant aux gens et aux choses.", "Je ne m'intéresse presque plus aux gens et aux choses.", "J'ai du mal à m'intéresser à quoique ce soit."]],
-      ["Indécision", ["Je prends des décisions toujours aussi bien qu'avant.", "Il m'est plus difficile que d'habitude de prendre des décisions.", "J'ai beaucoup plus de mal qu'avant à prendre des décisions.", "J'ai du mal à prendre n'importe quelle décision."]],
-      ["Dévalorisation", ["Je pense être quelqu'un de valable.", "Je ne crois pas avoir autant de valeur ni être aussi utile qu'avant.", "Je me sens moins valable que les autres.", "Je sens que je ne vaux absolument rien."]],
-      ["Perte d’énergie", ["J'ai toujours autant d'énergie qu'avant.", "J'ai moins d'énergie qu'avant.", "Je n'ai pas assez d'énergie pour pouvoir faire grand-chose.", "J'ai trop peu d'énergie pour faire quoi que ce soit."]],
-      ["Modifications du sommeil", ["Mes habitudes de sommeil n'ont pas changé.", "Je dors un peu plus / moins que d'habitude.", "Je dors beaucoup plus / beaucoup moins que d'habitude.", "Je dors presque toute la journée / je me réveille très tôt sans pouvoir me rendormir."]],
-      ["Irritabilité", ["Je ne suis pas plus irritable que d'habitude.", "Je suis plus irritable que d'habitude.", "Je suis beaucoup plus irritable que d'habitude.", "Je suis constamment irritable."]],
-      ["Modifications de l’appétit", ["Mon appétit n'a pas changé.", "Un peu plus ou moins d'appétit que d'habitude.", "Beaucoup plus ou beaucoup moins d'appétit que d'habitude.", "Pas d'appétit du tout / envie constante de manger."]],
-      ["Concentration", ["Je parviens à me concentrer toujours aussi bien qu'avant.", "Je ne parviens pas à me concentrer aussi bien que d'habitude.", "J'ai du mal à me concentrer longtemps sur quoi que ce soit.", "Je me trouve incapable de me concentrer sur quoi que ce soit."]],
-      ["Fatigue", ["Je ne suis pas plus fatigué(e) que d'habitude.", "Je me fatigue plus facilement que d'habitude.", "Je suis trop fatigué(e) pour faire un grand nombre de choses que je faisais avant.", "Je suis trop fatigué(e) pour faire la plupart des choses que je faisais avant."]],
-      ["Perte d’intérêt sexuel", ["Je n'ai pas noté de changement récent dans mon intérêt pour le sexe.", "Le sexe m'intéresse moins qu'avant.", "Le sexe m'intéresse beaucoup moins maintenant.", "J'ai perdu tout intérêt pour le sexe."]]
-    ];
+    <div class="scale-instruction">
+      Sur cette échelle, veuillez indiquer l’intensité de votre douleur actuelle.<br>
+      Déplacez le curseur sur la valeur correspondant le mieux à votre ressenti.
+    </div>
 
-    const container = document.getElementById('questions');
-    questions.forEach(([title, options], i) => {
-      const div = document.createElement('div');
-      div.className = 'question';
-      div.innerHTML = `<p>${i + 1}. ${title}</p>` +
-        options.map((opt, j) => `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`).join('');
-      container.appendChild(div);
+    <div class="scale-wrapper">
+
+      <div class="tick-labels" id="painLabels"></div>
+
+      <div class="range-container">
+        <input
+          type="range"
+          id="evaPain"
+          class="pain-range untouched"
+          min="0"
+          max="10"
+          step="1"
+          value="5"
+        >
+      </div>
+
+      <div class="ticks" id="painTicks"></div>
+
+      <div class="pain-descriptors">
+
+        <div class="pain-level pain-0">
+          AUCUNE<br>DOULEUR
+          <div class="face happy"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level pain-1">
+          DOULEUR<br>TRÈS LÉGÈRE
+          <div class="face happy"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level pain-2">
+          DOULEUR<br>LÉGÈRE
+          <div class="face neutral"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level pain-3">
+          DOULEUR<br>MODÉRÉE
+          <div class="face sad"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level pain-4">
+          DOULEUR<br>SÉVÈRE
+          <div class="face sad"><div class="mouth"></div></div>
+        </div>
+
+        <div class="pain-level pain-5">
+          DOULEUR<br>TRÈS SÉVÈRE
+          <div class="face sad"><div class="mouth"></div></div>
+        </div>
+
+      </div>
+
+      <div class="scale-extremes">
+        <span>0 = aucune douleur</span>
+        <span>10 = douleur maximale imaginable</span>
+      </div>
+
+      <div class="selected-value" id="painValue">
+        Non répondu
+      </div>
+
+      <div class="missing-note">
+        Le curseur doit être déplacé pour enregistrer une réponse.
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ======================================================
+       2 TS-QOL
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>2. Tourette Syndrome Quality of Life Scale (TS-QOL)</h2>
+    <p>
+      Les problèmes de santé peuvent affecter la qualité de vie d’une personne
+      de différentes manières. Ce questionnaire étudie la manière dont votre
+      maladie influe sur votre bien-être. Merci de mettre une croix dans la case
+      correspondant à la réponse la plus adaptée à votre ressenti et de répondre
+      à toutes les questions. Il est à noter que cette liste inclut de nombreux
+      problèmes que vous ne rencontrerez probablement jamais.
+    </p>
+  </div>
+
+  <div id="tsqolQuestions"></div>
+
+
+  <!-- SATISFACTION DE VIE -->
+
+  <div class="scale-card">
+
+    <div class="scale-instruction">
+      Merci d’indiquer à quel point vous vous sentez dans l’ensemble satisfait
+      de votre vie en ce moment, en mettant une croix entre 0 et 100 sur la ligne
+      ci-dessous.
+    </div>
+
+    <div class="scale-wrapper">
+
+      <div class="tick-labels" id="lifeLabels"></div>
+
+      <div class="range-container">
+        <input
+          type="range"
+          id="lifeSatisfaction"
+          class="life-range untouched"
+          min="0"
+          max="100"
+          step="1"
+          value="50"
+        >
+      </div>
+
+      <div class="ticks" id="lifeTicks"></div>
+
+      <div class="life-extremes">
+
+        <div class="life-end">
+          <span class="life-face">☹</span>
+          Extrêmement insatisfait de ma vie
+        </div>
+
+        <div class="life-end">
+          <span class="life-face">☺</span>
+          Extrêmement satisfait de ma vie
+        </div>
+
+      </div>
+
+      <div class="selected-value" id="lifeValue">
+        Non répondu
+      </div>
+
+      <div class="missing-note">
+        Le curseur doit être déplacé pour enregistrer une réponse.
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ======================================================
+       3 PUTS
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>3. Questionnaire Premonitory Urge for Tics Scale (PUTS)</h2>
+  </div>
+
+  <div id="putsQuestions"></div>
+
+
+  <!-- ======================================================
+       4 BDI
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>4. Beck Depression Inventory (BDI)</h2>
+    <p>
+      Pour chacun des groupes d’énoncés suivants, entourez le chiffre
+      qui décrit le mieux votre état.
+    </p>
+  </div>
+
+  <div id="bdiQuestions"></div>
+
+
+  <!-- ======================================================
+       5 STAI Y-A
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>5. STAI Forme Y-A</h2>
+    <p>
+      Un certain nombre de phrases que l'on utilise pour se décrire sont données
+      ci-dessous. Lisez chaque phrase, puis marquez d'une croix, parmi les quatre
+      points à droite, celui qui correspond le mieux à ce que vous ressentez à
+      l'instant, juste en ce moment. Il n'y a pas de bonnes ni de mauvaises
+      réponses. Ne passez pas trop de temps sur l'une ou l'autre de ces
+      propositions, et indiquez la réponse qui décrit le mieux vos sentiments
+      actuels.
+    </p>
+  </div>
+
+  <div id="staiYAQuestions"></div>
+
+
+  <!-- ======================================================
+       6 STAI Y-B
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>6. STAI Forme Y-B</h2>
+    <p>
+      Un certain nombre de phrases que l'on utilise pour se décrire sont données
+      ci-dessous. Lisez chaque phrase, puis marquez d'une croix, parmi les
+      4 points à droite, celui qui correspond le mieux à ce que vous ressentez
+      généralement. Il n'y a pas de bonnes ni de mauvaises réponses. Ne passez
+      pas trop de temps sur l'une ou l'autre de ces propositions et indiquez la
+      réponse qui décrit le mieux vos sentiments habituels.
+    </p>
+  </div>
+
+  <div id="staiYBQuestions"></div>
+
+
+  <!-- ======================================================
+       7 OCI
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>7. Obsessive Compulsive Inventory (OCI)</h2>
+    <p>
+      Les énoncés suivants se rapportent à des expériences que de nombreuses
+      personnes vivent dans leur quotidien. Entourez les chiffres qui décrivent
+      le mieux à quel point l’expérience vous a peiné ou dérangé durant le mois
+      dernier.
+    </p>
+  </div>
+
+  <div id="ociQuestions"></div>
+
+
+  <!-- ======================================================
+       8 ASRS
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>8. Adult ADHD Self-Report Scale (ASRS)</h2>
+    <p>
+      Répondez aux questions suivantes en vous auto-évaluant sur chacun des
+      critères à l’aide de l’échelle proposée. Pour répondre aux questions,
+      cochez la case qui décrit le mieux vos sentiments ou vos comportements
+      au cours des six derniers mois.
+    </p>
+  </div>
+
+  <div id="asrsQuestions"></div>
+
+
+  <!-- ======================================================
+       9 BIS-11
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>9. Barratt Impulsiveness Scale (BIS-11)</h2>
+    <p>
+      Les gens agissent et réfléchissent différemment devant des situations
+      variées. Ce questionnaire a pour but d'évaluer certaines de vos façons
+      d'agir et de réfléchir. Lisez chaque énoncé et NOIRCISSEZ LE CERCLE
+      APPROPRIÉ situé à droite de l’affirmation. Répondez vite et honnêtement.
+    </p>
+  </div>
+
+  <div id="bisQuestions"></div>
+
+
+  <!-- ======================================================
+       10 QA
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>10. Quotient du Spectre Autistique (QA)</h2>
+    <p>
+      Voici une liste de situations. Veuillez lire chacune d’elles très
+      attentivement et précisez en entourant la réponse comme dans les exemples
+      dans quelle mesure vous êtes d’accord ou pas.
+    </p>
+    <p>
+      <strong>
+        POUR QUE CETTE ÉCHELLE SOIT VALIDE, VOUS DEVEZ RÉPONDRE À CHAQUE QUESTION.
+      </strong>
+    </p>
+  </div>
+
+  <div id="qaQuestions"></div>
+
+
+  <!-- ======================================================
+       11 TAPS
+       ====================================================== -->
+
+  <div class="section-title">
+    <h2>
+      11. Tobacco, Alcohol, Prescription Medication and Other
+      Substance Use Tool (TAPS)
+    </h2>
+    <p>
+      La partie 2 de l'outil TAPS est une évaluation rapide de la consommation
+      de tabac, d'alcool et de substances illicites et de l'abus de médicaments
+      sur prescription au cours des <strong>3 DERNIERS MOIS SEULEMENT</strong>.
+      Chacune des questions et sous-questions suivantes a deux choix de réponses
+      possibles : oui ou non. Cochez la case pour sélectionner votre réponse.
+    </p>
+  </div>
+
+  <div id="tapsQuestions"></div>
+
+
+  <!-- ======================================================
+       EXPORT
+       ====================================================== -->
+
+  <button type="button" onclick="generateCSV()">
+    Télécharger en CSV
+  </button>
+
+
+<script>
+
+  /* ========================================================
+     TS-QOL
+     ======================================================== */
+
+  const tsqolItems = [
+    "été incapable de contrôler tous vos mouvements ?",
+    "eu des difficultés dans vos activités de la vie quotidienne ou vos loisirs (comme cuisiner, écrire) ?",
+    "souffert de douleurs ou de blessures physiques dus à vos tics ?",
+    "été gêné(e) par des bruits que vous ne pouvez-vous empêcher de faire ?",
+    "redouté de dire des gros mots que vous n’avez pas l’intention de dire ?",
+    "redouté de faire quelque chose d’embarrassant (comme des gestes grossiers)",
+    "été obligé(e) de répéter des mots encore et encore ?",
+    "été obligé(e) de refaire ou de répéter des choses que d’autres personnes font ou disent (comme copier, imiter des gens) ?",
+    "été obligé(e) de faire des choses d’une manière répétée et d’une certaine façon (par exemple vérifier plusieurs fois) ?",
+    "eu des pensées ou des images déplaisantes vous passant par la tête ?",
+    "eu des difficultés de concentration ?",
+    "eu des problèmes de mémoire ?",
+    "perdu ou égaré des objets importants (comme un portefeuille, des clefs, un téléphone mobile) ?",
+    "eu des difficultés à finir ce que vous avez commencé?",
+    "eu l’impression dans l’ensemble d’être en mauvaise santé ?",
+    "été triste ou déprimé ?",
+    "ressenti des changements d’humeur rapides ?",
+    "ressenti un manque de confiance en soi ?",
+    "Vous êtes-vous senti(e) angoissé(e) ?",
+    "Vous êtes-vous senti(e) énervé(e) ?",
+    "eu des difficultés à garder votre calme?",
+    "eu l’impression de ne pas contrôler votre vie ?",
+    "Vous êtes-vous senti(e) frustré(e) (contrarié(e)) ?",
+    "ressenti le besoin de plus d’aide ou de soutien des autres?",
+    "eu des difficultés à voir vos amis ?",
+    "eu des difficultés à prendre part à des activités sociales (comme aller manger à l’extérieur) ?",
+    "eu le sentiment d’être seul(e) ou isolé(e) ?"
+  ];
+
+  const tsqolAnswers = [
+    { label: "Aucun problème", value: 0 },
+    { label: "Problème léger", value: 1 },
+    { label: "Problème modéré", value: 2 },
+    { label: "Problème important", value: 3 },
+    { label: "Problème très important", value: 4 }
+  ];
+
+
+  /* ========================================================
+     PUTS
+     ======================================================== */
+
+  const putsItems = [
+    "Juste avant d’avoir un tic, j'ai l'impression que l’intérieur de mon corps me démange.",
+    "Juste avant d’avoir un tic, je ressens une pression dans mon cerveau ou mon corps.",
+    "Juste avant d’avoir un tic, je me sens noué ou tendu à l'intérieur.",
+    "Juste avant d’avoir un tic, j'ai l'impression que quelque chose n'est pas « comme il faut ».",
+    "Juste avant d’avoir un tic, j’ai l’impression que quelque chose n’est pas terminé.",
+    "Juste avant d’avoir un tic, j'ai l'impression qu'il y a de l'énergie dans mon corps qui a besoin de sortir.",
+    "J'ai ces sensations presque tout le temps avant d’avoir un tic.",
+    "Ces sensations surviennent pour chaque tic que j'ai.",
+    "Après avoir eu le tic, les démangeaisons, l'énergie, la pression, les sensations de tension ou la sensation que quelque chose n'est pas « comme il faut » ou n’est pas terminé disparaissent, au moins pendant un certain temps.",
+    "Je suis capable d'arrêter mes tics même si ce n'est que pour une courte période de temps."
+  ];
+
+  const putsAnswers = [
+    { label: "Pas du tout", value: 1 },
+    { label: "Un peu", value: 2 },
+    { label: "Plutôt", value: 3 },
+    { label: "Beaucoup", value: 4 }
+  ];
+
+
+  /* ========================================================
+     BDI
+     Les valeurs 0-3 sont celles affichées dans le document.
+     ======================================================== */
+
+  const bdiItems = [
+
+    [
+      "Je ne me sens pas triste",
+      "Je me sens triste",
+      "Je me sens perpétuellement triste et je n’arrive pas à m’en sortir",
+      "Je suis si triste et si découragé(e) que je ne peux plus le supporter"
+    ],
+
+    [
+      "Je ne me sens pas particulièrement découragé(e) quand je pense à l’avenir",
+      "Je me sens découragé(e) en pensant à l’avenir",
+      "Il me semble que je n’ai rien à attendre de l’avenir",
+      "L’avenir est sans espoir et rien ne s’arrangera"
+    ],
+
+    [
+      "Je n’ai pas l’impression d’être un(e) raté(e)",
+      "Je crois avoir connu plus d’échecs que le reste des gens",
+      "Lorsque je pense à ma vie passée, je ne vois que des échecs",
+      "Je suis un(e) raté(e)"
+    ],
+
+    [
+      "Je tire autant de satisfaction de ma vie qu’autrefois",
+      "Je ne jouis pas de la vie comme autrefois",
+      "Je ne tire plus vraiment de satisfaction de la vie",
+      "Tout m’ennuie, rien ne me satisfait"
+    ],
+
+    [
+      "Je ne me sens pas particulièrement coupable",
+      "Je me sens coupable une grande partie du temps",
+      "Je me sens vraiment coupable la plupart du temps",
+      "Je me sens constamment coupable"
+    ],
+
+    [
+      "Je n’ai pas l’impression d’être puni(e)",
+      "J’ai l’impression d’être parfois puni(e)",
+      "Je m’attends à être puni(e)",
+      "Je sens parfaitement que je suis puni(e)"
+    ],
+
+    [
+      "Je ne me sens pas déçu(e) de moi-même",
+      "Je suis déçu(e) de moi-même",
+      "Je suis dégoûté(e) de moi-même",
+      "Je me hais"
+    ],
+
+    [
+      "Je ne crois pas être pire que les autres",
+      "Je critique mes propres faiblesses et défauts",
+      "Je me blâme constamment de mes défauts",
+      "Je suis à blâmer pour tout ce qui arrive de déplaisant"
+    ],
+
+    [
+      "Je ne pense jamais à me tuer",
+      "Je pense parfois à me tuer, mais je ne le ferai probablement jamais",
+      "J’aimerais me tuer",
+      "Je me tuerais si j’en avais la possibilité"
+    ],
+
+    [
+      "Je ne pleure pas plus que d’habitude",
+      "Je pleure plus qu’autrefois",
+      "Je pleure constamment",
+      "Autrefois, je pouvais pleurer, mais je n’en suis même plus capable aujourd’hui"
+    ],
+
+    [
+      "Je ne suis pas plus irritable qu’autrefois",
+      "Je suis légèrement plus irritable que d’habitude",
+      "Je me sens agacé(e) et irrité(e) une bonne partie du temps",
+      "Je suis constamment irrité(e) ces temps-ci"
+    ],
+
+    [
+      "Je n’ai pas perdu mon intérêt pour les autres",
+      "Je m’intéresse moins aux gens qu’autrefois",
+      "J’ai perdu la plus grande partie de mon intérêt pour les autres",
+      "Les gens ne m’intéressent plus du tout"
+    ],
+
+    [
+      "Je prends mes décisions exactement comme autrefois",
+      "Je remets les décisions au lendemain beaucoup plus fréquemment qu’autrefois",
+      "J’éprouve de grandes difficultés à prendre des décisions",
+      "Je suis incapable de prendre des décisions"
+    ],
+
+    [
+      "Je ne crois pas que mon apparence a empiré",
+      "Je crains d’avoir l’air plus âgé(e) ou moins attrayant(e)",
+      "Je crois que mon apparence a subi des changements irréversibles qui me rendent peu attrayant(e)",
+      "Je crois que je suis laid(e)"
+    ],
+
+    [
+      "Je travaille aussi bien qu’autrefois",
+      "J’ai besoin de fournir un effort supplémentaire pour commencer un travail",
+      "Je dois me forcer vraiment très énergiquement pour faire quoi que ce soit",
+      "Je suis absolument incapable de travailler"
+    ],
+
+    [
+      "Je dors aussi bien que d’habitude",
+      "Je ne dors pas aussi bien que d’habitude",
+      "Je me réveille une à deux heures plus tôt que d’habitude et j’ai du mal à me rendormir",
+      "Je me réveille plusieurs heures plus tôt que d’habitude et ne parviens pas à me rendormir"
+    ],
+
+    [
+      "Je ne me sens pas plus fatigué(e) que d’habitude",
+      "Je me fatigue plus vite qu’autrefois",
+      "Un rien me fatigue",
+      "Je suis trop fatigué(e) pour faire quoi que ce soit"
+    ],
+
+    [
+      "Mon appétit n’a pas changé",
+      "Mon appétit n’est pas aussi bon que d’habitude",
+      "Mon appétit a beaucoup diminué",
+      "Je n’ai plus d’appétit du tout"
+    ],
+
+    [
+      "Je ne crois pas avoir maigri ces derniers temps",
+      "J’ai maigri de plus de cinq livres (2,2 kg)",
+      "J’ai maigri de plus de dix livres (4,5 kg)",
+      "J’ai maigri de plus de quinze livres (6,8 kg)"
+    ],
+
+    [
+      "Ma santé ne m’inquiète pas plus que d’habitude",
+      "Certains problèmes physiques me tracassent, comme des douleurs, des maux d’estomac ou de la constipation",
+      "Je suis très inquiet(ète) à propos de problèmes physiques et il m’est difficile de penser à autre chose",
+      "Mes problèmes physiques me tracassent tant que je n’arrive à penser à rien d’autre"
+    ],
+
+    [
+      "Je n’ai pas remarqué de changements à propos de ma libido",
+      "Je m’intéresse moins aux rapports sexuels qu’autrefois",
+      "Je m’intéresse beaucoup moins aux rapports sexuels",
+      "J’ai perdu tout intérêt pour les rapports sexuels"
+    ]
+
+  ];
+
+
+  /* ========================================================
+     STAI Y-A
+     Pas de calcul / inversion ici.
+     Réponse exportée sous forme de position brute 1-4.
+     ======================================================== */
+
+  const staiYAItems = [
+    "Je me sens calme.",
+    "Je me sens en sécurité, sans inquiétude, en sûreté.",
+    "Je suis tendu(e), crispé(e).",
+    "Je me sens surmené(e).",
+    "Je me sens tranquille, bien dans ma peau.",
+    "Je me sens ému(e), bouleversé(e), contrarié(e).",
+    "L'idée de malheurs éventuels me tracasse en ce moment.",
+    "Je me sens content(e).",
+    "Je me sens effrayé(e).",
+    "Je me sens à mon aise.",
+    "Je sens que j'ai confiance en moi.",
+    "Je me sens nerveux (nerveuse), irritable.",
+    "J'ai la frousse, la trouille (j'ai peur).",
+    "Je me sens indécis(e).",
+    "Je suis décontracté(e), détendu(e).",
+    "Je suis satisfait(e).",
+    "Je suis inquiet, soucieux (inquiète, soucieuse).",
+    "Je ne sais plus où j'en suis, je me sens déconcerté(e), dérouté(e).",
+    "Je me sens solide, posé(e), pondéré(e), réfléchi(e).",
+    "Je me sens de bonne humeur, aimable."
+  ];
+
+  const staiYAAnswers = [
+    { label: "Non", value: 1 },
+    { label: "Plutôt non", value: 2 },
+    { label: "Plutôt oui", value: 3 },
+    { label: "Oui", value: 4 }
+  ];
+
+
+  /* ========================================================
+     STAI Y-B
+     ======================================================== */
+
+  const staiYBItems = [
+    "Je me sens de bonne humeur, aimable.",
+    "Je me sens nerveux (nerveuse) et agité (e).",
+    "Je me sens content(e) de moi.",
+    "Je voudrais être aussi heureux (heureuse) que les autres semblent l'être.",
+    "J'ai un sentiment d'échec.",
+    "Je me sens reposé(e).",
+    "J'ai tout mon sang-froid.",
+    "J'ai l'impression que les difficultés s'accumulent à un tel point que je ne peux plus les surmonter.",
+    "Je m'inquiète à propos de choses sans importance.",
+    "Je suis heureux(se).",
+    "J'ai des pensées qui me perturbent.",
+    "Je manque de confiance en moi.",
+    "Je me sens sans inquiétude, en sécurité, en sûreté.",
+    "Je prends facilement des décisions.",
+    "Je me sens incompétent(e), pas à la hauteur.",
+    "Je suis satisfait(e).",
+    "Des idées sans importance trottant dans ma tête me dérangent.",
+    "Je prends les déceptions tellement à coeur que je les oublie difficilement.",
+    "Je suis une personne posée, solide, stable.",
+    "Je deviens tendu(e) et agité(e) quand je réfléchis à mes soucis."
+  ];
+
+  const staiYBAnswers = [
+    { label: "Presque jamais", value: 1 },
+    { label: "Parfois", value: 2 },
+    { label: "Souvent", value: 3 },
+    { label: "Presque toujours", value: 4 }
+  ];
+
+
+  /* ========================================================
+     OCI
+     Valeurs 0-4 explicitement présentes dans le document.
+     ======================================================== */
+
+  const ociItems = [
+    "J’ai conservé tellement de choses qu’elles bloquent le passage.",
+    "Je vérifie les choses plus souvent que nécessaire.",
+    "Je suis contrarié si les objets ne sont pas rangés correctement.",
+    "Je me sens obligé de compter pendant que je fais des choses.",
+    "J’éprouve de la difficulté à toucher un objet quand je sais qu’il a été touché par des étrangers ou par certaines personnes.",
+    "J’éprouve de la difficulté à contrôler mes propres pensées.",
+    "J’accumule des choses dont je n’ai pas besoin.",
+    "Je vérifie de manière répétée les portes, les fenêtres, les tiroirs, etc.",
+    "Je suis contrarié si les autres changent la manière dont j’ai rangé les choses.",
+    "Je sens que je dois répéter certains chiffres.",
+    "Je dois parfois me laver ou me nettoyer, simplement parce que je me sens contaminé.",
+    "Je suis contrarié par des pensées déplaisantes qui me viennent à l'esprit contre ma volonté.",
+    "J’évite de jeter les choses parce que je crains d’en avoir besoin plus tard.",
+    "Je vérifie de manière répétée les robinets de gaz et d’eau ainsi que les interrupteurs après les avoir éteints.",
+    "J’ai besoin que les choses soient rangées dans un ordre particulier.",
+    "Je sens qu’il y a de bons et de mauvais chiffres.",
+    "Je me lave les mains plus souvent et plus longtemps que nécessaire.",
+    "J’ai fréquemment des pensées malsaines et j’ai de la difficulté à m’en débarrasser."
+  ];
+
+  const ociAnswers = [
+    { label: "0 – Pas du tout", value: 0 },
+    { label: "1 – Peu", value: 1 },
+    { label: "2 – Moyennement", value: 2 },
+    { label: "3 – Beaucoup", value: 3 },
+    { label: "4 – Extrêmement", value: 4 }
+  ];
+
+
+  /* ========================================================
+     ASRS
+     ======================================================== */
+
+  const asrsItems = [
+    "Avec quelle fréquence avez-vous des difficultés à finaliser les derniers détails d'un projet une fois que le plus intéressant a été fait?",
+    "Avec quelle fréquence avez-vous des difficultés à mettre les choses en ordre lorsque vous devez faire un travail qui demande une certaine organisation?",
+    "Avec quelle fréquence avez-vous des difficultés pour vous souvenir de vos rendez-vous ou de vos engagements?",
+    "Avec quelle fréquence avez-vous tendance à éviter ou à remettre à plus tard un travail qui demande beaucoup de réflexion?",
+    "Avec quelle fréquence avez-vous la bougeotte ou agitez-vous vos mains ou vos pieds lorsque vous devez rester assis pendant un long moment?",
+    "Avec quelle fréquence vous sentez-vous trop actif ou obligé de faire des choses, comme si vous étiez actionné par un moteur?",
+    "Avec quelle fréquence faites-vous des erreurs d’étourderie lorsque vous travaillez sur un projet ennuyeux ou difficile?",
+    "Avec quelle fréquence avez-vous des difficultés à rester attentif lorsque vous faites un travail ennuyeux ou répétitif?",
+    "Avec quelle fréquence avez-vous des difficultés à vous concentrer sur ce que les gens vous disent, même lorsqu'ils vous parlent directement?",
+    "Avec quelle fréquence avez-vous tendance à égarer ou du mal à retrouver des choses à la maison ou au travail?",
+    "Avec quelle fréquence êtes-vous distrait par de l'activité ou du bruit autour de vous?",
+    "Avec quelle fréquence vous levez-vous pendant des réunions ou d'autres situations dans lesquelles vous êtes censé rester assis?",
+    "Avec quelle fréquence avez-vous la bougeotte ou vous sentez-vous agité?",
+    "Avec quelle fréquence avez-vous des difficultés à vous détendre et à vous relaxer pendant votre temps libre?",
+    "Avec quelle fréquence avez-vous remarqué que vous étiez trop bavard lorsque vous étiez en compagnie d'autres personnes?",
+    "Avec quelle fréquence vous surprenez-vous terminant les phrases des autres dans une discussion avant qu'ils aient pu le faire eux-mêmes?",
+    "Avec quelle fréquence avez-vous des difficultés à attendre votre tour dans une file d'attente?",
+    "Avec quelle fréquence interrompez-vous les autres lorsqu'ils sont occupés?"
+  ];
+
+  const asrsAnswers = [
+    { label: "Jamais", value: 0 },
+    { label: "Rarement", value: 1 },
+    { label: "Parfois", value: 2 },
+    { label: "Souvent", value: 3 },
+    { label: "Très souvent", value: 4 }
+  ];
+
+
+  /* ========================================================
+     BIS-11
+     ======================================================== */
+
+  const bisItems = [
+    "Je prépare soigneusement les tâches à accomplir.",
+    "Je fais les choses sans réfléchir.",
+    "Je me décide rapidement.",
+    "Je suis insouciant.",
+    "Je ne fais pas attention.",
+    "Mes pensées défilent très vite.",
+    "Je programme mes voyages longtemps à l'avance.",
+    "Je suis maître de moi.",
+    "Je me concentre facilement.",
+    "Je met de l'argent de côté raisonnablement.",
+    "Je ne tiens pas en place aux spectacles ou aux conférences.",
+    "Je réfléchis soigneusement.",
+    "Je veille à ma sécurité d’emploi.",
+    "Je dis les choses sans réfléchir.",
+    "J'aime réfléchir à des problèmes complexes.",
+    "Je change d'emploi.",
+    "J'agis sur un \"coup de tête\".",
+    "Réfléchir sur un problème m'ennuie vite.",
+    "J'agis selon l'inspiration du moment.",
+    "Je réfléchis posément.",
+    "Je change de logement.",
+    "J'achète les choses sur un \"coup de tête\".",
+    "Je ne peux penser qu'à un problème à la fois.",
+    "Je change de loisir.",
+    "Je dépense ou paye à crédit plus que je ne gagne.",
+    "Lorsque je réfléchis d’autres pensées me viennent à l’esprit.",
+    "Je m'intéresse plus au présent qu'à l'avenir.",
+    "Je m'impatiente lors de conférences ou de discussions.",
+    "J'aime les \"casse-têtes\".",
+    "Je fais des projets pour l'avenir."
+  ];
+
+  const bisAnswers = [
+    { label: "Rarement/Jamais", value: 1 },
+    { label: "Occasionnellement", value: 2 },
+    { label: "Souvent", value: 3 },
+    { label: "Presque toujours", value: 4 }
+  ];
+
+
+  /* ========================================================
+     QA
+     46 items exactement tels que présents dans ce cahier.
+     ======================================================== */
+
+  const qaItems = [
+    "Je préfère réaliser des activités avec d’autres personnes plutôt que seul(e).",
+    "Je préfère tout faire continuellement de la même manière.",
+    "Quand j’essaye d’imaginer quelque chose, il est très facile de m’en représenter une image mentalement.",
+    "Je suis fréquemment tellement absorbé(e) par une chose que je perds tout le reste de vue.",
+    "Mon attention est souvent attirée par des bruits discrets que les autres ne remarquent pas.",
+    "Je fais habituellement attention aux numéros de plaques d’immatriculation ou à d’autres types d’informations de ce genre.",
+    "Les gens me disent souvent que ce que j’ai dit était impoli, même quand je pense moi que c’était poli.",
+    "Quand je lis une histoire, je peux facilement imaginer à quoi les personnages pourraient ressembler.",
+    "Je suis fasciné(e) par les dates.",
+    "Au sein d’un groupe, je peux facilement suivre les conversations de plusieurs personnes à la fois.",
+    "Je trouve les situations de la vie en société faciles.",
+    "J’ai tendance à remarquer certains détails que les autres ne voient pas.",
+    "Je préférerais aller dans une bibliothèque plutôt qu’à une fête.",
+    "Je trouve facile d’inventer des histoires.",
+    "Je suis plus facilement attiré(e) par les gens que par les objets.",
+    "J’ai tendance à avoir des centres d’intérêt très importants. Je me tracasse lorsque je ne peux m’y consacrer.",
+    "J’apprécie le bavardage en société.",
+    "Quand je parle, il n’est pas toujours facile pour les autres de placer un mot.",
+    "Je suis fasciné(e) par les chiffres.",
+    "Quand je lis une histoire, je trouve qu’il est difficile de me représenter les intentions des personnages.",
+    "Je n’aime pas particulièrement lire des romans.",
+    "Je trouve qu’il est difficile de se faire de nouveaux amis.",
+    "Je remarque sans cesse des schémas réguliers dans les choses qui m’entourent.",
+    "Je préférerais aller au théâtre qu’au musée.",
+    "Cela ne me dérange pas si mes habitudes quotidiennes sont perturbées.",
+    "Je remarque souvent que je ne sais pas comment entretenir une conversation.",
+    "Je trouve qu’il est facile de « lire entre les lignes » lorsque quelqu’un me parle.",
+    "Je me concentre habituellement plus sur l’ensemble d’une image que sur les petits détails de celle-ci.",
+    "Je ne suis pas très doué(e) pour me souvenir des numéros de téléphone.",
+    "Je ne remarque habituellement pas les petits changements dans une situation ou dans l’apparence de quelqu’un.",
+    "Je sais m’en rendre compte quand mon interlocuteur s’ennuie.",
+    "Je trouve qu’il est facile de faire plus d’une chose à la fois.",
+    "Quand je parle au téléphone, je ne suis pas sûr(e) de savoir quand c’est à mon tour de parler.",
+    "J’aime faire les choses de manière spontanée.",
+    "Je suis souvent le(la) dernier(ère) à comprendre le sens d’une blague.",
+    "Je trouve qu’il est facile de décoder ce que les autres pensent ou ressentent juste en regardant leur visage.",
+    "Si je suis interrompu(e), je peux facilement revenir à ce que j’étais en train de faire.",
+    "Je suis doué(e) pour le bavardage en société.",
+    "Les gens me disent souvent que je répète continuellement les mêmes choses.",
+    "Quand j’étais enfant, j’aimais habituellement jouer à des jeux de rôle avec les autres.",
+    "J’aime collectionner des informations sur des catégories de choses (types de voitures, d’oiseaux, de trains, de plantes,...).",
+    "Je trouve qu’il est difficile de s’imaginer dans la peau d’un autre.",
+    "J’aime planifier avec soin toute activité à laquelle je participe.",
+    "J’aime les événements sociaux.",
+    "Je trouve qu’il est difficile de décoder les intentions des autres.",
+    "Les nouvelles situations me rendent anxieux(se)."
+  ];
+
+  const qaAnswers = [
+    { label: "Tout à fait d’accord", value: 1 },
+    { label: "Plutôt d’accord", value: 2 },
+    { label: "Plutôt pas d’accord", value: 3 },
+    { label: "Pas du tout d’accord", value: 4 }
+  ];
+
+
+  /* ========================================================
+     TAPS
+     Structure fixe.
+     ======================================================== */
+
+  const tapsGroups = [
+
+    {
+      id: "tobacco",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous fumé une cigarette contenant du tabac ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, fumiez-vous généralement plus de 10 cigarettes par jour ?",
+        "Au cours des 3 DERNIERS MOIS, fumiez-vous généralement dans les 30 minutes suivant votre réveil ?"
+      ]
+    },
+
+    {
+      id: "alcohol",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous bu une boisson contenant de l'alcool ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous bu 4 verres d'alcool, ou plus, par jour ? * (Cette question ne concerne que les femmes).",
+        "Au cours des 3 DERNIERS MOIS, avez-vous bu 5 verres d'alcool, ou plus, par jour ? * (Cette question ne concerne que les hommes).",
+        "Au cours des 3 DERNIERS MOIS, avez-vous essayé sans succès de contrôler, de réduire ou d’arrêter de boire ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre consommation d'alcool ?"
+      ],
+      note:
+        "* Une boisson standard correspond à environ 1 verre de vin (12-14 cL), 1 bière (33-35 cL) ou 1 seul verre d'alcool."
+    },
+
+    {
+      id: "marijuana",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous consommé de la marijuana (haschich, weed) ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous eu un fort désir ou une forte envie de consommer de la marijuana au moins une fois par semaine, ou plus souvent ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre consommation de marijuana ?"
+      ]
+    },
+
+    {
+      id: "stimulants",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous consommé de la cocaïne, du crack ou de la méthamphétamine (crystal meth) ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous consommé de la cocaïne, du crack ou de la méthamphétamine (crystal meth) au moins une fois par semaine, ou plus souvent ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre consommation de cocaïne, de crack ou de méthamphétamine (crystal meth) ?"
+      ]
+    },
+
+    {
+      id: "heroin",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous consommé de l'héroïne ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous essayé sans succès de contrôler, de réduire ou d'arrêter votre consommation d’héroïne ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre consommation d'héroïne ?"
+      ]
+    },
+
+    {
+      id: "opioids",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous consommé un analgésique opiacé sur ordonnance (par exemple, Oxycodone, Dihydrocodéine) sans respecter les conditions de prescription ou qui ne vous a pas été prescrit à vous ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous essayé sans succès de contrôler, de réduire ou d’arrêter l’utilisation d’un analgésique opiacé ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre utilisation d'un analgésique opiacé ?"
+      ]
+    },
+
+    {
+      id: "anxiolytics",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous pris un médicament contre l'anxiété ou pour dormir (par exemple, Xanax, Lorazepam ou Clonazepam) sans respecter les conditions de prescription ou qui ne vous a pas été prescrit à vous ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous eu un fort désir ou une forte envie de prendre des médicaments contre l'anxiété ou pour dormir au moins une fois par semaine, ou plus souvent ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre prise de médicaments contre l'anxiété ou pour dormir ?"
+      ]
+    },
+
+    {
+      id: "adhdmed",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous pris un médicament pour le TDAH (par exemple, Adderall, Ritalin) sans respecter les conditions de prescription ou qui ne vous a pas été prescrit à vous ?",
+      followups: [
+        "Au cours des 3 DERNIERS MOIS, avez-vous pris un médicament pour le TDAH (par exemple, Adderall, Ritalin) au moins une fois par semaine, ou plus souvent ?",
+        "Au cours des 3 DERNIERS MOIS, quelqu'un a-t-il exprimé des inquiétudes au sujet de votre prise de médicament pour le TDAH (par exemple, Adderall ou Ritalin) ?"
+      ]
+    },
+
+    {
+      id: "otherdrugs",
+      main:
+        "Au cours des 3 DERNIERS MOIS, avez-vous consommé d’autres drogues illégales ou récréatives (par exemples, ecstasy/MDMA, GHB, poppers, LSD, champignons, Kétamine, sels de bain, cannabinoïdes de synthèse (« Spice »), protoxyde d’azote, etc.) ?",
+      followups: [],
+      freeText:
+        "Au cours des 3 DERNIERS MOIS, quelles ont été les autres drogues que vous avez consommées ?"
+    }
+
+  ];
+
+
+  /* ========================================================
+     GENERATEUR QUESTION SIMPLE
+     ======================================================== */
+
+  function createQuestions(containerId, items, answers, prefix, startNumber = 1) {
+
+    const container = document.getElementById(containerId);
+
+    items.forEach((text, index) => {
+
+      const block = document.createElement("div");
+      block.className = "form-block question";
+
+      const n = startNumber + index;
+
+      block.innerHTML =
+        `<p>${n}. ${text}</p>` +
+        `<div class="options">` +
+        answers.map(a =>
+          `<label>
+            <input
+              type="radio"
+              name="${prefix}${index + 1}"
+              value="${a.value}"
+            >
+            ${a.label}
+          </label>`
+        ).join("") +
+        `</div>`;
+
+      container.appendChild(block);
+
     });
 
-    function generateCSV() {
-      const id = document.getElementById("identifiant").value.trim();
-      if (!id) {
-        alert("Veuillez renseigner l'identifiant patient avant d’exporter.");
-        return;
+  }
+
+
+  /* ========================================================
+     CREATION DES QUESTIONS
+     ======================================================== */
+
+  createQuestions(
+    "tsqolQuestions",
+    tsqolItems,
+    tsqolAnswers,
+    "tsqol"
+  );
+
+  createQuestions(
+    "putsQuestions",
+    putsItems,
+    putsAnswers,
+    "puts"
+  );
+
+  createQuestions(
+    "staiYAQuestions",
+    staiYAItems,
+    staiYAAnswers,
+    "staiYA"
+  );
+
+  createQuestions(
+    "staiYBQuestions",
+    staiYBItems,
+    staiYBAnswers,
+    "staiYB",
+    21
+  );
+
+  createQuestions(
+    "ociQuestions",
+    ociItems,
+    ociAnswers,
+    "oci"
+  );
+
+  createQuestions(
+    "asrsQuestions",
+    asrsItems,
+    asrsAnswers,
+    "asrs"
+  );
+
+  createQuestions(
+    "bisQuestions",
+    bisItems,
+    bisAnswers,
+    "bis"
+  );
+
+  createQuestions(
+    "qaQuestions",
+    qaItems,
+    qaAnswers,
+    "qa"
+  );
+
+
+  /* ========================================================
+     BDI
+     ======================================================== */
+
+  const bdiContainer = document.getElementById("bdiQuestions");
+
+  bdiItems.forEach((options, index) => {
+
+    const block = document.createElement("div");
+    block.className = "form-block question";
+
+    block.innerHTML =
+      `<p>${index + 1}.</p>` +
+      `<div class="options">` +
+      options.map((text, value) =>
+        `<label>
+          <input
+            type="radio"
+            name="bdi${index + 1}"
+            value="${value}"
+          >
+          <strong>${value}.</strong> ${text}
+        </label>`
+      ).join("") +
+      `</div>`;
+
+    bdiContainer.appendChild(block);
+
+  });
+
+
+  /* ========================================================
+     TAPS
+     ======================================================== */
+
+  const tapsContainer = document.getElementById("tapsQuestions");
+
+  tapsGroups.forEach((group, groupIndex) => {
+
+    const block = document.createElement("div");
+    block.className = "form-block question";
+
+    let inner =
+      `<p>${groupIndex + 1}. ${group.main}</p>` +
+      `<div class="options">
+        <label>
+          <input
+            type="radio"
+            name="taps_${group.id}_main"
+            value="1"
+          >
+          Oui
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="taps_${group.id}_main"
+            value="0"
+          >
+          Non
+        </label>
+      </div>`;
+
+    if (
+      group.followups.length > 0 ||
+      group.freeText
+    ) {
+
+      inner +=
+        `<div
+          class="conditional-block"
+          id="conditional_${group.id}"
+        >`;
+
+      if (group.followups.length > 0) {
+
+        inner += `<p>Si « Oui », répondez aux questions suivantes :</p>`;
+
+        group.followups.forEach((question, i) => {
+
+          inner +=
+            `<div style="margin-top:18px;">
+              <strong>${String.fromCharCode(97 + i)}) ${question}</strong>
+
+              <div class="options" style="margin-top:8px;">
+                <label>
+                  <input
+                    type="radio"
+                    name="taps_${group.id}_f${i + 1}"
+                    value="1"
+                  >
+                  Oui
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="taps_${group.id}_f${i + 1}"
+                    value="0"
+                  >
+                  Non
+                </label>
+              </div>
+            </div>`;
+
+        });
+
       }
-      let csv = `Identifiant;${id}\n\nNuméro;Question;Réponse\n`;
-      questions.forEach(([title], i) => {
-        const rads = document.getElementsByName(`q${i}`);
-        let sel = "Non répondu";
-        rads.forEach(r => { if (r.checked) sel = r.value; });
-        csv += `"${i + 1}";"${title}";"${sel}"\n`;
+
+      if (group.note) {
+        inner +=
+          `<p style="font-weight:normal;font-size:13px;margin-top:18px;">
+            ${group.note}
+          </p>`;
+      }
+
+      if (group.freeText) {
+
+        inner +=
+          `<div style="margin-top:18px;">
+            <strong>${group.freeText}</strong>
+            <textarea
+              id="taps_${group.id}_text"
+              class="free-text"
+              rows="3"
+              placeholder="Précisez"
+            ></textarea>
+          </div>`;
+
+      }
+
+      inner += `</div>`;
+
+    }
+
+    block.innerHTML = inner;
+    tapsContainer.appendChild(block);
+
+  });
+
+
+  /* ========================================================
+     AFFICHAGE CONDITIONNEL TAPS
+     ======================================================== */
+
+  tapsGroups.forEach(group => {
+
+    const radios =
+      document.querySelectorAll(
+        `input[name="taps_${group.id}_main"]`
+      );
+
+    const conditional =
+      document.getElementById(
+        `conditional_${group.id}`
+      );
+
+    if (!conditional) {
+      return;
+    }
+
+    radios.forEach(radio => {
+
+      radio.addEventListener("change", () => {
+
+        conditional.style.display =
+          radio.checked && radio.value === "1"
+          ? "block"
+          : "none";
+
       });
 
-      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `${id}_BDI-II_resultats.csv`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    });
+
+  });
+
+
+  /* ========================================================
+     ECHELLES
+     ======================================================== */
+
+  function createScale(labelsId, ticksId, values) {
+
+    const labels = document.getElementById(labelsId);
+    const ticks = document.getElementById(ticksId);
+
+    values.forEach(v => {
+
+      const span = document.createElement("span");
+      span.textContent = v;
+      labels.appendChild(span);
+
+      const tick = document.createElement("div");
+      tick.className = "tick";
+      ticks.appendChild(tick);
+
+    });
+
+  }
+
+  createScale(
+    "painLabels",
+    "painTicks",
+    [0,1,2,3,4,5,6,7,8,9,10]
+  );
+
+  createScale(
+    "lifeLabels",
+    "lifeTicks",
+    [0,10,20,30,40,50,60,70,80,90,100]
+  );
+
+
+  /* ========================================================
+     SLIDERS
+     Aucune réponse par défaut
+     ======================================================== */
+
+  function configureSlider(sliderId, valueId, suffix) {
+
+    const slider = document.getElementById(sliderId);
+    const box = document.getElementById(valueId);
+
+    let answered = false;
+
+    slider.addEventListener("input", () => {
+
+      answered = true;
+
+      slider.classList.remove("untouched");
+
+      box.textContent =
+        "Valeur sélectionnée : " +
+        slider.value +
+        suffix;
+
+    });
+
+    return () =>
+      answered
+      ? slider.value
+      : "Non répondu";
+
+  }
+
+  const getPain =
+    configureSlider(
+      "evaPain",
+      "painValue",
+      " / 10"
+    );
+
+  const getLife =
+    configureSlider(
+      "lifeSatisfaction",
+      "lifeValue",
+      " / 100"
+    );
+
+
+  /* ========================================================
+     UTILITAIRES EXPORT
+     ======================================================== */
+
+  function getRadioValue(name) {
+
+    const selected =
+      document.querySelector(
+        `input[name="${name}"]:checked`
+      );
+
+    return selected
+      ? selected.value
+      : "Non répondu";
+
+  }
+
+  function escapeCSV(value) {
+
+    return String(value)
+      .replace(/"/g, '""');
+
+  }
+
+
+  /* ========================================================
+     EXPORT CSV
+     AUCUN SCORE CALCULE.
+     ======================================================== */
+
+  function generateCSV() {
+
+    const patientId =
+      document
+        .getElementById("patientId")
+        .value
+        .trim();
+
+    if (!patientId) {
+
+      alert(
+        "Veuillez renseigner l'identifiant patient avant d’exporter."
+      );
+
+      return;
     }
-  </script>
+
+    let csv =
+      `Identifiant;${escapeCSV(patientId)}\n\n` +
+      `Numéro;Question;Réponse\n`;
+
+    let rowNumber = 1;
+
+
+    function addRow(question, response) {
+
+      csv +=
+        `"${rowNumber}";` +
+        `"${escapeCSV(question)}";` +
+        `"${escapeCSV(response)}"\n`;
+
+      rowNumber++;
+
+    }
+
+
+    /* ======================================================
+       EVA
+       ====================================================== */
+
+    addRow(
+      "EVA douleur",
+      getPain()
+    );
+
+
+    /* ======================================================
+       TS-QOL 1-27
+       ====================================================== */
+
+    tsqolItems.forEach((q, i) => {
+
+      addRow(
+        `TS-QOL ${i + 1} - ${q}`,
+        getRadioValue(`tsqol${i + 1}`)
+      );
+
+    });
+
+
+    /* Satisfaction */
+
+    addRow(
+      "TS-QOL - Satisfaction globale de vie",
+      getLife()
+    );
+
+
+    /* ======================================================
+       PUTS 1-10
+       ====================================================== */
+
+    putsItems.forEach((q, i) => {
+
+      addRow(
+        `PUTS ${i + 1} - ${q}`,
+        getRadioValue(`puts${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       BDI 1-21
+       ====================================================== */
+
+    bdiItems.forEach((q, i) => {
+
+      addRow(
+        `BDI ${i + 1}`,
+        getRadioValue(`bdi${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       STAI Y-A 1-20
+       ====================================================== */
+
+    staiYAItems.forEach((q, i) => {
+
+      addRow(
+        `STAI Y-A ${i + 1} - ${q}`,
+        getRadioValue(`staiYA${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       STAI Y-B 21-40
+       ====================================================== */
+
+    staiYBItems.forEach((q, i) => {
+
+      addRow(
+        `STAI Y-B ${i + 21} - ${q}`,
+        getRadioValue(`staiYB${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       OCI 1-18
+       ====================================================== */
+
+    ociItems.forEach((q, i) => {
+
+      addRow(
+        `OCI ${i + 1} - ${q}`,
+        getRadioValue(`oci${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       ASRS 1-18
+       ====================================================== */
+
+    asrsItems.forEach((q, i) => {
+
+      addRow(
+        `ASRS ${i + 1} - ${q}`,
+        getRadioValue(`asrs${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       BIS-11 1-30
+       ====================================================== */
+
+    bisItems.forEach((q, i) => {
+
+      addRow(
+        `BIS-11 ${i + 1} - ${q}`,
+        getRadioValue(`bis${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       QA 1-46
+       ====================================================== */
+
+    qaItems.forEach((q, i) => {
+
+      addRow(
+        `QA ${i + 1} - ${q}`,
+        getRadioValue(`qa${i + 1}`)
+      );
+
+    });
+
+
+    /* ======================================================
+       TAPS
+       Toujours le même nombre de lignes.
+       ====================================================== */
+
+    tapsGroups.forEach((group, groupIndex) => {
+
+      const main =
+        getRadioValue(
+          `taps_${group.id}_main`
+        );
+
+      addRow(
+        `TAPS ${groupIndex + 1} - ${group.main}`,
+        main
+      );
+
+
+      /*
+        Si la question principale est NON :
+        les sous-questions Oui/Non sont nécessairement à 0.
+
+        Si la question principale n'est pas répondue :
+        les sous-questions restent Non répondu.
+
+        Si OUI :
+        on conserve la réponse réelle des sous-questions.
+      */
+
+      group.followups.forEach((question, i) => {
+
+        let response = "Non répondu";
+
+        if (main === "0") {
+
+          response = 0;
+
+        }
+
+        else if (main === "1") {
+
+          response =
+            getRadioValue(
+              `taps_${group.id}_f${i + 1}`
+            );
+
+        }
+
+        addRow(
+          `TAPS ${groupIndex + 1}${String.fromCharCode(97 + i)} - ${question}`,
+          response
+        );
+
+      });
+
+
+      if (group.freeText) {
+
+        let textResponse = "Non répondu";
+
+        if (main === "0") {
+
+          textResponse = 0;
+
+        }
+
+        else if (main === "1") {
+
+          const text =
+            document
+              .getElementById(
+                `taps_${group.id}_text`
+              )
+              .value
+              .trim();
+
+          textResponse =
+            text !== ""
+            ? text
+            : "Non répondu";
+
+        }
+
+        addRow(
+          `TAPS ${groupIndex + 1} - ${group.freeText}`,
+          textResponse
+        );
+
+      }
+
+    });
+
+
+    /* ======================================================
+       TELECHARGEMENT
+       ====================================================== */
+
+    const BOM = "\uFEFF";
+
+    const blob =
+      new Blob(
+        [BOM + csv],
+        {
+          type: "text/csv;charset=utf-8;"
+        }
+      );
+
+    const link =
+      document.createElement("a");
+
+    link.href =
+      URL.createObjectURL(blob);
+
+    link.download =
+      `${patientId}_PRE-CHIR-SGT_resultats.csv`;
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(link.href);
+
+  }
+
+</script>
+
 </body>
 </html>
