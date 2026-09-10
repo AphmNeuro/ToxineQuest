@@ -1,23 +1,35 @@
+/* === Palette === */
+:root {
+    --blue: #336B9B;
+    --blue-dark: #234C70;
+    --pink: #FABBCA;
+    --pink-light: #FDE5EC;
+    --background: #F7F4F5;
+    --text-dark: #24333F;
+    --white: #FFFFFF;
+}
+
 /* === Styles généraux === */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--background);
+    color: var(--text-dark);
     text-align: center;
 }
 
-/* === En-tête (bannière) avec fond noir === */
+/* === En-tête (bannière) === */
 .masthead {
-    background-color: black; /* Fond noir */
-    color: white; /* Texte en blanc */
+    background-color: var(--blue);
+    color: var(--white);
     padding: 50px 20px;
     text-align: center;
 }
 
 /* === Barre de navigation === */
 .navbar {
-    background: #333;
+    background: var(--blue-dark);
     padding: 10px;
 }
 
@@ -33,10 +45,11 @@ body {
 }
 
 .navbar ul li a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     padding: 10px 20px;
     display: block;
+    transition: all 0.3s ease-in-out;
 }
 
 /* === Menu déroulant === */
@@ -47,7 +60,7 @@ body {
 .dropdown-menu {
     display: none;
     position: absolute;
-    background: #444;
+    background: var(--blue);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -60,7 +73,27 @@ body {
 .dropdown-menu li a {
     padding: 10px;
     display: block;
-    color: white;
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
+}
+
+/* === Effet hover sur le menu principal === */
+.navbar ul li:hover {
+    background-color: var(--pink);
+    border-radius: 5px;
+}
+
+.navbar ul li:hover > a {
+    color: var(--blue-dark);
+}
+
+/* === Effet hover sur le menu déroulant === */
+.dropdown-menu li:hover {
+    background-color: var(--pink-light);
+}
+
+.dropdown-menu li:hover a {
+    color: var(--blue-dark);
 }
 
 /* === Style pour afficher la plaquette en grand === */
@@ -70,50 +103,22 @@ body {
 }
 
 .plaquette-img {
-    width: 80%; /* Ajuste la taille de l'image */
-    max-width: 900px; /* Largeur maximale */
+    width: 80%;
+    max-width: 900px;
     height: auto;
-    border-radius: 10px; /* Arrondi des bords */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(35, 76, 112, 0.20);
 }
 
-/* === Effet hover sur le menu principal === */
-.navbar ul li a {
-    transition: all 0.3s ease-in-out; /* Animation fluide */
-}
-
-.navbar ul li:hover {
-    background-color: #444; /* Fond plus foncé au survol */
-    border-radius: 5px; /* Arrondi léger */
-}
-
-/* === Effet hover sur le menu déroulant === */
-.dropdown-menu li a {
-    transition: all 0.3s ease-in-out;
-}
-
-.dropdown-menu li:hover {
-    background-color: #555; /* Fond plus foncé au survol */
-}
-
-/* === Ajouter le GIF en haut à gauche === */
-.gif-container {
-    position: absolute;
-    top: 50px;  /* Position en haut de la page */
-    left: 10px; /* Position à gauche */
-    width: 15%; /* Utiliser un pourcentage pour le rendre responsive */
+/* === GIF central réduit à 50 % === */
+.gif-central {
+    width: 50%;
     height: auto;
-    max-width: 200px;  /* Largeur maximale du GIF pour les grands écrans */
 }
 
-.gif-container img {
-    width: 100%;  /* Faire en sorte que le GIF s'ajuste à la largeur de son conteneur */
-    height: auto;  /* Laisser la hauteur s'ajuster proportionnellement */
-}
-
-/* === Masquer le GIF sur les écrans mobiles === */
+/* === Responsive === */
 @media (max-width: 767px) {
-    .gif-container {
-        display: none;
+    .gif-central {
+        width: 70%;
     }
 }
