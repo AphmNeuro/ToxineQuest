@@ -174,7 +174,7 @@ document.getElementById("pdqTable").innerHTML=phtml+"</tbody>";
 /* Epworth */
 const ep=document.getElementById("epworthContainer");
 DATA.epworth.forEach((q,i)=>{
- const d=document.createElement("div"); d.innerHTML=`<div class="question-title">${i+1}. ${q}</div>${optionRadios(`ep_${i+1}`,["0","1","2","3"],[0,1,2,3])}`; ep.appendChild(d);
+ const d=document.createElement("div"); d.innerHTML=`<div class="question-title">${i+1}. ${q}</div>${optionRadios(`ep_${i+1}`,["Aucune chance","Faible chance","Chance moyenne","Forte chance"],[0,1,2,3])}`; ep.appendChild(d);
 });
 
 /* Pichot */
