@@ -18,7 +18,7 @@ body {
     margin: 0;
     padding: 30px;
     font-family: Arial, sans-serif;
-    background-color: #54A9AE;
+    background: #54A9AE;
     color: #2c3e50;
     text-align: center;
 }
@@ -42,23 +42,19 @@ h1 {
 .retour a {
     text-decoration: none;
     color: white;
-    background-color: #2c3e50;
+    background: #2c3e50;
     padding: 8px 14px;
     border-radius: 8px;
     font-size: 14px;
 }
 
-.retour a:hover {
-    background-color: #1a242f;
-}
-
 .form-block {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 25px 30px;
     background: white;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-    padding: 25px 30px;
-    margin: 25px auto;
-    max-width: 1100px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.10);
     text-align: left;
 }
 
@@ -68,18 +64,18 @@ h1 {
 }
 
 .section-title {
-    background: #2c3e50;
-    color: white;
-    padding: 18px 25px;
-    border-radius: 14px;
     max-width: 1100px;
     margin: 55px auto 20px;
+    padding: 18px 25px;
+    border-radius: 14px;
+    background: #2c3e50;
+    color: white;
     text-align: left;
 }
 
 .section-title h2 {
-    color: white;
     margin: 0;
+    color: white;
     font-size: 22px;
 }
 
@@ -89,53 +85,51 @@ h1 {
 }
 
 .subsection {
+    margin: 25px 0 15px;
+    padding: 12px 18px;
     background: #dcecee;
     border-left: 5px solid #2c3e50;
     border-radius: 8px;
-    padding: 12px 18px;
-    margin: 25px 0 15px;
     font-weight: bold;
 }
 
 .question-title {
+    margin-bottom: 12px;
     font-weight: bold;
     line-height: 1.5;
-    margin-bottom: 12px;
 }
 
 .instruction {
     line-height: 1.5;
-    margin-bottom: 15px;
 }
 
 .small {
-    color: #607080;
     font-size: 13px;
-    line-height: 1.4;
+    color: #607080;
 }
 
 .grid-2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 16px;
 }
 
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 16px;
 }
 
 .grid-4 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 16px;
 }
 
 .field label {
     display: block;
-    font-weight: bold;
     margin-bottom: 6px;
+    font-weight: bold;
 }
 
 input[type="text"],
@@ -144,19 +138,17 @@ input[type="date"],
 input[type="time"],
 textarea,
 select {
-
     width: 100%;
     padding: 9px;
     border: 1px solid #aaa;
     border-radius: 6px;
     background: white;
     font-size: 14px;
-
 }
 
 textarea {
-    resize: vertical;
     min-height: 85px;
+    resize: vertical;
 }
 
 input[type="radio"],
@@ -189,14 +181,12 @@ input[type="checkbox"] {
 }
 
 .score-option {
-
     display: block;
     padding: 10px 12px;
     border: 1px solid #dfe6e8;
     border-radius: 7px;
     line-height: 1.45;
     cursor: pointer;
-
 }
 
 .score-option:hover {
@@ -210,38 +200,30 @@ input[type="checkbox"] {
 }
 
 .conditional {
-
     display: none;
     margin-top: 15px;
     padding: 15px;
     background: #f3f7f8;
     border-left: 4px solid #54A9AE;
     border-radius: 8px;
-
 }
 
 table {
-
     width: 100%;
-    border-collapse: collapse;
     margin-top: 15px;
-
+    border-collapse: collapse;
 }
 
 th,
 td {
-
-    border: 1px solid #bac4c8;
     padding: 8px;
+    border: 1px solid #bac4c8;
     vertical-align: middle;
-
 }
 
 th {
-
     background: #e7eef0;
     text-align: center;
-
 }
 
 .big-table-wrapper {
@@ -253,16 +235,19 @@ th {
     font-weight: bold;
 }
 
+.subtotal-row td {
+    background: #dfe8ea;
+    font-weight: bold;
+}
+
+.constant-field,
 .readonly-field {
     background: #e6eaeb !important;
 }
 
 .constant-field {
-
-    background: #e6eaeb !important;
     font-weight: bold;
     text-align: center;
-
 }
 
 
@@ -276,23 +261,12 @@ th {
 
 .updrs3-table th:first-child,
 .updrs3-table td:first-child {
-
     min-width: 230px;
     text-align: left;
-
 }
 
 .updrs3-table select {
-    min-width: 70px;
-}
-
-.subtotal-row td {
-    background: #dfe8ea;
-    font-weight: bold;
-}
-
-.subtotal-row input {
-    min-width: 75px;
+    min-width: 65px;
 }
 
 
@@ -300,52 +274,153 @@ th {
    MARCONI
    ========================================================= */
 
-.marconi-wrapper {
-    overflow-x: auto;
+.marconi-main {
+    display: flex;
+    justify-content: space-around;
+    gap: 45px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
-.marconi-table {
-    min-width: 1050px;
+.marconi-panel {
+    width: 260px;
+    text-align: center;
 }
 
-.marconi-condition {
-
-    min-width: 180px;
-    font-weight: bold;
-
+.marconi-panel h3 {
+    min-height: 48px;
+    margin: 0 0 20px;
+    font-size: 17px;
 }
 
-.marconi-cell {
-
-    width: 48px;
-    min-width: 48px;
-    height: 48px;
-    padding: 3px;
-
+.marconi-grid {
+    width: 174px;
+    height: 174px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,58px);
+    grid-template-rows: repeat(3,58px);
 }
 
-.marconi-button {
-
-    width: 100%;
-    height: 100%;
-    border: 1px solid #89979b;
-    border-radius: 5px;
-    background: #f3f5f5;
-    font-weight: bold;
+.marconi-grid button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+    background: white;
     cursor: pointer;
-    font-size: 14px;
-
+    font-size: 19px;
+    font-weight: bold;
 }
 
-.marconi-button:hover {
+.marconi-grid button:nth-child(3n) {
+    border-right: 0;
+}
+
+.marconi-grid button:nth-child(n+7) {
+    border-bottom: 0;
+}
+
+.marconi-grid button:hover {
+    background: #e8f2f3;
+}
+
+.marconi-grid button.filled {
     background: #dcecee;
 }
 
-.marconi-button.filled {
+.marconi-sum {
+    margin: 22px auto 0;
+    width: 170px;
+}
 
+.marconi-total {
+    width: 220px;
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   FNM NUMERIQUE OFF / ON
+   ========================================================= */
+
+.fnm-state {
+    display: inline-block;
+    padding: 8px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
     background: #2c3e50;
     color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
 
+.fnmscale-row {
+    margin: 25px 0 34px;
+}
+
+.fnmscale-number {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.fnmscale-layout {
+    display: grid;
+    grid-template-columns: 190px minmax(300px,1fr) 190px;
+    align-items: center;
+    gap: 16px;
+}
+
+.fnmscale-left {
+    text-align: right;
+    line-height: 1.3;
+}
+
+.fnmscale-right {
+    text-align: left;
+    line-height: 1.3;
+}
+
+.slider-zone {
+    position: relative;
+    padding-top: 23px;
+}
+
+.slider-numbers {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0 2px;
+}
+
+.fnm-slider {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.fnm-slider:not(.answered)::-webkit-slider-thumb {
+    opacity: 0;
+}
+
+.fnm-slider:not(.answered)::-moz-range-thumb {
+    opacity: 0;
+}
+
+.slider-answer {
+    margin-top: 7px;
+    text-align: center;
+    font-weight: bold;
+    min-height: 18px;
+}
+
+.condition-check {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #edf6f7;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
 
@@ -354,13 +429,11 @@ th {
    ========================================================= */
 
 .global-copy {
-
+    margin-bottom: 20px;
+    padding: 15px;
     background: #edf6f7;
     border: 2px solid #54A9AE;
     border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-
 }
 
 
@@ -369,16 +442,14 @@ th {
    ========================================================= */
 
 .export-button {
-
+    margin: 40px 0 60px;
+    padding: 15px 32px;
+    border: none;
+    border-radius: 9px;
     background: #3498db;
     color: white;
-    border: none;
-    padding: 15px 32px;
-    border-radius: 9px;
     cursor: pointer;
     font-size: 17px;
-    margin: 40px 0 60px;
-
 }
 
 .export-button:hover {
@@ -407,12 +478,20 @@ th {
         padding: 18px;
     }
 
+    .fnmscale-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fnmscale-left,
+    .fnmscale-right {
+        text-align: center;
+    }
+
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -429,7 +508,6 @@ th {
 </div>
 
 
-
 <!-- =========================================================
      IDENTIFICATION
      ========================================================= -->
@@ -440,30 +518,23 @@ th {
 
         <div class="field">
 
-            <label for="patientID">
-                Identifiant Patient
-            </label>
+            <label>Identifiant Patient</label>
 
             <input
                 type="text"
                 id="patientID"
                 placeholder="Ex : 002STESY"
-                autocomplete="off"
-            >
+                autocomplete="off">
 
         </div>
 
-
         <div class="field">
 
-            <label for="bilanDate">
-                Date du bilan
-            </label>
+            <label>Date du bilan</label>
 
             <input
                 type="date"
-                id="bilanDate"
-            >
+                id="bilanDate">
 
         </div>
 
@@ -477,71 +548,50 @@ th {
         <div class="inline-options">
 
             <label>
-                <input
-                    type="radio"
-                    name="bilanType"
-                    value="PRECHIR">
+                <input type="radio" name="bilanType" value="PRECHIR">
                 PRECHIR
             </label>
 
             <label>
-                <input
-                    type="radio"
-                    name="bilanType"
-                    value="PRE_POMPE_APOKINON">
+                <input type="radio" name="bilanType" value="PREPOMPEAPOKINON">
                 PRE POMPE APOKINON
             </label>
 
             <label>
-                <input
-                    type="radio"
-                    name="bilanType"
-                    value="PRE_DUODOPA">
+                <input type="radio" name="bilanType" value="PREDUODOPA">
                 PRE DUODOPA
             </label>
 
             <label>
-                <input
-                    type="radio"
-                    name="bilanType"
-                    value="6_MOIS">
+                <input type="radio" name="bilanType" value="6MOIS">
                 6 MOIS
             </label>
 
             <label>
-                <input
-                    type="radio"
-                    name="bilanType"
-                    value="1_AN">
+                <input type="radio" name="bilanType" value="1AN">
                 1 AN
             </label>
 
             <label>
-                <input
-                    type="radio"
-                    name="bilanType"
-                    value="AUTRE">
+                <input type="radio" name="bilanType" value="AUTRE">
                 Autre
             </label>
 
         </div>
 
-
         <input
             type="text"
             id="bilanTypeOther"
-            placeholder="Préciser si autre : .... ans"
-            style="margin-top:12px;"
-        >
+            placeholder="Ex : 2 ans"
+            style="margin-top:12px;">
 
     </div>
 
 </div>
 
 
-
 <!-- =========================================================
-     1 HISTOIRE PARKINSON
+     HISTOIRE
      ========================================================= -->
 
 <div class="section-title">
@@ -555,64 +605,45 @@ th {
         Premiers symptômes
     </div>
 
-
     <div class="inline-options">
 
         <label>
-            <input
-                type="radio"
-                name="firstSymptom"
-                value="Tremblement">
+            <input type="radio" name="firstSymptom" value="Tremblement">
             Tremblement
         </label>
 
         <label>
-            <input
-                type="radio"
-                name="firstSymptom"
-                value="Syndrome akinetorigide">
+            <input type="radio" name="firstSymptom" value="Syndrome akinetorigide">
             Syndrome akinétorigide
         </label>
 
         <label>
-            <input
-                type="radio"
-                name="firstSymptom"
-                value="Autre">
+            <input type="radio" name="firstSymptom" value="Autre">
             Autre
         </label>
 
     </div>
 
-
     <input
         type="text"
         id="firstSymptomOther"
         placeholder="Autre :"
-        style="margin-top:12px;"
-    >
+        style="margin-top:12px;">
 
 
     <div class="question-title" style="margin-top:22px;">
         Côté des premiers symptômes
     </div>
 
-
     <div class="inline-options">
 
         <label>
-            <input
-                type="radio"
-                name="firstSide"
-                value="Droite">
+            <input type="radio" name="firstSide" value="Droite">
             À droite
         </label>
 
         <label>
-            <input
-                type="radio"
-                name="firstSide"
-                value="Gauche">
+            <input type="radio" name="firstSide" value="Gauche">
             À gauche
         </label>
 
@@ -622,108 +653,38 @@ th {
     <div class="grid-2" style="margin-top:25px;">
 
         <div class="field">
-
             <label>Année des premiers symptômes</label>
-
-            <input
-                type="number"
-                id="yearFirstSymptoms"
-                min="1900"
-                max="2100"
-            >
-
+            <input type="number" id="yearFirstSymptoms">
         </div>
 
-
         <div class="field">
-
             <label>Année du diagnostic de la maladie</label>
-
-            <input
-                type="number"
-                id="yearDiagnosis"
-                min="1900"
-                max="2100"
-            >
-
+            <input type="number" id="yearDiagnosis">
         </div>
 
-
         <div class="field">
-
             <label>Année d’introduction de la L-DOPA</label>
-
-            <input
-                type="number"
-                id="yearLDopa"
-                min="1900"
-                max="2100"
-            >
-
+            <input type="number" id="yearLDopa">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Année d’introduction du traitement dopaminergique
-            </label>
-
-            <input
-                type="number"
-                id="yearDopaminergic"
-                min="1900"
-                max="2100"
-            >
-
+            <label>Année d’introduction du traitement dopaminergique</label>
+            <input type="number" id="yearDopaminergic">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Année d’apparition des fluctuations motrices
-            </label>
-
-            <input
-                type="number"
-                id="yearMotorFluct"
-                min="1900"
-                max="2100"
-            >
-
+            <label>Année d’apparition des fluctuations motrices</label>
+            <input type="number" id="yearMotorFluct">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Année d’apparition des fluctuations non motrices
-            </label>
-
-            <input
-                type="number"
-                id="yearNonMotorFluct"
-                min="1900"
-                max="2100"
-            >
-
+            <label>Année d’apparition des fluctuations non motrices</label>
+            <input type="number" id="yearNonMotorFluct">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Année d’apparition des dyskinésies
-            </label>
-
-            <input
-                type="number"
-                id="yearDyskinesia"
-                min="1900"
-                max="2100"
-            >
-
+            <label>Année d’apparition des dyskinésies</label>
+            <input type="number" id="yearDyskinesia">
         </div>
 
     </div>
@@ -731,9 +692,8 @@ th {
 </div>
 
 
-
 <!-- =========================================================
-     2 DONNEES COMPLEMENTAIRES
+     DONNEES COMPLEMENTAIRES
      ========================================================= -->
 
 <div class="section-title">
@@ -743,9 +703,8 @@ th {
 <div class="form-block" id="additionalData"></div>
 
 
-
 <!-- =========================================================
-     3 HISTORIQUE TRAITEMENTS
+     HISTORIQUE TRAITEMENTS
      ========================================================= -->
 
 <div class="section-title">
@@ -755,15 +714,13 @@ th {
 <div id="historicalTreatments"></div>
 
 
-
 <!-- =========================================================
-     4 ATCD MEDICAUX
+     ATCD MEDICAUX
      ========================================================= -->
 
 <div class="section-title">
     <h2>4. Antécédents médicaux</h2>
 </div>
-
 
 <div class="form-block">
 
@@ -774,13 +731,11 @@ th {
             <thead>
 
                 <tr>
-
                     <th>#</th>
                     <th>Description</th>
                     <th>Année de début</th>
                     <th>En cours</th>
                     <th>Année de fin</th>
-
                 </tr>
 
             </thead>
@@ -794,30 +749,24 @@ th {
 </div>
 
 
-
 <!-- =========================================================
-     5 ATCD CHIRURGICAUX
+     ATCD CHIRURGICAUX
      ========================================================= -->
 
 <div class="section-title">
     <h2>5. Antécédents chirurgicaux</h2>
 </div>
 
-
 <div class="form-block">
 
     <table id="surgicalHistoryTable">
 
         <thead>
-
             <tr>
-
                 <th>#</th>
                 <th>Description</th>
                 <th>Année</th>
-
             </tr>
-
         </thead>
 
         <tbody></tbody>
@@ -827,57 +776,36 @@ th {
 </div>
 
 
-
 <!-- =========================================================
-     6 ATCD FAMILIAUX
+     FAMILIAUX
      ========================================================= -->
 
 <div class="section-title">
     <h2>6. Antécédents familiaux</h2>
 </div>
 
-
 <div class="form-block">
 
     <div class="field">
-
-        <label>
-            Arbre généalogique
-        </label>
-
-        <textarea
-            id="familyTree"
-            placeholder="Texte libre"
-        ></textarea>
-
+        <label>Arbre généalogique</label>
+        <textarea id="familyTree"></textarea>
     </div>
 
-
     <div class="field" style="margin-top:18px;">
-
-        <label>
-            Génétique ?
-        </label>
-
-        <textarea
-            id="genetics"
-            placeholder="Texte libre"
-        ></textarea>
-
+        <label>Génétique ?</label>
+        <textarea id="genetics"></textarea>
     </div>
 
 </div>
 
 
-
 <!-- =========================================================
-     7 TRAITEMENTS ANTIPARKINSONIENS
+     TRAITEMENTS PARKINSON
      ========================================================= -->
 
 <div class="section-title">
     <h2>7. Traitements antiparkinsoniens en cours</h2>
 </div>
-
 
 <div class="form-block">
 
@@ -888,29 +816,12 @@ th {
             <thead>
 
                 <tr>
-
                     <th>#</th>
-
-                    <th>
-                        Traitement
-                    </th>
-
-                    <th>
-                        Nombre de prises / jour
-                    </th>
-
-                    <th>
-                        Posologie quotidienne (mg/jour)
-                    </th>
-
-                    <th>
-                        Facteur de conversion µ
-                    </th>
-
-                    <th>
-                        Dose Équivalent L-Dopa – DEL (mg/jour)
-                    </th>
-
+                    <th>Traitement</th>
+                    <th>Nombre de prises / jour</th>
+                    <th>Posologie quotidienne (mg/jour)</th>
+                    <th>Facteur de conversion µ</th>
+                    <th>Dose Equivalent L-dopa (DEL) (mg/jour)</th>
                 </tr>
 
             </thead>
@@ -922,76 +833,39 @@ th {
     </div>
 
 
-    <div class="grid-3" style="margin-top:22px;">
+    <div class="grid-3" style="margin-top:20px;">
 
         <div class="field">
-
-            <label>
-                DEL agonistes (mg/jour)
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="delAgonists"
-            >
-
+            <label>DEL agonistes (mg/jour)</label>
+            <input type="number" step="any" id="delAgonists">
         </div>
 
-
         <div class="field">
-
-            <label>
-                DEL L-Dopa (mg/jour)
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="delLDopa"
-            >
-
+            <label>DEL L-Dopa (mg/jour)</label>
+            <input type="number" step="any" id="delLDopa">
         </div>
 
-
         <div class="field">
-
-            <label>
-                DEL totale (mg/jour)
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="delTotal"
-            >
-
+            <label>DEL totale (mg/jour)</label>
+            <input type="number" step="any" id="delTotal">
         </div>
 
     </div>
 
-
-    <p class="small">
-        Les facteurs de conversion sont ceux du cahier et sont volontairement
-        verrouillés. Les DEL restent saisies comme données brutes.
-    </p>
-
 </div>
 
 
-
 <!-- =========================================================
-     8 AUTRES TRAITEMENTS
+     AUTRES TRAITEMENTS
      ========================================================= -->
 
 <div class="section-title">
     <h2>8. Autres traitements</h2>
 </div>
 
-
 <div class="form-block">
 
-    <p class="instruction">
+    <p>
         Nom DCI / dosage / forme / posologie
     </p>
 
@@ -1000,136 +874,71 @@ th {
 </div>
 
 
-
 <!-- =========================================================
-     9 SIGNES VITAUX
+     VITAUX
      ========================================================= -->
 
 <div class="section-title">
-    <h2>9. Signes vitaux et test d'hypotension</h2>
+    <h2>9. Signes vitaux et test hypotension</h2>
 </div>
-
 
 <div class="form-block">
 
     <div class="grid-3">
 
         <div class="field">
-
-            <label>
-                Poids (kg)
-            </label>
-
-            <input
-                type="number"
-                step="0.1"
-                id="weight"
-            >
-
+            <label>Poids (kg)</label>
+            <input type="number" step="0.1" id="weight">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Taille (cm)
-            </label>
-
-            <input
-                type="number"
-                step="0.1"
-                id="height"
-            >
-
+            <label>Taille (cm)</label>
+            <input type="number" step="0.1" id="height">
         </div>
 
-
         <div class="field">
-
-            <label>
-                IMC (kg/m²)
-            </label>
-
-            <input
-                type="number"
-                step="0.01"
-                id="bmi"
-            >
-
+            <label>IMC (kg/m²)</label>
+            <input type="number" step="0.01" id="bmi">
         </div>
 
     </div>
-
 
     <div id="bpMeasurements"></div>
 
 
     <div class="question-title" style="margin-top:28px;">
-
         Conclusion : Hypotension orthostatique
-
     </div>
-
 
     <div class="inline-options">
 
         <label>
-
-            <input
-                type="radio"
-                name="orthostaticHypotension"
-                value="1">
-
+            <input type="radio" name="orthostaticHypotension" value="1">
             Oui
-
         </label>
 
-
         <label>
-
-            <input
-                type="radio"
-                name="orthostaticHypotension"
-                value="0">
-
+            <input type="radio" name="orthostaticHypotension" value="0">
             Non
-
         </label>
 
     </div>
 
 
-    <div
-        id="hypotensionTypeBlock"
-        class="conditional"
-    >
+    <div id="hypotensionTypeBlock" class="conditional">
 
         <strong>Si oui :</strong>
-
 
         <div class="inline-options">
 
             <label>
-
-                <input
-                    type="radio"
-                    name="hypotensionType"
-                    value="Symptomatique">
-
+                <input type="radio" name="hypotensionType" value="Symptomatique">
                 Symptomatique
-
             </label>
 
-
             <label>
-
-                <input
-                    type="radio"
-                    name="hypotensionType"
-                    value="Asymptomatique">
-
+                <input type="radio" name="hypotensionType" value="Asymptomatique">
                 Asymptomatique
-
             </label>
 
         </div>
@@ -1139,65 +948,37 @@ th {
 </div>
 
 
-
 <!-- =========================================================
-     10 ECG
+     ECG
      ========================================================= -->
 
 <div class="section-title">
     <h2>10. ECG</h2>
 </div>
 
-
 <div class="form-block">
 
     <div class="grid-2">
 
         <div class="field">
-
-            <label>
-                QTc – Formule de Framingham (ms)
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="qtc"
-            >
-
+            <label>QTc – Formule de Framingham (ms)</label>
+            <input type="number" step="any" id="qtc">
         </div>
-
 
         <div class="field">
 
-            <label>
-                ECG
-            </label>
-
+            <label>ECG</label>
 
             <div class="inline-options">
 
                 <label>
-
-                    <input
-                        type="radio"
-                        name="ecgConclusion"
-                        value="Normal">
-
+                    <input type="radio" name="ecgConclusion" value="Normal">
                     Normal
-
                 </label>
 
-
                 <label>
-
-                    <input
-                        type="radio"
-                        name="ecgConclusion"
-                        value="Anormal">
-
+                    <input type="radio" name="ecgConclusion" value="Anormal">
                     Anormal
-
                 </label>
 
             </div>
@@ -1206,66 +987,35 @@ th {
 
     </div>
 
-
     <p class="small">
-
-        Rappel valeurs normales :<br>
-        Hommes : QTc ≤ 440 ms<br>
-        Femmes : QTc ≤ 450 ms
-
+        Hommes : QTc ≤ 440 ms – Femmes : QTc ≤ 450 ms
     </p>
 
 </div>
-
 
 
 <!-- =========================================================
-     11 IRM
+     IRM
      ========================================================= -->
 
 <div class="section-title">
-
-    <h2>
-        11. IRM cérébrale
-    </h2>
-
-    <p>
-        Bilan préchirurgical SCP STN
-    </p>
-
+    <h2>11. IRM cérébrale</h2>
 </div>
-
 
 <div class="form-block">
 
-    <div class="question-title">
-        Réalisation
-    </div>
-
+    <div class="question-title">Réalisation</div>
 
     <div class="inline-options">
 
         <label>
-
-            <input
-                type="radio"
-                name="mriDone"
-                value="1">
-
+            <input type="radio" name="mriDone" value="1">
             Réalisée
-
         </label>
 
-
         <label>
-
-            <input
-                type="radio"
-                name="mriDone"
-                value="0">
-
+            <input type="radio" name="mriDone" value="0">
             Non réalisée
-
         </label>
 
     </div>
@@ -1275,164 +1025,92 @@ th {
         Vue et normale
     </div>
 
-
     <div class="inline-options">
 
         <label>
-
-            <input
-                type="radio"
-                name="mriSeenNormal"
-                value="1">
-
+            <input type="radio" name="mriSeenNormal" value="1">
             Oui
-
         </label>
 
-
         <label>
-
-            <input
-                type="radio"
-                name="mriSeenNormal"
-                value="0">
-
+            <input type="radio" name="mriSeenNormal" value="0">
             Non
-
         </label>
 
     </div>
 
-
     <div class="field" style="margin-top:20px;">
-
-        <label>
-            Commentaires
-        </label>
-
+        <label>Commentaires</label>
         <textarea id="mriComments"></textarea>
-
     </div>
 
 </div>
-
 
 
 <!-- =========================================================
-     12 MDS UPDRS I
+     UPDRS I
      ========================================================= -->
 
 <div class="section-title">
-
-    <h2>
-        12. MDS-UPDRS I
-    </h2>
-
-    <p>
-        Partie I : expérience non motrice de la vie quotidienne
-    </p>
-
+    <h2>12. MDS-UPDRS I</h2>
+    <p>Partie I : expérience non motrice de la vie quotidienne</p>
 </div>
-
 
 <div id="updrs1Container"></div>
 
 
-
 <!-- =========================================================
-     13 MDS UPDRS IV
+     UPDRS IV
      ========================================================= -->
 
 <div class="section-title">
-
-    <h2>
-        13. MDS-UPDRS IV
-    </h2>
-
-    <p>
-        Partie IV : complications motrices
-    </p>
-
+    <h2>13. MDS-UPDRS IV</h2>
+    <p>Partie IV : complications motrices</p>
 </div>
-
 
 <div id="updrs4Container"></div>
 
 
-
 <!-- =========================================================
-     14 MDS UPDRS III
+     UPDRS III
      ========================================================= -->
 
 <div class="section-title">
     <h2>14. MDS-UPDRS III</h2>
 </div>
 
-
 <div class="form-block">
 
     <div class="grid-4">
 
         <div class="field">
-
-            <label>
-                Heure de prise de L-Dopa
-            </label>
-
-            <input
-                type="time"
-                id="ldopaTime"
-            >
-
+            <label>Heure de prise de L-Dopa</label>
+            <input type="time" id="ldopaTime">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Dose de L-Dopa (mg)
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="ldopaDose"
-            >
-
+            <label>Dose de L-Dopa (mg)</label>
+            <input type="number" step="any" id="ldopaDose">
         </div>
 
-
         <div class="field">
-
-            <label>
-                Réalisation après 12h d'arrêt L-Dopa
-            </label>
+            <label>Réalisation après 12h d’arrêt L-Dopa</label>
 
             <select id="stopLDopa12h">
-
                 <option value="">—</option>
                 <option value="1">Oui</option>
                 <option value="0">Non</option>
-
             </select>
-
         </div>
 
-
         <div class="field">
-
-            <label>
-                Réalisation après 5 demi-vies d'arrêt agoniste
-            </label>
+            <label>Réalisation après 5 demi-vies d’arrêt agoniste</label>
 
             <select id="stopAgonist5HalfLife">
-
                 <option value="">—</option>
                 <option value="1">Oui</option>
                 <option value="0">Non</option>
-
             </select>
-
         </div>
 
     </div>
@@ -1442,250 +1120,178 @@ th {
         Heure : Minute
     </div>
 
-
-    <div
-        class="grid-4"
-        id="updrs3Times"
-    ></div>
+    <div class="grid-4" id="updrs3Times"></div>
 
 
     <div class="big-table-wrapper">
-
-        <table
-            class="updrs3-table"
-            id="updrs3Table"
-        ></table>
-
+        <table class="updrs3-table" id="updrs3Table"></table>
     </div>
 
 </div>
 
 
-
 <!-- =========================================================
-     15 MARCONI
+     MARCONI
      ========================================================= -->
 
 <div class="section-title">
 
-    <h2>
-        15. Échelle de dyskinésie de Marconi
-    </h2>
-
-    <p>
-        Remplir le sous score total pour le off, biphasique et pic de dose,
-        (mettre un 0 dans une case lorsqu’on n’a pas observé de dyskinésies).
-    </p>
+    <h2>15. Échelle de dyskinésie de Marconi</h2>
 
 </div>
 
 
 <div class="form-block">
 
-    <p class="instruction">
+    <p>
+        <strong>Consigne :</strong>
+    </p>
 
+    <p class="instruction">
+        Remplir le sous score total pour le off, biphasique et pic de dose,
+        (mettre un 0 dans une case lorsqu’on n’a pas observé de dyskinésies)
+    </p>
+
+    <p class="instruction">
         Avec manœuvres d’activation de l’UPDRS
         (parole, mouvements répétitifs des 4 extrémités, marche)
         et coter pour chaque partie du corps la dyskinésie la plus sévère observée.
-
     </p>
 
 
-    <div class="marconi-wrapper">
-
-        <table class="marconi-table">
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        Condition
-                    </th>
-
-                    <th colspan="15">
-                        Cases de cotation
-                    </th>
-
-                    <th>
-                        Somme
-                    </th>
-
-                </tr>
-
-            </thead>
+    <div class="marconi-main" id="marconiContainer"></div>
 
 
-            <tbody id="marconiBody"></tbody>
+    <div class="field marconi-total">
 
-        </table>
-
-    </div>
-
-
-    <div
-        class="field"
-        style="max-width:220px;margin-top:20px;"
-    >
-
-        <label>
-            Score total
-        </label>
+        <label>Score total</label>
 
         <input
             type="number"
-            step="any"
             id="marconiTotal"
-        >
+            readonly
+            class="readonly-field">
 
     </div>
-
-
-    <p class="small">
-
-        Cliquer sur chaque case « # » puis saisir la valeur observée.
-        Une case non renseignée reste manquante.
-
-    </p>
 
 </div>
 
 
-
 <!-- =========================================================
-     16 HOEHN YAHR
+     FNM OFF
      ========================================================= -->
 
 <div class="section-title">
 
-    <h2>
-        16. Stade de Hoehn et Yahr
-    </h2>
+    <h2>16. Échelle d’évaluation des fluctuations non motrices – OFF</h2>
 
 </div>
 
+<div
+    class="form-block"
+    id="fnmScale_OFF">
+</div>
+
+
+<!-- =========================================================
+     FNM ON
+     ========================================================= -->
+
+<div class="section-title">
+
+    <h2>17. Échelle d’évaluation des fluctuations non motrices – ON</h2>
+
+</div>
+
+<div
+    class="form-block"
+    id="fnmScale_ON">
+</div>
+
+
+<!-- =========================================================
+     HOEHN YAHR
+     ========================================================= -->
+
+<div class="section-title">
+    <h2>18. Stade de Hoehn et Yahr</h2>
+</div>
 
 <div class="form-block">
 
     <div class="grid-2">
 
         <div class="field">
-
-            <label>
-                OFF
-            </label>
-
+            <label>OFF</label>
             <select id="hyOff"></select>
-
         </div>
 
-
         <div class="field">
-
-            <label>
-                ON
-            </label>
-
+            <label>ON</label>
             <select id="hyOn"></select>
-
         </div>
 
     </div>
 
-
-    <div
-        id="hyDescriptions"
-        style="margin-top:22px;"
-    ></div>
+    <div id="hyDescriptions"></div>
 
 </div>
-
 
 
 <!-- =========================================================
-     17 SCHWAB ENGLAND
+     SCHWAB
      ========================================================= -->
 
 <div class="section-title">
-
-    <h2>
-        17. Échelle de Schwab et England
-    </h2>
-
+    <h2>19. Échelle de Schwab et England</h2>
 </div>
-
 
 <div class="form-block">
 
     <div class="grid-2">
 
         <div class="field">
-
-            <label>
-                OFF
-            </label>
-
+            <label>OFF</label>
             <select id="seOff"></select>
-
         </div>
 
-
         <div class="field">
-
-            <label>
-                ON
-            </label>
-
+            <label>ON</label>
             <select id="seOn"></select>
-
         </div>
 
     </div>
 
-
-    <div
-        id="seDescriptions"
-        style="margin-top:22px;"
-    ></div>
+    <div id="seDescriptions"></div>
 
 </div>
 
 
-
 <!-- =========================================================
-     18 FNM
+     QUESTIONNAIRE FNM 20 ITEMS
      ========================================================= -->
 
 <div class="section-title">
 
-    <h2>
-        18. Questionnaire d’évaluation des fluctuations non motrices
-    </h2>
+    <h2>20. Questionnaire d’évaluation des fluctuations non motrices</h2>
 
     <p>
-        Instructions : Pour chaque item, demandez au patient d’évaluer la présence
+        Pour chaque item, demandez au patient d’évaluer la présence
         de fluctuations non motrices au cours des 3 derniers mois.
     </p>
 
 </div>
 
-
-<div id="fnmContainer"></div>
-
+<div id="fnmQuestionnaireContainer"></div>
 
 
 <!-- =========================================================
-     19 CGI
+     CGI
      ========================================================= -->
 
 <div class="section-title">
-
-    <h2>
-        19. Clinical Global Impression – Severity (CGI-S)
-    </h2>
-
+    <h2>21. Clinical Global Impression – Severity (CGI-S)</h2>
 </div>
-
 
 <div class="form-block">
 
@@ -1693,30 +1299,20 @@ th {
         Niveau global de sévérité de la maladie :
     </div>
 
-    <div
-        class="score-options"
-        id="cgiOptions"
-    ></div>
+    <div class="score-options" id="cgiOptions"></div>
 
 </div>
-
 
 
 <!-- =========================================================
-     20 TRAITEMENTS SORTIE
+     SORTIE
      ========================================================= -->
 
 <div class="section-title">
-
-    <h2>
-        20. Traitements de sortie
-    </h2>
-
+    <h2>22. Traitements de sortie</h2>
 </div>
 
-
 <div class="form-block">
-
 
     <div class="global-copy">
 
@@ -1726,19 +1322,9 @@ th {
                 type="checkbox"
                 id="allTreatmentsUnchanged">
 
-            <strong>
-                TRAITEMENTS NON MODIFIÉS
-            </strong>
+            <strong>TRAITEMENTS NON MODIFIÉS</strong>
 
         </label>
-
-
-        <div class="small" style="margin-top:8px;">
-
-            Si cette case est cochée, les 10 traitements d'entrée
-            sont automatiquement recopiés dans les traitements de sortie.
-
-        </div>
 
     </div>
 
@@ -1750,15 +1336,12 @@ th {
             <thead>
 
                 <tr>
-
                     <th>#</th>
                     <th>Traitement entrée</th>
                     <th>Traitement de sortie</th>
-
                 </tr>
 
             </thead>
-
 
             <tbody></tbody>
 
@@ -1767,35 +1350,16 @@ th {
     </div>
 
 
-    <div class="grid-2" style="margin-top:22px;">
+    <div class="grid-2" style="margin-top:20px;">
 
         <div class="field">
-
-            <label>
-                DEL entrée
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="outputDelIn"
-            >
-
+            <label>DEL entrée</label>
+            <input type="number" step="any" id="outputDelIn">
         </div>
 
-
         <div class="field">
-
-            <label>
-                DEL sortie
-            </label>
-
-            <input
-                type="number"
-                step="any"
-                id="outputDelOut"
-            >
-
+            <label>DEL sortie</label>
+            <input type="number" step="any" id="outputDelOut">
         </div>
 
     </div>
@@ -1803,33 +1367,28 @@ th {
 </div>
 
 
-
 <!-- =========================================================
-     21 CONCLUSION
+     CONCLUSION
      ========================================================= -->
 
 <div class="section-title">
-    <h2>21. Conclusion</h2>
+    <h2>23. Conclusion</h2>
 </div>
-
 
 <div class="form-block">
 
     <textarea
         id="finalConclusion"
-        style="min-height:170px;"
-        placeholder="Conclusion"
-    ></textarea>
+        style="min-height:170px;">
+    </textarea>
 
 </div>
 
 
-
 <button
-    type="button"
     class="export-button"
-    onclick="generateCSV()"
->
+    type="button"
+    onclick="generateCSV()">
 
     Télécharger en CSV
 
@@ -1844,103 +1403,112 @@ th {
    UTILITAIRES
    ========================================================= */
 
+function missing(value) {
 
-function valueOrNaN(value) {
-
-    if (value === undefined || value === null) {
-        return "NaN";
+    if (
+        value === undefined ||
+        value === null ||
+        String(value).trim() === ""
+    ) {
+        return "Non répondu";
     }
 
-    const v = String(value).trim();
-
-    if (v === "") {
-        return "NaN";
-    }
-
-    return v;
+    return String(value).trim();
 
 }
-
 
 
 function radioValue(name) {
 
-    const selected =
+    const element =
         document.querySelector(
             `input[name="${name}"]:checked`
         );
 
-    return selected
-        ? selected.value
-        : "NaN";
+    return element
+        ? element.value
+        : "Non répondu";
 
 }
-
 
 
 function csvEscape(value) {
 
     return String(value)
-        .replace(/"/g, '""');
+        .replace(/"/g,'""');
 
 }
 
 
-
-function createScoreSelect(id) {
+function scoreSelect(id) {
 
     let html =
         `<select id="${id}">
             <option value="">—</option>`;
 
-    for (let i = 0; i <= 4; i++) {
+    for(let i=0;i<=4;i++) {
 
         html +=
-            `<option value="${i}">
-                ${i}
-            </option>`;
+            `<option value="${i}">${i}</option>`;
 
     }
 
-    html += `</select>`;
-
-    return html;
+    return html + "</select>";
 
 }
 
+
+function sanitizeFileToken(value) {
+
+    return String(value)
+
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .toUpperCase()
+        .trim()
+        .replace(/\s+/g,"")
+        .replace(/[^A-Z0-9_-]/g,"");
+
+}
+
+
+function getBilanToken() {
+
+    const type =
+        radioValue("bilanType");
+
+    if(type === "Non répondu") {
+        return "";
+    }
+
+    if(type !== "AUTRE") {
+        return sanitizeFileToken(type);
+    }
+
+    return sanitizeFileToken(
+        document
+            .getElementById("bilanTypeOther")
+            .value
+    );
+
+}
 
 
 /* =========================================================
    DONNEES COMPLEMENTAIRES
    ========================================================= */
 
-
 const additionalItems = [
 
-    [
-        "tciHistory",
-        "ANTCD de trouble du contrôle des impulsions ou HHD"
-    ],
+["tciHistory","ANTCD de trouble du contrôle des impulsions ou HHD"],
 
-    [
-        "falls",
-        "Chutes"
-    ],
+["falls","Chutes"],
 
-    [
-        "freezingOff",
-        "Freezing de OFF"
-    ],
+["freezingOff","Freezing de OFF"],
 
-    [
-        "freezingOn",
-        "Freezing de ON"
-    ],
+["freezingOn","Freezing de ON"],
 
-    [
-        "visualHallucinations",
-        "Hallucinations visuelles"
-    ]
+["visualHallucinations","Hallucinations visuelles"]
 
 ];
 
@@ -1949,84 +1517,60 @@ const additionalData =
     document.getElementById("additionalData");
 
 
-additionalItems.forEach(item => {
-
-    const id = item[0];
-    const label = item[1];
+additionalItems.forEach(([id,label]) => {
 
     const div =
         document.createElement("div");
 
     div.style.marginBottom = "18px";
 
-
     div.innerHTML = `
 
-        <div class="question-title">
-            ${label}
-        </div>
+        <div class="question-title">${label}</div>
 
         <div class="inline-options">
 
             <label>
-
-                <input
-                    type="radio"
-                    name="${id}"
-                    value="1">
-
+                <input type="radio" name="${id}" value="1">
                 Oui
-
             </label>
 
-
             <label>
-
-                <input
-                    type="radio"
-                    name="${id}"
-                    value="0">
-
+                <input type="radio" name="${id}" value="0">
                 Non
-
             </label>
 
         </div>
 
     `;
 
-
     additionalData.appendChild(div);
 
 });
-
 
 
 /* =========================================================
    HISTORIQUE TRAITEMENTS
    ========================================================= */
 
-
 const historicalTreatments = [
 
-    "Agoniste dopaminergique",
+"AGONISTE DOPAMINERGIQUE",
 
-    "IMAO B",
+"IMAO B",
 
-    "ICOMT",
+"ICOMT",
 
-    "Amantadine"
+"AMANTADINE"
 
 ];
 
 
 const historicalContainer =
-    document.getElementById(
-        "historicalTreatments"
-    );
+    document.getElementById("historicalTreatments");
 
 
-historicalTreatments.forEach((label, index) => {
+historicalTreatments.forEach((label,index) => {
 
     const n = index + 1;
 
@@ -2035,64 +1579,47 @@ historicalTreatments.forEach((label, index) => {
 
     div.className = "form-block";
 
-
     div.innerHTML = `
 
-        <div class="question-title">
-            ${label}
-        </div>
-
+        <div class="question-title">${label}</div>
 
         <div class="inline-options">
 
             <label>
-
                 <input
                     type="radio"
                     name="histTreatment${n}"
                     value="En cours">
-
                 En cours
-
             </label>
 
-
             <label>
-
                 <input
                     type="radio"
                     name="histTreatment${n}"
                     value="Interrompu">
-
                 Interrompu
-
             </label>
 
         </div>
 
-
         <div
-            class="conditional"
             id="histTreatment${n}ReasonBlock"
-        >
+            class="conditional">
 
             <div class="field">
 
-                <label>
-                    Raison de l'interruption
-                </label>
+                <label>Raison</label>
 
                 <input
                     type="text"
-                    id="histTreatment${n}Reason"
-                >
+                    id="histTreatment${n}Reason">
 
             </div>
 
         </div>
 
     `;
-
 
     historicalContainer.appendChild(div);
 
@@ -2103,67 +1630,53 @@ historicalTreatments.forEach((label, index) => {
         )
         .forEach(radio => {
 
-            radio.addEventListener(
-                "change",
-                function() {
+            radio.addEventListener("change",function(){
 
-                    document
-                        .getElementById(
-                            `histTreatment${n}ReasonBlock`
-                        )
-                        .style.display =
-                            this.value === "Interrompu"
-                            ? "block"
-                            : "none";
+                document
+                    .getElementById(
+                        `histTreatment${n}ReasonBlock`
+                    )
+                    .style.display =
+                        this.value === "Interrompu"
+                        ? "block"
+                        : "none";
 
-                }
-            );
+            });
 
         });
 
 });
 
 
-
 /* =========================================================
    ATCD MEDICAUX
    ========================================================= */
 
-
-const medicalHistoryBody =
+const medicalBody =
     document.querySelector(
         "#medicalHistoryTable tbody"
     );
 
 
-for (let i = 1; i <= 7; i++) {
+for(let i=1;i<=7;i++) {
 
     const tr =
         document.createElement("tr");
-
 
     tr.innerHTML = `
 
         <td>${i}</td>
 
         <td>
-
             <input
                 type="text"
-                id="medHist${i}Description"
-            >
-
+                id="medHist${i}Description">
         </td>
 
         <td>
-
             <input
                 type="number"
-                id="medHist${i}Start"
-                min="1900"
-                max="2100"
-            >
-
+                id="medHist${i}Start">
         </td>
 
         <td>
@@ -2171,401 +1684,236 @@ for (let i = 1; i <= 7; i++) {
             <select id="medHist${i}Ongoing">
 
                 <option value="">—</option>
-
-                <option value="1">
-                    Oui
-                </option>
-
-                <option value="0">
-                    Non
-                </option>
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
 
             </select>
 
         </td>
 
         <td>
-
             <input
                 type="number"
-                id="medHist${i}End"
-                min="1900"
-                max="2100"
-            >
-
+                id="medHist${i}End">
         </td>
 
     `;
 
-
-    medicalHistoryBody.appendChild(tr);
+    medicalBody.appendChild(tr);
 
 }
-
 
 
 /* =========================================================
    ATCD CHIRURGICAUX
    ========================================================= */
 
-
-const surgicalHistoryBody =
+const surgicalBody =
     document.querySelector(
         "#surgicalHistoryTable tbody"
     );
 
 
-for (let i = 1; i <= 7; i++) {
+for(let i=1;i<=7;i++) {
 
     const tr =
         document.createElement("tr");
 
-
     tr.innerHTML = `
 
-        <td>
-            ${i}
-        </td>
+        <td>${i}</td>
 
         <td>
-
             <input
                 type="text"
-                id="surgHist${i}Description"
-            >
-
+                id="surgHist${i}Description">
         </td>
 
         <td>
-
             <input
                 type="number"
-                id="surgHist${i}Year"
-                min="1900"
-                max="2100"
-            >
-
+                id="surgHist${i}Year">
         </td>
 
     `;
 
-
-    surgicalHistoryBody.appendChild(tr);
+    surgicalBody.appendChild(tr);
 
 }
-
 
 
 /* =========================================================
    TRAITEMENTS PARKINSON
    ========================================================= */
 
-
 const pdTreatments = [
 
-    {
-        name:
-            "Pramipexole LP (exprimé en forme sel)*",
-        factor: 100
-    },
+["Pramipexole LP (exprimé en forme sel)*",100],
 
-    {
-        name:
-            "Ropinirole LP",
-        factor: 20
-    },
+["Ropinirole LP",20],
 
-    {
-        name:
-            "Rotigotine",
-        factor: 30
-    },
+["Rotigotine",30],
 
-    {
-        name:
-            "Stylo Apomorphine",
-        factor: 10
-    },
+["Stylo Apomorphine",10],
 
-    {
-        name:
-            "L-Dopa (sans ICOMT) **",
-        factor: 1
-    },
+["L-Dopa (sans ICOMT) **",1],
 
-    {
-        name:
-            "L-Dopa LP",
-        factor: 0.75
-    },
+["L-Dopa LP",0.75],
 
-    {
-        name:
-            "L-Dopa + Entacapone",
-        factor: 1.33
-    },
+["L-Dopa + Entacapone",1.33],
 
-    {
-        name:
-            "L-Dopa + Tolcapone",
-        factor: 1.5
-    },
+["L-Dopa + Tolcapone",1.5],
 
-    {
-        name:
-            "Rasagiline",
-        factor: 100
-    },
+["Rasagiline",100],
 
-    {
-        name:
-            "Amantadine",
-        factor: 1
-    }
+["Amantadine",1]
 
 ];
 
 
-const pdTreatmentsBody =
+const pdBody =
     document.querySelector(
         "#pdTreatmentsTable tbody"
     );
 
 
-pdTreatments.forEach((treatment, index) => {
+pdTreatments.forEach((t,index) => {
 
     const n = index + 1;
 
     const tr =
         document.createElement("tr");
 
-
     tr.innerHTML = `
 
-        <td>
-            ${n}
-        </td>
+        <td>${n}</td>
 
-
-        <td>
-            ${treatment.name}
-        </td>
-
+        <td>${t[0]}</td>
 
         <td>
-
             <input
                 type="number"
                 step="any"
-                id="pdTreatment${n}Intakes"
-            >
-
+                id="pdTreatment${n}Intakes">
         </td>
 
-
         <td>
-
             <input
                 type="number"
                 step="any"
-                id="pdTreatment${n}Dose"
-            >
-
+                id="pdTreatment${n}Dose">
         </td>
 
-
         <td>
-
             <input
                 type="number"
                 class="constant-field"
+                value="${t[1]}"
                 id="pdTreatment${n}Factor"
-                value="${treatment.factor}"
-                readonly
-            >
-
+                readonly>
         </td>
 
-
         <td>
-
             <input
                 type="number"
                 step="any"
-                id="pdTreatment${n}DEL"
-            >
-
+                id="pdTreatment${n}DEL">
         </td>
 
     `;
 
-
-    pdTreatmentsBody.appendChild(tr);
+    pdBody.appendChild(tr);
 
 });
-
 
 
 /* =========================================================
    AUTRES TRAITEMENTS
    ========================================================= */
 
-
-const otherTreatmentsContainer =
-    document.getElementById(
-        "otherTreatments"
-    );
+const otherTreatmentContainer =
+    document.getElementById("otherTreatments");
 
 
-for (let i = 1; i <= 10; i++) {
+for(let i=1;i<=10;i++) {
 
     const div =
         document.createElement("div");
 
     div.className = "field";
-
     div.style.marginBottom = "12px";
-
 
     div.innerHTML = `
 
-        <label>
-            Traitement ${i}
-        </label>
+        <label>Traitement ${i}</label>
 
         <input
             type="text"
             id="otherTreatment${i}"
-            placeholder="Nom DCI / dosage / forme / posologie"
-        >
+            placeholder="Nom DCI / dosage / forme / posologie">
 
     `;
 
-
-    otherTreatmentsContainer.appendChild(div);
+    otherTreatmentContainer.appendChild(div);
 
 }
 
 
-
 /* =========================================================
-   TENSION
+   VITAUX
    ========================================================= */
-
 
 const bpPoints = [
 
-    [
-        "lying5",
-        "PAS / PAD position allongée (5 min)"
-    ],
+["lying5","PAS / PAD position allongée (5min)"],
 
-    [
-        "standing1",
-        "PAS / PAD position debout (1 min)"
-    ],
+["standing1","PAS / PAD position debout (1min)"],
 
-    [
-        "standing3",
-        "PAS / PAD position debout (3 min)"
-    ],
+["standing3","PAS / PAD position debout (3min)"],
 
-    [
-        "standing5",
-        "PAS / PAD position debout (5 min)"
-    ],
+["standing5","PAS / PAD position debout (5min)"],
 
-    [
-        "standing10",
-        "PAS / PAD position debout (10 min)"
-    ]
+["standing10","PAS / PAD position debout (10 min)"]
 
 ];
 
 
 const bpContainer =
-    document.getElementById(
-        "bpMeasurements"
-    );
+    document.getElementById("bpMeasurements");
 
 
-bpPoints.forEach(point => {
-
-    const id = point[0];
-    const label = point[1];
+bpPoints.forEach(([id,label]) => {
 
     const div =
         document.createElement("div");
 
-
-    div.style.marginTop = "20px";
-
-    div.style.padding = "15px";
-
-    div.style.border =
-        "1px solid #d4dcde";
-
-    div.style.borderRadius =
-        "10px";
-
+    div.style.cssText =
+        "margin-top:20px;padding:15px;border:1px solid #d4dcde;border-radius:10px;";
 
     div.innerHTML = `
 
-        <strong>
-            ${label}
-        </strong>
+        <strong>${label}</strong>
 
-
-        <div
-            class="grid-3"
-            style="margin-top:12px;"
-        >
+        <div class="grid-3" style="margin-top:12px;">
 
             <div class="field">
-
-                <label>
-                    PAS (mmHg)
-                </label>
-
-                <input
-                    type="number"
-                    id="${id}SYS"
-                >
-
+                <label>PAS (mmHg)</label>
+                <input type="number" id="${id}SYS">
             </div>
 
-
             <div class="field">
-
-                <label>
-                    PAD (mmHg)
-                </label>
-
-                <input
-                    type="number"
-                    id="${id}DIA"
-                >
-
+                <label>PAD (mmHg)</label>
+                <input type="number" id="${id}DIA">
             </div>
 
-
             <div class="field">
-
-                <label>
-                    Pouls (BPM)
-                </label>
-
-                <input
-                    type="number"
-                    id="${id}Pulse"
-                >
-
+                <label>Pouls (BPM)</label>
+                <input type="number" id="${id}Pulse">
             </div>
 
         </div>
 
     `;
-
 
     bpContainer.appendChild(div);
 
@@ -2578,446 +1926,245 @@ document
     )
     .forEach(radio => {
 
-        radio.addEventListener(
-            "change",
-            function() {
+        radio.addEventListener("change",function(){
 
-                document
-                    .getElementById(
-                        "hypotensionTypeBlock"
-                    )
-                    .style.display =
-                        this.value === "1"
-                        ? "block"
-                        : "none";
+            document
+                .getElementById("hypotensionTypeBlock")
+                .style.display =
+                    this.value === "1"
+                    ? "block"
+                    : "none";
 
-            }
-        );
+        });
 
     });
 
 
-
 /* =========================================================
-   MDS UPDRS I
+   UPDRS I
    ========================================================= */
-
 
 const updrs1Items = [
 
 {
-
-    title:
-        "1.1 – Altération cognitive",
-
-    description:
-        "Prendre en compte tous types de niveau d’altération des fonctions cognitives, y compris le ralentissement cognitif, l’altération du raisonnement, la perte de mémoire, les déficits de l’attention et de l’orientation. Evaluer leur impact sur les activités de la vie quotidienne telles qu’elles sont perçues par le patient et/ou l’aidant.",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous eu des problèmes pour vous rappeler des choses ; pour suivre des conversations, pour fixer votre attention, pour avoir des pensées claires ou pour trouver votre chemin dans la maison ?",
-
-    options: [
-
-        "Pas d’altération cognitive",
-
-        "Altération appréciée par le patient ou l’aidant sans interférence concrète avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
-
-        "Dysfonctionnement cognitif cliniquement évident, mais avec seulement des interférences minimes avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
-
-        "Les déficits cognitifs interfèrent mais n’empêchent pas l’aptitude du patient à mener des activités et des interactions sociales normales.",
-
-        "Le dysfonctionnement cognitif empêche l’aptitude du patient à mener des activités et des interactions sociales normales."
-
-    ]
-
+title:"1.1 – Altération cognitive",
+description:"Prendre en compte tous types de niveau d’altération des fonctions cognitives, y compris le ralentissement cognitif, l’altération du raisonnement, la perte de mémoire, les déficits de l’attention et de l’orientation. Evaluer leur impact sur les activités de la vie quotidienne telles qu’elles sont perçues par le patient et/ou l’aidant.",
+question:"Au cours de la semaine précédente, avez-vous eu des problèmes pour vous rappeler des choses ; pour suivre des conversations, pour fixer votre attention, pour avoir des pensées claires ou pour trouver votre chemin dans la maison ?",
+options:[
+"pas d’altération cognitive",
+"altération appréciée par le patient ou l’aidant sans interférence concrète avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
+"dysfonctionnement cognitif cliniquement évident, mais avec seulement des interférences minimes avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
+"les déficits cognitifs interfèrent mais n’empêchent pas l’aptitude du patient à mener des activités et des interactions sociales normales.",
+"le dysfonctionnement cognitif empêche l’aptitude du patient à mener des activités et des interactions sociales normales."
+]
 },
 
-
 {
-
-    title:
-        "1.2 – Hallucination et psychose",
-
-    description:
-        "Considérer à la fois les illusions (interprétations erronées de stimuli réels) et les hallucinations (fausses sensations spontanées). Considérez tous les principaux domaines sensoriels (visuel, auditif, olfactif, gustatif). Déterminez la présence de sensations non formées, aussi bien que des sensations formées. Evaluez la capacité du patient à critiquer ses hallucinations et identifiez l’existence d’illusions et des pensées psychotiques.",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous vu, entendu, senti ou ressenti des choses qui n’existaient pas réellement ?",
-
-    options: [
-
-        "Pas d’hallucinations, ni de comportement psychotique",
-
-        "Illusions ou hallucinations non formées, mais le patient les reconnaît et les critique",
-
-        "Hallucinations structurées indépendantes des stimuli environnementaux. Pas de perte de sens critique à leur égard",
-
-        "Hallucinations structurées non critiquées par le patient",
-
-        "Le patient a des idées délirantes ou paranoïaques"
-
-    ]
-
+title:"1.2 – Hallucination et psychose",
+description:"Considérer à la fois les illusions (interprétations erronées de stimuli réels) et les hallucinations (fausses sensations spontanées). Considérez tous les principaux domaines sensoriels (visuel, auditif, olfactif, gustatif). Déterminez la présence de sensations non formées, aussi bien que des sensations formées. Evaluez la capacité du patient à critiquer ses hallucinations et identifiez l’existence d’illusions et des pensées psychotiques.",
+question:"Au cours de la semaine précédente, avez-vous vu, entendu, senti ou ressenti des choses qui n’existaient pas réellement",
+options:[
+"pas d’hallucinations, ni de comportement psychotique",
+"illusions ou hallucinations non formées, mais le patient les reconnaît et les critique",
+"hallucinations structurées indépendantes des stimuli environnementaux. pas de perte de sens critique à leur égard",
+"hallucinations structurées non critiquées par le patient",
+"le patient a des idées délirantes ou paranoïaques"
+]
 },
 
-
 {
-
-    title:
-        "1.3 – Humeur dépressive",
-
-    description:
-        "Considérez la baisse de l’humeur, la tristesse, la désespérance, les sentiments de vide ou la perte de plaisir. Déterminez leur présence et leur durée pendant la période de la semaine précédente et évaluez leur interférence avec l’aptitude du malade à mener sa routine quotidienne et à participer à des interactions sociales.",
-
-    question:
-        "Au cours de la semaine précédente, vous êtes vous sentie sans ressort, triste, désespéré(e) ou incapable d’apprécier les choses ? Si oui ce sentiment durait-il plus d’un jour à la fois ? Rendait-il difficile pour vous le fait de mener vos activités et d’être avec les autres ?",
-
-    options: [
-
-        "Pas d’humeur dépressive",
-
-        "Épisodes d’humeur dépressive ne durant pas plus d’un jour à la fois. Pas d’interférence avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
-
-        "Humeur dépressive durant plusieurs jours, mais sans interférence avec des activités et des interactions sociales normales",
-
-        "Humeur dépressive interférant avec l’aptitude du patient à mener des activités et des interactions sociales normales",
-
-        "Humeur dépressive empêchant l’aptitude du patient à mener des activités et des interactions sociales normales"
-
-    ]
-
+title:"1.3 – Humeur dépressive",
+description:"Considérez la baisse de l’humeur, la tristesse, la désespérance, les sentiments de vide ou la perte de plaisir. Déterminez leur présence et leur durée pendant la période de la semaine précédente et évaluez leur interférence avec l’aptitude du malade à mener sa routine quotidienne et à participer à des interactions sociales.",
+question:"Au cours de la semaine précédente, vous êtes vous sentie sans ressort, triste, désespéré(e) ou incapable d’apprécier les choses ? si oui ce sentiment durait-il plus d’un jour à la fois ? rendait-il difficile pour vous le fait de mener vos activités et d’être avec les autres ?",
+options:[
+"pas d’humeur dépressive",
+"épisodes d’humeur dépressive ne durant pas plus d’un jour à la fois. Pas d’interférence avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
+"humeur dépressive durant plusieurs jours, mais sans interférence avec des activités et des interactions sociales normales",
+"humeur dépressive interférant avec l’aptitude du patient à mener des activités et des interactions sociales normales",
+"humeur dépressive empêchant l’aptitude du patient à mener des activités et des interactions sociales normales"
+]
 },
 
-
 {
-
-    title:
-        "1.4 – Etat anxieux",
-
-    description:
-        "Déterminez les sensations de nervosité, de tension, d’inquiétude ou d’anxiété (incluant les attaques de panique) au cours de la semaine précédente et évaluez leur durée et les interférences avec l’aptitude du patient à mener des activités journalières et à participer à des interactions sociales.",
-
-    question:
-        "Au cours de la semaine précédente, vous êtes-vous senti(e), nerveux, inquiet(e), tendu(e) ? Si oui, ce sentiment durait-il plus d’1 jour à la fois ? Est-ce que cela a constitué pour vous une difficulté pour suivre vos activités habituelles ou peut-être avec d’autres personnes ?",
-
-    options: [
-
-        "Pas de sentiment d’anxiété",
-
-        "Sentiments anxieux présents, mais ne durant pas plus d’un jour à la fois. Pas d’interférence avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
-
-        "Sentiments anxieux persistant plus d’un jour à la fois, mais sans interférence avec l’aptitude du patient à mener des activités et des interactions sociales normales",
-
-        "Sentiments anxieux interférant avec, mais n’empêchant pas l’aptitude du patient à mener des activités et des interactions sociales normales",
-
-        "Sentiments anxieux empêchant l’aptitude du patient à mener des activités et des interactions sociales normales"
-
-    ]
-
+title:"1.4 - Etat anxieux",
+description:"Déterminez les sensations de nervosité, de tension, d’inquiétude ou d’anxiété (incluant les attaques de panique) au cours de la semaine précédente et évaluez leur durée et les interférences avec l’aptitude du patient à mener des activités journalières et à participer à des interactions sociales.",
+question:"Au cours de la semaine précédente, vous êtes-vous senti(e), nerveux, inquiet(e), tendu(e) ? si oui, ce sentiment durait-il plus d’1 jour à la fois. Est-ce que cela a constitué pour vous une difficulté pour suivre vos activités habituelles ou peut-être avec d’autres personnes.",
+options:[
+"pas de sentiment d’anxiété",
+"sentiments anxieux présents, mais ne durant pas plus d’un jour à la fois. Pas d’interférence avec l’aptitude du patient à mener des activités et des interactions sociales normales.",
+"sentiments anxieux persistant plus d’un jour à la fois, mais sans interférence avec l’aptitude du patient à mener des activités et des interactions sociales normales",
+"sentiments anxieux interférant avec, mais n’empêchant pas l’aptitude du patient à mener des activités et des interactions sociales normales",
+"sentiments anxieux empêchant l’aptitude du patient à mener des activités et des interactions sociales normales"
+]
 },
 
-
 {
-
-    title:
-        "1.5 – Apathie",
-
-    description:
-        "Déterminez le niveau d’activité spontanée, d’assurance, de motivation et d’initiative, et évaluez l’impact d’une réduction de performance sur les activités quotidiennes routinières et les interactions sociales.",
-
-    question:
-        "Au cours de la semaine précédente, vous êtes vous senti(e) indifférent à faire des activités ou à être avec des gens ?",
-
-    options: [
-
-        "Pas d’apathie",
-
-        "L’apathie est perçue par le patient et/ou aidant, mais sans interférence avec les activités quotidiennes ni les interactions sociales",
-
-        "L’apathie interfère avec des activités et des interactions sociales isolées",
-
-        "L’apathie interfère avec la plupart des activités et des interactions sociales",
-
-        "Attitude passive et retirée, avec perte totale d’initiative"
-
-    ]
-
+title:"1.5 – Apathie",
+description:"Déterminez le niveau d’activité spontanée, d’assurance, de motivation et d’initiative, et évaluez l’impact d’une réduction de performance sur les activités quotidiennes routinières et les interactions sociales",
+question:"Au cours de la semaine précédente, vous êtes vous senti(e)indifférent à faire des activités ou à être avec des gens ?",
+options:[
+"pas d’apathie",
+"l’apathie est perçue par le patient et/ou aidant, mais sans interférence avec les activités quotidiennes ni les interactions sociales",
+"l’apathie interfère avec des activités et des interactions sociales isolées",
+"l’apathie interfère avec la plupart des activités et des interactions sociales",
+"attitude passive et retirée, avec perte totale d’initiative"
+]
 },
 
-
 {
-
-    title:
-        "1.6 – Signes de syndrome de dysrégulation dopaminergique",
-
-    description:
-        "Déterminez la participation du malade à diverses activités par ex une passion atypique ou excessive du jeu, des pulsions ou des intérêts sexuels atypiques ou excessifs, ainsi qu’à d’autres activités répétitives, ou à la prise des médicaments non prescrits sans raison clinique. Evaluez l’impact de telles activités ou comportements anormaux sur la vie personnelle du patient et sur celle de sa famille et de ses relations sociales (emprunter de l’argent, conflits familiaux majeurs, perte d’une partie du temps de travail, sauter des repas ou manquer de sommeil en raison de ces activités).",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous ressenti(e) des fortes pulsions inhabituelles que vous avez eues du mal à contrôler ? Vous êtes vous poussé(e) à faire ou penser des choses et éprouvez-vous de la difficulté à les arrêter ?",
-
-    options: [
-
-        "Pas de problème présent",
-
-        "Des problèmes existent mais n’entraînent habituellement pas de difficulté pour le patient ou la famille/l’aidant",
-
-        "Des problèmes existent et entraînent habituellement quelques difficultés dans la vie personnelle du patient et sa vie de famille",
-
-        "Des problèmes existent et entraînent habituellement beaucoup de difficultés dans la vie personnelle du patient et sa vie de famille",
-
-        "Des problèmes existent et empêchent l’aptitude du patient à mener des activités et de interactions sociales normales, ou de maintenir les standards antérieurs de sa vie personnelle et familiale"
-
-    ]
-
+title:"1.6 - Signes de syndrome de dysrégulation dopaminergique",
+description:"Déterminez la participation du malade à diverses activités par ex une passion atypique ou excessive du jeu, des pulsions ou des intérêts sexuels atypiques ou excessifs, ainsi qu’à d’autres activités répétitives, ou à la prise des médicaments non prescrits sans raison clinique.",
+question:"Au cours de la semaine précédente, avez-vous ressenti(e) des fortes pulsions inhabituelles que vous avez eues du mal à contrôler ? vous êtes vous poussé(e) faire ou penser des choses et éprouvez-vous de la difficulté à les arrêter ?",
+options:[
+"pas de problème présent",
+"des problèmes existent mais n’entraînent habituellement pas de difficulté pour le patient ou la famille/l’aidant",
+"des problèmes existent et entraînent habituellement quelques difficultés dans la vie personnelle du patient et sa vie de famille",
+"des problèmes existent et entraînent habituellement beaucoup de difficultés dans la vie personnelle du patient et sa vie de famille",
+"des problèmes existent et empêchent l’aptitude du patient à mener des activités et de interactions sociales normales, ou de maintenir les standards antérieurs de sa vie personnelle et familiale"
+]
 },
 
-
 {
-
-    title:
-        "1.7 – Problèmes de sommeil",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous rencontré des problèmes pour vous endormir la nuit ou pour rester endormi pendant la nuit ? Prenez en compte la façon dont vous vous êtes senti(e) reposé(e) après vous être réveillé(e) le matin.",
-
-    options: [
-
-        "Pas de problème",
-
-        "Des problèmes de sommeil sont présents mais n’entraînent pas habituellement de difficultés à avoir une nuit complète de sommeil",
-
-        "Des problèmes de sommeil entraînent habituellement quelques difficultés à avoir une nuit complète de sommeil",
-
-        "Des problèmes de sommeil entraînent beaucoup de difficultés à avoir une nuit complète de sommeil, mais je dors encore habituellement plus de la moitié de la nuit",
-
-        "Je ne dors habituellement pas la plus grande partie de la nuit"
-
-    ]
-
+title:"1.7 – Problèmes de sommeil",
+question:"Au cours de la semaine précédente, avez-vous rencontré des problèmes pour vous endormir la nuit ou pour rester endormi pendant la nuit ? prenez en compte la façon dont vous vous êtes senti(e)reposé(e) après vous être réveillé(e) le matin",
+options:[
+"pas de problème",
+"des problèmes de sommeil sont présents mais n’entraînent pas habituellement de difficultés à avoir une nuit complète de sommeil",
+"des problèmes de sommeil entraînent habituellement quelques difficultés à avoir une nuit complète de sommeil",
+"des problèmes de sommeil entraînent beaucoup de difficultés à avoir une nuit complète de sommeil, mais je dors encore habituellement plus de la moitié de la nuit",
+"je ne dors habituellement pas la plus grande partie de la nuit"
+]
 },
 
-
 {
-
-    title:
-        "1.8 – Somnolence diurne",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous rencontré des problèmes pour rester éveillé(e) pendant la journée ?",
-
-    options: [
-
-        "Pas de somnolence diurne",
-
-        "Une somnolence diurne apparaît mais je peux résister et rester éveillé(e)",
-
-        "Je m’endors parfois quand je suis seul et au repos. Par exemple, pendant que je lis ou en regardant la télévision",
-
-        "Je m’endors parfois alors que je ne devrais pas. Par exemple, en mangeant ou en parlant à d’autres personnes",
-
-        "Je m’endors souvent alors que je ne devrais pas. Par exemple, en mangeant ou en parlant à d’autres personnes"
-
-    ]
-
+title:"1.8 Somnolence diurne",
+question:"Au cours de la semaine précédente, avez-vous rencontré des problèmes pour rester éveillé(e)pendant la journée ?",
+options:[
+"pas de somnolence diurne",
+"une somnolence diurne apparaît mais je peux résister et rester éveillé(e)",
+"je m’endors parfois quand je suis seul et au repos. Par exemple, pendant que je lis ou en regardant la télévision",
+"je m’endors parfois alors que je ne devrais pas. Par exemple, en mangeant ou en parlant à d’autres personnes",
+"je m’endors souvent alors que je ne devrais pas. Par exemple, en mangeant ou en parlant à d’autres personnes"
+]
 },
 
-
 {
-
-    title:
-        "1.9 – Douleurs et autres sensations",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous eu des sensations inconfortables dans votre corps telles que douleur, courbatures, fourmillements ou crampes ?",
-
-    options: [
-
-        "Pas de sensations inconfortables",
-
-        "Je ressens ces sensations. Cependant, je peux faire les choses et être avec d’autres personnes sans difficulté",
-
-        "Ces sensations me procurent quelques problèmes quand je fais des choses et quand je suis avec d’autres personnes",
-
-        "Ces sensations me procurent beaucoup de problèmes, mais ne m’empêchent pas d’effectuer des choses ou d’être avec d’autres personnes",
-
-        "Ces sensations m’empêchent de faire des choses et d’être avec d’autres personnes"
-
-    ]
-
+title:"1.9 – Douleurs et autres sensations",
+question:"Au cours de la semaine précédente, avez-vous eu des sensations inconfortables dans votre corps telles que douleur, courbatures, fourmillements ou crampes ?",
+options:[
+"pas de sensations inconfortables",
+"je ressens ces sensations. Cependant, je peux faire les choses et être avec d’autres personnes sans difficulté",
+"ces sensations me procurent quelques problèmes quand je fais des choses et quand je suis avec d’autres personnes",
+"ces sensations me procurent beaucoup de problèmes, mais ne m’empêchent pas d’effectuer des choses ou d’être avec d’autres personnes",
+"ces sensations m’empêchent de faire des choses et d’être avec d’autres personnes"
+]
 },
 
-
 {
-
-    title:
-        "1.10 – Problèmes urinaires",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous eu des difficultés à contrôler vos urines ? Par exemple, besoin urgent d’uriner, besoin d’uriner trop souvent ou accidents urinaires.",
-
-    options: [
-
-        "Pas de problème urinaire",
-
-        "J’ai besoin d’uriner souvent ou urgemment. Cependant, ces problèmes ne causent pas de difficultés dans mes activités quotidiennes",
-
-        "Les problèmes urinaires causent quelques difficultés dans mes activités quotidiennes. Cependant je n’ai pas d’accidents urinaires",
-
-        "Les problèmes urinaires causent beaucoup de difficultés dans ma vie quotidienne, incluant des accidents urinaires",
-
-        "Je ne peux pas contrôler mes urines, et utilise une garniture de protection ou une sonde urinaire"
-
-    ]
-
+title:"1.10 – Problèmes urinaires",
+question:"Au cours de la semaine précédente, avez-vous eu des difficultés à contrôler vos urines ? par exemple, besoin urgent d’uriner, besoin d’uriner trop souvent ou accidents urinaires",
+options:[
+"pas de problème urinaire",
+"j’ai besoin d’uriner souvent ou urgemment. Cependant, ces problèmes ne causent pas de difficultés dans mes activités quotidiennes",
+"les problèmes urinaires causent quelques difficultés dans mes activités quotidiennes. Cependant je n’ai pas d’accidents urinaires",
+"les problèmes urinaires causent beaucoup de difficultés dans ma vie quotidienne, incluant des accidents urinaires",
+"je ne peux pas contrôler mes urines, et utilise une garniture de protection ou une sonde urinaire"
+]
 },
 
-
 {
-
-    title:
-        "1.11 – Problèmes de constipation",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous eu des problèmes de constipation entraînant des difficultés à aller la selle ?",
-
-    options: [
-
-        "Pas de constipation",
-
-        "J’ai été constipé(e). Je fais des efforts supplémentaires pour aller à la selle. Cependant ce problème ne perturbe pas mes activités ou mon confort",
-
-        "La constipation me pose quelques difficultés à faire des choses ou à me sentir confortable",
-
-        "La constipation me pose beaucoup de problème à faire les choses ou à me sentir confortable. Cependant, elle ne m’empêche pas de faire quoi que ce soit",
-
-        "J’ai habituellement besoin de l’aide physique d’un tiers pour aller à la selle"
-
-    ]
-
+title:"1.11 – Problèmes de constipation",
+question:"Au cours de la semaine précédente, avez-vous eu des problèmes de constipation entraînant des difficultés à aller la selle ?",
+options:[
+"pas de constipation",
+"j’ai été constipé(e). Je fais des efforts supplémentaires pour aller à la selle. Cependant ce problème ne perturbe pas mes activités ou mon confort",
+"la constipation me pose quelques difficultés à faire des choses ou à me sentir confortable",
+"la constipation me pose beaucoup de problème à faire les choses ou à me sentir confortable. Cependant, elle ne m’empêche pas de faire quoi que ce soit",
+"j’ai habituellement besoin de l’aide physique d’un tiers pour aller à la selle"
+]
 },
 
-
 {
-
-    title:
-        "1.12 – Sensation de tête vide au lever",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous eu une sensation d’évanouissement, de vertige, de brouillard lorsque vous vous levez d’une position assise ou couchée ?",
-
-    options: [
-
-        "Pas de sensation de vertige ou de brouillard",
-
-        "Des sensations de vertige ou de brouillard surviennent. Cependant elles ne me causent pas de problèmes à faire les choses",
-
-        "Des sensations de vertige ou de brouillard m’obligent à me tenir à quelque chose, mais je n’ai pas besoin de m’asseoir ou de me recoucher",
-
-        "Des sensations de vertige ou de brouillard m’obligent à m’asseoir ou à me coucher pour éviter de m’évanouir ou de tomber",
-
-        "Des sensations de vertige ou de brouillard me conduisent à tomber ou à m’évanouir"
-
-    ]
-
+title:"1.12 – Sensation de tête vide au lever",
+question:"Au cours de la semaine précédente, avez-vous eu une sensation d’évanouissement, de vertige, de brouillard lorsque vous vous levez d’une position assise ou couchée ?",
+options:[
+"pas de sensation de vertige ou de brouillard",
+"des sensations de vertige ou de brouillard surviennent. Cependant elles ne me causent pas de problèmes à faire les choses",
+"des sensations de vertige ou de brouillard m’obligent à me tenir à quelque chose, mais je n’ai pas besoin de m’asseoir ou de me recoucher",
+"des sensations de vertige ou de brouillard m’obligent à m’asseoir ou à me coucher pour éviter de m’évanouir ou de tomber",
+"des sensations de vertige ou de brouillard me conduisent à tomber ou à m’évanouir"
+]
 },
 
-
 {
-
-    title:
-        "1.13 – Fatigue",
-
-    question:
-        "Au cours de la semaine précédente, vous êtes-vous senti(e) habituellement fatigué(e) ? Ce sentiment ne fait pas partie du fait d’avoir sommeil ou d’être triste.",
-
-    options: [
-
-        "Pas de fatigue",
-
-        "La fatigue se présente. Cependant, elle ne me cause pas de problème à faire les choses ou à être avec les gens",
-
-        "La fatigue me cause quelques problèmes à faire les choses ou à être avec les gens",
-
-        "La fatigue me cause beaucoup de problèmes à faire les choses ou être avec les gens. Cependant, elle ne m’empêche pas à faire quoi que ce soit",
-
-        "La fatigue m’empêche de faire des choses ou d’être avec des gens"
-
-    ]
-
+title:"1.13 – Fatigue",
+question:"Au cours de la semaine précédente, vous êtes-vous senti(e) habituellement fatigué(e) ? ce sentiment ne fait pas partie du fait d’avoir sommeil ou d’être triste",
+options:[
+"pas de fatigue",
+"la fatigue se présente. Cependant, elle ne me cause pas de problème à faire les choses ou à être avec les gens",
+"la fatigue me cause quelques problèmes à faire les choses ou à être avec les gens",
+"la fatigue me cause beaucoup de problèmes à faire les choses ou être avec les gens. Cependant, elle ne m’empêche pas à faire quoi que ce soit",
+"la fatigue m’empêche de faire des choses ou d’être avec des gens"
+]
 }
 
 ];
 
 
-const updrs1Container =
-    document.getElementById(
-        "updrs1Container"
-    );
-
-
-const severityLabels = [
-
-    "normal",
-    "minime",
-    "léger",
-    "modéré",
-    "sévère"
-
+const severities = [
+"normal",
+"minime",
+"léger",
+"modéré",
+"sévère"
 ];
 
 
-updrs1Items.forEach((item, index) => {
+const updrs1Container =
+    document.getElementById("updrs1Container");
+
+
+updrs1Items.forEach((item,index) => {
 
     const div =
         document.createElement("div");
 
-    div.className =
-        "form-block";
+    div.className = "form-block";
 
 
     let html = `
-
         <div class="question-title">
             ${item.title}
         </div>
-
     `;
 
 
-    if (item.description) {
+    if(item.description) {
 
         html += `
-
             <p class="instruction">
                 ${item.description}
             </p>
-
         `;
 
     }
 
 
-    if (item.question) {
+    if(item.question) {
 
         html += `
-
             <p class="instruction">
-                <em>
-                    ${item.question}
-                </em>
+                <em>${item.question}</em>
             </p>
-
         `;
 
     }
 
 
-    html +=
-        `<div class="score-options">`;
+    html += `<div class="score-options">`;
 
 
-    item.options.forEach((option, score) => {
+    item.options.forEach((text,score) => {
 
         html += `
 
@@ -3025,17 +2172,14 @@ updrs1Items.forEach((item, index) => {
 
                 <input
                     type="radio"
-                    name="updrs1_${index + 1}"
-                    value="${score}"
-                >
+                    name="updrs1_${index+1}"
+                    value="${score}">
 
                 <span class="score-number">
-
-                    ${score} = ${severityLabels[score]}
-
+                    ${score} = ${severities[score]}
                 </span>
 
-                ${option}
+                ${text}
 
             </label>
 
@@ -3044,238 +2188,114 @@ updrs1Items.forEach((item, index) => {
     });
 
 
-    html +=
-        `</div>`;
+    html += `</div>`;
 
+    div.innerHTML = html;
 
-    div.innerHTML =
-        html;
-
-
-    updrs1Container
-        .appendChild(div);
+    updrs1Container.appendChild(div);
 
 });
 
 
-
 /* =========================================================
-   MDS-UPDRS IV
+   UPDRS IV
    ========================================================= */
-
 
 const updrs4Items = [
 
 {
-
-    id: "41",
-
-    title:
-        "4.1 Temps passé avec des dyskinésies",
-
-    options: [
-
-        "0 = normal",
-
-        "1 = minime : < 25% du temps éveillé dans la journée",
-
-        "2 = léger : de 26% à 50% du temps éveillé dans la journée",
-
-        "3 = modéré : de 51% à 75% du temps éveillé dans la journée",
-
-        "4 = sévère : > 75% du temps éveillé dans la journée"
-
-    ],
-
-    extra: [
-
-        [
-            "awakeHoursDysk",
-            "Total des heures éveillées"
-        ],
-
-        [
-            "dyskHours",
-            "Total des heures avec dyskinésies"
-        ],
-
-        [
-            "dyskPercent",
-            "% de dyskinésies = ((2/1) x100)"
-        ]
-
-    ]
-
+id:"41",
+title:"4.1 Temps passé avec des dyskinésies",
+options:[
+"0 = normal",
+"1 = minime : < 25% du temps éveillé dans la journée",
+"2 = léger : de 26% à 50% du temps éveillé dans la journée",
+"3 = modéré : de 51% à 75% du temps éveillé dans la journée",
+"4 = sévère : > 75% du temps éveillé dans la journée"
+],
+extra:[
+["awakeHoursDysk","Total des heures éveillées"],
+["dyskHours","Total des heures avec dyskinésies"],
+["dyskPercent","% de dyskinésies = ((2/1) x100)"]
+]
 },
 
-
 {
-
-    id: "42",
-
-    title:
-        "4.2 Retentissement fonctionnel des dyskinésies",
-
-    question:
-        "Au cours de la semaine précédente, avez-vous eu des problèmes en faisant des choses ou en étant avec des gens lorsque ces mouvements saccadés apparaissaient ? Vous ont-ils empêché de faire des choses ou d’être avec des gens ?",
-
-    options: [
-
-        "0 = normal : pas de dyskinésies ou pas de retentissement des dyskinésies sur les activités et les interactions sociales",
-
-        "1 = minime : les dyskinésies retentissent sur quelques activités, mais le patient effectue habituellement toutes les activités et participe à toutes les interactions de la vie sociale pendant les périodes dyskinétiques",
-
-        "2 = léger : les dyskinésies retentissent sur beaucoup d’activités, mais le patient effectue habituellement toutes les activités et participe à toutes les interactions de la vie sociale pendant les périodes dyskinétiques",
-
-        "3 = modéré : les dyskinésies retentissent sur les activités, au point que le patient ne peut effectuer certaines activités et ou ne peut pas participer à certaines activités sociales pendant les épisodes dyskinétiques",
-
-        "4 = sévère : les dyskinésies retentissent sur la fonction au point que le patient ne peut effectuer la plupart des activités et ou participer à la plupart des interactions sociales pendant les épisodes dyskinétiques"
-
-    ]
-
+id:"42",
+title:"4.2 Retentissement fonctionnel des dyskinésies",
+question:"Au cours de la semaine précédente, avez-vous eu des problèmes en faisant des choses ou en étant avec des gens lorsque ces mouvements saccadés apparaissaient ? vous ont-ils empêché de faire des choses ou d’être avec des gens ?",
+options:[
+"0 = normal : pas de dyskinésies ou pas de retentissement des dyskinésies sur les activités et les interactions sociales",
+"1 = minime : les dyskinésies retentissent sur quelques activités, mais le patient effectue habituellement toutes les activités et participe à toutes les interactions de la vie sociale pendant les périodes dyskinétiques",
+"2 = léger : les dyskinésies retentissent sur beaucoup d’activités, mais le patient effectue habituellement toutes les activités et participe à toutes les interactions de la vie sociale pendant les périodes dyskinétiques",
+"3 = modéré : les dyskinésies retentissent sur les activités, au point que le patient ne peut effectuer certaines activités et ou ne peut pas participer à certaines activités sociales pendant les épisodes dyskinétiques",
+"4 = sévère : les dyskinésies retentissent sur la fonction au point que le patient ne peut effectuer la plupart des activités et ou participer à la plupart des interactions sociales pendant les épisodes dyskinétiques"
+]
 },
 
-
 {
-
-    id: "43",
-
-    title:
-        "4.3 Durée des périodes OFF",
-
-    options: [
-
-        "0 = normal",
-
-        "1 = minime : < 25% du temps éveillé dans la journée",
-
-        "2 = léger : de 26% à 50% du temps éveillé dans la journée",
-
-        "3 = modéré : de 51% à 75% du temps éveillé dans la journée",
-
-        "4 = sévère : > 75% du temps éveillé dans la journée"
-
-    ],
-
-    extra: [
-
-        [
-            "awakeHoursOff",
-            "Total des heures éveillées"
-        ],
-
-        [
-            "offHours",
-            "Total des heures OFF"
-        ],
-
-        [
-            "offPercent",
-            "% OFF = ((2/1) x100)"
-        ]
-
-    ]
-
+id:"43",
+title:"4.3 Durée des périodes OFF",
+options:[
+"0 = normal",
+"1 = minime : < 25% du temps éveillé dans la journée",
+"2 = léger : de 26% à 50% du temps éveillé dans la journée",
+"3 = modéré : de 51% à 75% du temps éveillé dans la journée",
+"4 = sévère : > 75% du temps éveillé dans la journée"
+],
+extra:[
+["awakeHoursOff","Total des heures éveillées"],
+["offHours","Total des heures OFF"],
+["offPercent","% OFF = ((2/1) x100)"]
+]
 },
 
-
 {
-
-    id: "44",
-
-    title:
-        "4.4 Retentissement fonctionnel des fluctuations",
-
-    options: [
-
-        "0 = normal : pas de fluctuation ou pas de retentissement des fluctuations sur l’accomplissement des activités ou des interactions sociales",
-
-        "1 = minime : les fluctuations retentissent sur quelques activités, mais pendant la période OFF, le patient accomplit habituellement toutes les activités et participe à toutes les interactions sociales qui surviennent typiquement pendant la période ON",
-
-        "2 = léger : les fluctuations retentissent sur beaucoup d’activités, mais pendant la période OFF, le patient accomplit encore habituellement toutes les activités et participe à toutes les interactions sociales qui surviennent typiquement pendant la période ON",
-
-        "3 = modéré : les fluctuations retentissent sur la réalisation des activités pendant la période OFF au point que le patient n’accomplit habituellement pas certaines activités et ou ne participe pas à certaines interactions sociales qui sont effectuées durant les périodes ON",
-
-        "4 = sévère : les fluctuations retentissent sur le fonctionnement au point que durant la période OFF le patient n’accomplit pas la plupart des activités, ni ne participe à la plupart des interactions sociales qui sont effectuées pendant les périodes ON"
-
-    ]
-
+id:"44",
+title:"4.4 Retentissement fonctionnel des fluctuations",
+options:[
+"0 = normal : pas de fluctuation ou pas de retentissement des fluctuations sur l’accomplissement des activités ou des interactions sociales",
+"1 = minime : les fluctuations retentissent sur quelques activités, mais pendant la période OFF, le patient accomplit habituellement toutes les activités et participe à toutes les interactions sociales qui surviennent typiquement pendant la période ON",
+"2 = léger : les fluctuations retentissent sur beaucoup d’activités, mais pendant la période OFF, le patient le accomplit encore habituellement toutes les activités et participe à toutes les interactions sociales qui surviennent typiquement pendant la période ON",
+"3 = modéré : les fluctuations retentissent sur la réalisation des activités pendant la période OFF au point que le patient n’accomplit habituellement pas certaines activités et ou ne participe pas à certaines interactions sociales qui sont effectuées durant les périodes ON",
+"4 = sévère : les fluctuations retentissent sur le fonctionnement au point que durant la période OFF le patient n’accomplit pas la plupart des activités, ni ne participe à la plupart des interactions sociales qui sont effectuées pendant les périodes ON"
+]
 },
 
-
 {
-
-    id: "45",
-
-    title:
-        "4.5 Complexité des fluctuations motrices",
-
-    options: [
-
-        "0 = normal : pas de fluctuation motrice",
-
-        "1 = minime : les périodes OFF sont prévisibles tout ou presque tout le temps (> 75%)",
-
-        "2 = léger : les périodes OFF sont prévisibles la plupart du temps (51-75%)",
-
-        "3 = modéré : les périodes OFF sont prévisibles quelquefois (26-50%)",
-
-        "4 = sévère : les périodes OFF sont rarement prévisibles (<25%)"
-
-    ]
-
+id:"45",
+title:"4.5 Complexité des fluctuations motrices",
+options:[
+"0 = normal : pas de fluctuation motrice",
+"1 = minime : les périodes OFF sont prévisibles tout ou presque tout le temps (> 75%)",
+"2 = léger : les périodes OFF sont prévisibles la plupart du temps (51-75%)",
+"3 = modéré : les périodes OFF sont prévisibles quelquefois (26-50%)",
+"4 = sévère : les périodes OFF sont rarement prévisibles (<25%)"
+]
 },
 
-
 {
-
-    id: "46",
-
-    title:
-        "4.6 Dystonie douloureuse en état OFF",
-
-    options: [
-
-        "0 = normal : pas de dystonie ou pas de période OFF",
-
-        "1 = minime : < 25% du temps en état OFF",
-
-        "2 = léger : de 26% à 50% du temps en état OFF",
-
-        "3 = modéré : de 51% à 75% du temps en état OFF",
-
-        "4 = sévère : > 75% du temps en état OFF"
-
-    ],
-
-    extra: [
-
-        [
-            "offHoursDystoniaBase",
-            "Total des heures OFF"
-        ],
-
-        [
-            "offHoursDystonia",
-            "Total des heures OFF avec dystonie"
-        ],
-
-        [
-            "offDystoniaPercent",
-            "% de dystonie OFF = ((2/1) x100)"
-        ]
-
-    ]
-
+id:"46",
+title:"4.6 Dystonie douloureuse en état OFF",
+options:[
+"0 = normal : pas de dystonie ou pas de période OFF",
+"1 = minime : < 25% du temps en état OFF",
+"2 = léger : de 26% à 50% du temps en état OFF",
+"3 = modéré : de 51% à 75% du temps en état OFF",
+"4 = sévère : > 75% du temps en état OFF"
+],
+extra:[
+["offHoursDystoniaBase","Total des heures OFF"],
+["offHoursDystonia","Total des heures OFF avec dystonie"],
+["offDystoniaPercent","% de dystonie OFF = ((2/1) x100)"]
+]
 }
 
 ];
 
 
 const updrs4Container =
-    document.getElementById(
-        "updrs4Container"
-    );
+    document.getElementById("updrs4Container");
 
 
 updrs4Items.forEach(item => {
@@ -3283,39 +2303,31 @@ updrs4Items.forEach(item => {
     const div =
         document.createElement("div");
 
-    div.className =
-        "form-block";
+    div.className = "form-block";
 
 
     let html = `
-
         <div class="question-title">
             ${item.title}
         </div>
-
     `;
 
 
-    if (item.question) {
+    if(item.question) {
 
         html += `
-
             <p class="instruction">
-                <em>
-                    ${item.question}
-                </em>
+                <em>${item.question}</em>
             </p>
-
         `;
 
     }
 
 
-    html +=
-        `<div class="score-options">`;
+    html += `<div class="score-options">`;
 
 
-    item.options.forEach((option, score) => {
+    item.options.forEach((text,score) => {
 
         html += `
 
@@ -3324,10 +2336,9 @@ updrs4Items.forEach(item => {
                 <input
                     type="radio"
                     name="updrs4_${item.id}"
-                    value="${score}"
-                >
+                    value="${score}">
 
-                ${option}
+                ${text}
 
             </label>
 
@@ -3336,37 +2347,27 @@ updrs4Items.forEach(item => {
     });
 
 
-    html +=
-        `</div>`;
+    html += `</div>`;
 
 
-    if (item.extra) {
+    if(item.extra) {
 
         html += `
-
-            <div
-                class="grid-3"
-                style="margin-top:20px;"
-            >
-
+            <div class="grid-3" style="margin-top:20px;">
         `;
 
-
-        item.extra.forEach(extra => {
+        item.extra.forEach(([id,label]) => {
 
             html += `
 
                 <div class="field">
 
-                    <label>
-                        ${extra[1]}
-                    </label>
+                    <label>${label}</label>
 
                     <input
                         type="number"
                         step="any"
-                        id="${extra[0]}"
-                    >
+                        id="${id}">
 
                 </div>
 
@@ -3374,279 +2375,172 @@ updrs4Items.forEach(item => {
 
         });
 
-
-        html +=
-            `</div>`;
+        html += `</div>`;
 
     }
 
 
-    div.innerHTML =
-        html;
+    div.innerHTML = html;
 
-
-    updrs4Container
-        .appendChild(div);
+    updrs4Container.appendChild(div);
 
 });
 
 
-
 /* =========================================================
-   MDS-UPDRS III
+   UPDRS III
    ========================================================= */
-
 
 const updrs3Conditions = [
 
-    [
-        "OFF",
-        "OFF Drug"
-    ],
+["OFF","OFF Drug"],
 
-    [
-        "ON15",
-        "ON 15 min"
-    ],
+["ON15","ON 15 min"],
 
-    [
-        "ON30",
-        "ON 30 min"
-    ],
+["ON30","ON 30 min"],
 
-    [
-        "ON45",
-        "ON 45 min"
-    ],
+["ON45","ON 45 min"],
 
-    [
-        "ON60",
-        "ON 60 min"
-    ],
+["ON60","ON 60 min"],
 
-    [
-        "ON90",
-        "ON 90 min"
-    ],
+["ON90","ON 90 min"],
 
-    [
-        "ON120",
-        "ON 120 min"
-    ]
+["ON120","ON 120 min"]
 
 ];
 
 
-const updrs3Times =
-    document.getElementById(
-        "updrs3Times"
-    );
+const timesContainer =
+    document.getElementById("updrs3Times");
 
 
-updrs3Conditions.forEach(condition => {
-
-    const key =
-        condition[0];
-
-    const label =
-        condition[1];
-
+updrs3Conditions.forEach(([key,label]) => {
 
     const div =
         document.createElement("div");
 
-    div.className =
-        "field";
-
+    div.className = "field";
 
     div.innerHTML = `
 
-        <label>
-            ${label}
-        </label>
+        <label>${label}</label>
 
         <input
             type="time"
-            id="updrs3Time_${key}"
-        >
+            id="updrs3Time_${key}">
 
     `;
 
-
-    updrs3Times
-        .appendChild(div);
+    timesContainer.appendChild(div);
 
 });
 
 
-
 const updrs3Rows = [
 
-    ["group", "AKINESIE"],
+["group","AKINESIE"],
+["item","Parole"],
+["item","Expression faciale"],
 
-    ["item", "Parole"],
+["group","RIGIDITE"],
+["item","Cou"],
+["item","MS droit"],
+["item","MS gauche"],
+["item","MI droit"],
+["item","MI gauche"],
 
-    ["item", "Expression faciale"],
+["group","TAPOTEMENT DES DOIGTS"],
+["item","MS droit"],
+["item","MS gauche"],
 
+["group","MOUVEMENTS DES MAINS"],
+["item","MS droit"],
+["item","MS gauche"],
 
-    ["group", "RIGIDITE"],
+["group","MOUVEMENTS ALTERNATIFS"],
+["item","MS droit"],
+["item","MS gauche"],
 
-    ["item", "Cou"],
+["group","TAPOTEMENT DU PIED"],
+["item","MI droit"],
+["item","MI gauche"],
 
-    ["item", "MS droit"],
+["group","AGILITE DE LA JAMBE"],
+["item","MI droit"],
+["item","MI gauche"],
 
-    ["item", "MS gauche"],
+["item","LEVER"],
+["item","MARCHE"],
+["item","FREEZING"],
+["item","STABILITE POSTURALE"],
+["item","POSTURE"],
+["item","BRADYKINESIE CORPORELLE"],
 
-    ["item", "MI droit"],
+["subtotal","Sous-total 1"],
 
-    ["item", "MI gauche"],
+["group","TREMBLEMENT POSTURAL"],
+["item","MS droit"],
+["item","MS gauche"],
 
+["group","TREMBLEMENT ACTION MAINS"],
+["item","MS droit"],
+["item","MS gauche"],
 
-    ["group", "TAPOTEMENT DES DOIGTS"],
+["group","AMPLITUDE TREMBLEMENT REPOS"],
+["item","Lèvre/mâchoire"],
+["item","MS droit"],
+["item","MS gauche"],
+["item","MI droit"],
+["item","MI gauche"],
 
-    ["item", "MS droit"],
+["item","CONSTANCE TREMBLEMENT"],
 
-    ["item", "MS gauche"],
+["subtotal","Sous total 2"],
 
-
-    ["group", "MOUVEMENTS DES MAINS"],
-
-    ["item", "MS droit"],
-
-    ["item", "MS gauche"],
-
-
-    ["group", "MOUVEMENTS ALTERNATIFS"],
-
-    ["item", "MS droit"],
-
-    ["item", "MS gauche"],
-
-
-    ["group", "TAPOTEMENT DU PIED"],
-
-    ["item", "MI droit"],
-
-    ["item", "MI gauche"],
-
-
-    ["group", "AGILITE DE LA JAMBE"],
-
-    ["item", "MI droit"],
-
-    ["item", "MI gauche"],
-
-
-    ["item", "LEVER"],
-
-    ["item", "MARCHE"],
-
-    ["item", "FREEZING"],
-
-    ["item", "STABILITE POSTURALE"],
-
-    ["item", "POSTURE"],
-
-    ["item", "BRADYKINESIE CORPORELLE"],
-
-
-    ["subtotal", "Sous-total 1"],
-
-
-    ["group", "TREMBLEMENT POSTURAL"],
-
-    ["item", "MS droit"],
-
-    ["item", "MS gauche"],
-
-
-    ["group", "TREMBLEMENT ACTION MAINS"],
-
-    ["item", "MS droit"],
-
-    ["item", "MS gauche"],
-
-
-    ["group", "AMPLITUDE TREMBLEMENT REPOS"],
-
-    ["item", "Lèvre/mâchoire"],
-
-    ["item", "MS droit"],
-
-    ["item", "MS gauche"],
-
-    ["item", "MI droit"],
-
-    ["item", "MI gauche"],
-
-
-    ["item", "CONSTANCE TREMBLEMENT"],
-
-
-    ["subtotal", "Sous total 2"],
-
-    ["subtotal", "TOTAL (Sous totaux 1+2)"]
+["subtotal","TOTAL (Sous totaux 1+2)"]
 
 ];
 
 
 const updrs3Table =
-    document.getElementById(
-        "updrs3Table"
-    );
+    document.getElementById("updrs3Table");
 
 
 let updrs3HTML = `
 
-    <thead>
+<thead>
 
-        <tr>
+<tr>
 
-            <th>
-                Item
-            </th>
+<th>Item</th>
 
 `;
 
 
-updrs3Conditions.forEach(condition => {
+updrs3Conditions.forEach(c => {
 
-    updrs3HTML += `
-
-        <th>
-            ${condition[1]}
-        </th>
-
-    `;
+    updrs3HTML +=
+        `<th>${c[1]}</th>`;
 
 });
 
 
-updrs3HTML += `
-
-        </tr>
-
-    </thead>
-
-    <tbody>
-
-`;
+updrs3HTML +=
+    `</tr></thead><tbody>`;
 
 
-let updrs3ItemNumber = 0;
-let updrs3SubtotalNumber = 0;
+let updrs3ItemCounter = 0;
+
+let updrs3TotalCounter = 0;
 
 
 updrs3Rows.forEach(row => {
 
-    const type =
-        row[0];
-
-    const label =
-        row[1];
+    const type = row[0];
+    const label = row[1];
 
 
-    if (type === "group") {
+    if(type === "group") {
 
         updrs3HTML += `
 
@@ -3665,38 +2559,29 @@ updrs3Rows.forEach(row => {
     }
 
 
-    if (type === "item") {
+    if(type === "item") {
 
-        updrs3ItemNumber++;
+        updrs3ItemCounter++;
+
+        updrs3HTML +=
+            `<tr><td>${label}</td>`;
 
 
-        updrs3HTML += `
+        updrs3Conditions.forEach(c => {
 
-            <tr>
+            updrs3HTML += `
 
                 <td>
-                    ${label}
+
+                    ${scoreSelect(
+                        `updrs3_item${updrs3ItemCounter}_${c[0]}`
+                    )}
+
                 </td>
 
-        `;
+            `;
 
-
-        updrs3Conditions
-            .forEach(condition => {
-
-                updrs3HTML += `
-
-                    <td>
-
-                        ${createScoreSelect(
-                            `updrs3_item${updrs3ItemNumber}_${condition[0]}`
-                        )}
-
-                    </td>
-
-                `;
-
-            });
+        });
 
 
         updrs3HTML +=
@@ -3705,40 +2590,30 @@ updrs3Rows.forEach(row => {
     }
 
 
-    if (type === "subtotal") {
+    if(type === "subtotal") {
 
-        updrs3SubtotalNumber++;
+        updrs3TotalCounter++;
+
+        updrs3HTML +=
+            `<tr class="subtotal-row"><td>${label}</td>`;
 
 
-        updrs3HTML += `
+        updrs3Conditions.forEach(c => {
 
-            <tr class="subtotal-row">
+            updrs3HTML += `
 
                 <td>
-                    ${label}
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="updrs3_total${updrs3TotalCounter}_${c[0]}">
+
                 </td>
 
-        `;
+            `;
 
-
-        updrs3Conditions
-            .forEach(condition => {
-
-                updrs3HTML += `
-
-                    <td>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="updrs3_total${updrs3SubtotalNumber}_${condition[0]}"
-                        >
-
-                    </td>
-
-                `;
-
-            });
+        });
 
 
         updrs3HTML +=
@@ -3749,177 +2624,143 @@ updrs3Rows.forEach(row => {
 });
 
 
-updrs3HTML += `
-
-    </tbody>
-
-`;
+updrs3HTML +=
+    `</tbody>`;
 
 
 updrs3Table.innerHTML =
     updrs3HTML;
 
 
-
 /* =========================================================
    MARCONI
    ========================================================= */
 
-
 const marconiConditions = [
 
-    [
-        "BIPHASIC",
-        "Biphasique (début ou fin dose)"
-    ],
+[
+"BIPHASIC",
+"Biphasique<br>(début ou fin dose)<br>OFF"
+],
 
-    [
-        "PEAK",
-        "Peak dose"
-    ],
+[
+"PEAK",
+"Peak dose"
+],
 
-    [
-        "OFF",
-        "Dystonie OFF"
-    ]
+[
+"DYSTONIA",
+"Dystonie"
+]
 
 ];
 
 
-const marconiBody =
-    document.getElementById(
-        "marconiBody"
-    );
+const marconiContainer =
+    document.getElementById("marconiContainer");
 
 
-marconiConditions.forEach(condition => {
+marconiConditions.forEach(([key,label]) => {
 
-    const key =
-        condition[0];
+    const panel =
+        document.createElement("div");
 
-    const label =
-        condition[1];
-
-
-    const tr =
-        document.createElement("tr");
+    panel.className =
+        "marconi-panel";
 
 
-    let html = `
-
-        <td class="marconi-condition">
-
-            ${label}
-
-        </td>
-
-    `;
+    let grid = "";
 
 
-    for (let i = 1; i <= 15; i++) {
+    for(let i=1;i<=9;i++) {
 
-        html += `
+        grid += `
 
-            <td class="marconi-cell">
-
-                <button
-                    type="button"
-                    class="marconi-button"
-                    id="marconi_${key}_${i}"
-                    data-value=""
-                    onclick="setMarconiValue(this)"
-                >
-
-                    #
-
-                </button>
-
-            </td>
+            <button
+                type="button"
+                id="marconi_${key}_${i}"
+                data-value=""
+                onclick="setMarconiValue(this)">
+            </button>
 
         `;
 
     }
 
 
-    html += `
+    panel.innerHTML = `
 
-        <td>
+        <h3>${label}</h3>
+
+        <div class="marconi-grid">
+
+            ${grid}
+
+        </div>
+
+
+        <div class="field marconi-sum">
+
+            <label>Somme</label>
 
             <input
                 type="number"
-                step="any"
                 id="marconi_${key}_SUM"
-            >
+                readonly
+                class="readonly-field">
 
-        </td>
+        </div>
 
     `;
 
 
-    tr.innerHTML =
-        html;
-
-
-    marconiBody
-        .appendChild(tr);
+    marconiContainer.appendChild(panel);
 
 });
 
 
-
 function setMarconiValue(button) {
 
-    const current =
+    const oldValue =
         button.dataset.value;
 
 
     const response =
         prompt(
-            "Entrer la cote observée.\nLaisser vide pour effacer.",
-            current
+            "Entrer la cote pour cette case.\nLaisser vide pour effacer.",
+            oldValue
         );
 
 
-    if (response === null) {
+    if(response === null) {
         return;
-    }
-
-
-    const cleaned =
-        response.trim();
-
-
-    if (cleaned === "") {
-
-        button.dataset.value = "";
-
-        button.textContent = "#";
-
-        button.classList.remove(
-            "filled"
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !/^[-+]?\d+([.,]\d+)?$/
-            .test(cleaned)
-    ) {
-
-        alert(
-            "Veuillez entrer une valeur numérique."
-        );
-
-        return;
-
     }
 
 
     const value =
-        cleaned.replace(",", ".");
+        response.trim().replace(",",".");
+
+
+    if(value === "") {
+
+        button.dataset.value = "";
+        button.textContent = "";
+        button.classList.remove("filled");
+
+        updateMarconiTotals();
+
+        return;
+
+    }
+
+
+    if(!/^-?\d+(\.\d+)?$/.test(value)) {
+
+        alert("Veuillez entrer une valeur numérique.");
+
+        return;
+
+    }
 
 
     button.dataset.value =
@@ -3932,56 +2773,444 @@ function setMarconiValue(button) {
         "filled"
     );
 
+
+    updateMarconiTotals();
+
 }
 
 
+function updateMarconiTotals() {
+
+    let totalAll =
+        0;
+
+    let anyValue =
+        false;
+
+
+    marconiConditions.forEach(([key]) => {
+
+        let sum =
+            0;
+
+        let conditionHasValue =
+            false;
+
+
+        for(let i=1;i<=9;i++) {
+
+            const value =
+                document
+                    .getElementById(
+                        `marconi_${key}_${i}`
+                    )
+                    .dataset
+                    .value;
+
+
+            if(value !== "") {
+
+                conditionHasValue =
+                    true;
+
+                anyValue =
+                    true;
+
+                sum +=
+                    Number(value);
+
+            }
+
+        }
+
+
+        document
+            .getElementById(
+                `marconi_${key}_SUM`
+            )
+            .value =
+                conditionHasValue
+                ? sum
+                : "";
+
+        if(conditionHasValue) {
+            totalAll += sum;
+        }
+
+    });
+
+
+    document
+        .getElementById(
+            "marconiTotal"
+        )
+        .value =
+            anyValue
+            ? totalAll
+            : "";
+
+}
+
 
 /* =========================================================
-   HOEHN & YAHR
+   ECHELLES FNM OFF / ON
    ========================================================= */
 
+const fnmNumericItems = [
+
+[
+"Je suis détendu(e), serein(e)",
+"Je suis très angoissé(e), inquiet(e)"
+],
+
+[
+"J’ai envie de faire des choses",
+"J’ai envie de ne rien faire"
+],
+
+[
+"Je n’ai pas mal",
+"J’ai très mal"
+],
+
+[
+"Je ne suis pas fatigué(e)",
+"Je suis épuisé(e)"
+],
+
+[
+"Je peux me concentrer facilement",
+"Je suis incapable de me concentrer"
+],
+
+[
+"Je ne ressens aucune tristesse",
+"J’ai une grande tristesse, des idées sombres"
+],
+
+[
+"Je n’ai pas de difficulté à respirer",
+"J’ai de grosses difficultés à bien respirer"
+],
+
+[
+"Je ne ressens pas le besoin de bouger les jambes",
+"Je ressens le besoin de bouger les jambes"
+],
+
+[
+"Je n’ai pas de problème urinaire",
+"J’ai des urgences/rétention urinaires"
+],
+
+[
+"Je ne me sens pas irritable",
+"Je me sens très irritable"
+],
+
+[
+"Je transpire normalement",
+"J’ai des sueurs abondantes"
+]
+
+];
+
+
+function buildFNMNumericScale(condition) {
+
+    const container =
+        document.getElementById(
+            `fnmScale_${condition}`
+        );
+
+
+    let html = `
+
+        <div class="fnm-state">
+            CONDITION ${condition}
+        </div>
+
+        <div class="condition-check">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    checked
+                    disabled>
+
+                Évaluation réalisée en condition
+                <strong>${condition}</strong>
+
+            </label>
+
+        </div>
+
+
+        <p class="instruction">
+
+            Nous vous proposons d’utiliser en phase « OFF » et en phase « ON »,
+            une échelle numérique destinée à mesurer l’intensité des fluctuations
+            non motrices dans la maladie de parkinson.
+
+        </p>
+
+
+        <p class="instruction">
+
+            <strong>
+                Entourez le chiffre de 0 à 10 qui correspond le mieux,
+                selon vous, à l’importance des fluctuations non motrices.
+            </strong>
+
+            <br>
+
+            La note zéro 0 correspond à « aucun signe de fluctuation »,
+            la note 10 correspond à l’intensité maximum du signe.
+
+            <br>
+
+            Basez vous sur les signes que vous présentez
+            <u>au moment précis</u> où vous remplissez le questionnaire.
+
+        </p>
+
+    `;
+
+
+    fnmNumericItems.forEach((item,index) => {
+
+        const n =
+            index + 1;
+
+
+        html += `
+
+            <div class="fnmscale-row">
+
+                <div class="fnmscale-number">
+                    ${n}
+                </div>
+
+                <div class="fnmscale-layout">
+
+                    <div class="fnmscale-left">
+                        ${item[0]}
+                    </div>
+
+
+                    <div class="slider-zone">
+
+                        <div class="slider-numbers">
+
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="1"
+                            value="5"
+                            class="fnm-slider"
+                            id="fnmNumeric_${condition}_${n}"
+                            data-answered="0"
+                            oninput="answerFNMSlider(this)">
+
+
+                        <div
+                            class="slider-answer"
+                            id="fnmNumeric_${condition}_${n}_value">
+                        </div>
+
+                    </div>
+
+
+                    <div class="fnmscale-right">
+                        ${item[1]}
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    html += `
+
+        <div class="field" style="margin-top:35px;">
+
+            <label>
+                12- Dans cette liste, au moment présent,
+                entourez le signe le plus gênant pour vous.
+            </label>
+
+
+            <select id="fnmNumeric_${condition}_MostTroublesome">
+
+                <option value="">—</option>
+
+    `;
+
+
+    fnmNumericItems.forEach((item,index) => {
+
+        html += `
+
+            <option value="${index+1}">
+
+                ${index+1} - ${item[0]} / ${item[1]}
+
+            </option>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </select>
+
+        </div>
+
+
+        <div style="margin-top:30px;">
+
+            <div class="question-title">
+
+                13- Est ce que ce symptôme est plus gênant que votre gêne motrice
+                (par exemple, les tremblements ou la raideur) ? :
+
+            </div>
+
+
+            <div class="inline-options">
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="fnmNumeric_${condition}_Motor"
+                        value="Oui">
+
+                    oui
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="fnmNumeric_${condition}_Motor"
+                        value="Non">
+
+                    non
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="fnmNumeric_${condition}_Motor"
+                        value="Je ne sais pas">
+
+                    je ne sais pas
+
+                </label>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+buildFNMNumericScale("OFF");
+
+buildFNMNumericScale("ON");
+
+
+function answerFNMSlider(slider) {
+
+    slider.dataset.answered =
+        "1";
+
+    slider.classList.add(
+        "answered"
+    );
+
+
+    document
+        .getElementById(
+            slider.id + "_value"
+        )
+        .textContent =
+            slider.value;
+
+}
+
+
+function fnmSliderValue(condition,n) {
+
+    const slider =
+        document.getElementById(
+            `fnmNumeric_${condition}_${n}`
+        );
+
+
+    return slider.dataset.answered === "1"
+        ? slider.value
+        : "Non répondu";
+
+}
+
+
+/* =========================================================
+   HOEHN YAHR
+   ========================================================= */
 
 const hyStages = [
 
-    [
-        "0",
-        "pas de signe de la maladie"
-    ],
+["0","pas de signe de la maladie"],
 
-    [
-        "1",
-        "maladie unilatérale"
-    ],
+["1","maladie unilatérale"],
 
-    [
-        "1.5",
-        "maladie unilatérale, plus atteinte axiale"
-    ],
+["1.5","maladie unilatérale, plus atteinte axiale"],
 
-    [
-        "2",
-        "maladie bilatérale sans trouble de l’équilibre"
-    ],
+["2","maladie bilatérale sans trouble de l’équilibre"],
 
-    [
-        "2.5",
-        "maladie bilatérale légère avec rétablissement lors du test de la poussée"
-    ],
+["2.5","maladie bilatérale légère avec rétablissement lors du test de la poussée"],
 
-    [
-        "3",
-        "maladie bilatérale légère à modérée, une certaine instabilité posturale, physiquement autonome"
-    ],
+["3","maladie bilatérale légère à modérée, une certaine instabilité posturale, physiquement autonome"],
 
-    [
-        "4",
-        "handicap sévère, toujours capable de marcher ou de se tenir debout sans aide"
-    ],
+["4","handicap sévère, toujours capable de marcher ou de se tenir debout sans aide"],
 
-    [
-        "5",
-        "malade en chaise roulante ou alité sauf s’il est aidé"
-    ]
+["5","malade en chaise roulante ou alité sauf s’il est aidé"]
 
 ];
 
@@ -3990,7 +3219,6 @@ function fillHY(id) {
 
     const select =
         document.getElementById(id);
-
 
     select.innerHTML =
         `<option value="">—</option>`;
@@ -4001,9 +3229,7 @@ function fillHY(id) {
         select.innerHTML += `
 
             <option value="${stage[0]}">
-
                 Stade ${stage[0]}
-
             </option>
 
         `;
@@ -4014,92 +3240,51 @@ function fillHY(id) {
 
 
 fillHY("hyOff");
-
 fillHY("hyOn");
 
 
 document
-    .getElementById(
-        "hyDescriptions"
-    )
+    .getElementById("hyDescriptions")
     .innerHTML =
-        hyStages.map(stage => `
+        hyStages
+            .map(stage => `
 
-            <p>
+                <p>
+                    <strong>Stade ${stage[0]} :</strong>
+                    ${stage[1]}
+                </p>
 
-                <strong>
-                    Stade ${stage[0]} :
-                </strong>
-
-                ${stage[1]}
-
-            </p>
-
-        `).join("");
-
+            `)
+            .join("");
 
 
 /* =========================================================
-   SCHWAB & ENGLAND
+   SCHWAB ENGLAND
    ========================================================= */
-
 
 const seStages = [
 
-[
-"100",
-"Totalement indépendant. Est capable d’effectuer toutes les activités sans lenteur, difficulté ou gêne. Tout à fait normal, n’ayant conscience d’aucune difficulté."
-],
+["100","Totalement indépendant. Est capable d’effectuer toutes les activités sans lenteur, difficulté ou gêne. Tout à fait normal, n’ayant conscience d’aucune difficulté."],
 
-[
-"90",
-"Complètement indépendant. Est capable d’effectuer toutes les activités avec un certain degré de lenteur, de difficulté et de gêne. Peut mettre 2 fois plus te temps. Commence à avoir conscience de ses difficultés."
-],
+["90","Complètement indépendant. Est capable d’effectuer toutes les activités avec un certain degré de lenteur, de difficulté et de gêne. Peut mettre 2 fois plus te temps. Commence à avoir conscience de ses difficultés."],
 
-[
-"80",
-"Complètement indépendant dans la plupart des activités. Met 2 fois plus de temps. Conscient de ses difficultés et de sa lenteur."
-],
+["80","Complètement indépendant dans la plupart des activités. Met 2 fois plus de temps. Conscient de ses difficultés et de sa lenteur."],
 
-[
-"70",
-"Pas complètement indépendant. Beaucoup de difficultés pour certaines activités. Trois ou quatre fois plus lent dans certaines d’entre elles. Peut passer une grande partie de la journée pour les activités de base."
-],
+["70","Pas complètement indépendant. Beaucoup de difficultés pour certaines activités. Trois ou quatre fois plus lent dans certaines d’entre elles. Peut passer une grande partie de la journée pour les activités de base."],
 
-[
-"60",
-"Partiellement dépendant. Peut effectuer un certain nombre d’activités, mais très lentement et avec beaucoup d’effort, fait des erreurs ; certaines activités sont impossibles."
-],
+["60","Partiellement dépendant. Peut effectuer un certain nombre d’activités, mais très lentement et avec beaucoup d’effort, fait des erreurs ; certaines activités sont impossibles."],
 
-[
-"50",
-"Est plus dépendant. Doit être aidé dans la moitié des activités, plus lent…Difficulté pour chaque chose."
-],
+["50","Est plus dépendant. Doit être aidé dans la moitié des activités, plus lent…Difficulté pour chaque chose."],
 
-[
-"40",
-"Très dépendant. Peut effectuer toutes les activités avec aide mais peu d’entre elles seul."
-],
+["40","Très dépendant. Peut effectuer toutes les activités avec aide mais peu d’entre elles seul."],
 
-[
-"30",
-"Effectue seul peu d’activité, avec effort, mais ne fait que les commencer seul. Plus d’aide est nécessaire."
-],
+["30","Effectue seul peu d’activité, avec effort, mais ne fait que les commencer seul. Plus d’aide est nécessaire."],
 
-[
-"20",
-"Ne fait rien seul. Peut légèrement aider pour certaines activités. Invalidité sévère."
-],
+["20","Ne fait rien seul. Peut légèrement aider pour certaines activités. Invalidité sévère."],
 
-[
-"10",
-"Totalement dépendant, ne peut aider en rien, complètement invalide."
-],
+["10","Totalement dépendant, ne peut aider en rien, complètement invalide."],
 
-[
-"0",
-"Certaines fonctions végétatives telles que la déglutition, les fonctions urinaires et intestinales sont altérées."
-]
+["0","Certaines fonctions végétatives telles que la déglutition, les fonctions urinaires et intestinales sont altérées."]
 
 ];
 
@@ -4108,7 +3293,6 @@ function fillSE(id) {
 
     const select =
         document.getElementById(id);
-
 
     select.innerHTML =
         `<option value="">—</option>`;
@@ -4119,9 +3303,7 @@ function fillSE(id) {
         select.innerHTML += `
 
             <option value="${stage[0]}">
-
                 ${stage[0]} %
-
             </option>
 
         `;
@@ -4132,37 +3314,29 @@ function fillSE(id) {
 
 
 fillSE("seOff");
-
 fillSE("seOn");
 
 
 document
-    .getElementById(
-        "seDescriptions"
-    )
+    .getElementById("seDescriptions")
     .innerHTML =
-        seStages.map(stage => `
+        seStages
+            .map(stage => `
 
-            <p>
+                <p>
+                    <strong>${stage[0]} % :</strong>
+                    ${stage[1]}
+                </p>
 
-                <strong>
-                    ${stage[0]} % :
-                </strong>
-
-                ${stage[1]}
-
-            </p>
-
-        `).join("");
-
+            `)
+            .join("");
 
 
 /* =========================================================
-   FLUCTUATIONS NON MOTRICES
+   QUESTIONNAIRE FNM 20 ITEMS
    ========================================================= */
 
-
-const fnmItems = [
+const fnmQuestions = [
 
 [
 "Est-ce que vous êtes anxieux à certains moments de la journée ?",
@@ -4267,21 +3441,19 @@ const fnmItems = [
 ];
 
 
-const fnmContainer =
+const fnmQuestionnaireContainer =
     document.getElementById(
-        "fnmContainer"
+        "fnmQuestionnaireContainer"
     );
 
 
-fnmItems.forEach((item,index) => {
+fnmQuestions.forEach((question,index) => {
 
     const n =
         index + 1;
 
-
     const div =
         document.createElement("div");
-
 
     div.className =
         "form-block";
@@ -4291,7 +3463,7 @@ fnmItems.forEach((item,index) => {
 
         <div class="question-title">
 
-            Item ${n} : ${item[0]}
+            Item ${n} : ${question[0]}
 
         </div>
 
@@ -4299,26 +3471,19 @@ fnmItems.forEach((item,index) => {
         <div class="inline-options">
 
             <label>
-
                 <input
                     type="radio"
                     name="fnm${n}Presence"
                     value="0">
-
                 Non
-
             </label>
 
-
             <label>
-
                 <input
                     type="radio"
                     name="fnm${n}Presence"
                     value="1">
-
                 Oui
-
             </label>
 
         </div>
@@ -4326,12 +3491,12 @@ fnmItems.forEach((item,index) => {
 
         <div
             class="conditional"
-            id="fnm${n}Follow"
-        >
+            id="fnm${n}Follow">
+
 
             <div class="question-title">
 
-                ${item[1]}
+                ${question[1]}
 
             </div>
 
@@ -4339,26 +3504,19 @@ fnmItems.forEach((item,index) => {
             <div class="inline-options">
 
                 <label>
-
                     <input
                         type="radio"
                         name="fnm${n}Related"
                         value="1">
-
                     Oui
-
                 </label>
 
-
                 <label>
-
                     <input
                         type="radio"
                         name="fnm${n}Related"
                         value="0">
-
                     Non
-
                 </label>
 
             </div>
@@ -4368,7 +3526,7 @@ fnmItems.forEach((item,index) => {
     `;
 
 
-    fnmContainer
+    fnmQuestionnaireContainer
         .appendChild(div);
 
 
@@ -4380,7 +3538,7 @@ fnmItems.forEach((item,index) => {
 
             radio.addEventListener(
                 "change",
-                function() {
+                function(){
 
                     document
                         .getElementById(
@@ -4399,42 +3557,31 @@ fnmItems.forEach((item,index) => {
 });
 
 
-
 /* =========================================================
-   CGI-S
+   CGI
    ========================================================= */
-
 
 const cgiLabels = [
 
-    "Normal",
-
-    "Limite",
-
-    "léger",
-
-    "Modéré",
-
-    "Marqué",
-
-    "Sévère",
-
-    "Très sévère"
+"Normal",
+"Limite",
+"léger",
+"Modéré",
+"Marqué",
+"Sévère",
+"Très sévère"
 
 ];
 
 
 const cgiOptions =
-    document.getElementById(
-        "cgiOptions"
-    );
+    document.getElementById("cgiOptions");
 
 
-cgiLabels.forEach((label,index) => {
+cgiLabels.forEach((text,index) => {
 
     const score =
         index + 1;
-
 
     cgiOptions.innerHTML += `
 
@@ -4443,14 +3590,13 @@ cgiLabels.forEach((label,index) => {
             <input
                 type="radio"
                 name="cgi"
-                value="${score}"
-            >
+                value="${score}">
 
             <span class="score-number">
                 ${score}
             </span>
 
-            ${label}
+            ${text}
 
         </label>
 
@@ -4459,11 +3605,9 @@ cgiLabels.forEach((label,index) => {
 });
 
 
-
 /* =========================================================
    TRAITEMENTS SORTIE
    ========================================================= */
-
 
 const outputTreatmentBody =
     document.querySelector(
@@ -4471,46 +3615,33 @@ const outputTreatmentBody =
     );
 
 
-for (let i=1; i<=10; i++) {
+for(let i=1;i<=10;i++) {
 
     const tr =
         document.createElement("tr");
 
-
     tr.innerHTML = `
 
-        <td>
-            ${i}
-        </td>
-
+        <td>${i}</td>
 
         <td>
-
             <input
                 type="text"
-                id="outputIn${i}"
-            >
-
+                id="outputIn${i}">
         </td>
 
-
         <td>
-
             <input
                 type="text"
-                id="outputOut${i}"
-            >
-
+                id="outputOut${i}">
         </td>
 
     `;
-
 
     outputTreatmentBody
         .appendChild(tr);
 
 }
-
 
 
 const allTreatmentsUnchanged =
@@ -4519,44 +3650,44 @@ const allTreatmentsUnchanged =
     );
 
 
-function updateAllTreatmentOutputs() {
+function updateOutputTreatments() {
 
     const checked =
         allTreatmentsUnchanged.checked;
 
 
-    for (let i=1; i<=10; i++) {
+    for(let i=1;i<=10;i++) {
 
-        const input =
+        const source =
             document.getElementById(
                 `outputIn${i}`
             );
 
-        const output =
+        const target =
             document.getElementById(
                 `outputOut${i}`
             );
 
 
-        if (checked) {
+        if(checked) {
 
-            output.value =
-                input.value;
+            target.value =
+                source.value;
 
-            output.readOnly =
+            target.readOnly =
                 true;
 
-            output.classList.add(
+            target.classList.add(
                 "readonly-field"
             );
 
         }
         else {
 
-            output.readOnly =
+            target.readOnly =
                 false;
 
-            output.classList.remove(
+            target.classList.remove(
                 "readonly-field"
             );
 
@@ -4576,7 +3707,7 @@ function updateAllTreatmentOutputs() {
         );
 
 
-    if (checked) {
+    if(checked) {
 
         delOut.value =
             delIn.value;
@@ -4606,11 +3737,11 @@ function updateAllTreatmentOutputs() {
 allTreatmentsUnchanged
     .addEventListener(
         "change",
-        updateAllTreatmentOutputs
+        updateOutputTreatments
     );
 
 
-for (let i=1; i<=10; i++) {
+for(let i=1;i<=10;i++) {
 
     document
         .getElementById(
@@ -4618,9 +3749,9 @@ for (let i=1; i<=10; i++) {
         )
         .addEventListener(
             "input",
-            function() {
+            function(){
 
-                if (
+                if(
                     allTreatmentsUnchanged.checked
                 ) {
 
@@ -4645,9 +3776,9 @@ document
     )
     .addEventListener(
         "input",
-        function() {
+        function(){
 
-            if (
+            if(
                 allTreatmentsUnchanged.checked
             ) {
 
@@ -4664,11 +3795,9 @@ document
     );
 
 
-
 /* =========================================================
    EXPORT CSV
    ========================================================= */
-
 
 function generateCSV() {
 
@@ -4682,10 +3811,45 @@ function generateCSV() {
             .trim();
 
 
-    if (!patientID) {
+    if(!patientID) {
 
         alert(
-            "Veuillez renseigner l'identifiant patient avant l'export."
+            "Veuillez renseigner l'identifiant patient."
+        );
+
+        return;
+
+    }
+
+
+    const bilanType =
+        radioValue(
+            "bilanType"
+        );
+
+
+    if(
+        bilanType ===
+        "Non répondu"
+    ) {
+
+        alert(
+            "Veuillez sélectionner le type de bilan."
+        );
+
+        return;
+
+    }
+
+
+    const bilanToken =
+        getBilanToken();
+
+
+    if(!bilanToken) {
+
+        alert(
+            "Veuillez préciser le délai du bilan, par exemple : 2 ans."
         );
 
         return;
@@ -4696,55 +3860,48 @@ function generateCSV() {
     const rows = [];
 
 
-    function add(question,value) {
+    function add(label,value) {
 
         rows.push([
-            question,
-            valueOrNaN(value)
+            label,
+            missing(value)
         ]);
 
     }
 
 
-
-    /* =====================================================
-       IDENTIFICATION
-       ===================================================== */
-
+    /* IDENTIFICATION */
 
     add(
         "Date du bilan",
-        document
-            .getElementById(
-                "bilanDate"
-            )
-            .value
+        document.getElementById(
+            "bilanDate"
+        ).value
     );
-
 
     add(
         "Type de bilan",
-        radioValue(
-            "bilanType"
-        )
+        bilanType
     );
-
 
     add(
         "Type de bilan - précision autre",
-        document
-            .getElementById(
-                "bilanTypeOther"
-            )
-            .value
+        bilanType === "AUTRE"
+        ?
+        document.getElementById(
+            "bilanTypeOther"
+        ).value
+        :
+        "Non répondu"
+    );
+
+    add(
+        "Code bilan fichier",
+        bilanToken
     );
 
 
-
-    /* =====================================================
-       HISTOIRE
-       ===================================================== */
-
+    /* HISTOIRE */
 
     add(
         "Premiers symptômes",
@@ -4753,16 +3910,12 @@ function generateCSV() {
         )
     );
 
-
     add(
         "Premiers symptômes - autre",
-        document
-            .getElementById(
-                "firstSymptomOther"
-            )
-            .value
+        document.getElementById(
+            "firstSymptomOther"
+        ).value
     );
-
 
     add(
         "Côté des premiers symptômes",
@@ -4771,424 +3924,295 @@ function generateCSV() {
         )
     );
 
-
     add(
         "Année des premiers symptômes",
-        document
-            .getElementById(
-                "yearFirstSymptoms"
-            )
-            .value
+        document.getElementById(
+            "yearFirstSymptoms"
+        ).value
     );
-
 
     add(
         "Année du diagnostic de la maladie",
-        document
-            .getElementById(
-                "yearDiagnosis"
-            )
-            .value
+        document.getElementById(
+            "yearDiagnosis"
+        ).value
     );
-
 
     add(
         "Année d’introduction de la L-DOPA",
-        document
-            .getElementById(
-                "yearLDopa"
-            )
-            .value
+        document.getElementById(
+            "yearLDopa"
+        ).value
     );
-
 
     add(
         "Année d’introduction du traitement dopaminergique",
-        document
-            .getElementById(
-                "yearDopaminergic"
-            )
-            .value
+        document.getElementById(
+            "yearDopaminergic"
+        ).value
     );
-
 
     add(
         "Année d’apparition des fluctuations motrices",
-        document
-            .getElementById(
-                "yearMotorFluct"
-            )
-            .value
+        document.getElementById(
+            "yearMotorFluct"
+        ).value
     );
-
 
     add(
         "Année d’apparition des fluctuations non motrices",
-        document
-            .getElementById(
-                "yearNonMotorFluct"
-            )
-            .value
+        document.getElementById(
+            "yearNonMotorFluct"
+        ).value
     );
-
 
     add(
         "Année d’apparition des dyskinésies",
-        document
-            .getElementById(
-                "yearDyskinesia"
-            )
-            .value
+        document.getElementById(
+            "yearDyskinesia"
+        ).value
     );
 
 
+    additionalItems.forEach(item => {
 
-    additionalItems
-        .forEach(item => {
+        add(
+            item[1],
+            radioValue(item[0])
+        );
 
-            add(
-                item[1],
-                radioValue(
-                    item[0]
-                )
-            );
-
-        });
+    });
 
 
+    /* HISTORIQUE TRAITEMENTS */
 
-    /* =====================================================
-       HISTORIQUE TRAITEMENTS
-       ===================================================== */
+    historicalTreatments.forEach((label,index) => {
 
+        const n =
+            index + 1;
 
-    historicalTreatments
-        .forEach((label,index) => {
-
-            const n =
-                index + 1;
-
-
-            const status =
-                radioValue(
-                    `histTreatment${n}`
-                );
-
-
-            add(
-                `${label} - statut`,
-                status
+        const status =
+            radioValue(
+                `histTreatment${n}`
             );
 
 
-            add(
-                `${label} - raison interruption`,
-                status === "Interrompu"
-                ?
-                document
-                    .getElementById(
-                        `histTreatment${n}Reason`
-                    )
-                    .value
-                :
-                "NaN"
-            );
-
-        });
+        add(
+            `${label} - statut`,
+            status
+        );
 
 
+        add(
+            `${label} - raison interruption`,
+            status === "Interrompu"
+            ?
+            document.getElementById(
+                `histTreatment${n}Reason`
+            ).value
+            :
+            "Non répondu"
+        );
 
-    /* =====================================================
-       ATCD MEDICAUX
-       ===================================================== */
+    });
 
 
-    for (let i=1; i<=7; i++) {
+    /* ATCD MED */
 
+    for(let i=1;i<=7;i++) {
 
         add(
             `Antécédent médical ${i} - description`,
-            document
-                .getElementById(
-                    `medHist${i}Description`
-                )
-                .value
+            document.getElementById(
+                `medHist${i}Description`
+            ).value
         );
-
 
         add(
-            `Antécédent médical ${i} - année de début`,
-            document
-                .getElementById(
-                    `medHist${i}Start`
-                )
-                .value
+            `Antécédent médical ${i} - année début`,
+            document.getElementById(
+                `medHist${i}Start`
+            ).value
         );
-
 
         add(
             `Antécédent médical ${i} - en cours`,
-            document
-                .getElementById(
-                    `medHist${i}Ongoing`
-                )
-                .value
+            document.getElementById(
+                `medHist${i}Ongoing`
+            ).value
         );
 
-
         add(
-            `Antécédent médical ${i} - année de fin`,
-            document
-                .getElementById(
-                    `medHist${i}End`
-                )
-                .value
+            `Antécédent médical ${i} - année fin`,
+            document.getElementById(
+                `medHist${i}End`
+            ).value
         );
 
     }
 
 
+    /* ATCD CHIR */
 
-    /* =====================================================
-       ATCD CHIRURGICAUX
-       ===================================================== */
-
-
-    for (let i=1; i<=7; i++) {
-
+    for(let i=1;i<=7;i++) {
 
         add(
             `Antécédent chirurgical ${i} - description`,
-            document
-                .getElementById(
-                    `surgHist${i}Description`
-                )
-                .value
+            document.getElementById(
+                `surgHist${i}Description`
+            ).value
         );
-
 
         add(
             `Antécédent chirurgical ${i} - année`,
-            document
-                .getElementById(
-                    `surgHist${i}Year`
-                )
-                .value
+            document.getElementById(
+                `surgHist${i}Year`
+            ).value
         );
 
     }
-
-
-
-    /* =====================================================
-       FAMILIAUX
-       ===================================================== */
 
 
     add(
         "Arbre généalogique",
-        document
-            .getElementById(
-                "familyTree"
-            )
-            .value
+        document.getElementById(
+            "familyTree"
+        ).value
     );
-
 
     add(
         "Génétique",
-        document
-            .getElementById(
-                "genetics"
-            )
-            .value
+        document.getElementById(
+            "genetics"
+        ).value
     );
 
 
+    /* TRAITEMENTS PARKINSON */
 
-    /* =====================================================
-       TRAITEMENTS PARKINSON
-       ===================================================== */
+    pdTreatments.forEach((t,index) => {
 
+        const n =
+            index + 1;
 
-    pdTreatments
-        .forEach((treatment,index) => {
+        add(
+            `${t[0]} - nombre prises / jour`,
+            document.getElementById(
+                `pdTreatment${n}Intakes`
+            ).value
+        );
 
-            const n =
-                index + 1;
+        add(
+            `${t[0]} - posologie quotidienne`,
+            document.getElementById(
+                `pdTreatment${n}Dose`
+            ).value
+        );
 
+        add(
+            `${t[0]} - facteur conversion`,
+            document.getElementById(
+                `pdTreatment${n}Factor`
+            ).value
+        );
 
-            add(
-                `${treatment.name} - nombre de prises / jour`,
-                document
-                    .getElementById(
-                        `pdTreatment${n}Intakes`
-                    )
-                    .value
-            );
+        add(
+            `${t[0]} - DEL`,
+            document.getElementById(
+                `pdTreatment${n}DEL`
+            ).value
+        );
 
-
-            add(
-                `${treatment.name} - posologie quotidienne`,
-                document
-                    .getElementById(
-                        `pdTreatment${n}Dose`
-                    )
-                    .value
-            );
-
-
-            add(
-                `${treatment.name} - facteur de conversion`,
-                document
-                    .getElementById(
-                        `pdTreatment${n}Factor`
-                    )
-                    .value
-            );
-
-
-            add(
-                `${treatment.name} - DEL`,
-                document
-                    .getElementById(
-                        `pdTreatment${n}DEL`
-                    )
-                    .value
-            );
-
-        });
+    });
 
 
     add(
-        "DEL agonistes (mg/jour)",
-        document
-            .getElementById(
-                "delAgonists"
-            )
-            .value
+        "DEL agonistes",
+        document.getElementById(
+            "delAgonists"
+        ).value
     );
-
 
     add(
-        "DEL L-Dopa (mg/jour)",
-        document
-            .getElementById(
-                "delLDopa"
-            )
-            .value
+        "DEL L-Dopa",
+        document.getElementById(
+            "delLDopa"
+        ).value
     );
-
 
     add(
-        "DEL totale (mg/jour)",
-        document
-            .getElementById(
-                "delTotal"
-            )
-            .value
+        "DEL totale",
+        document.getElementById(
+            "delTotal"
+        ).value
     );
 
 
+    /* AUTRES TRAITEMENTS */
 
-    /* =====================================================
-       AUTRES TRAITEMENTS
-       ===================================================== */
-
-
-    for (let i=1; i<=10; i++) {
+    for(let i=1;i<=10;i++) {
 
         add(
             `Autre traitement ${i}`,
-            document
-                .getElementById(
-                    `otherTreatment${i}`
-                )
-                .value
+            document.getElementById(
+                `otherTreatment${i}`
+            ).value
         );
 
     }
 
 
-
-    /* =====================================================
-       VITAUX
-       ===================================================== */
-
+    /* VITAUX */
 
     add(
-        "Poids (kg)",
-        document
-            .getElementById(
-                "weight"
-            )
-            .value
+        "Poids",
+        document.getElementById(
+            "weight"
+        ).value
     );
-
 
     add(
-        "Taille (cm)",
-        document
-            .getElementById(
-                "height"
-            )
-            .value
+        "Taille",
+        document.getElementById(
+            "height"
+        ).value
     );
-
 
     add(
         "IMC",
-        document
-            .getElementById(
-                "bmi"
-            )
-            .value
+        document.getElementById(
+            "bmi"
+        ).value
     );
 
 
-    bpPoints
-        .forEach(point => {
+    bpPoints.forEach(([id,label]) => {
 
-            const id =
-                point[0];
+        add(
+            `${label} - PAS`,
+            document.getElementById(
+                `${id}SYS`
+            ).value
+        );
 
-            const label =
-                point[1];
+        add(
+            `${label} - PAD`,
+            document.getElementById(
+                `${id}DIA`
+            ).value
+        );
 
+        add(
+            `${label} - Pouls`,
+            document.getElementById(
+                `${id}Pulse`
+            ).value
+        );
 
-            add(
-                `${label} - PAS`,
-                document
-                    .getElementById(
-                        `${id}SYS`
-                    )
-                    .value
-            );
-
-
-            add(
-                `${label} - PAD`,
-                document
-                    .getElementById(
-                        `${id}DIA`
-                    )
-                    .value
-            );
+    });
 
 
-            add(
-                `${label} - Pouls`,
-                document
-                    .getElementById(
-                        `${id}Pulse`
-                    )
-                    .value
-            );
-
-        });
-
-
-    const hypotension =
+    const hypo =
         radioValue(
             "orthostaticHypotension"
         );
@@ -5196,37 +4220,29 @@ function generateCSV() {
 
     add(
         "Hypotension orthostatique",
-        hypotension
+        hypo
     );
 
-
     add(
-        "Hypotension orthostatique - symptomatique/asymptomatique",
-        hypotension === "1"
+        "Hypotension orthostatique - type",
+        hypo === "1"
         ?
         radioValue(
             "hypotensionType"
         )
         :
-        "NaN"
+        "Non répondu"
     );
 
 
-
-    /* =====================================================
-       ECG / IRM
-       ===================================================== */
-
+    /* ECG IRM */
 
     add(
-        "QTc - Formule de Framingham",
-        document
-            .getElementById(
-                "qtc"
-            )
-            .value
+        "QTc",
+        document.getElementById(
+            "qtc"
+        ).value
     );
-
 
     add(
         "ECG Normal / Anormal",
@@ -5247,7 +4263,6 @@ function generateCSV() {
         mriDone
     );
 
-
     add(
         "IRM vue et normale",
         mriDone === "1"
@@ -5256,477 +4271,355 @@ function generateCSV() {
             "mriSeenNormal"
         )
         :
-        "NaN"
+        "Non répondu"
     );
-
 
     add(
         "IRM commentaires",
-        document
-            .getElementById(
-                "mriComments"
-            )
-            .value
+        document.getElementById(
+            "mriComments"
+        ).value
     );
 
 
+    /* UPDRS I */
 
-    /* =====================================================
-       UPDRS I
-       ===================================================== */
+    updrs1Items.forEach((item,index) => {
 
-
-    updrs1Items
-        .forEach((item,index) => {
-
-            add(
-                item.title,
-                radioValue(
-                    `updrs1_${index+1}`
-                )
-            );
-
-        });
-
-
-
-    /* =====================================================
-       UPDRS IV
-       ===================================================== */
-
-
-    updrs4Items
-        .forEach(item => {
-
-            add(
-                item.title,
-                radioValue(
-                    `updrs4_${item.id}`
-                )
-            );
-
-        });
-
-
-    add(
-        "4.1 - total des heures éveillées",
-        document
-            .getElementById(
-                "awakeHoursDysk"
+        add(
+            item.title,
+            radioValue(
+                `updrs1_${index+1}`
             )
-            .value
-    );
+        );
+
+    });
 
 
-    add(
-        "4.1 - total des heures avec dyskinésies",
-        document
-            .getElementById(
-                "dyskHours"
+    /* UPDRS IV */
+
+    updrs4Items.forEach(item => {
+
+        add(
+            item.title,
+            radioValue(
+                `updrs4_${item.id}`
             )
-            .value
-    );
+        );
+
+    });
 
 
-    add(
-        "4.1 - % de dyskinésies",
-        document
-            .getElementById(
-                "dyskPercent"
-            )
-            .value
-    );
+    [
+    ["4.1 total heures éveillées","awakeHoursDysk"],
+    ["4.1 total heures avec dyskinésies","dyskHours"],
+    ["4.1 % dyskinésies","dyskPercent"],
+    ["4.3 total heures éveillées","awakeHoursOff"],
+    ["4.3 total heures OFF","offHours"],
+    ["4.3 % OFF","offPercent"],
+    ["4.6 total heures OFF","offHoursDystoniaBase"],
+    ["4.6 total heures OFF avec dystonie","offHoursDystonia"],
+    ["4.6 % dystonie OFF","offDystoniaPercent"]
+    ]
+    .forEach(x => {
+
+        add(
+            x[0],
+            document.getElementById(
+                x[1]
+            ).value
+        );
+
+    });
 
 
-    add(
-        "4.3 - total des heures éveillées",
-        document
-            .getElementById(
-                "awakeHoursOff"
-            )
-            .value
-    );
-
-
-    add(
-        "4.3 - total des heures OFF",
-        document
-            .getElementById(
-                "offHours"
-            )
-            .value
-    );
-
-
-    add(
-        "4.3 - % OFF",
-        document
-            .getElementById(
-                "offPercent"
-            )
-            .value
-    );
-
-
-    add(
-        "4.6 - total des heures OFF",
-        document
-            .getElementById(
-                "offHoursDystoniaBase"
-            )
-            .value
-    );
-
-
-    add(
-        "4.6 - total des heures OFF avec dystonie",
-        document
-            .getElementById(
-                "offHoursDystonia"
-            )
-            .value
-    );
-
-
-    add(
-        "4.6 - % dystonie OFF",
-        document
-            .getElementById(
-                "offDystoniaPercent"
-            )
-            .value
-    );
-
-
-
-    /* =====================================================
-       UPDRS III
-       ===================================================== */
-
+    /* UPDRS III */
 
     add(
         "MDS-UPDRS III - heure prise L-Dopa",
-        document
-            .getElementById(
-                "ldopaTime"
-            )
-            .value
+        document.getElementById(
+            "ldopaTime"
+        ).value
     );
-
 
     add(
         "MDS-UPDRS III - dose L-Dopa",
-        document
-            .getElementById(
-                "ldopaDose"
-            )
-            .value
+        document.getElementById(
+            "ldopaDose"
+        ).value
     );
-
 
     add(
         "MDS-UPDRS III - après 12h arrêt L-Dopa",
-        document
-            .getElementById(
-                "stopLDopa12h"
-            )
-            .value
+        document.getElementById(
+            "stopLDopa12h"
+        ).value
     );
-
 
     add(
         "MDS-UPDRS III - après 5 demi-vies arrêt agoniste",
-        document
-            .getElementById(
-                "stopAgonist5HalfLife"
-            )
-            .value
+        document.getElementById(
+            "stopAgonist5HalfLife"
+        ).value
     );
 
 
-    updrs3Conditions
-        .forEach(condition => {
+    updrs3Conditions.forEach(c => {
 
-            add(
-                `MDS-UPDRS III - heure ${condition[1]}`,
-                document
-                    .getElementById(
-                        `updrs3Time_${condition[0]}`
-                    )
-                    .value
-            );
+        add(
+            `MDS-UPDRS III - Heure ${c[1]}`,
+            document.getElementById(
+                `updrs3Time_${c[0]}`
+            ).value
+        );
 
-        });
+    });
 
 
+    let ui =
+        0;
 
-    let itemCounter = 0;
-    let subtotalCounter = 0;
-
-
-    updrs3Rows
-        .forEach(row => {
-
-            const type =
-                row[0];
-
-            const label =
-                row[1];
+    let ut =
+        0;
 
 
-            if (type === "group") {
-                return;
-            }
+    updrs3Rows.forEach(row => {
+
+        if(row[0] === "group") {
+            return;
+        }
 
 
-            if (type === "item") {
+        if(row[0] === "item") {
 
-                itemCounter++;
+            ui++;
 
-
-                updrs3Conditions
-                    .forEach(condition => {
-
-                        add(
-                            `MDS-UPDRS III - ${label} - ${condition[1]}`,
-                            document
-                                .getElementById(
-                                    `updrs3_item${itemCounter}_${condition[0]}`
-                                )
-                                .value
-                        );
-
-                    });
-
-            }
-
-
-            if (type === "subtotal") {
-
-                subtotalCounter++;
-
-
-                updrs3Conditions
-                    .forEach(condition => {
-
-                        add(
-                            `MDS-UPDRS III - ${label} - ${condition[1]}`,
-                            document
-                                .getElementById(
-                                    `updrs3_total${subtotalCounter}_${condition[0]}`
-                                )
-                                .value
-                        );
-
-                    });
-
-            }
-
-        });
-
-
-
-    /* =====================================================
-       MARCONI
-       ===================================================== */
-
-
-    marconiConditions
-        .forEach(condition => {
-
-            const key =
-                condition[0];
-
-            const label =
-                condition[1];
-
-
-            for (
-                let i=1;
-                i<=15;
-                i++
-            ) {
+            updrs3Conditions.forEach(c => {
 
                 add(
-                    `Marconi - ${label} - case ${i}`,
-                    document
-                        .getElementById(
-                            `marconi_${key}_${i}`
-                        )
-                        .dataset
-                        .value
+                    `MDS-UPDRS III - ${row[1]} - ${c[1]}`,
+                    document.getElementById(
+                        `updrs3_item${ui}_${c[0]}`
+                    ).value
                 );
 
-            }
+            });
 
+        }
+
+
+        if(row[0] === "subtotal") {
+
+            ut++;
+
+            updrs3Conditions.forEach(c => {
+
+                add(
+                    `MDS-UPDRS III - ${row[1]} - ${c[1]}`,
+                    document.getElementById(
+                        `updrs3_total${ut}_${c[0]}`
+                    ).value
+                );
+
+            });
+
+        }
+
+    });
+
+
+    /* MARCONI */
+
+    marconiConditions.forEach(([key,label]) => {
+
+        for(let i=1;i<=9;i++) {
 
             add(
-                `Marconi - ${label} - somme`,
-                document
-                    .getElementById(
-                        `marconi_${key}_SUM`
-                    )
-                    .value
+                `Marconi - ${key} - case ${i}`,
+                document.getElementById(
+                    `marconi_${key}_${i}`
+                ).dataset.value
             );
 
-        });
+        }
+
+
+        add(
+            `Marconi - ${key} - somme`,
+            document.getElementById(
+                `marconi_${key}_SUM`
+            ).value
+        );
+
+    });
 
 
     add(
         "Marconi - score total",
-        document
-            .getElementById(
-                "marconiTotal"
-            )
-            .value
+        document.getElementById(
+            "marconiTotal"
+        ).value
     );
 
 
+    /* FNM NUMERIQUE OFF */
 
-    /* =====================================================
-       HOEHN YAHR
-       ===================================================== */
+    for(let i=1;i<=11;i++) {
+
+        add(
+            `Echelle FNM OFF - item ${i}`,
+            fnmSliderValue(
+                "OFF",
+                i
+            )
+        );
+
+    }
 
 
     add(
-        "Hoehn et Yahr - OFF",
-        document
-            .getElementById(
-                "hyOff"
-            )
-            .value
-    );
-
-
-    add(
-        "Hoehn et Yahr - ON",
-        document
-            .getElementById(
-                "hyOn"
-            )
-            .value
-    );
-
-
-
-    /* =====================================================
-       SCHWAB
-       ===================================================== */
-
-
-    add(
-        "Schwab et England - OFF",
-        document
-            .getElementById(
-                "seOff"
-            )
-            .value
+        "Echelle FNM OFF - signe le plus gênant",
+        document.getElementById(
+            "fnmNumeric_OFF_MostTroublesome"
+        ).value
     );
 
 
     add(
-        "Schwab et England - ON",
-        document
-            .getElementById(
-                "seOn"
-            )
-            .value
-    );
-
-
-
-    /* =====================================================
-       FNM
-       ===================================================== */
-
-
-    fnmItems
-        .forEach((item,index) => {
-
-            const n =
-                index+1;
-
-
-            const presence =
-                radioValue(
-                    `fnm${n}Presence`
-                );
-
-
-            add(
-                `Fluctuations non motrices ${n} - présence`,
-                presence
-            );
-
-
-            add(
-                `Fluctuations non motrices ${n} - lié à l'état moteur / amélioré par traitement`,
-                presence === "1"
-                ?
-                radioValue(
-                    `fnm${n}Related`
-                )
-                :
-                "NaN"
-            );
-
-        });
-
-
-
-    /* =====================================================
-       CGI-S
-       ===================================================== */
-
-
-    add(
-        "CGI-S",
+        "Echelle FNM OFF - symptôme plus gênant que gêne motrice",
         radioValue(
-            "cgi"
+            "fnmNumeric_OFF_Motor"
         )
     );
 
 
+    /* FNM NUMERIQUE ON */
 
-    /* =====================================================
-       TRAITEMENTS SORTIE
-       ===================================================== */
+    for(let i=1;i<=11;i++) {
+
+        add(
+            `Echelle FNM ON - item ${i}`,
+            fnmSliderValue(
+                "ON",
+                i
+            )
+        );
+
+    }
 
 
     add(
-        "Traitements de sortie - NON MODIFIÉS",
-        allTreatmentsUnchanged.checked
-        ?
-        1
-        :
-        0
+        "Echelle FNM ON - signe le plus gênant",
+        document.getElementById(
+            "fnmNumeric_ON_MostTroublesome"
+        ).value
     );
 
 
-    for (
-        let i=1;
-        i<=10;
-        i++
-    ) {
+    add(
+        "Echelle FNM ON - symptôme plus gênant que gêne motrice",
+        radioValue(
+            "fnmNumeric_ON_Motor"
+        )
+    );
+
+
+    /* HY / SCHWAB */
+
+    add(
+        "Hoehn et Yahr - OFF",
+        document.getElementById(
+            "hyOff"
+        ).value
+    );
+
+    add(
+        "Hoehn et Yahr - ON",
+        document.getElementById(
+            "hyOn"
+        ).value
+    );
+
+    add(
+        "Schwab et England - OFF",
+        document.getElementById(
+            "seOff"
+        ).value
+    );
+
+    add(
+        "Schwab et England - ON",
+        document.getElementById(
+            "seOn"
+        ).value
+    );
+
+
+    /* FNM 20 ITEMS */
+
+    fnmQuestions.forEach((item,index) => {
+
+        const n =
+            index + 1;
+
+        const presence =
+            radioValue(
+                `fnm${n}Presence`
+            );
 
 
         add(
-            `Traitement ${i} - entrée`,
-            document
-                .getElementById(
-                    `outputIn${i}`
-                )
-                .value
+            `Fluctuations non motrices ${n} - présence`,
+            presence
         );
 
 
         add(
+            `Fluctuations non motrices ${n} - lié état moteur / amélioré traitement`,
+            presence === "1"
+            ?
+            radioValue(
+                `fnm${n}Related`
+            )
+            :
+            "Non répondu"
+        );
+
+    });
+
+
+    /* CGI */
+
+    add(
+        "CGI-S",
+        radioValue("cgi")
+    );
+
+
+    /* SORTIE */
+
+    add(
+        "Traitements de sortie - NON MODIFIÉS",
+        allTreatmentsUnchanged.checked
+        ? 1
+        : 0
+    );
+
+
+    for(let i=1;i<=10;i++) {
+
+        add(
+            `Traitement ${i} - entrée`,
+            document.getElementById(
+                `outputIn${i}`
+            ).value
+        );
+
+        add(
             `Traitement ${i} - sortie`,
-            document
-                .getElementById(
-                    `outputOut${i}`
-                )
-                .value
+            document.getElementById(
+                `outputOut${i}`
+            ).value
         );
 
     }
@@ -5734,45 +4627,30 @@ function generateCSV() {
 
     add(
         "DEL entrée",
-        document
-            .getElementById(
-                "outputDelIn"
-            )
-            .value
+        document.getElementById(
+            "outputDelIn"
+        ).value
     );
-
 
     add(
         "DEL sortie",
-        document
-            .getElementById(
-                "outputDelOut"
-            )
-            .value
+        document.getElementById(
+            "outputDelOut"
+        ).value
     );
 
 
-
-    /* =====================================================
-       CONCLUSION
-       ===================================================== */
-
+    /* CONCLUSION */
 
     add(
         "Conclusion",
-        document
-            .getElementById(
-                "finalConclusion"
-            )
-            .value
+        document.getElementById(
+            "finalConclusion"
+        ).value
     );
 
 
-
-    /* =====================================================
-       CREATION CSV
-       ===================================================== */
-
+    /* CSV */
 
     let csv =
 
@@ -5781,62 +4659,52 @@ function generateCSV() {
         `Numéro;Question;Réponse\n`;
 
 
-    rows.forEach(
-        (row,index) => {
+    rows.forEach((row,index) => {
 
-            csv +=
+        csv +=
 
-                `"${index+1}";` +
+            `"${index+1}";` +
 
-                `"${csvEscape(row[0])}";` +
+            `"${csvEscape(row[0])}";` +
 
-                `"${csvEscape(row[1])}"\n`;
+            `"${csvEscape(row[1])}"\n`;
 
-        }
-    );
+    });
 
 
     const blob =
         new Blob(
-
-            [
-                "\uFEFF" + csv
-            ],
-
+            ["\uFEFF" + csv],
             {
                 type:
                     "text/csv;charset=utf-8;"
             }
-
         );
 
 
     const link =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
 
     link.href =
-        URL.createObjectURL(
-            blob
+        URL.createObjectURL(blob);
+
+
+    const safeID =
+        sanitizeFileToken(
+            patientID
         );
 
 
     link.download =
-        `${patientID}_CAHIER-PARKINSON_resultats.csv`;
+        `${safeID}_${bilanToken}_CAHIER-PARKINSON_resultats.csv`;
 
 
-    document.body
-        .appendChild(link);
-
+    document.body.appendChild(link);
 
     link.click();
 
-
-    document.body
-        .removeChild(link);
-
+    document.body.removeChild(link);
 
     URL.revokeObjectURL(
         link.href
