@@ -1,223 +1,271 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Échelle d'Apathie F-DAS</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 30px;
-      background-color: #54A9AE;
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 32px;
-    }
-
-    .retour {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-
-    .retour a {
-      text-decoration: none;
-      color: #ffffff;
-      background-color: #2c3e50;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 14px;
-      transition: background-color 0.3s ease;
-    }
-
-    .retour a:hover {
-      background-color: #1a242f;
-    }
-
-    .form-block {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 25px 30px;
-      margin: 30px auto;
-      max-width: 900px;
-      text-align: left;
-      transition: transform 0.2s ease;
-    }
-
-    .form-block:hover {
-      transform: scale(1.01);
-    }
-
-    .form-block.id-block {
-      background: #e0e0e0;
-      box-shadow: none;
-      transition: none;
-    }
-
-    .form-block.id-block:hover {
-      transform: none;
-    }
-
-    .instruction h2 {
-      margin-top: 0;
-    }
-
-    .question p {
-      font-weight: bold;
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 10px;
-    }
-
-    label {
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    input[type="radio"], input[type="text"] {
-      margin-right: 6px;
-      font-size: 14px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      max-width: 300px;
-      padding: 8px;
-      margin-top: 10px;
-    }
-
-    button {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 30px;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #2980b9;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoquestionnaires Parkinson</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;margin:0;padding:30px;background:#54A9AE;color:#2c3e50;text-align:center}
+h1{margin:20px 0 8px;font-size:32px}.subtitle{font-size:18px;margin-bottom:35px}
+.retour{position:absolute;top:20px;left:20px}.retour a{text-decoration:none;color:white;background:#2c3e50;padding:8px 14px;border-radius:8px;font-size:14px}
+.form-block{background:white;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.10);padding:25px 30px;margin:25px auto;max-width:1100px;text-align:left}
+.id-block{background:#e0e0e0;box-shadow:none}
+.section-title{background:#2c3e50;color:white;padding:18px 25px;border-radius:14px;max-width:1100px;margin:55px auto 20px;text-align:left}
+.section-title h2{margin:0;font-size:22px;color:white}.section-title p{margin:8px 0 0;line-height:1.5}
+.question-title{font-weight:bold;line-height:1.5;margin-bottom:12px}.instruction{line-height:1.55}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.field label{display:block;font-weight:bold;margin-bottom:6px}
+input[type=text],input[type=date],select{width:100%;padding:9px;border:1px solid #aaa;border-radius:6px;background:white;font-size:14px}
+input[type=radio],input[type=checkbox]{margin-right:7px;transform:scale(1.1)}
+.inline-options{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px}.inline-options label{padding:8px 10px;border-radius:7px;cursor:pointer}
+.inline-options label:hover{background:#edf6f7}.score-option{display:block;padding:10px 12px;border:1px solid #dfe6e8;border-radius:7px;line-height:1.4;cursor:pointer;margin:7px 0}
+.score-option:hover{background:#edf6f7}.small{font-size:13px;color:#607080}
+table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #bac4c8;padding:8px;vertical-align:middle}th{background:#e7eef0;text-align:center}.big-table-wrapper{overflow-x:auto}
+.updrs2-table{min-width:900px}.updrs2-table .scorecol{width:90px;text-align:center}.updrs2-option{display:grid;grid-template-columns:1fr 90px 90px;gap:8px;align-items:center;border-top:1px solid #e6ecee;padding:8px 0}.updrs2-option:first-of-type{border-top:0}.updrs2-score{font-weight:bold;margin-right:8px}
+.matrix-table{min-width:900px}.matrix-table th:first-child,.matrix-table td:first-child{text-align:left;min-width:420px}
+.export-button{background:#3498db;color:white;border:none;padding:15px 32px;border-radius:9px;cursor:pointer;font-size:17px;margin:40px 0 60px}.export-button:hover{background:#2980b9}
+.calc-box{background:#edf6f7;border:1px solid #c6dddf;border-radius:8px;padding:12px;margin-top:18px;font-weight:bold}
+@media(max-width:800px){body{padding:15px 8px}h1{margin-top:55px;font-size:25px}.grid-2{grid-template-columns:1fr}.form-block{padding:18px}}
+</style>
 </head>
 <body>
-  <div class="retour">
-    <a href="index.html">← Retour</a>
+<div class="retour"><a href="index.html">← Retour</a></div>
+<h1>Autoquestionnaires</h1>
+<div class="subtitle">Bilan pré-chirurgical / pré-pompe / suivi – Maladie de Parkinson</div>
+
+<div class="form-block id-block">
+  <div class="grid-2">
+    <div class="field"><label>Identifiant Patient</label><input type="text" id="patientID" placeholder="Ex : 002STESY" autocomplete="off"></div>
+    <div class="field"><label>Date du bilan</label><input type="date" id="bilanDate"></div>
   </div>
-
-  <h1>Échelle d'Apathie F-DAS</h1>
-
-  <div class="form-block id-block">
-    <label for="patientId">Identifiant Patient :</label><br>
-    <input type="text" id="patientId" name="patientId" placeholder="Ex : ABC123" required>
+  <div style="margin-top:20px">
+    <strong>Type de bilan :</strong>
+    <div class="inline-options">
+      <label><input type="radio" name="bilanType" value="PRECHIR">PRECHIR</label>
+      <label><input type="radio" name="bilanType" value="PREPOMPEAPOKINON">PRE POMPE APOKINON</label>
+      <label><input type="radio" name="bilanType" value="PREDUODOPA">PRE DUODOPA</label>
+      <label><input type="radio" name="bilanType" value="6MOIS">6 MOIS</label>
+      <label><input type="radio" name="bilanType" value="1AN">1 AN</label>
+      <label><input type="radio" name="bilanType" value="AUTRE">….. ANS</label>
+    </div>
+    <input type="text" id="bilanTypeOther" placeholder="Ex : 2 ans" style="margin-top:12px">
   </div>
-
-  <div class="form-block instruction">
-    <h2>Instructions</h2>
-    <p>Veuillez lire attentivement chacune des affirmations suivantes. Pour chaque affirmation, sélectionnez la réponse qui correspond le mieux à ce que vous avez ressenti, fait ou pensé durant le dernier mois.</p>
+  <div style="margin-top:20px">
+    <strong>Dossier rempli par :</strong>
+    <div class="inline-options">
+      <label><input type="radio" name="filledBy" value="Patient">Patient</label>
+      <label><input type="radio" name="filledBy" value="Aidant">Aidant</label>
+    </div>
   </div>
+</div>
 
-  <form id="fdasForm">
-    <div id="questions"></div>
-    <button type="button" onclick="generateCSV()">Télécharger en CSV</button>
-  </form>
+<div class="section-title"><h2>1. MDS-UPDRS II</h2><p>Partie II : aspects moteurs des expériences de la vie quotidienne</p></div>
+<div id="updrs2Container"></div>
 
-  <script>
-    const reponses = [
-      "Presque jamais",
-      "Parfois",
-      "Souvent",
-      "Presque toujours"
-    ];
+<div class="section-title"><h2>2. Auto-questionnaire de qualité de vie PDQ39</h2><p>Instructions : A cause de votre maladie de Parkinson, combien de fois avez-vous vécu chacune des situations suivantes au cours du mois précédent ? Mettre une croix dans la case correspondante.</p></div>
+<div class="form-block"><div class="big-table-wrapper"><table class="matrix-table" id="pdqTable"></table></div></div>
 
-    const items = [
-      "J'ai besoin d’encouragements pour débuter une activité.",
-      "Je suis à l’initiative des contacts avec mes ami(e)s.",
-      "J'exprime mes émotions.",
-      "Je pense à de nouvelles choses à faire pendant ma journée.",
-      "Je me sens concerné(e) par ce que les membres de ma famille ressentent.",
-      "Il m’arrive de regarder dans le vide.",
-      "Avant de commencer quelque chose je réfléchis à ce que les autres pourraient ressentir à propos de cela.",
-      "Je prévois mes activités de la journée par avance.",
-      "Je me sens mal quand je reçois de mauvaises nouvelles.",
-      "Je suis capable de me concentrer sur une tâche jusqu'à ce qu'elle soit terminée.",
-      "Je manque de motivation dans ce que je fais.",
-      "J’ai du mal à comprendre ce que les autres ressentent.",
-      "Je me fixe des objectifs.",
-      "J'essaie de nouvelles choses.",
-      "Ce que mon comportement induit comme émotion chez les autres m’indiffère.",
-      "J’agis en fonction de ce que j’ai pensé durant la journée.",
-      "Quand je suis face à une tâche compliquée, j’ai du mal à organiser ce que j’ai à faire.",
-      "Je sais me trouver des occupations.",
-      "J'éprouve des difficultés lorsque je dois faire plusieurs choses à la fois.",
-      "Je suis facilement ému(e) en regardant quelque chose de joyeux ou triste à la télévision.",
-      "Je trouve difficile de rester concentré(e).",
-      "Je suis plutôt spontané(e).",
-      "Je suis facilement distrait(e).",
-      "Ce qui se passe autour de moi me laisse indifférent(e)."
-    ];
+<div class="section-title"><h2>3. Echelle de somnolence Epworth</h2></div>
+<div class="form-block">
+<p class="instruction">Vous arrive-t-il de somnoler ou de vous endormir (dans la journée) dans les situations suivantes : Même si vous ne vous êtes pas trouvé récemment dans l'une de ces situations, essayez d'imaginer comment vous réagiriez et quelles seraient vos chances d'assoupissement.</p>
+<p class="instruction">notez 0 : si c'est exclu. «Il ne m'arrive jamais de somnoler: aucune chance,<br>
+notez 1 : si ce n’est pas impossible. «Il y a un petit risque»: faible chance,<br>
+notez 2 : si c’est probable. «Il pourrait m’arriver de somnoler»: chance moyenne,<br>
+notez 3 : si c’est systématique. «Je somnolerais à chaque fois» : forte chance.</p>
+<div id="epworthContainer"></div>
+</div>
 
-    // Questions inversées (index commençant à 1)
-    const invertedItems = [2, 3, 4, 5, 7, 8, 9, 10, 13, 14, 16, 18, 20, 22];
+<div class="section-title"><h2>4. Échelle de fatigue de Pichot</h2></div>
+<div class="form-block">
+<p class="instruction">La fatigue est une sensation d'affaiblissement physique ou psychique qui survient normalement à la suite d'un effort soutenu, et qui impose la mise au repos. On parle de fatigue pathologique lorsque la personne se sent handicapée par rapport à son niveau de forme habituel pour effectuer ses activités quotidiennes.</p>
+<p class="instruction">Parmi les huit propositions suivantes, déterminez celles qui correspondent le mieux à votre état en affectant chaque item d'une note entre 0 et 4 :<br>(0 = pas du tout; 1= un peu, 2 = moyennement, 3= beaucoup, 4 = extrêmement)</p>
+<div id="pichotContainer"></div>
+<div class="calc-box">Total (sur 32) : <span id="pichotTotal">—</span></div>
+</div>
 
-    const container = document.getElementById("questions");
-    items.forEach((text, index) => {
-      const div = document.createElement("div");
-      div.classList.add("form-block");
-      div.innerHTML = `<p>${index + 1}. ${text}</p>` +
-        `<div class="options">` +
-        reponses.map((rep, val) => `
-          <label><input type="radio" name="q${index}" value="${val}"> ${rep}</label>`
-        ).join("") +
-        `</div>`;
-      container.appendChild(div);
-    });
+<div class="section-title"><h2>5. Echelle estime de soi</h2></div>
+<div class="form-block">
+<p class="instruction">L’estime de soi est définie comme le jugement ou l’évaluation que l’on fait de soi-même, de sa valeur personnelle. De façon plus simple, l’estime de soi peut-être également assimilée à l’affirmation de soi.</p>
+<p class="instruction"><strong>Pour chacune des caractéristiques ou descriptions suivantes, indiquez à quel point chacune est vraie pour vous en en encerclant le chiffre approprié.</strong></p>
+<div class="big-table-wrapper"><table class="matrix-table" id="selfEsteemTable"></table></div>
+</div>
 
-    function generateCSV() {
-      const patientId = document.getElementById("patientId").value.trim();
-      if (!patientId) {
-        alert("Veuillez renseigner l'identifiant patient avant de télécharger les résultats.");
-        return;
-      }
+<div class="section-title"><h2>6. Freezing of Gait Questionnaire</h2><p>Veuillez entourer la réponse pour chaque question.</p></div>
+<div id="fogContainer"></div>
 
-      let csvContent = `Identifiant;${patientId}\n\nNuméro;Question;Réponse\n`;
-      items.forEach((q, i) => {
-        const radios = document.getElementsByName(`q${i}`);
-        let selected = "Non répondu";
-        radios.forEach(r => { if (r.checked) selected = r.value; });
+<div class="section-title"><h2>7. Echelle HAD</h2></div>
+<div class="form-block">
+<p class="instruction">Les médecins savent que les émotions jouent un rôle important dans la plupart des maladies. Si votre médecin est au courant des émotions que vous éprouvez il pourra mieux vous aider. Ce questionnaire a été conçu de façon à permettre à votre médecin de se familiariser avec ce que vous, éprouvez vous-même sur le plan émotif.</p>
+<p class="instruction">Ne faites pas attention aux chiffres et aux lettres imprimés à la gauche du questionnaire. Lisez chaque série de questions et soulignez la réponse qui exprime le mieux ce que vous avez éprouvé au cours de la semaine qui vient de s'écouler. Ne vous attardez pas sur la réponse à faire : votre réaction immédiate à chaque question fournira probablement une meilleure indication de ce que vous éprouvez, qu'une réponse longuement méditée.</p>
+<div id="hadContainer"></div>
+</div>
 
-        // Inversion des scores pour certaines questions
-        if (selected !== "Non répondu" && invertedItems.includes(i + 1)) {
-          selected = 3 - selected;
-        }
+<div class="section-title"><h2>8. Echelle de motivation (Starkstein)</h2><p>Dans l’état dans lequel vous vous sentez actuellement, est ce que :</p></div>
+<div class="form-block"><div class="big-table-wrapper"><table class="matrix-table" id="starksteinTable"></table></div></div>
 
-        const questionEscaped = q.replace(/"/g, '""');
-        csvContent += `"${i + 1}";"${questionEscaped}";"${selected}"\n`;
-      });
+<div class="section-title"><h2>9. Echelle de motivation (F-DAS)</h2><p>Choisissez la réponse correspondant le mieux à ce que vous avez ressenti, fait ou pensé durant le dernier mois :</p></div>
+<div class="form-block"><div class="big-table-wrapper"><table class="matrix-table" id="fdasTable"></table></div></div>
 
-      const BOM = "\uFEFF";
-      const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `${patientId}_FDAS_resultats.csv`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
+<div class="section-title"><h2>10. QUIP-RS</h2><p>Choisissez la réponse correspondant le mieux à ce que vous avez ressenti, fait ou pensé durant le dernier mois :</p></div>
+<div class="form-block">
+<p><strong>Description des comportements :</strong></p>
+<ul>
+<li>Jeu = Jeux d’argent et de hasard (casino, jeux d’argent sur internet, loteries, grattages, paris, machine à sous, poker).</li>
+<li>Sexe = Propositions sexuelles, prostitution, changement d’orientation sexuelle, masturbation, activité sexuelle par téléphone ou sur internet, pornographie.</li>
+<li>Achats compulsifs = acheter trop ou des choses dont vous n’avez pas besoin ou que vous n’utilisez pas (« inutiles »).</li>
+<li>Manger = de plus grandes quantités, différents types d’aliments par rapport à avant, plus rapidement que la normale (« goulu »), à différents moments (la nuit, sans faim).</li>
+<li>Exécuter des tâches ou pratiquer des passe-temps = tâches spécifiques, passe-temps ou autre activités organisées (écrire, peindre, jardiner, bricoler, collectionner, utiliser un ordinateur, travailler sur des projets…).</li>
+<li>Répéter des activités simples ? = répéter certaines activités motrices simples telles que nettoyer, ranger, manipuler, examiner, trier, commander, collecter…).</li>
+<li>Prendre vos médicaments contre la MP? = prendre régulièrement trop de médicaments contre la maladie de Parkinson ou les augmenter par vous-même (sans conseils médicaux).</li>
+</ul>
+<p><strong>Description de la fréquence</strong><br>
+Jamais (0) = pas du tout<br>Rarement (1) = rarement ou 1j/semaine<br>Parfois (2) = parfois ou 2-3j/semaine<br>Souvent (3) = la plupart du temps ou 4-5j/semaine<br>Très souvent (4) = presque toujours ou 6-7j/semaine</p>
+<div id="quipContainer"></div>
+</div>
+
+<button type="button" class="export-button" onclick="generateCSV()">Télécharger en CSV</button>
+
+<script>
+const DATA = {"updrs2": [{"title": "2.1 – Parole", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes avec votre élocution ?", "opts": ["pas du tout (aucun problème)", "mon élocution est faible, peu articulée et inégale, mais ne conduit pas les autres à me demander de me répéter", "mon élocution conduit les gens à me demander de me répéter occasionnellement, mais pas tous les jours", "mon élocution est assez peu claire pour que les autres me demandent de répéter chaque jour, même si la plupart de mon discours est compris", "la plupart ou tout mon discours ne peut être compris"]}, {"title": "2.2 - Salivation et fait de baver", "q": "Au cours de la semaine précédente, avez-vous eu des trop de salive pendant que êtes éveillé(e) ou quand vous dormez", "opts": ["pas du tout (aucun problème)", "j’ai trop de salive, mais je ne bave pas", "je bave pendant mon sommeil, mais pas quand je suis éveillé(e)", "je bave quelquefois quand je suis éveillé(e), mais je n’utilise pas habituellement de kleenex ou de mouchoir", "je bave tellement que j’ai régulièrement besoin d’utiliser des kleenex ou d’un mouchoir pour protéger mes vêtements"]}, {"title": "2.3 - Mastication et déglutition", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes en avalant des comprimés ou en prenant vos repas ? Avez-vous eu besoin de couper ou d’écraser vos comprimés, ou que vos repas soient écrasés ; hachés ou mixés pour éviter de vous étouffer ?", "opts": ["pas de problème", "j’ai conscience d’une lenteur dans ma mastication ou de faire des efforts accrus quand j’avale ; mais je ne m’étouffe pas ou je n’ai pas besoin que ma nourriture soit préparée de façon spéciale", "j’ai besoin d’avoir mes comprimés coupés ou ma nourriture spécialement préparée parce que j’ai des problèmes en mâchant ou en avalant, mais je ne suis pas étouffé(e) au cours de la semaine précédente", "je me suis étouffé(e) au moins une fois la semaine précédente", "à cause de problèmes de mastication et de déglutition, j’ai besoin d’une sonde gastrique"]}, {"title": "2.4 Tâches alimentaires", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes à manipuler votre nourriture et à utiliser des couverts ? par exemple, avez-vous eu des problèmes à manger des aliments qu’on mange avec les doigts ou à utiliser des fourchettes, des couteaux, des cuillères, des baguettes ?", "opts": ["pas du tout (aucun problème)", "je suis lent(e), mais je n’ai besoin d’aucune aide pour manipuler ma nourriture et je n’ai pas renversé de nourriture pendant que je mangeais", "je suis lent(e) quand je mange et je renverse occasionnellement ma nourriture. Je peux avoir besoin d’aide dans un petit nombre de tâches come couper la viande", "j’ai besoin d’aide dans beaucoup de tâches alimentaires mais je peux en faire certaines seul(e)", "j’ai besoin d’aide pour la plupart ou toutes les tâches alimentaires"]}, {"title": "2.5 – Habillage", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes pour vous habiller ? par exemple, êtes-vous lent(e) ou avez-vous besoin d’aide pour vous boutonner, pour utiliser des fermetures éclairs, pour mettre ou enlever vos vêtements ou vos bijoux?", "opts": ["pas du tout (aucun problème)", "je suis lent(e) mais je n’ai pas besoin d’aide", "je suis lent(e) et j’ai besoin d’aide pour quelques tâches d’habillage (boutons, bracelets)", "j’ai besoin d’aide pour de nombreuses tâches d’habillage", "j’ai besoin d’aide pour la plupart ou toutes les tâches d’habillage"]}, {"title": "2.6 – Hygiène", "q": "Au cours de la semaine précédente, avez-vous été lent(e) ou avez-vous eu besoin d’aide pour vous laver, prendre un bain, vous raser, vous brosser les dents, vous peigner ou avec toute autre hygiène personnelle ?", "opts": ["pas du tout (aucun problème)", "je suis lent(e) mais je n’ai pas besoin d’aide", "j’ai besoin de quelqu’un pour m’aider dans quelques tâches concernant l’hygiène", "j’ai besoin de quelqu’un pour de nombreuses tâches concernant l’hygiène", "j’ai besoin de quelqu’un pour la plupart ou toutes les tâches concernant l’hygiène"]}, {"title": "2.7 – Ecriture", "q": "Au cours de la semaine précédente, les gens ont-ils eu des problèmes à lire votre écriture ?", "opts": ["pas du tout (aucun problème)", "mon écriture est lente, maladroite ou inégale, mais tous les mots sont lisibles", "certains mots sont peu clairs et difficiles à lire", "beaucoup de mots sont peu clairs et difficiles à lire", "la plupart des mots ou tous les mots sont illisibles"]}, {"title": "2.8 Passe-temps favoris et autres activités", "q": "Au cours de la semaine précédente, avez-vous rencontré des problèmes dans vos passe-temps favoris ou dans d’autres choses que vous aimez faire ?", "opts": ["pas du tout (aucun problème)", "je suis un peu lent(e) mais je fais ces activités facilement", "j’ai quelques difficultés à faire ces activités", "j’ai des problèmes majeurs à faire ces activités, mais j’en fais encore la plupart", "j’ai suis incapable de faire la plupart ou toutes ces activités"]}, {"title": "2.9 Se tourner dans le lit", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes pour vous tourner dans le lit ?", "opts": ["pas du tout (aucun problème)", "j’ai un peu de difficulté à me tourner, mais je n’ai besoin d’aucune aide", "j’ai beaucoup de difficulté à me tourner et j’ai occasionnellement besoin de l’aide de quelqu’un", "pour me tourner, j’ai souvent besoin de l’aide de quelqu’un", "je suis incapable de me tourner sans l’aide de quelqu’un"]}, {"title": "2.10 – Tremblement", "q": "Au cours de la semaine précédente, avez-vous eu des tremblements ?", "opts": ["pas du tout, je n’ai pas de tremblement", "un tremblement survient, mais ne me cause pas de problème dans mes activités", "un tremblement me cause des problèmes, mais seulement dans un petit nombre d’activités", "un tremblement me cause des problèmes dans beaucoup de mes activités quotidiennes", "un tremblement me cause des problèmes avec la plupart ou toutes les activités"]}, {"title": "2.11 Sortir du lit, d’une voiture, d’un siège profond", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes pour sortir du lit, d’un siège de voiture, ou d’un siège profond ?", "opts": ["pas du tout (aucun problème)", "Je suis lent et maladroit, mais je peux habituellement le faire au premier coup", "J’ai besoin de plus d’un essai pour me lever ou j’ai besoin d’une aide occasionnelle", "J’ai parfois besoin d’aide pour me lever, mais la plupart des fois je peux le faire par moi-même", "J’ai besoin d’aide la plupart ou toutes les fois"]}, {"title": "2.12 Marche et équilibre", "q": "Au cours de la semaine précédente, avez-vous eu des problèmes d’équilibre et de marche ?", "opts": ["pas du tout (aucun problème)", "je suis en peu lent(e) ou peut trainer une jambe. Je n’utilise jamais d’assistance pour la marche", "j’utilise occasionnellement une assistance à la marche, mais je n’ai besoin d’aucune aide d’autre personne", "j’utilise habituellement une assistance à la marche (canne, déambulateur) pour marcher sûrement sans tomber. Cependant je n’ai habituellement pas besoin de l’aide d’une autre personne", "j’utilise habituellement l’aide d’autres personnes pour marcher sûrement sans tomber"]}, {"title": "2.13 Blocages à la marche (freezing)", "q": "Au cours de la semaine précédente, pendant votre journée habituelle, quand vous marchez, vous arrêtez-vous soudainement ou vous bloquez-vous comme si vos pieds restaient collés au sol ?", "opts": ["pas du tout (aucun problème)", "je me bloque brièvement, mais je peux facilement redémarrer. Je n’ai pas besoin de l’aide de quelqu’un d’autre ou d’une assistance de marche (canne, déambulateur) en raison de ce blocage", "je me bloque et j’ai des problèmes pour redémarrer et, en raison de ce blocage, j’ai parfois besoin d’utiliser une assistance à la marche ou l’aide de quelqu’un", "quand je me bloque, j’ai beaucoup de problèmes à redémarrer et, en raison de ce blocage, j’ai parfois besoin d’utiliser une assistance  à  la marche ou l’aide de quelqu’un", "en raison de ce blocage, la plupart du temps ou tout le temps, j’ai besoin d’utiliser une assistance  à  la marche ou l’aide de quelqu’un"]}], "pdq39": ["Avez-vous eu des difficultés dans la pratique de vos loisirs", "Avez-vous eu des difficultés à vous occuper de votre maison : bricolage, ménage cuisine ?", "Avez-vous eu des difficultés à porter des sacs de provisions ?", "Avez-vous eu des problèmes pour faire 1 km à pied ?", "Avez-vous eu des problèmes pour faire 100m à pied ?", "Avez-vous eu des problèmes à vous déplacer chez vous, aussi aisément que vous l’auriez souhaité ?", "Avez vous eu des difficultés à vous déplacer dans les lieux publics ?", "Avez-vous eu besoin de quelqu’un pour vous accompagner lors de vos sorties ?", "Avez-vous eu peur ou vous-êtes vous senti(e) inquiet(e) à l’idée de tomber en public ?", "Avez-vous été confiné(e) chez vous plus que vous ne l’auriez souhaité ?", "Avez-vous eu des difficultés pour vous laver ?", "Avez-vous eu des difficultés pour vous habiller ?", "Avez-vous eu des problèmes pour boutonner vos vêtement ou pour lacer vous chaussures ?", "Avez-vous eu des problèmes pour écrire lisiblement ?", "Avez-vous eu des difficultés pour couper la nourriture ?", "Avez-vous eu des difficultés pour tenir un verre sans le renverser ?", "Vous êtes vous sentie déprimé(e) ?", "Vous êtes-vous senti(e) isolé(e) et seul(e) ?", "Vous êtes-vous senti(e) au bord des larmes ou avez- vous pleuré ?", "Avez-vous ressenti de la colère ou de l’amertume ?", "Vous êtes-vous senti(e) anxieux(se)", "Vous êtes-vous senti(e) inquiète pour votre avenir ?", "Avez-vous ressenti le besoin de dissimuler aux autres votre maladie de Parkinson ?", "Avez-vous évité des situations où vous deviez manger ou boire en public ?", "Vous êtes-vous senti(e) gêné(e) en public à cause de votre maladie de Parkinson ?", "Vous êtes-vous senti(e) inquiet(e) des réactions des autres à votre égard ?", "Avez-vous eu des problèmes dans vos relations avec vos proches ?", "Avez-vous manqué de soutien, dont vous aviez besoin, de la part de votre époux(se) ou conjoint(e) ?", "Avez-vous manqué de soutien dont vous aviez besoin, de la part de votre famille ou de vos amis proches ?", "Vous êtes-vous endormi(e) dans la journée de façon inattendue ?", "Avez-vous eu des problèmes e concentration, par exemple en lisant ou en regardant la télévision ?", "Avez-vous senti que votre mémoire était mauvaise ?", "Avez-vous fait des mauvais rêves, ou eu des hallucinations ?", "Avez-vous eu des difficultés pour parler ?", "Vous-êtes vous senti(e) incapable de communiquer normalement avec les autres ?", "Vous êtes-vous senti(e) ignoré(e) par les autres ?", "Avez-vous eu des crampes ou des spasmes musculaires douloureux ?", "Avez-vous eu mal ou avez-vous eu des douleurs dans les articulations ou dans le corps ?", "Avez-vous eu la sensation désagréable de chaud ou de froid ?"], "epworth": ["Pendant que vous êtes occupé à lire un document", "Devant la télévision ou au cinéma", "Assis inactif dans un lieu public (salle d'attente, théâtre, cours, congrès ...)", "Passager, depuis au moins une heure sans interruptions, d'une voiture ou d'un transport en commun (train, bus, avion, métro ...)", "Allongé pour une sieste, lorsque les circonstances le permettent", "En position assise au cours d'une conversation (ou au téléphone) avec un proche", "Tranquillement assis à table à la fin d'un repas sans alcool", "Au volant d'une voiture immobilisée depuis quelques minutes dans un embouteillage"], "pichot": ["Je manque d'énergie", "Tout demande un effort", "Je me sens faible à certains endroits du corps", "J'ai les bras ou les jambes lourdes", "Je me sens fatigué sans raison", "J'ai envie de m'allonger pour me reposer", "J'ai du mal à me concentrer", "Je me sens fatigué, lourd et raide"], "rosenberg": ["Je pense que je suis une personne de valeur, au moins égale à n'importe qui d'autre", "Je pense que je possède un certain nombre de belles qualités.", "Tout bien considéré, je suis porté à me considérer comme un raté", "Je suis capable de faire les choses aussi bien que la majorité des gens", "Je sens peu de raisons d'être fier de moi.", "J'ai une attitude positive vis-à-vis moi-même.", "Dans l'ensemble, je suis satisfait de moi.", "J'aimerais avoir plus de respect pour moi-même", "Parfois je me sens vraiment inutile.", "Il m'arrive de penser que je suis un bon à rien."], "fog": [{"q": "Au moment de votre meilleur état (ON), marchez-vous :", "o": ["Normalement", "Pratiquement normalement, parfois lentement.", "Lentement mais de façon totalement indépendante", "Avec assistance ou une aide", "Incapable de marcher"]}, {"q": "Au moment de votre plus mauvais état (OFF), marchez-vous :", "o": ["Normalement", "Pratiquement normalement, parfois lentement.", "Lentement mais de façon totalement indépendante", "Avec assistance ou une aide", "de marcher"]}, {"q": "Vos difficultés à marcher affectent-elles vos activités de la vie quotidienne et votre autonomie ?", "o": ["Pas du tout", "Légèrement", "Modérément", "Sévèrement", "Incapable de marcher"]}, {"q": "Sentez-vous vos pieds comme ‘collés’ au sol lorsque vous marchez, faites un demi-tour ou lorsque vous commencez à marcher ?", "o": ["Jamais", "Très rarement – environ une fois/mois", "Rarement – environ une fois/semaine", "Souvent – environ une fois/jour", "En permanence – à chaque fois que je marche."]}, {"q": "Quelle a été la durée la plus longue d’un épisode de freezing ?", "o": ["Jamais d’épisode", "1– 2 secondes", "3– 10 secondes", "11– 30 secondes", "Incapable de marcher plus de 30 secondes"]}, {"q": "Combien de temps dure en général vos épisodes de freezing au démarrage de la marche ?", "o": ["Aucun épisode de freezing", "Plus de 1 seconde pour commencer à marcher", "Plus de 3 secondes pour commencer à marcher", "Plus de 10 secondes pour commencer à marcher", "Plus de 30 secondes pour commencer à marcher"]}, {"q": "Combien de temps dure en général vos épisodes de freezing survenant au demi-tour?", "o": ["Aucun épisode de freezing", "Demi-tour en 1– 2 secondes", "Demi-tour en 3– 10 secondes", "Demi-tour en 11– 30 secondes", "Plus de 30 secondes pour faire un demi-tour"]}, {"q": "Combien de temps dure en général vos épisodes de freezing au moment de l’arrivée ; comme à l’approche d’une chaise pour vous assoir?", "o": ["Aucun épisode de freezing", "1– 2 secondes", "3– 10 secondes", "11– 30 secondes", "Impossible de le faire en moins de 30 secondes"]}, {"q": "Combien de temps dure en général vos épisodes de freezing lors de la marche dans un espace réduit; comme au passage d’une porte?", "o": ["Aucun épisode de freezing", "Passage en 1– 2 secondes", "Passage en 3– 10 secondes", "Passage 11– 30 secondes", "Impossible de faire en moins de 30 secondes"]}, {"q": "Combien de temps dure en général vos épisodes de freezing lors de la marche en ligne droite ?", "o": ["Aucun épisode de freezing", "1– 2 secondes", "3– 10 secondes", "11– 30 secondes", "de le faire en moins de 30 secondes"]}, {"q": "Combien de temps dure en général vos épisodes de freezing lorsque vous êtes en situation de stress, comme une sonnerie de téléphone, un ascenseur ou traverser une rue ?", "o": ["Aucun épisode de freezing", "1– 2 secondes", "3– 10 secondes", "11– 30 secondes", "Impossible de le faire en moins de 30 secondes"]}, {"q": "Quelle est la fréquence de vos chutes ?", "o": ["Jamais", "Très rarement – environ une fois/an", "Rarement – environ une fois/mois", "Souvent – environ une fois/semaine", "Très souvent – environ une fois/jour"]}, {"q": "Quelle est la fréquence de vos chutes lorsque vous êtes debout ?", "o": ["Jamais", "C’est arrivé une ou deux fois", "C’est arrivé 3–12 fois au cours des 6 derniers mois", "Plus d’une fois par semaine", "A chaque fois que j’essaye de marcher sans aide"]}, {"q": "Quelle est la fréquence de vos chutes à cause de vos épisodes de freezing?", "o": ["Jamais", "C’est arrivé une ou deux fois", "C’est arrivé 3–12 fois au cours des 6 derniers mois", "Plus d’une fois par semaine", "A chaque fois que j’essaye de marcher sans aide"]}, {"q": "Avez-vous des épisodes de festination de la marche ?", "o": ["Jamais", "Très rarement – environ une fois/mois", "Rarement – environ une fois/semaine", "Souvent – environ une fois/jour", "A chaque fois que je marche"]}, {"q": "Quelle est la fréquence de vos chutes à cause de vos épisodes de festination?", "o": ["Jamais", "C’est arrivé une ou deux fois", "C’est arrivé 3–12 fois au cours des 6 derniers mois", "Plus d’une fois par semaine", "A chaque fois que j’essaye de marcher sans aide"]}], "had": [{"scale": "A", "q": "Je me sens tendu ou énervé :", "opts": [[3, "La plupart du temps"], [2, "Souvent"], [1, "De temps en temps"], [0, "Jamais"]]}, {"scale": "D", "q": "Je prends plaisir aux mêmes choses qu'autrefois :", "opts": [[0, "Oui, tout autant"], [1, "Pas autant"], [2, "Un peu seulement"], [3, "Presque plus"]]}, {"scale": "A", "q": "J'ai une sensation de peur comme si quelque chose d'horrible allait m'arriver :", "opts": [[3, "Oui, très nettement"], [2, "Oui, mais ce n'est pas trop grave"], [1, "Un peu, mais cela ne m'inquiète pas"], [0, "Pas du tout"]]}, {"scale": "D", "q": "Je ris facilement et vois le bon côté des choses :", "opts": [[0, "Autant que par le passé"], [1, "Plus autant qu'avant"], [2, "Vraiment moins qu'avant"], [3, "Plus du tout"]]}, {"scale": "A", "q": "Je me fais du souci :", "opts": [[3, "Très souvent"], [2, "Assez souvent"], [1, "Occasionnellement"], [0, "Très occasionnellement"]]}, {"scale": "D", "q": "Je suis de bonne humeur :", "opts": [[3, "Jamais"], [2, "Rarement"], [1, "Assez souvent"], [0, "La plupart du temps"]]}, {"scale": "A", "q": "Je peux rester tranquillement assis à ne rien faire et me sentir décontracté :", "opts": [[0, "Oui, quoi qu'il arrive"], [1, "Oui, en général"], [2, "Rarement"], [3, "Jamais"]]}, {"scale": "D", "q": "J'ai l'impression de fonctionner au ralenti :", "opts": [[3, "Presque toujours"], [2, "Très souvent"], [1, "Parfois"], [0, "Jamais"]]}, {"scale": "A", "q": "J'éprouve des sensations de peur et j'ai l'estomac noué :", "opts": [[0, "Jamais"], [1, "Parfois"], [2, "Assez souvent"], [3, "Très souvent"]]}, {"scale": "D", "q": "Je ne m'intéresse plus à mon apparence :", "opts": [[3, "Plus du tout"], [2, "Je n'y accorde pas autant d'attention que je le devrais"], [1, "Il se peut que je n'y fasse plus autant attention"], [0, "J'y prête autant d'attention que par le passé"]]}, {"scale": "A", "q": "J'ai la bougeotte et n'arrive pas à tenir en place :", "opts": [[3, "Oui, c'est tout-à-fait le cas"], [2, "Un peu"], [1, "Pas tellement"], [0, "Pas du tout"]]}, {"scale": "D", "q": "Je me réjouis d'avance à l'idée de faire certaines choses :", "opts": [[0, "Autant qu'avant"], [1, "Un peu moins qu'avant"], [2, "Bien moins qu'avant"], [3, "Presque jamais"]]}, {"scale": "A", "q": "J'éprouve des sensations soudaines de panique :", "opts": [[3, "Vraiment très souvent"], [2, "Assez souvent"], [1, "Pas très souvent"], [0, "Jamais"]]}, {"scale": "D", "q": "Je peux prendre plaisir à un bon livre ou à une bonne émission radio ou de télévision :", "opts": [[0, "Souvent"], [1, "Parfois"], [2, "Rarement"], [3, "Très rarement"]]}], "starkstein": ["Apprendre des nouvelles choses vous intéresse ?", "Certaines choses vous intéressent-elles encore ?", "Vous vous sentez concerné(e) par votre état de santé ?", "Vous faites beaucoup d’efforts pour obtenir quelque chose ?", "Vous cherchez toujours quelque chose à faire ?", "Vous avez des projets pour le futur ?", "Vous vous sentez motivé ?", "Vous avez de l’énergie pour les activités quotidiennes ?", "Quelqu’un doit vous dire chaque jour ce que vous devez faire ?", "Vous vous sentez indifférent(e) aux choses qui vous entourent ?", "Vous vous sentez moins concerné(e) qu’avant par certaines choses ?", "Vous avez besoin d’être stimulé(e) pour commencer à faire quelque chose ?", "Vous ressentez moins fortement les émotions ?", "Vous vous considéreriez comme apathique ?"], "fdas": ["J’ai besoin d’encouragements pour débuter une activité", "Je suis à l’initiative des contacts avec mes ami(e)s", "J'exprime mes émotions", "Je pense à de nouvelles choses à faire pendant ma journée", "Je me sens concerné(e) par ce que les membres de ma famille ressentent", "Il m’arrive de regarder dans le vide", "Avant de commencer quelque chose je réfléchis à ce que les autres pourraient ressentir à propos de cela", "Je prévois mes activités de la journée par avance", "Je me sens mal quand je reçois de mauvaises nouvelles", "Je suis capable de me concentrer sur une tâche jusqu'à ce qu'elle soit terminée", "Je manque de motivation dans ce que je fais", "J’ai du mal à comprendre ce que les autres ressentent", "Je me fixe des objectifs", "J'essaie de nouvelles choses", "Ce que mon comportement induit comme émotion chez les autres m’indiffère", "J’agis en fonction de ce que j’ai pensé durant la journée", "Quand je suis face à une tâche compliquée, j’ai du mal à organiser ce que j’ai à faire", "Je sais me trouver des occupations", "J’éprouve des difficultés lorsque je dois faire plusieurs choses à la fois", "Je suis facilement ému(e) en regardant quelque chose de joyeux ou triste à la télévision", "Je trouve difficile de rester concentré(e)", "Je suis plutôt spontané(e)", "Je suis facilement distrait(e)", "Ce qui se passe autour de moi me laisse indifférent(e)"], "quip_behaviors": ["Jeu ?", "Sexe ?", "Achats compulsifs ?", "Manger ?", "Exécuter des tâches ou pratiquer des passe-temps ?", "Répéter des activités simples ?", "Prendre vos médicaments contre la MP?"], "quip_questions": ["À quel point pensez-vous aux comportements suivants (comme la difficulté à garder des pensées hors de votre esprit ou vous sentir coupable) ?", "Avez-vous des pulsions ou des désirs pour les comportements suivants que vous jugez excessifs ou qui vous causent de la détresse (y compris devenir agité ou irritable lorsque vous ne pouvez pas vous y adonner) ?", "Avez-vous de la difficulté à contrôler les comportements suivants ci-dessous (par exemple, les augmenter au fil du temps, ou avoir de la difficulté à les réduire ou les arrêter) ?", "Vous livrez-vous à des activités expressément pour poursuivre les comportements suivants (par exemple, cacher ce que vous faites, mentir, accumuler des choses, emprunter aux autres, accumuler des dettes, voler ou participer à des actes illicites) ?"]};
+
+function radioValue(name){
+  const x=document.querySelector(`input[name="${name}"]:checked`);
+  return x?x.value:"Non répondu";
+}
+function missing(v){return (v===undefined||v===null||String(v).trim()==="")?"Non répondu":String(v).trim();}
+function csvEscape(v){return String(v).replace(/"/g,'""');}
+function sanitizeFileToken(v){return String(v).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().trim().replace(/\s+/g,"").replace(/[^A-Z0-9_-]/g,"");}
+function getBilanToken(){
+  const t=radioValue("bilanType");
+  if(t==="Non répondu") return "";
+  if(t!=="AUTRE") return sanitizeFileToken(t);
+  return sanitizeFileToken(document.getElementById("bilanTypeOther").value);
+}
+function optionRadios(name, options, values=null){
+  return options.map((txt,i)=>{
+    const v=values?values[i]:i;
+    return `<label class="score-option"><input type="radio" name="${name}" value="${v}"><strong>${v}</strong> — ${txt}</label>`;
+  }).join("");
+}
+
+/* MDS-UPDRS II */
+const u2=document.getElementById("updrs2Container");
+DATA.updrs2.forEach((it,idx)=>{
+  const d=document.createElement("div"); d.className="form-block";
+  let opts=it.opts.map((txt,s)=>`
+    <div class="updrs2-option">
+      <div><span class="updrs2-score">${s} = ${["normal","minime","léger","modéré","sévère"][s]}</span>${txt}</div>
+      <div style="text-align:center"><input type="radio" name="u2_${idx+1}_OFF" value="${s}"></div>
+      <div style="text-align:center"><input type="radio" name="u2_${idx+1}_ON" value="${s}"></div>
+    </div>`).join("");
+  d.innerHTML=`<div class="question-title">${it.title}</div><p class="instruction"><em>${it.q}</em></p>
+  <div class="updrs2-option" style="font-weight:bold;background:#eef4f5"><div>Cotation</div><div style="text-align:center">OFF</div><div style="text-align:center">ON</div></div>${opts}`;
+  u2.appendChild(d);
+});
+
+/* PDQ39 */
+const pdqLabels=["Jamais","Rarement","Parfois","Souvent","Toujours"];
+let phtml="<thead><tr><th>Question</th>"+pdqLabels.map((x,i)=>`<th>${x}<br>${i}</th>`).join("")+"</tr></thead><tbody>";
+DATA.pdq39.forEach((q,i)=>{
+  phtml+=`<tr><td>${i+1}. ${q}</td>`+pdqLabels.map((x,j)=>`<td style="text-align:center"><input type="radio" name="pdq_${i+1}" value="${j}"></td>`).join("")+"</tr>";
+});
+document.getElementById("pdqTable").innerHTML=phtml+"</tbody>";
+
+/* Epworth */
+const ep=document.getElementById("epworthContainer");
+DATA.epworth.forEach((q,i)=>{
+ const d=document.createElement("div"); d.innerHTML=`<div class="question-title">${i+1}. ${q}</div>${optionRadios(`ep_${i+1}`,["0","1","2","3"],[0,1,2,3])}`; ep.appendChild(d);
+});
+
+/* Pichot */
+const pc=document.getElementById("pichotContainer");
+DATA.pichot.forEach((q,i)=>{
+ const d=document.createElement("div"); d.style.marginBottom="20px"; d.innerHTML=`<div class="question-title">${i+1}. ${q}</div>${optionRadios(`pichot_${i+1}`,["pas du tout","un peu","moyennement","beaucoup","extrêmement"],[0,1,2,3,4])}`; pc.appendChild(d);
+ document.addEventListener("change",e=>{if(e.target.name===`pichot_${i+1}`)updatePichot();});
+});
+function updatePichot(){
+ let s=0,n=0;
+ for(let i=1;i<=8;i++){const v=radioValue(`pichot_${i}`);if(v!=="Non répondu"){s+=Number(v);n++;}}
+ document.getElementById("pichotTotal").textContent=n===8?s:"—";
+}
+
+/* Estime de soi */
+const reOpts=[["Tout à fait en désaccord",1],["Plutôt en désaccord",2],["Plutôt en accord",3],["Tout à fait en accord",4]];
+let rhtml="<thead><tr><th>Item</th>"+reOpts.map(x=>`<th>${x[0]}<br>${x[1]}</th>`).join("")+"</tr></thead><tbody>";
+DATA.rosenberg.forEach((q,i)=>{rhtml+=`<tr><td>${i+1}. ${q}</td>`+reOpts.map(x=>`<td style="text-align:center"><input type="radio" name="ros_${i+1}" value="${x[1]}"></td>`).join("")+"</tr>";});
+document.getElementById("selfEsteemTable").innerHTML=rhtml+"</tbody>";
+
+/* FOG */
+const fogC=document.getElementById("fogContainer");
+DATA.fog.forEach((it,i)=>{
+ const d=document.createElement("div"); d.className="form-block";
+ d.innerHTML=`<div class="question-title">${i+1} – ${it.q}</div>${optionRadios(`fog_${i+1}`,it.o,[0,1,2,3,4])}`;
+ fogC.appendChild(d);
+});
+
+/* HAD */
+const hadC=document.getElementById("hadContainer");
+DATA.had.forEach((it,i)=>{
+ const d=document.createElement("div"); d.style.marginBottom="24px";
+ d.innerHTML=`<div class="question-title">${it.scale} — ${it.q}</div>`+it.opts.map(x=>`<label class="score-option"><input type="radio" name="had_${i+1}" value="${x[0]}"><strong>${x[0]}</strong> — ${x[1]}</label>`).join("");
+ hadC.appendChild(d);
+});
+
+/* Starkstein */
+const stOpts=[["Pas du tout",0],["Un peu",1],["Oui",2],["Beaucoup",3]];
+let sth="<thead><tr><th>Item</th>"+stOpts.map(x=>`<th>${x[0]}</th>`).join("")+"</tr></thead><tbody>";
+DATA.starkstein.forEach((q,i)=>{sth+=`<tr><td>${i+1}. ${q}</td>`+stOpts.map(x=>`<td style="text-align:center"><input type="radio" name="st_${i+1}" value="${x[1]}"></td>`).join("")+"</tr>";});
+document.getElementById("starksteinTable").innerHTML=sth+"</tbody>";
+
+/* F-DAS */
+const fdOpts=[["Presque toujours",1],["Souvent",2],["Parfois",3],["Presque jamais",4]];
+let fdh="<thead><tr><th>Item</th>"+fdOpts.map(x=>`<th>${x[0]}</th>`).join("")+"</tr></thead><tbody>";
+DATA.fdas.forEach((q,i)=>{fdh+=`<tr><td>${i+1}. ${q}</td>`+fdOpts.map(x=>`<td style="text-align:center"><input type="radio" name="fd_${i+1}" value="${x[1]}"></td>`).join("")+"</tr>";});
+document.getElementById("fdasTable").innerHTML=fdh+"</tbody>";
+
+/* QUIP */
+const qc=document.getElementById("quipContainer"), qlabels=["Jamais","Rarement","Parfois","Souvent","Très souvent"];
+DATA.quip_questions.forEach((q,qi)=>{
+ const block=document.createElement("div"); block.style.marginTop="32px";
+ let h=`<div class="question-title">${qi+1}. ${q}</div><div class="big-table-wrapper"><table class="matrix-table"><thead><tr><th>Comportement</th>`+qlabels.map((x,i)=>`<th>${x}<br>${i}</th>`).join("")+"</tr></thead><tbody>";
+ DATA.quip_behaviors.forEach((b,bi)=>{h+=`<tr><td>${b}</td>`+qlabels.map((x,s)=>`<td style="text-align:center"><input type="radio" name="quip_${qi+1}_${bi+1}" value="${s}"></td>`).join("")+"</tr>";});
+ h+="</tbody></table></div>"; block.innerHTML=h; qc.appendChild(block);
+});
+
+/* EXPORT */
+function generateCSV(){
+ const id=document.getElementById("patientID").value.trim();
+ if(!id){alert("Veuillez renseigner l'identifiant patient.");return;}
+ const bt=radioValue("bilanType");
+ if(bt==="Non répondu"){alert("Veuillez sélectionner le type de bilan.");return;}
+ const token=getBilanToken();
+ if(!token){alert("Veuillez préciser le délai du bilan, par exemple : 2 ans.");return;}
+ const rows=[]; const add=(q,v)=>rows.push([q,missing(v)]);
+ add("Date du bilan",document.getElementById("bilanDate").value);
+ add("Type de bilan",bt);
+ add("Type de bilan - précision autre",bt==="AUTRE"?document.getElementById("bilanTypeOther").value:"Non répondu");
+ add("Code bilan fichier",token);
+ add("Dossier rempli par",radioValue("filledBy"));
+
+ DATA.updrs2.forEach((it,i)=>{add(`MDS-UPDRS II - ${it.title} - OFF`,radioValue(`u2_${i+1}_OFF`));add(`MDS-UPDRS II - ${it.title} - ON`,radioValue(`u2_${i+1}_ON`));});
+ DATA.pdq39.forEach((q,i)=>add(`PDQ39 ${i+1} - ${q}`,radioValue(`pdq_${i+1}`)));
+ DATA.epworth.forEach((q,i)=>add(`Epworth ${i+1} - ${q}`,radioValue(`ep_${i+1}`)));
+ DATA.pichot.forEach((q,i)=>add(`Pichot ${i+1} - ${q}`,radioValue(`pichot_${i+1}`)));
+ add("Pichot - Total sur 32",document.getElementById("pichotTotal").textContent==="—"?"Non répondu":document.getElementById("pichotTotal").textContent);
+ DATA.rosenberg.forEach((q,i)=>add(`Estime de soi ${i+1} - ${q}`,radioValue(`ros_${i+1}`)));
+ DATA.fog.forEach((it,i)=>add(`FOG ${i+1} - ${it.q}`,radioValue(`fog_${i+1}`)));
+ DATA.had.forEach((it,i)=>add(`HAD ${it.scale}${Math.floor(i/2)+1} - ${it.q}`,radioValue(`had_${i+1}`)));
+ DATA.starkstein.forEach((q,i)=>add(`Starkstein ${i+1} - ${q}`,radioValue(`st_${i+1}`)));
+ DATA.fdas.forEach((q,i)=>add(`F-DAS ${i+1} - ${q}`,radioValue(`fd_${i+1}`)));
+ DATA.quip_questions.forEach((q,qi)=>DATA.quip_behaviors.forEach((b,bi)=>add(`QUIP-RS Q${qi+1} - ${b}`,radioValue(`quip_${qi+1}_${bi+1}`))));
+
+ let csv=`Identifiant;${csvEscape(id)}\n\nNuméro;Question;Réponse\n`;
+ rows.forEach((r,i)=>{csv+=`"${i+1}";"${csvEscape(r[0])}";"${csvEscape(r[1])}"\n`;});
+ const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
+ const link=document.createElement("a"); link.href=URL.createObjectURL(blob);
+ link.download=`${sanitizeFileToken(id)}_${token}_AUTOQUESTIONNAIRES_resultats.csv`;
+ document.body.appendChild(link);link.click();document.body.removeChild(link);URL.revokeObjectURL(link.href);
+}
+</script>
 </body>
 </html>
