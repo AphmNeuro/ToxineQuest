@@ -86,6 +86,14 @@
       background: white;
     }
 
+    .patient-field {
+      margin-bottom: 20px;
+    }
+
+    .patient-field:last-child {
+      margin-bottom: 0;
+    }
+
     .section-title {
       background: #2c3e50;
       color: white;
@@ -548,6 +556,7 @@
         width: 45%;
       }
     }
+
   </style>
 </head>
 
@@ -563,53 +572,81 @@
     Tics et toxines
   </div>
 
-  <!-- IDENTIFIANT -->
+
+  <!-- ======================================================
+       IDENTIFIANT + INJECTION + ZONE
+       ====================================================== -->
 
   <div class="form-block id-block">
 
-    <label for="patientId">
-      Identifiant Patient :
-    </label>
+    <div class="patient-field">
 
-    <br>
+      <label for="patientId">
+        Identifiant Patient :
+      </label>
 
-    <input
-      type="text"
-      id="patientId"
-      placeholder="Ex : 002STESY"
-      autocomplete="off"
-      required
-    >
+      <br>
+
+      <input
+        type="text"
+        id="patientId"
+        placeholder="Ex : 002STESY"
+        autocomplete="off"
+        required
+      >
+
+    </div>
+
+
+    <div class="patient-field">
+
+      <label for="injectionNumber">
+        Numéro de l'injection :
+      </label>
+
+      <br>
+
+      <select id="injectionNumber" required>
+        <option value="">Sélectionner le numéro</option>
+        <option value="1">Injection 1</option>
+        <option value="2">Injection 2</option>
+        <option value="3">Injection 3</option>
+        <option value="4">Injection 4</option>
+        <option value="5">Injection 5</option>
+        <option value="6">Injection 6</option>
+        <option value="7">Injection 7</option>
+        <option value="8">Injection 8</option>
+        <option value="9">Injection 9</option>
+        <option value="10">Injection 10</option>
+      </select>
+
+    </div>
+
+
+    <div class="patient-field">
+
+      <label for="zoneInjection">
+        Zone d'injection :
+      </label>
+
+      <br>
+
+      <select id="zoneInjection" required>
+        <option value="">Sélectionner la zone</option>
+        <option value="1">Visage</option>
+        <option value="2">Cou</option>
+        <option value="3">Membre supérieur</option>
+        <option value="4">Membre inférieur</option>
+      </select>
+
+    </div>
 
   </div>
 
-  <!-- NUMERO INJECTION -->
 
-  <div class="form-block id-block">
-
-    <label for="injectionNumber">
-      Numéro de l'injection :
-    </label>
-
-    <br>
-
-    <select id="injectionNumber" required>
-      <option value="">Sélectionner le numéro</option>
-      <option value="1">Injection 1</option>
-      <option value="2">Injection 2</option>
-      <option value="3">Injection 3</option>
-      <option value="4">Injection 4</option>
-      <option value="5">Injection 5</option>
-      <option value="6">Injection 6</option>
-      <option value="7">Injection 7</option>
-      <option value="8">Injection 8</option>
-      <option value="9">Injection 9</option>
-      <option value="10">Injection 10</option>
-    </select>
-
-  </div>
-
-  <!-- EVA -->
+  <!-- ======================================================
+       EVA
+       ====================================================== -->
 
   <div class="section-title">
     <h2>1. Échelle EVA – Évaluation de la douleur</h2>
@@ -694,7 +731,10 @@
     </div>
   </div>
 
-  <!-- PGI 1-7 -->
+
+  <!-- ======================================================
+       PGI 1-7
+       ====================================================== -->
 
   <div class="section-title">
     <h2>2. Score PGI – Impression globale d’amélioration du tic</h2>
@@ -771,7 +811,10 @@
     </div>
   </div>
 
-  <!-- PGI 0-100 -->
+
+  <!-- ======================================================
+       PGI 0-100
+       ====================================================== -->
 
   <div class="scale-card">
 
@@ -848,7 +891,10 @@
     </div>
   </div>
 
-  <!-- EFFETS INDESIRABLES -->
+
+  <!-- ======================================================
+       EFFETS INDESIRABLES
+       ====================================================== -->
 
   <div class="section-title">
     <h2>3. Effets indésirables</h2>
@@ -915,7 +961,10 @@
     </div>
   </div>
 
-  <!-- PUTS -->
+
+  <!-- ======================================================
+       PUTS
+       ====================================================== -->
 
   <div class="section-title">
     <h2>4. Premonitory Urge for Tics Scale (PUTS)</h2>
@@ -923,7 +972,10 @@
 
   <div id="putsQuestions"></div>
 
-  <!-- TS-QOL -->
+
+  <!-- ======================================================
+       TS-QOL
+       ====================================================== -->
 
   <div class="section-title">
 
@@ -940,7 +992,10 @@
 
   <div id="tsqolQuestions"></div>
 
-  <!-- SATISFACTION -->
+
+  <!-- ======================================================
+       SATISFACTION
+       ====================================================== -->
 
   <div class="section-title">
     <h2>6. Satisfaction globale de vie</h2>
@@ -996,9 +1051,11 @@
     </div>
   </div>
 
+
   <button type="button" onclick="generateCSV()">
     Télécharger en CSV
   </button>
+
 
   <script>
 
@@ -1025,6 +1082,7 @@
       { label: "Plutôt", value: 3 },
       { label: "Beaucoup", value: 4 }
     ];
+
 
     /* ========================================================
        TS-QOL
@@ -1068,7 +1126,10 @@
       { label: "Problème très important", value: 4 }
     ];
 
-    /* CREATION PUTS */
+
+    /* ========================================================
+       CREATION PUTS
+       ======================================================== */
 
     const putsContainer = document.getElementById("putsQuestions");
 
@@ -1096,7 +1157,10 @@
 
     });
 
-    /* CREATION TS-QOL */
+
+    /* ========================================================
+       CREATION TS-QOL
+       ======================================================== */
 
     const tsqolContainer = document.getElementById("tsqolQuestions");
 
@@ -1129,7 +1193,10 @@
 
     });
 
-    /* ECHELLES */
+
+    /* ========================================================
+       ECHELLES
+       ======================================================== */
 
     function createScale(labelsId, ticksId, values, suffix = "") {
 
@@ -1169,7 +1236,10 @@
       [0,10,20,30,40,50,60,70,80,90,100]
     );
 
-    /* SLIDERS */
+
+    /* ========================================================
+       SLIDERS
+       ======================================================== */
 
     function configureSlider(sliderId, valueId, suffix) {
 
@@ -1219,7 +1289,10 @@
         " / 100"
       );
 
-    /* PGI 1-7 VISUEL */
+
+    /* ========================================================
+       PGI 1-7 VISUEL
+       ======================================================== */
 
     const pgiRadios =
       document.querySelectorAll('input[name="pgiGlobal"]');
@@ -1242,7 +1315,10 @@
 
     });
 
-    /* EFFETS INDESIRABLES */
+
+    /* ========================================================
+       EFFETS INDESIRABLES
+       ======================================================== */
 
     const adverseOther =
       document.getElementById("adverseOther");
@@ -1263,7 +1339,10 @@
 
     });
 
-    /* UTILITAIRES */
+
+    /* ========================================================
+       UTILITAIRES
+       ======================================================== */
 
     function getRadioValue(name) {
 
@@ -1285,6 +1364,7 @@
 
     }
 
+
     /* ========================================================
        EXPORT CSV
        ======================================================== */
@@ -1297,6 +1377,7 @@
           .value
           .trim();
 
+
       if (!patientId) {
 
         alert(
@@ -1306,12 +1387,14 @@
         return;
       }
 
+
       /* NUMERO INJECTION */
 
       const injectionNumber =
         document
           .getElementById("injectionNumber")
           .value;
+
 
       if (!injectionNumber) {
 
@@ -1322,12 +1405,32 @@
         return;
       }
 
+
+      /* ZONE D'INJECTION */
+
+      const zoneInjection =
+        document
+          .getElementById("zoneInjection")
+          .value;
+
+
+      if (!zoneInjection) {
+
+        alert(
+          "Veuillez sélectionner la zone d'injection avant d’exporter."
+        );
+
+        return;
+      }
+
+
       let csv =
         `Identifiant;${escapeCSV(patientId)}\n` +
         `Injection;${escapeCSV(injectionNumber)}\n\n` +
         `Numéro;Question;Réponse\n`;
 
       let n = 1;
+
 
       function addRow(question, response) {
 
@@ -1340,28 +1443,55 @@
 
       }
 
-      /* 1 EVA */
+
+      /* ======================================================
+         1 - ZONE D'INJECTION
+
+         1 = Visage
+         2 = Cou
+         3 = Membre supérieur
+         4 = Membre inférieur
+         ====================================================== */
+
+      addRow(
+        "Zone d'injection",
+        zoneInjection
+      );
+
+
+      /* ======================================================
+         2 - EVA
+         ====================================================== */
 
       addRow(
         "EVA douleur en lien avec le tic",
         getPain()
       );
 
-      /* 2 PGI 1-7 */
+
+      /* ======================================================
+         3 - PGI 1-7
+         ====================================================== */
 
       addRow(
         "PGI impression globale d'amélioration du tic (1-7)",
         getRadioValue("pgiGlobal")
       );
 
-      /* 3 PGI 0-100 */
+
+      /* ======================================================
+         4 - PGI 0-100
+         ====================================================== */
 
       addRow(
         "PGI amélioration globale du tic (%)",
         getPGIPercent()
       );
 
-      /* 4-9 EFFETS INDESIRABLES */
+
+      /* ======================================================
+         EFFETS INDESIRABLES
+         ====================================================== */
 
       const adverseYN =
         getRadioValue("adverseYesNo");
@@ -1373,6 +1503,7 @@
       let swallowingResponse = "Non répondu";
       let otherPresence = "Non répondu";
       let otherTextResponse = "Non répondu";
+
 
       /* Aucune réponse */
 
@@ -1387,6 +1518,7 @@
 
       }
 
+
       /* NON explicite */
 
       else if (adverseYN === "0") {
@@ -1399,6 +1531,7 @@
         otherTextResponse = 0;
 
       }
+
 
       /* OUI explicite */
 
@@ -1432,6 +1565,7 @@
           ? 1
           : 0;
 
+
         if (!adverseOther.checked) {
 
           otherTextResponse = 0;
@@ -1461,6 +1595,7 @@
         }
 
       }
+
 
       addRow(
         "Effets indésirables après toxine botulique",
@@ -1492,7 +1627,10 @@
         otherTextResponse
       );
 
-      /* PUTS : 10 lignes */
+
+      /* ======================================================
+         PUTS : 10 lignes
+         ====================================================== */
 
       putsItems.forEach((q, i) => {
 
@@ -1503,7 +1641,10 @@
 
       });
 
-      /* TS-QOL : 27 lignes */
+
+      /* ======================================================
+         TS-QOL : 27 lignes
+         ====================================================== */
 
       tsqolItems.forEach((q, i) => {
 
@@ -1514,14 +1655,20 @@
 
       });
 
-      /* SATISFACTION */
+
+      /* ======================================================
+         SATISFACTION
+         ====================================================== */
 
       addRow(
         "Satisfaction globale de vie",
         getLife()
       );
 
-      /* TELECHARGEMENT */
+
+      /* ======================================================
+         TELECHARGEMENT
+         ====================================================== */
 
       const BOM = "\uFEFF";
 
@@ -1538,6 +1685,7 @@
 
       link.href =
         URL.createObjectURL(blob);
+
 
       /* ID + questionnaire + numéro d'injection */
 
