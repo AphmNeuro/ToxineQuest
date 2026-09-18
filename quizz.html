@@ -74,7 +74,8 @@
       font-weight: bold;
     }
 
-    .id-block input {
+    .id-block input,
+    .id-block select {
       width: 100%;
       max-width: 320px;
       padding: 9px;
@@ -82,6 +83,11 @@
       border: 1px solid #aaaaaa;
       border-radius: 6px;
       font-size: 15px;
+      background-color: #ffffff;
+    }
+
+    .zone-injection {
+      margin-top: 20px;
     }
 
     .section-title {
@@ -239,7 +245,6 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     }
 
-    /* Curseur non encore renseigné */
     input[type="range"].untouched::-webkit-slider-thumb {
       opacity: 0;
     }
@@ -432,11 +437,13 @@
   <div class="subtitle">Tics et toxines</div>
 
   <!-- =======================================================
-       IDENTIFIANT PATIENT
+       IDENTIFIANT PATIENT + ZONE D'INJECTION
        ======================================================= -->
 
   <div class="form-block id-block">
+
     <label for="patientId">Identifiant Patient :</label><br>
+
     <input
       type="text"
       id="patientId"
@@ -445,6 +452,23 @@
       autocomplete="off"
       required
     >
+
+    <div class="zone-injection">
+      <label for="zoneInjection">Zone d'injection :</label><br>
+
+      <select
+        id="zoneInjection"
+        name="zoneInjection"
+        required
+      >
+        <option value="">-- Sélectionner --</option>
+        <option value="1">Visage</option>
+        <option value="2">Cou</option>
+        <option value="3">Membre supérieur</option>
+        <option value="4">Membre inférieur</option>
+      </select>
+    </div>
+
   </div>
 
 
@@ -818,9 +842,6 @@
 
     /* =========================================================
        GESTION DES CURSEURS
-       IMPORTANT :
-       aucune valeur n'est considérée comme renseignée avant
-       interaction réelle du patient.
        ========================================================= */
 
     const painSlider =
@@ -898,10 +919,23 @@
       const patientId =
         document.getElementById("patientId").value.trim();
 
+      const zoneInjection =
+        document.getElementById("zoneInjection").value;
+
       if (!patientId) {
 
         alert(
           "Veuillez renseigner l'identifiant patient avant d’exporter."
+        );
+
+        return;
+
+      }
+
+      if (!zoneInjection) {
+
+        alert(
+          "Veuillez sélectionner la zone d'injection avant d’exporter."
         );
 
         return;
@@ -914,6 +948,21 @@
         `Numéro;Question;Réponse\n`;
 
       let rowNumber = 1;
+
+
+      /* Zone d'injection
+         1 = Visage
+         2 = Cou
+         3 = Membre supérieur
+         4 = Membre inférieur
+      */
+
+      csv +=
+        `"${rowNumber}";` +
+        `"Zone d'injection";` +
+        `"${zoneInjection}"\n`;
+
+      rowNumber++;
 
 
       /* EVA douleur */
